@@ -3,73 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ====== SEO ====== -->
     <title>CONNECTA – Consultoria & Contabilidade Digital</title>
-    <meta name="description" content="CONNECTA – Consultoria e Contabilidade Digital. Transformamos números complexos em decisões de lucro. Atendimento humanizado e 100% digital.">
-    <meta name="keywords" content="contabilidade digital, consultoria financeira, MEI, Simples Nacional, produtor rural, imposto de renda, reforma tributária, Erilma Silva">
-    <meta name="author" content="Erilma Silva - CONNECTA">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://connectacontabilidade.com.br">
-
-    <!-- ====== Open Graph ====== -->
-    <meta property="og:title" content="CONNECTA – Consultoria & Contabilidade Digital">
-    <meta property="og:description" content="Clareza nos números, direção estratégica e atendimento próximo e personalizado para o seu negócio.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://connectacontabilidade.com.br">
-    <meta property="og:image" content="https://connectacontabilidade.com.br/public/logo.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <!-- ====== Twitter Cards ====== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="CONNECTA – Consultoria & Contabilidade Digital">
-    <meta name="twitter:description" content="Clareza nos números, direção estratégica e atendimento próximo e personalizado.">
-
-    <!-- ====== Theme ====== -->
-    <meta name="theme-color" content="#3A2116">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ====== Fonts ====== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- ====== Dados Estruturados (JSON-LD) ====== -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "name": "CONNECTA",
-            "description": "Consultoria e Contabilidade Digital com atendimento humanizado e 100% digital.",
-            "url": "https://connectacontabilidade.com.br",
-            "telephone": "+5534998847279",
-            "email": "contato@connectacontabilidade.com.br",
-            "image": "https://connectacontabilidade.com.br/public/logo.png",
-            "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR"
-            },
-            "founder": {
-                "@type": "Person",
-                "name": "Erilma Silva"
-            },
-            "sameAs": [
-                "https://instagram.com/erilmasilva.contabilidade",
-                "https://wa.me/5534998847279"
-            ]
-        }
-    </script>
-
     <style>
         /* ============================================
-           CONNECTA - ESTILOS OTIMIZADOS
+           CONNECTA - ESTILOS COMPLETOS
            PALETA PREMIUM: MARROM GLACÊ + DOURADO METÁLICO
            ============================================ */
 
-        /* ---- VARIÁVEIS ---- */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
@@ -92,7 +36,6 @@
             --font-display: 'Playfair Display', serif;
         }
 
-        /* ---- RESET ---- */
         *,
         *::before,
         *::after {
@@ -130,7 +73,6 @@
             padding: 0 24px;
         }
 
-        /* ---- TIPOGRAFIA ---- */
         h1,
         h2,
         h3,
@@ -163,7 +105,6 @@
             color: var(--gold);
         }
 
-        /* ---- BOTÕES ---- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -224,7 +165,6 @@
             }
         }
 
-        /* ---- HEADERS ---- */
         .section-header {
             text-align: center;
             margin-bottom: 60px;
@@ -248,7 +188,7 @@
             margin: 16px auto 0;
         }
 
-        /* ===== NAVBAR ===== */
+        /* NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -306,12 +246,6 @@
             overflow: hidden;
             flex-shrink: 0;
         }
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-        }
         .logo-text {
             display: flex;
             flex-direction: column;
@@ -352,12 +286,8 @@
             background: var(--gold);
             transition: var(--transition);
         }
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::after {
             width: 100%;
-        }
-        .nav-link.active {
-            color: var(--gold-bright);
         }
         .nav-cta {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
@@ -403,7 +333,7 @@
             transform: rotate(-45deg) translate(5px, -6px);
         }
 
-        /* ===== HERO ===== */
+        /* HERO */
         .hero {
             min-height: 100vh;
             background: linear-gradient(145deg,
@@ -516,7 +446,6 @@
             color: var(--gold);
         }
 
-        /* Hero Visual */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -550,11 +479,16 @@
             backdrop-filter: blur(10px);
             color: var(--white);
         }
-        .hero-image-placeholder img {
+        .hero-image-placeholder .avatar-circle {
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            object-fit: cover;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--bg-dark);
             border: 4px solid var(--gold);
         }
         .hero-image-placeholder span {
@@ -622,7 +556,7 @@
             height: 80px;
         }
 
-        /* ===== PAIN ===== */
+        /* PAIN */
         .pain-section {
             padding: 100px 0;
             background: var(--white);
@@ -670,7 +604,7 @@
             flex-shrink: 0;
         }
 
-        /* ===== ABOUT ===== */
+        /* ABOUT */
         .about-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -697,12 +631,18 @@
             gap: 12px;
             color: var(--white);
             border: 1px solid rgba(217, 177, 110, 0.2);
+            padding: 40px;
         }
-        .about-image-placeholder img {
+        .about-image-placeholder .avatar-circle {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            object-fit: cover;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--bg-dark);
             border: 4px solid var(--gold);
         }
         .about-image-placeholder span {
@@ -787,7 +727,7 @@
             color: var(--text-light);
         }
 
-        /* ===== SERVICES ===== */
+        /* SERVICES */
         .services-section {
             padding: 100px 0;
             background: var(--white);
@@ -881,7 +821,7 @@
             color: var(--gold-light);
         }
 
-        /* ===== WHY ===== */
+        /* WHY */
         .why-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -938,7 +878,7 @@
             font-size: 0.95rem;
         }
 
-        /* ===== TESTIMONIALS ===== */
+        /* TESTIMONIALS */
         .testimonials-section {
             padding: 100px 0;
             background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
@@ -1061,7 +1001,7 @@
             border-radius: 5px;
         }
 
-        /* ===== BLOG ===== */
+        /* BLOG */
         .blog-section {
             padding: 100px 0;
             background: var(--white);
@@ -1152,7 +1092,7 @@
             border-color: var(--bg-dark);
         }
 
-        /* ===== TRANSFORMATION ===== */
+        /* TRANSFORMATION */
         .transformation-section {
             padding: 100px 0;
             background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
@@ -1187,7 +1127,7 @@
             margin-bottom: 36px;
         }
 
-        /* ===== FAQ ===== */
+        /* FAQ */
         .faq-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -1248,7 +1188,7 @@
             line-height: 1.7;
         }
 
-        /* ===== CONTACT ===== */
+        /* CONTACT */
         .contact-section {
             padding: 100px 0;
             background: var(--white);
@@ -1363,7 +1303,7 @@
             min-height: 80px;
         }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         .footer {
             background: var(--bg-dark);
             padding: 60px 0 0;
@@ -1442,7 +1382,7 @@
             margin-top: 6px;
         }
 
-        /* ===== WHATSAPP FLOAT ===== */
+        /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -1495,7 +1435,7 @@
             }
         }
 
-        /* ===== BACK TO TOP ===== */
+        /* BACK TO TOP */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1526,7 +1466,7 @@
             transform: translateY(-3px);
         }
 
-        /* ===== ANIMAÇÕES ===== */
+        /* ANIMAÇÕES */
         [data-aos] {
             opacity: 0;
             transform: translateY(30px);
@@ -1558,7 +1498,7 @@
             transform: translateX(0);
         }
 
-        /* ===== RESPONSIVO ===== */
+        /* RESPONSIVO */
         @media (max-width: 1024px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -1706,42 +1646,40 @@
 <body>
 
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#inicio" class="nav-logo" aria-label="CONNECTA - Página inicial">
-                <div class="logo-icon">
-                    <img src="public/logo.png" alt="Logo CONNECTA" width="42" height="42" loading="lazy">
-                </div>
+            <a href="#inicio" class="nav-logo">
+                <div class="logo-icon">C</div>
                 <div class="logo-text">
                     <span class="logo-name">CONNECTA</span>
                     <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
                 </div>
             </a>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu" id="navMenu" role="menubar">
-                <li role="none"><a href="#inicio" class="nav-link" role="menuitem">Início</a></li>
-                <li role="none"><a href="#sobre" class="nav-link" role="menuitem">Sobre</a></li>
-                <li role="none"><a href="#servicos" class="nav-link" role="menuitem">Serviços</a></li>
-                <li role="none"><a href="#diferenciais" class="nav-link" role="menuitem">Diferenciais</a></li>
-                <li role="none"><a href="#depoimentos" class="nav-link" role="menuitem">Depoimentos</a></li>
-                <li role="none"><a href="#atualidades" class="nav-link" role="menuitem">Blog</a></li>
-                <li role="none"><a href="#faq" class="nav-link" role="menuitem">FAQ</a></li>
-                <li role="none"><a href="#contato" class="nav-link nav-cta" role="menuitem">Fale Comigo</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#atualidades" class="nav-link">Blog</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contato" class="nav-link nav-cta">Fale Comigo</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- ===== HERO ===== -->
-    <section class="hero" id="inicio" aria-label="Apresentação">
-        <div class="hero-particles" id="particles" aria-hidden="true"></div>
+    <section class="hero" id="inicio">
+        <div class="hero-particles" id="particles"></div>
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge" data-aos="fade-down">
-                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                    <i class="fas fa-shield-halved"></i>
                     <span>Sua segurança financeira começa aqui</span>
                 </div>
                 <h1 data-aos="fade-up">
@@ -1754,54 +1692,54 @@
                     sem complicação — apenas <strong>clareza</strong> e <strong>resultados</strong>.
                 </p>
                 <div class="hero-ctas" data-aos="fade-up" data-delay="400">
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA%20e%20gostaria%20de%20uma%20consultoria." class="btn btn-primary btn-glow" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA%20e%20gostaria%20de%20uma%20consultoria." class="btn btn-primary btn-glow" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
                         Quero uma Consultoria Gratuita
                     </a>
                     <a href="#servicos" class="btn btn-outline">
-                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        <i class="fas fa-arrow-down"></i>
                         Conhecer Serviços
                     </a>
                 </div>
                 <div class="hero-trust" data-aos="fade-up" data-delay="600">
                     <div class="trust-item">
-                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <i class="fas fa-check-circle"></i>
                         <span>100% Digital</span>
                     </div>
                     <div class="trust-item">
-                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <i class="fas fa-check-circle"></i>
                         <span>Atendimento Humanizado</span>
                     </div>
                     <div class="trust-item">
-                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <i class="fas fa-check-circle"></i>
                         <span>Formada pela UFV</span>
                     </div>
                 </div>
             </div>
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-image-wrapper">
-                    <div class="hero-image-bg" aria-hidden="true"></div>
+                    <div class="hero-image-bg"></div>
                     <div class="hero-image-placeholder">
-                        <img src="public/erilmafundadora.png" alt="Erilma Silva - Fundadora da CONNECTA" width="140" height="140" loading="lazy">
+                        <div class="avatar-circle"><i class="fas fa-user-tie"></i></div>
                         <span>Erilma Silva</span>
                         <small>Fundadora da CONNECTA</small>
                     </div>
                     <div class="floating-card card-1">
-                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        <i class="fas fa-chart-line"></i>
                         <span>Crescimento</span>
                     </div>
                     <div class="floating-card card-2">
-                        <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                        <i class="fas fa-shield-halved"></i>
                         <span>Segurança</span>
                     </div>
                     <div class="floating-card card-3">
-                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                        <i class="fas fa-handshake"></i>
                         <span>Parceria</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-wave" aria-hidden="true">
+        <div class="hero-wave">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
                 <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,60 1440,40 L1440,120 L0,120 Z" fill="#FFF8ED"/>
             </svg>
@@ -1809,11 +1747,11 @@
     </section>
 
     <!-- ===== PROBLEMA ===== -->
-    <section class="pain-section" id="problema" aria-label="Problema que resolvemos">
+    <section class="pain-section" id="problema">
         <div class="container">
             <div class="pain-content" data-aos="fade-up">
                 <div class="pain-icon">
-                    <i class="fas fa-brain" aria-hidden="true"></i>
+                    <i class="fas fa-brain"></i>
                 </div>
                 <h2>Você sente que está trabalhando <span class="highlight">só para pagar impostos?</span></h2>
                 <p class="pain-text">
@@ -1822,7 +1760,7 @@
                     Você abre sua empresa para viver seu sonho — não para se perder em burocracia.
                 </p>
                 <div class="pain-solution">
-                    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                    <i class="fas fa-lightbulb"></i>
                     <strong>Imagine ter alguém que traduz toda essa complexidade em um caminho claro,
                     seguro e lucrativo para você.</strong>
                 </div>
@@ -1831,7 +1769,7 @@
     </section>
 
     <!-- ===== SOBRE ===== -->
-    <section class="about-section" id="sobre" aria-label="Sobre a fundadora">
+    <section class="about-section" id="sobre">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Quem está por trás</span>
@@ -1840,7 +1778,7 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-placeholder">
-                        <img src="public/erilmacrc.png" alt="Erilma Silva - Contadora CRC Ativo" width="180" height="180" loading="lazy">
+                        <div class="avatar-circle"><i class="fas fa-user-graduate"></i></div>
                         <span>Erilma Silva</span>
                         <small>CRC Ativo</small>
                     </div>
@@ -1865,29 +1803,29 @@
                     </p>
                     <div class="about-values">
                         <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
+                            <div class="value-icon"><i class="fas fa-eye"></i></div>
                             <div>
                                 <strong>Visão Estratégica</strong>
                                 <span>Enxergo além do balanço</span>
                             </div>
                         </div>
                         <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                            <div class="value-icon"><i class="fas fa-heart"></i></div>
                             <div>
                                 <strong>Atendimento Humano</strong>
                                 <span>Você não é só um CNPJ</span>
                             </div>
                         </div>
                         <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+                            <div class="value-icon"><i class="fas fa-rocket"></i></div>
                             <div>
                                 <strong>Foco no Crescimento</strong>
                                 <span>Seu lucro é minha meta</span>
                             </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20conhecer%20melhor%20a%20CONNECTA." class="btn btn-primary" target="_blank" rel="noopener">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar com a Erilma
+                    <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20conhecer%20melhor%20a%20CONNECTA." class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Falar com a Erilma
                     </a>
                 </div>
             </div>
@@ -1895,7 +1833,7 @@
     </section>
 
     <!-- ===== SERVIÇOS ===== -->
-    <section class="services-section" id="servicos" aria-label="Nossos serviços">
+    <section class="services-section" id="servicos">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Nossas Soluções</span>
@@ -1904,60 +1842,60 @@
             </div>
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-delay="0">
-                    <div class="service-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-store"></i></div>
                     <h3>Simples Nacional</h3>
                     <p>Gestão completa para empresas do Simples, com planejamento tributário para você pagar apenas o necessário — dentro da lei.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="100">
-                    <div class="service-icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-id-card"></i></div>
                     <h3>Microempreendedor (MEI)</h3>
                     <p>Abertura, regularização e acompanhamento do seu MEI. Sem burocracia, sem dor de cabeça. Você empreende, nós cuidamos do resto.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="200">
-                    <div class="service-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
                     <h3>Autônomos</h3>
                     <p>Organização financeira, carnê-leão e declarações para profissionais liberais. Tenha controle total da sua vida fiscal.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card featured" data-aos="fade-up" data-delay="300">
                     <div class="service-badge">Mais procurado</div>
-                    <div class="service-icon"><i class="fas fa-tractor" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-tractor"></i></div>
                     <h3>Produtores Rurais</h3>
                     <p>Gestão de custos, IRPF Rural, regularização e planejamento. Do campo à tranquilidade financeira — com quem entende sua realidade.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="400">
-                    <div class="service-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Imposto de Renda</h3>
                     <p>Declaração completa e estratégica. Não basta declarar — é preciso declarar de forma inteligente para você não perder dinheiro.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="500">
-                    <div class="service-icon"><i class="fas fa-chart-pie" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>Consultoria Financeira</h3>
                     <p>Análise profunda da saúde do seu negócio. Identificamos gargalos, oportunidades e traçamos o mapa para o crescimento sustentável.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="600">
-                    <div class="service-icon"><i class="fas fa-gavel" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Reforma Tributária</h3>
                     <p>Antecipamos as mudanças para que sua única preocupação seja vender mais. Fique à frente enquanto outros ficam perdidos.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="700">
-                    <div class="service-icon"><i class="fas fa-handshake-angle" aria-hidden="true"></i></div>
+                    <div class="service-icon"><i class="fas fa-handshake-angle"></i></div>
                     <h3>BPO Financeiro</h3>
                     <p>Terceirize sua rotina financeira com segurança. Contas a pagar, receber, conciliação e relatórios — tudo organizado para você.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank" rel="noopener">Saiba mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== DIFERENCIAIS ===== -->
-    <section class="why-section" id="diferenciais" aria-label="Nossos diferenciais">
+    <section class="why-section" id="diferenciais">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Por que a CONNECTA?</span>
@@ -1966,37 +1904,37 @@
             <div class="why-grid">
                 <div class="why-card" data-aos="fade-up" data-delay="0">
                     <div class="why-number">01</div>
-                    <div class="why-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-globe"></i></div>
                     <h3>Contabilidade 100% Digital</h3>
                     <p>Conectamos você de qualquer lugar do Brasil. Sem deslocamento, sem filas, sem perda de tempo. Tudo na palma da sua mão.</p>
                 </div>
                 <div class="why-card" data-aos="fade-up" data-delay="100">
                     <div class="why-number">02</div>
-                    <div class="why-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-comments"></i></div>
                     <h3>Linguagem Clara</h3>
                     <p>Zero "contabilês". Respondemos suas dúvidas de forma simples, objetiva e prática. Você entende cada passo do processo.</p>
                 </div>
                 <div class="why-card" data-aos="fade-up" data-delay="200">
                     <div class="why-number">03</div>
-                    <div class="why-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-users"></i></div>
                     <h3>Contabilidade Consultiva</h3>
                     <p>Nada de falar com o contador só no fim do mês. Reuniões periódicas, consultorias e planejamento de crescimento constante.</p>
                 </div>
                 <div class="why-card" data-aos="fade-up" data-delay="300">
                     <div class="why-number">04</div>
-                    <div class="why-icon"><i class="fas fa-coins" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-coins"></i></div>
                     <h3>Planejamento Tributário</h3>
                     <p>Estudo personalizado para você pagar o mínimo de impostos dentro da lei. Cada centavo economizado é lucro no seu bolso.</p>
                 </div>
                 <div class="why-card" data-aos="fade-up" data-delay="400">
                     <div class="why-number">05</div>
-                    <div class="why-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-chart-bar"></i></div>
                     <h3>Assessoria Gerencial</h3>
                     <p>Interpretação inteligente dos dados + orientação prática. Não entregamos relatórios frios — entregamos direção.</p>
                 </div>
                 <div class="why-card" data-aos="fade-up" data-delay="500">
                     <div class="why-number">06</div>
-                    <div class="why-icon"><i class="fas fa-heart-pulse" aria-hidden="true"></i></div>
+                    <div class="why-icon"><i class="fas fa-heart-pulse"></i></div>
                     <h3>Atendimento Humanizado</h3>
                     <p>Acompanhamento próximo da sua rotina financeira. Porque por trás de cada CNPJ existe uma pessoa com sonhos e desafios reais.</p>
                 </div>
@@ -2005,7 +1943,7 @@
     </section>
 
     <!-- ===== DEPOIMENTOS ===== -->
-    <section class="testimonials-section" id="depoimentos" aria-label="Depoimentos de clientes">
+    <section class="testimonials-section" id="depoimentos">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Quem já vive a experiência</span>
@@ -2016,12 +1954,12 @@
                 <div class="testimonials-track" id="testimonialsTrack">
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                         <p>"Antes da CONNECTA, eu via a contabilidade como um gasto. Com a Erilma, entendi que é o meu <strong>maior investimento estratégico</strong>. Clareza total! Hoje tomo decisões com segurança porque sei exatamente onde estão meus números."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div class="author-avatar"><i class="fas fa-user"></i></div>
                             <div>
                                 <strong>João P.</strong>
                                 <span>Empresário — Simples Nacional</span>
@@ -2030,12 +1968,12 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                         <p>"O atendimento próximo faz toda a diferença. <strong>Sinto que tenho uma sócia</strong> cuidando dos meus números enquanto eu foco na minha paixão. A Erilma entende a realidade do campo como ninguém."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div class="author-avatar"><i class="fas fa-user"></i></div>
                             <div>
                                 <strong>Maria S.</strong>
                                 <span>Produtora Rural</span>
@@ -2044,12 +1982,12 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                         <p>"Eu tinha medo de abrir minha empresa por causa da burocracia. A CONNECTA tornou tudo <strong>simples e transparente</strong>. Hoje sou MEI regularizado e dormindo tranquilo. Recomendo de olhos fechados!"</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div class="author-avatar"><i class="fas fa-user"></i></div>
                             <div>
                                 <strong>Carlos M.</strong>
                                 <span>Microempreendedor — MEI</span>
@@ -2058,12 +1996,12 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                         <p>"O que mais me encanta é a <strong>linguagem clara</strong>. Pela primeira vez, entendo meus relatórios e sei para onde meu dinheiro vai. A Erilma não é só contadora — é uma mentora financeira."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div class="author-avatar"><i class="fas fa-user"></i></div>
                             <div>
                                 <strong>Ana L.</strong>
                                 <span>Autônoma — Profissional Liberal</span>
@@ -2072,12 +2010,12 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                         <p>"Depois que a CONNECTA fez meu planejamento tributário, <strong>reduzi significativamente minha carga de impostos</strong> — tudo dentro da lei. O dinheiro que sobrou reinvesti no meu negócio!"</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div class="author-avatar"><i class="fas fa-user"></i></div>
                             <div>
                                 <strong>Roberto F.</strong>
                                 <span>Empresário — Comércio</span>
@@ -2086,16 +2024,16 @@
                     </div>
                 </div>
                 <div class="carousel-controls">
-                    <button class="carousel-btn prev" id="prevBtn" aria-label="Depoimento anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
                     <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-btn next" id="nextBtn" aria-label="Próximo depoimento"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                    <button class="carousel-btn next" id="nextBtn" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== BLOG ===== -->
-    <section class="blog-section" id="atualidades" aria-label="Blog e atualidades">
+    <section class="blog-section" id="atualidades">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Fique por dentro</span>
@@ -2109,8 +2047,8 @@
                         <h3>O que muda com a Reforma Tributária para o seu negócio?</h3>
                         <p>Entenda de forma clara como as novas regras tributárias podem afetar empresas do Simples Nacional, MEIs e produtores rurais. Antecipe-se.</p>
                         <div class="blog-footer">
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20Reforma%20Tributária." target="_blank" rel="noopener">Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <span><i class="fas fa-calendar"></i> Em breve</span>
+                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20Reforma%20Tributária." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="blog-card" data-aos="fade-up" data-delay="100">
@@ -2118,8 +2056,8 @@
                         <h3>MEI: 5 erros que podem cancelar seu CNPJ</h3>
                         <p>Muitos microempreendedores cometem erros simples que colocam em risco sua regularidade. Descubra quais são e como evitá-los.</p>
                         <div class="blog-footer">
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20erros%20do%20MEI." target="_blank" rel="noopener">Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <span><i class="fas fa-calendar"></i> Em breve</span>
+                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20erros%20do%20MEI." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="blog-card" data-aos="fade-up" data-delay="200">
@@ -2127,8 +2065,8 @@
                         <h3>IRPF 2025: Novidades e prazos que você precisa saber</h3>
                         <p>A temporada do Imposto de Renda se aproxima. Veja o que mudou, quais documentos separar e como declarar de forma inteligente.</p>
                         <div class="blog-footer">
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20IRPF%202025." target="_blank" rel="noopener">Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <span><i class="fas fa-calendar"></i> Em breve</span>
+                            <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20IRPF%202025." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="blog-card" data-aos="fade-up" data-delay="300">
@@ -2136,27 +2074,27 @@
                         <h3>Produtor Rural: Como organizar suas finanças para lucrar mais</h3>
                         <p>A gestão financeira no campo exige atenção especial. Descubra estratégias práticas para controlar custos e aumentar a rentabilidade.</p>
                         <div class="blog-footer">
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20quero%20dicas." target="_blank" rel="noopener">Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <span><i class="fas fa-calendar"></i> Em breve</span>
+                            <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20quero%20dicas." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="blog-carousel-controls">
-                    <button class="carousel-btn" id="blogPrev" aria-label="Artigo anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-                    <button class="carousel-btn" id="blogNext" aria-label="Próximo artigo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                    <button class="carousel-btn" id="blogPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="blogNext" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CTA ===== -->
-    <section class="transformation-section" aria-label="Chamada para ação">
+    <section class="transformation-section">
         <div class="container">
             <div class="transformation-content" data-aos="fade-up">
                 <h2>O primeiro passo para <span class="gradient-text-light">transformar seu negócio</span> é simples:</h2>
                 <p>Uma conversa. Sem compromisso, sem jargões, sem pressão. Apenas uma escuta atenta do que você precisa e uma direção clara do que podemos construir juntos.</p>
-                <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-light btn-glow" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-light btn-glow" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
                     Dar o Primeiro Passo Agora
                 </a>
             </div>
@@ -2164,7 +2102,7 @@
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="faq-section" id="faq" aria-label="Perguntas frequentes">
+    <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Tire suas dúvidas</span>
@@ -2172,54 +2110,54 @@
             </div>
             <div class="faq-grid" data-aos="fade-up">
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>O atendimento digital é realmente seguro?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Absolutamente! Utilizamos plataformas seguras e criptografadas para troca de documentos. Todos os processos seguem as normas do Conselho Federal de Contabilidade. Seus dados estão protegidos como se estivessem em um cofre — mas acessíveis para você a qualquer momento.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>Como funciona o atendimento 100% digital?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Tudo acontece de forma simples: você envia seus documentos por WhatsApp ou plataforma segura, fazemos reuniões por videochamada quando necessário, e todos os relatórios ficam disponíveis digitalmente. É como ter uma contadora ao seu lado — sem sair de casa.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>A CONNECTA atende empresas de qual tamanho?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Atendemos desde MEIs que estão começando até empresas do Simples Nacional e produtores rurais. Nosso foco é oferecer atendimento personalizado, independentemente do porte. Cada cliente recebe atenção proporcional às suas necessidades.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>Qual a diferença entre contabilidade tradicional e consultiva?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Na contabilidade tradicional, o contador aparece no fim do mês para entregar guias. Na contabilidade consultiva da CONNECTA, acompanhamos você de perto: reuniões periódicas, análise de indicadores, planejamento tributário e orientação estratégica. É a diferença entre ter um "despachante" e ter uma <strong>parceira de negócios</strong>.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>A primeira consulta é gratuita?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Sim! Acreditamos que a confiança nasce da conversa. A primeira consulta é uma oportunidade para conhecermos seu negócio, entendermos suas necessidades e mostrarmos como a CONNECTA pode ajudar. Sem compromisso, sem pressão — apenas clareza.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question">
                         <span>Vocês ajudam com a Reforma Tributária?</span>
-                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
                         <p>Com certeza! Estamos acompanhando de perto todas as mudanças da Reforma Tributária e preparando nossos clientes para se adaptarem com segurança. Antecipamos cenários e garantimos que você esteja sempre um passo à frente.</p>
@@ -2230,7 +2168,7 @@
     </section>
 
     <!-- ===== CONTATO ===== -->
-    <section class="contact-section" id="contato" aria-label="Contato">
+    <section class="contact-section" id="contato">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-content" data-aos="fade-right">
@@ -2238,22 +2176,22 @@
                     <h2>Seu próximo nível começa com uma <span class="gradient-text">conexão.</span></h2>
                     <p>Entre em contato agora e descubra como a CONNECTA pode transformar a realidade financeira do seu negócio.</p>
                     <div class="contact-channels">
-                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank" rel="noopener">
-                            <div class="contact-icon whatsapp"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank">
+                            <div class="contact-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
                             <div>
                                 <strong>WhatsApp</strong>
                                 <span>(34) 99884-7279</span>
                             </div>
                         </a>
-                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank" rel="noopener">
-                            <div class="contact-icon instagram"><i class="fab fa-instagram" aria-hidden="true"></i></div>
+                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank">
+                            <div class="contact-icon instagram"><i class="fab fa-instagram"></i></div>
                             <div>
                                 <strong>Instagram</strong>
                                 <span>@erilmasilva.contabilidade</span>
                             </div>
                         </a>
                         <a href="mailto:contato@connectacontabilidade.com.br" class="contact-item">
-                            <div class="contact-icon email"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                            <div class="contact-icon email"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <strong>E-mail</strong>
                                 <span>contato@connectacontabilidade.com.br</span>
@@ -2262,19 +2200,19 @@
                     </div>
                 </div>
                 <div class="contact-form-wrapper" data-aos="fade-left">
-                    <form class="contact-form" id="contactForm" aria-label="Formulário de contato">
+                    <form class="contact-form" id="contactForm">
                         <h3>Solicite seu contato</h3>
                         <div class="form-group">
                             <label for="name">Seu nome</label>
-                            <input type="text" id="name" name="name" placeholder="Como podemos te chamar?" required aria-required="true">
+                            <input type="text" id="name" name="name" placeholder="Como podemos te chamar?" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">WhatsApp</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required aria-required="true">
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
                         </div>
                         <div class="form-group">
                             <label for="service">O que você precisa?</label>
-                            <select id="service" name="service" required aria-required="true">
+                            <select id="service" name="service" required>
                                 <option value="">Selecione um serviço</option>
                                 <option value="Simples Nacional">Simples Nacional</option>
                                 <option value="MEI">Microempreendedor (MEI)</option>
@@ -2292,7 +2230,7 @@
                             <textarea id="message" name="message" rows="3" placeholder="Conte um pouco sobre sua necessidade..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            <i class="fab fa-whatsapp"></i>
                             Enviar via WhatsApp
                         </button>
                     </form>
@@ -2302,14 +2240,12 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <div class="logo-icon">
-                            <img src="public/logo.png" alt="CONNECTA" width="42" height="42" loading="lazy">
-                        </div>
+                        <div class="logo-icon">C</div>
                         <div class="logo-text">
                             <span class="logo-name">CONNECTA</span>
                             <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
@@ -2317,9 +2253,9 @@
                     </div>
                     <p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p>
                     <div class="footer-social">
-                        <a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/5534998847279" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                        <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -2345,49 +2281,43 @@
                 <div class="footer-links">
                     <h4>Contato</h4>
                     <ul>
-                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> (34) 99884-7279</li>
-                        <li><i class="fab fa-instagram" aria-hidden="true"></i> @erilmasilva.contabilidade</li>
+                        <li><i class="fab fa-whatsapp"></i> (34) 99884-7279</li>
+                        <li><i class="fab fa-instagram"></i> @erilmasilva.contabilidade</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
-                <p>Desenvolvido com <i class="fas fa-heart" style="color:#D9B16E" aria-hidden="true"></i> para conectar você ao sucesso.</p>
+                <p>Desenvolvido com <i class="fas fa-heart" style="color:#D9B16E"></i> para conectar você ao sucesso.</p>
             </div>
         </div>
     </footer>
 
     <!-- ===== WHATSAPP FLOAT ===== -->
-    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip">Fale conosco!</span>
     </a>
 
     <!-- ===== BACK TO TOP ===== -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- ===== SCRIPTS ===== -->
     <script>
-        /* ============================================
-           CONNECTA - Scripts Otimizados
-           ============================================ */
-
         document.addEventListener('DOMContentLoaded', function() {
 
-            /* ===== NAVBAR SCROLL ===== */
+            /* NAVBAR SCROLL */
             var navbar = document.getElementById('navbar');
             var backToTop = document.getElementById('backToTop');
 
             window.addEventListener('scroll', function() {
-                var scrollY = window.scrollY;
-                if (scrollY > 80) {
+                if (window.scrollY > 80) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
-                if (scrollY > 500) {
+                if (window.scrollY > 500) {
                     backToTop.classList.add('visible');
                 } else {
                     backToTop.classList.remove('visible');
@@ -2398,13 +2328,11 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            /* ===== MENU MOBILE ===== */
+            /* MENU MOBILE */
             var hamburger = document.getElementById('hamburger');
             var navMenu = document.getElementById('navMenu');
 
             hamburger.addEventListener('click', function() {
-                var expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
-                this.setAttribute('aria-expanded', expanded);
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
@@ -2412,7 +2340,6 @@
             document.querySelectorAll('.nav-link').forEach(function(link) {
                 link.addEventListener('click', function() {
                     hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
                     navMenu.classList.remove('active');
                 });
             });
@@ -2420,12 +2347,11 @@
             document.addEventListener('click', function(e) {
                 if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
                     hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
                     navMenu.classList.remove('active');
                 }
             });
 
-            /* ===== PARTÍCULAS ===== */
+            /* PARTÍCULAS */
             var particlesContainer = document.getElementById('particles');
             if (particlesContainer) {
                 for (var i = 0; i < 30; i++) {
@@ -2441,7 +2367,7 @@
                 }
             }
 
-            /* ===== CARROSSEL DEPOIMENTOS ===== */
+            /* DEPOIMENTOS */
             var testimonialsTrack = document.getElementById('testimonialsTrack');
             var prevBtn = document.getElementById('prevBtn');
             var nextBtn = document.getElementById('nextBtn');
@@ -2466,10 +2392,9 @@
                     dotsContainer.innerHTML = '';
                     var total = getTotalSlides();
                     for (var i = 0; i < total; i++) {
-                        var dot = document.createElement('button');
+                        var dot = document.createElement('div');
                         dot.classList.add('dot');
                         if (i === 0) dot.classList.add('active');
-                        dot.setAttribute('aria-label', 'Ir para depoimento ' + (i + 1));
                         (function(index) {
                             dot.addEventListener('click', function() { goToSlide(index); });
                         })(i);
@@ -2506,22 +2431,9 @@
                 createDots();
 
                 var autoPlay = setInterval(nextSlide, 5000);
-                var carouselContainer = testimonialsTrack.closest('.testimonials-carousel');
-                carouselContainer.addEventListener('mouseenter', function() { clearInterval(autoPlay); });
-                carouselContainer.addEventListener('mouseleave', function() { autoPlay = setInterval(nextSlide, 5000); });
-
-                var touchStartX = 0;
-                testimonialsTrack.addEventListener('touchstart', function(e) {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, { passive: true });
-
-                testimonialsTrack.addEventListener('touchend', function(e) {
-                    var diff = touchStartX - e.changedTouches[0].screenX;
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0) nextSlide();
-                        else prevSlide();
-                    }
-                }, { passive: true });
+                var carousel = testimonialsTrack.closest('.testimonials-carousel');
+                carousel.addEventListener('mouseenter', function() { clearInterval(autoPlay); });
+                carousel.addEventListener('mouseleave', function() { autoPlay = setInterval(nextSlide, 5000); });
 
                 window.addEventListener('resize', function() {
                     cardsPerView = getCardsPerView();
@@ -2531,7 +2443,7 @@
                 });
             }
 
-            /* ===== CARROSSEL BLOG ===== */
+            /* BLOG */
             var blogTrack = document.getElementById('blogTrack');
             var blogPrev = document.getElementById('blogPrev');
             var blogNext = document.getElementById('blogNext');
@@ -2565,76 +2477,47 @@
                     updateBlog();
                 });
 
-                var blogTouchStart = 0;
-                blogTrack.addEventListener('touchstart', function(e) {
-                    blogTouchStart = e.changedTouches[0].screenX;
-                }, { passive: true });
-
-                blogTrack.addEventListener('touchend', function(e) {
-                    var diff = blogTouchStart - e.changedTouches[0].screenX;
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0) blogIndex = (blogIndex + 1) % getBlogTotalSlides();
-                        else blogIndex = (blogIndex - 1 + getBlogTotalSlides()) % getBlogTotalSlides();
-                        updateBlog();
-                    }
-                }, { passive: true });
-
                 window.addEventListener('resize', function() {
                     blogIndex = Math.min(blogIndex, getBlogTotalSlides() - 1);
                     updateBlog();
                 });
             }
 
-            /* ===== FAQ ===== */
-            var faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(function(item) {
-                var question = item.querySelector('.faq-question');
-                var answer = item.querySelector('.faq-answer');
-
-                question.addEventListener('click', function() {
+            /* FAQ */
+            document.querySelectorAll('.faq-question').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var item = this.parentElement;
                     var isActive = item.classList.contains('active');
-                    faqItems.forEach(function(fi) {
-                        fi.classList.remove('active');
-                        fi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                        fi.querySelector('.faq-answer').style.maxHeight = null;
+                    document.querySelectorAll('.faq-item').forEach(function(el) {
+                        el.classList.remove('active');
                     });
                     if (!isActive) {
                         item.classList.add('active');
-                        question.setAttribute('aria-expanded', 'true');
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
                     }
                 });
             });
 
-            /* ===== FORMULÁRIO ===== */
-            var contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    var name = document.getElementById('name').value.trim();
-                    var phone = document.getElementById('phone').value.trim();
-                    var service = document.getElementById('service').value;
-                    var message = document.getElementById('message').value.trim();
+            /* FORMULÁRIO */
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('name').value.trim();
+                var phone = document.getElementById('phone').value.trim();
+                var service = document.getElementById('service').value;
+                var message = document.getElementById('message').value.trim();
 
-                    var msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
-                    msg += '*Nome:* ' + encodeURIComponent(name) + '%0A';
-                    msg += '*WhatsApp:* ' + encodeURIComponent(phone) + '%0A';
-                    msg += '*Serviço:* ' + encodeURIComponent(service) + '%0A';
-                    if (message) {
-                        msg += '*Mensagem:* ' + encodeURIComponent(message) + '%0A';
-                    }
-                    msg += '%0AEstou aguardando seu retorno! 😊';
+                var msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
+                msg += '*Nome:* ' + encodeURIComponent(name) + '%0A';
+                msg += '*WhatsApp:* ' + encodeURIComponent(phone) + '%0A';
+                msg += '*Serviço:* ' + encodeURIComponent(service) + '%0A';
+                if (message) {
+                    msg += '*Mensagem:* ' + encodeURIComponent(message) + '%0A';
+                }
+                msg += '%0AEstou aguardando seu retorno! 😊';
 
-                    window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
-                });
-            }
+                window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
+            });
 
-            /* ===== ANIMAÇÕES ===== */
-            var observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
+            /* ANIMAÇÕES */
             var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -2645,26 +2528,13 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
             document.querySelectorAll('[data-aos]').forEach(function(el) {
                 observer.observe(el);
             });
 
-            /* ===== SMOOTH SCROLL ===== */
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function(e) {
-                    var targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    var target = document.querySelector(targetId);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            /* ===== MÁSCARA TELEFONE ===== */
+            /* MÁSCARA TELEFONE */
             var phoneInput = document.getElementById('phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
@@ -2680,26 +2550,6 @@
                     e.target.value = value;
                 });
             }
-
-            /* ===== NAV LINK ATIVO ===== */
-            var sections = document.querySelectorAll('section[id]');
-            var navLinks = document.querySelectorAll('.nav-link');
-
-            window.addEventListener('scroll', function() {
-                var current = '';
-                sections.forEach(function(section) {
-                    var sectionTop = section.offsetTop - 100;
-                    if (window.scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                    }
-                });
-            }, { passive: true });
 
         });
     </script>
