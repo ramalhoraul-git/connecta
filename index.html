@@ -9,11 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* ============================================
-           CONNECTA - ESTILOS COMPLETOS
-           PALETA PREMIUM: MARROM GLACÊ + DOURADO METÁLICO
-           ============================================ */
-
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
@@ -35,10 +30,7 @@
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
         }
-
-        *,
-        *::before,
-        *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -57,7 +49,6 @@
         a {
             text-decoration: none;
             color: inherit;
-            transition: var(--transition);
         }
         ul {
             list-style: none;
@@ -72,14 +63,6 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            line-height: 1.2;
-            font-weight: 700;
-        }
         h1 {
             font-size: clamp(2.2rem, 5vw, 3.5rem);
         }
@@ -88,6 +71,13 @@
         }
         h3 {
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+            font-weight: 700;
         }
         .gradient-text {
             background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight));
@@ -445,7 +435,6 @@
         .trust-item i {
             color: var(--gold);
         }
-
         .hero-visual {
             display: flex;
             justify-content: center;
