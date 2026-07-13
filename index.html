@@ -236,6 +236,12 @@
             overflow: hidden;
             flex-shrink: 0;
         }
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
         .logo-text {
             display: flex;
             flex-direction: column;
@@ -468,16 +474,11 @@
             backdrop-filter: blur(10px);
             color: var(--white);
         }
-        .hero-image-placeholder .avatar-circle {
+        .hero-image-placeholder img {
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--bg-dark);
+            object-fit: cover;
             border: 4px solid var(--gold);
         }
         .hero-image-placeholder span {
@@ -622,16 +623,11 @@
             border: 1px solid rgba(217, 177, 110, 0.2);
             padding: 40px;
         }
-        .about-image-placeholder .avatar-circle {
+        .about-image-placeholder img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: var(--bg-dark);
+            object-fit: cover;
             border: 4px solid var(--gold);
         }
         .about-image-placeholder span {
@@ -1638,7 +1634,9 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
-                <div class="logo-icon">C</div>
+                <div class="logo-icon">
+                    <img src="/public/logo.png" alt="CONNECTA">
+                </div>
                 <div class="logo-text">
                     <span class="logo-name">CONNECTA</span>
                     <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
@@ -1709,7 +1707,7 @@
                 <div class="hero-image-wrapper">
                     <div class="hero-image-bg"></div>
                     <div class="hero-image-placeholder">
-                        <div class="avatar-circle"><i class="fas fa-user-tie"></i></div>
+                        <img src="/public/erilmafundadora.png" alt="Erilma Silva - Fundadora">
                         <span>Erilma Silva</span>
                         <small>Fundadora da CONNECTA</small>
                     </div>
@@ -1767,7 +1765,7 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-placeholder">
-                        <div class="avatar-circle"><i class="fas fa-user-graduate"></i></div>
+                        <img src="/public/erilmacrc.png" alt="Erilma Silva - CRC">
                         <span>Erilma Silva</span>
                         <small>CRC Ativo</small>
                     </div>
@@ -2234,7 +2232,9 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <div class="logo-icon">C</div>
+                        <div class="logo-icon">
+                            <img src="/public/logo.png" alt="CONNECTA">
+                        </div>
                         <div class="logo-text">
                             <span class="logo-name">CONNECTA</span>
                             <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
