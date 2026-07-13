@@ -30,7 +30,9 @@
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
         }
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -49,6 +51,7 @@
         a {
             text-decoration: none;
             color: inherit;
+            transition: var(--transition);
         }
         ul {
             list-style: none;
@@ -63,6 +66,13 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
         h1 {
             font-size: clamp(2.2rem, 5vw, 3.5rem);
         }
@@ -71,13 +81,6 @@
         }
         h3 {
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-        }
-        h1,
-        h2,
-        h3,
-        h4 {
-            line-height: 1.2;
-            font-weight: 700;
         }
         .gradient-text {
             background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight));
@@ -94,7 +97,6 @@
         .highlight {
             color: var(--gold);
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -154,7 +156,6 @@
                 box-shadow: 0 4px 40px rgba(217, 177, 110, 0.7);
             }
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 60px;
@@ -2356,7 +2357,7 @@
                 }
             }
 
-            /* DEPOIMENTOS */
+            /* DEPOIMENTOS CAROUSEL */
             var testimonialsTrack = document.getElementById('testimonialsTrack');
             var prevBtn = document.getElementById('prevBtn');
             var nextBtn = document.getElementById('nextBtn');
@@ -2432,7 +2433,7 @@
                 });
             }
 
-            /* BLOG */
+            /* BLOG CAROUSEL */
             var blogTrack = document.getElementById('blogTrack');
             var blogPrev = document.getElementById('blogPrev');
             var blogNext = document.getElementById('blogNext');
@@ -2542,6 +2543,5 @@
 
         });
     </script>
-
 </body>
 </html>
