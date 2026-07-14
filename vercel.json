@@ -6,11 +6,15 @@
       "use": "@vercel/static"
     },
     {
-      "src": "public/**",
+      "src": "*.{png,jpg,jpeg,gif,svg,webp}",
       "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/(.+\\.(png|jpg|jpeg|gif|svg|webp|css|js))$",
+      "dest": "/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
