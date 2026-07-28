@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CONNECTA Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #3A2116;
+            --bg-medium: #5A3522;
+            --bg-light: #8A5A35;
+            --gold: #D9B16E;
+            --gold-light: #E5C27A;
+            --gold-bright: #F5DE9A;
+            --white: #FFF8ED;
+            --text-dark: #2C1A0E;
+            --text-medium: #6B4A30;
+            --text-light: #9A7A5A;
+            --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
+            --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-full: 50px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-card {
+            background: rgba(255, 248, 237, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(217, 177, 110, 0.2);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-logo .logo-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--bg-dark);
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 20px rgba(217, 177, 110, 0.3);
+        }
+
+        .login-logo h1 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .login-logo p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--white);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(217, 177, 110, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group .input-icon {
+            position: relative;
+        }
+
+        .form-group .input-icon i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group .input-icon input {
+            padding-left: 44px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-dark);
+            border: none;
+            border-radius: var(--radius-full);
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(217, 177, 110, 0.4);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+        }
+
+        .login-footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .login-footer a:hover {
+            color: var(--gold-light);
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.7rem;
+        }
+
+        .security-badge i {
+            font-size: 0.6rem;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <div class="logo-icon">C</div>
+                <h1>CONNECTA</h1>
+                <p>Painel Administrativo</p>
+            </div>
+
+            <div class="login-error" id="loginError">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorMessage">Credenciais inválidas. Tente novamente.</span>
+            </div>
+
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Digite seu usuário" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fas fa-arrow-right"></i>
+                    Entrar
+                </button>
+            </form>
+
+            <div class="security-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Ambiente seguro • Acesso restrito</span>
+            </div>
+
+            <div class="login-footer">
+                <a href="/">← Voltar para o site</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURAÇÃO DO ADMIN MASTER
+        // ============================================
+        const ADMIN_CREDENTIALS = {
+            username: 'connecta',
+            password: 'Admin@2025!'
+        };
+
+        // ============================================
+        // ELEMENTOS
+        // ============================================
+        const form = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // ============================================
+        // FUNÇÕES
+        // ============================================
+        function showError(message) {
+            errorMessage.textContent = message;
+            loginError.classList.add('show');
+        }
+
+        function hideError() {
+            loginError.classList.remove('show');
+        }
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Autenticando...';
+            } else {
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Entrar';
+            }
+        }
+
+        // ============================================
+        // SUBMIT DO FORMULÁRIO
+        // ============================================
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            hideError();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Validação básica
+            if (!username || !password) {
+                showError('Preencha todos os campos.');
+                return;
+            }
+
+            setLoading(true);
+
+            // Simular requisição (delay para efeito visual)
+            setTimeout(() => {
+                if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                    // Login bem-sucedido
+                    localStorage.setItem('connecta_admin', JSON.stringify({
+                        loggedIn: true,
+                        username: username,
+                        timestamp: Date.now()
+                    }));
+
+                    // Redirecionar para o dashboard
+                    window.location.href = '/admin/dashboard.html';
+                } else {
+                    // Login falhou
+                    showError('Usuário ou senha incorretos. Tente novamente.');
+                    setLoading(false);
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }, 800);
+        });
+
+        // ============================================
+        // ENTER PARA SUBMIT
+        // ============================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const active = document.activeElement;
+                if (active === usernameInput || active === passwordInput) {
+                    form.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+
+        // ============================================
+        // VERIFICAR SE JÁ ESTÁ LOGADO
+        // ============================================
+        (function checkSession() {
+            const session = localStorage.getItem('connecta_admin');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.loggedIn && data.timestamp) {
+                        // Verificar se a sessão expirou (24h)
+                        const elapsed = Date.now() - data.timestamp;
+                        if (elapsed < 24 * 60 * 60 * 1000) {
+                            // Redirecionar para o dashboard
+                            window.location.href = '/admin/dashboard.html';
+                        } else {
+                            // Sessão expirada
+                            localStorage.removeItem('connecta_admin');
+                        }
+                    }
+                } catch (e) {
+                    localStorage.removeItem('connecta_admin');
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
