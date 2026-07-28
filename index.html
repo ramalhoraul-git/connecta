@@ -6,9 +6,12 @@
     <title>CONNECTA – Consultoria & Contabilidade Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ============================================
+           ROOT VARIABLES - PALETA PREMIUM
+           ============================================ */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
@@ -23,13 +26,19 @@
             --text-light: #9A7A5A;
             --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
             --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
+            --shadow-xl: 0 30px 80px rgba(58, 33, 22, 0.35);
             --radius: 16px;
             --radius-sm: 10px;
             --radius-full: 50px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
         }
+
+        /* ============================================
+           RESET
+           ============================================ */
         *,
         *::before,
         *::after {
@@ -47,6 +56,7 @@
             background: var(--white);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         a {
             text-decoration: none;
@@ -66,6 +76,7 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+
         h1,
         h2,
         h3,
@@ -74,7 +85,7 @@
             font-weight: 700;
         }
         h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
         }
         h2 {
             font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -82,132 +93,133 @@
         h3 {
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
         }
+
         .gradient-text {
             background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .gradient-text-light {
-            background: linear-gradient(135deg, var(--gold-bright), var(--white));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
         }
-        .highlight {
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(217, 177, 110, 0.12), rgba(245, 222, 154, 0.12));
             color: var(--gold);
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
         }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 640px;
+            margin: 12px auto 0;
+        }
+
+        /* ============================================
+           BOTÕES PREMIUM
+           ============================================ */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 16px 32px;
+            padding: 16px 36px;
             border-radius: var(--radius-full);
             font-family: var(--font-main);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             text-align: center;
             justify-content: center;
             min-height: 56px;
+            position: relative;
+            overflow: hidden;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--bg-dark);
-            box-shadow: 0 4px 20px rgba(217, 177, 110, 0.4);
+            box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35);
         }
+
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(217, 177, 110, 0.6);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(217, 177, 110, 0.5);
         }
+
         .btn-outline {
             background: transparent;
             color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.25);
         }
+
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--gold);
             transform: translateY(-2px);
         }
-        .btn-light {
-            background: var(--white);
-            color: var(--bg-dark);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-        .btn-light:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-        }
-        .btn-full {
-            width: 100%;
-        }
+
         .btn-glow {
             animation: glow-pulse 3s ease-in-out infinite;
         }
+
         @keyframes glow-pulse {
             0%,
             100% {
-                box-shadow: 0 4px 20px rgba(217, 177, 110, 0.4);
+                box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35);
             }
             50% {
-                box-shadow: 0 4px 40px rgba(217, 177, 110, 0.7);
+                box-shadow: 0 4px 48px rgba(217, 177, 110, 0.6);
             }
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.15), rgba(245, 222, 154, 0.15));
-            color: var(--gold);
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            max-width: 700px;
-            margin: 16px auto 0;
-        }
 
-        /* NAVBAR */
+        /* ============================================
+           NAVBAR
+           ============================================ */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 8px 0;
+            padding: 18px 0;
             transition: var(--transition);
             background: transparent;
         }
+
         .navbar.scrolled {
-            background: rgba(58, 33, 22, 0.97);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
-            padding: 8px 0;
+            background: rgba(58, 33, 22, 0.92);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
         }
+
         .navbar.scrolled .nav-logo .logo-name,
         .navbar.scrolled .nav-link {
             color: var(--white);
         }
         .navbar.scrolled .logo-icon {
-            background: transparent;
-            color: var(--gold);
-            border-color: rgba(58, 33, 22, 0.97);
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
         }
         .navbar.scrolled .logo-tagline {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -216,16 +228,18 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
         .logo-icon {
-            width: 120px;
-            height: 120px;
+            width: 42px;
+            height: 42px;
             border-radius: 12px;
-            background: transparent;
+            background: rgba(217, 177, 110, 0.2);
             color: var(--gold);
             display: flex;
             align-items: center;
@@ -233,45 +247,44 @@
             font-weight: 900;
             font-size: 1.3rem;
             transition: var(--transition);
-            border: 3px solid var(--bg-dark);
-            overflow: hidden;
-            flex-shrink: 0;
+            border: 2px solid rgba(217, 177, 110, 0.3);
         }
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-        }
+
         .logo-text {
-            display: none;
+            display: flex;
+            flex-direction: column;
         }
+
         .logo-name {
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--white);
             letter-spacing: 2px;
             transition: var(--transition);
         }
+
         .logo-tagline {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.6);
-            letter-spacing: 1px;
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1.5px;
             font-weight: 500;
             transition: var(--transition);
         }
+
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 36px;
         }
+
         .nav-link {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.8);
             transition: var(--transition);
             position: relative;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -282,9 +295,11 @@
             background: var(--gold);
             transition: var(--transition);
         }
+
         .nav-link:hover::after {
             width: 100%;
         }
+
         .nav-cta {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--bg-dark) !important;
@@ -297,8 +312,9 @@
         }
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(217, 177, 110, 0.4);
+            box-shadow: 0 4px 20px rgba(217, 177, 110, 0.4);
         }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -311,9 +327,9 @@
         }
         .hamburger span {
             width: 28px;
-            height: 3px;
+            height: 2px;
             background: var(--white);
-            border-radius: 3px;
+            border-radius: 2px;
             transition: var(--transition);
         }
         .navbar.scrolled .hamburger span {
@@ -329,7 +345,9 @@
             transform: rotate(-45deg) translate(5px, -6px);
         }
 
-        /* HERO */
+        /* ============================================
+           HERO
+           ============================================ */
         .hero {
             min-height: 100vh;
             background: linear-gradient(145deg,
@@ -343,6 +361,7 @@
             overflow: hidden;
             padding-top: 80px;
         }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -351,12 +370,13 @@
             width: 70%;
             height: 80%;
             background: radial-gradient(ellipse at top right,
-                    rgba(217, 177, 110, 0.25) 0%,
-                    rgba(245, 222, 154, 0.10) 40%,
+                    rgba(217, 177, 110, 0.2) 0%,
+                    rgba(245, 222, 154, 0.08) 40%,
                     transparent 70%);
             pointer-events: none;
             z-index: 1;
         }
+
         .hero-particles {
             position: absolute;
             inset: 0;
@@ -366,7 +386,7 @@
         .hero-particles .particle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(217, 177, 110, 0.08);
+            background: rgba(217, 177, 110, 0.06);
             animation: float-particle linear infinite;
         }
         @keyframes float-particle {
@@ -385,6 +405,7 @@
                 opacity: 0;
             }
         }
+
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -396,151 +417,183 @@
             position: relative;
             z-index: 2;
         }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(217, 177, 110, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(217, 177, 110, 0.15);
             padding: 8px 18px;
             border-radius: var(--radius-full);
             color: var(--gold-bright);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             margin-bottom: 24px;
             backdrop-filter: blur(10px);
         }
+
         .hero h1 {
             color: var(--white);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
+
         .hero-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.15rem;
             margin-bottom: 36px;
-            max-width: 540px;
+            max-width: 520px;
+            font-weight: 300;
+            line-height: 1.8;
         }
+
         .hero-ctas {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
             margin-bottom: 40px;
         }
+
         .hero-trust {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             flex-wrap: wrap;
         }
+
         .trust-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         .trust-item i {
             color: var(--gold);
         }
+
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .hero-image-wrapper {
             position: relative;
-            width: 400px;
-            height: 480px;
+            width: 420px;
+            height: 500px;
         }
+
         .hero-image-bg {
             position: absolute;
             inset: 20px;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            border-radius: 30px;
-            transform: rotate(3deg);
-            opacity: 0.15;
+            border-radius: 40px;
+            transform: rotate(4deg) scale(0.95);
+            opacity: 0.12;
+            filter: blur(20px);
         }
+
         .hero-image-placeholder {
             position: relative;
             width: 100%;
             height: 100%;
-            background: transparent;
-            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border-radius: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            border: none;
-            backdrop-filter: none;
+            border: 1px solid rgba(217, 177, 110, 0.15);
+            backdrop-filter: blur(10px);
             color: var(--white);
+            overflow: hidden;
         }
-        .hero-image-placeholder img {
-            width: 240px;
-            height: 240px;
+
+        .hero-image-placeholder .avatar-ring {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--gold);
-            box-shadow: 0 10px 40px rgba(217, 177, 110, 0.3);
-        }
-        .hero-image-placeholder span {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--white);
-            background: rgba(58, 33, 22, 0.85);
-            padding: 8px 20px;
-            border-radius: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .hero-image-placeholder small {
-            font-size: 0.85rem;
-            color: var(--white);
-            background: rgba(58, 33, 22, 0.85);
-            padding: 6px 16px;
-            border-radius: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .floating-card {
-            position: absolute;
-            background: rgba(255, 248, 237, 0.95);
-            border-radius: var(--radius-sm);
-            padding: 12px 18px;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold-bright));
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: var(--shadow-lg);
+            justify-content: center;
+        }
+
+        .hero-image-placeholder .avatar-ring .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: var(--gold);
+        }
+
+        .hero-image-placeholder .avatar-label {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gold-bright);
+        }
+
+        .hero-image-placeholder .avatar-sub {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 248, 237, 0.92);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius-sm);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-xl);
             color: var(--bg-dark);
             font-weight: 600;
             font-size: 0.85rem;
-            animation: float-card 4s ease-in-out infinite;
+            animation: float-card 5s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .floating-card i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--gold);
         }
+
         .card-1 {
-            top: 30px;
-            right: -20px;
+            top: 20px;
+            right: -30px;
             animation-delay: 0s;
         }
         .card-2 {
-            bottom: 100px;
-            left: -30px;
-            animation-delay: 1.3s;
+            bottom: 120px;
+            left: -40px;
+            animation-delay: 1.5s;
         }
         .card-3 {
-            bottom: 30px;
+            bottom: 20px;
             right: -10px;
-            animation-delay: 2.6s;
+            animation-delay: 3s;
         }
+
         @keyframes float-card {
             0%,
             100% {
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-12px);
+                transform: translateY(-14px);
             }
         }
+
         .hero-wave {
             position: absolute;
             bottom: -2px;
@@ -554,7 +607,9 @@
             height: 80px;
         }
 
-        /* PAIN */
+        /* ============================================
+           PAIN SECTION
+           ============================================ */
         .pain-section {
             padding: 100px 0;
             background: var(--white);
@@ -602,7 +657,9 @@
             flex-shrink: 0;
         }
 
-        /* ABOUT */
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
         .about-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -620,7 +677,7 @@
             width: 100%;
             aspect-ratio: 3/4;
             max-height: 500px;
-            background: transparent;
+            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
             border-radius: 30px;
             display: flex;
             flex-direction: column;
@@ -628,32 +685,29 @@
             justify-content: center;
             gap: 12px;
             color: var(--white);
-            border: none;
+            border: 1px solid rgba(217, 177, 110, 0.2);
             padding: 40px;
         }
-        .about-image-placeholder img {
-            width: 260px;
-            height: 260px;
+        .about-image-placeholder .avatar-circle {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            object-fit: cover;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--bg-dark);
             border: 4px solid var(--gold);
-            box-shadow: 0 10px 40px rgba(217, 177, 110, 0.3);
         }
         .about-image-placeholder span {
             font-weight: 700;
             font-size: 1.1rem;
-            color: var(--white);
-            background: rgba(58, 33, 22, 0.85);
-            padding: 8px 20px;
-            border-radius: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--gold-bright);
         }
         .about-image-placeholder small {
-            color: var(--white);
-            background: rgba(58, 33, 22, 0.85);
-            padding: 6px 16px;
-            border-radius: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.6);
         }
         .about-experience {
             position: absolute;
@@ -728,7 +782,9 @@
             color: var(--text-light);
         }
 
-        /* SERVICES */
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
         .services-section {
             padding: 100px 0;
             background: var(--white);
@@ -822,7 +878,9 @@
             color: var(--gold-light);
         }
 
-        /* WHY */
+        /* ============================================
+           DIFERENCIAIS (WHY)
+           ============================================ */
         .why-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -879,69 +937,409 @@
             font-size: 0.95rem;
         }
 
-        /* TESTIMONIALS */
-        .testimonials-section {
-            padding: 100px 0;
-            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
+        /* ============================================
+           CARROSSEL ULTRA PREMIUM - BLOG
+           ============================================ */
+        .blog-carousel-section {
+            padding: 80px 0 100px;
+            background: var(--white);
+            position: relative;
         }
-        .testimonials-section .section-tag {
-            background: rgba(217, 177, 110, 0.15);
-            color: var(--gold-bright);
+
+        .blog-carousel-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(217, 177, 110, 0.03) 0%, transparent 60%);
+            pointer-events: none;
         }
-        .testimonials-section h2 {
-            color: var(--white);
-        }
-        .testimonials-section .section-desc {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .testimonials-carousel {
+
+        .blog-carousel-wrapper {
             position: relative;
             overflow: hidden;
-            padding: 20px 0;
+            padding: 10px 4px 20px;
+            margin: 0 -4px;
         }
-        .testimonials-track {
+
+        .blog-carousel-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 28px;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
         }
-        .testimonial-card {
-            min-width: calc(33.333% - 16px);
-            margin: 0 8px;
-            background: rgba(255, 248, 237, 0.06);
-            border: 1px solid rgba(217, 177, 110, 0.15);
+
+        .blog-carousel-card {
+            min-width: calc(33.333% - 19px);
+            background: var(--white);
             border-radius: var(--radius);
-            padding: 36px 28px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(58, 33, 22, 0.04);
+            overflow: hidden;
+            transition: var(--transition-smooth);
             flex-shrink: 0;
+            box-shadow: var(--shadow);
+            position: relative;
         }
-        .testimonial-stars {
+
+        .blog-carousel-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            padding: 1px;
+            background: linear-gradient(135deg, transparent 40%, rgba(217, 177, 110, 0.15), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .blog-carousel-card:hover::before {
+            opacity: 1;
+        }
+
+        .blog-carousel-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .blog-carousel-card .card-image {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            gap: 4px;
-            margin-bottom: 16px;
+            align-items: center;
+            justify-content: center;
         }
-        .testimonial-stars i {
+
+        .blog-carousel-card .card-image .card-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(217, 177, 110, 0.2), transparent 70%);
+            pointer-events: none;
+        }
+
+        .blog-carousel-card .card-image .card-icon {
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        .blog-carousel-card .card-image .card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            z-index: 2;
+        }
+
+        .blog-carousel-card .card-image .card-badge.gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-dark);
+        }
+
+        .blog-carousel-card .card-image .card-watermark {
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 0.5rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .blog-carousel-card .card-content {
+            padding: 28px 30px 24px;
+        }
+
+        .blog-carousel-card .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .blog-carousel-card .card-meta .category {
             color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-carousel-card .card-meta .dot-sep {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-light);
+            opacity: 0.3;
+        }
+
+        .blog-carousel-card .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-family: var(--font-display);
+        }
+
+        .blog-carousel-card .card-excerpt {
             font-size: 0.9rem;
-        }
-        .testimonial-quote {
-            margin-bottom: 16px;
-        }
-        .testimonial-quote i {
-            font-size: 1.5rem;
-            color: rgba(217, 177, 110, 0.2);
-        }
-        .testimonial-card p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
+            color: var(--text-medium);
             line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        .blog-carousel-card .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid rgba(58, 33, 22, 0.04);
+        }
+
+        .blog-carousel-card .card-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-carousel-card .card-author .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+
+        .blog-carousel-card .card-author .name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .blog-carousel-card .card-readmore {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 0;
+        }
+
+        .blog-carousel-card .card-readmore:hover {
+            gap: 12px;
+            color: var(--gold-light);
+        }
+
+        .blog-carousel-card .card-readmore i {
+            transition: var(--transition);
+            font-size: 0.7rem;
+        }
+
+        /* Carrossel Controls Premium */
+        .carousel-controls-premium {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .carousel-controls-premium .carousel-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(58, 33, 22, 0.08);
+            background: var(--white);
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+
+        .carousel-controls-premium .carousel-btn:hover {
+            background: var(--bg-dark);
+            color: var(--gold);
+            border-color: var(--bg-dark);
+            transform: scale(1.05);
+        }
+
+        .carousel-controls-premium .carousel-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-controls-premium .carousel-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(58, 33, 22, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .carousel-controls-premium .carousel-dots .dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1.5px solid transparent;
+            transition: var(--transition);
+        }
+
+        .carousel-controls-premium .carousel-dots .dot.active {
+            background: var(--gold);
+            width: 28px;
+            border-radius: 4px;
+        }
+
+        .carousel-controls-premium .carousel-dots .dot.active::after {
+            border-color: var(--gold);
+        }
+
+        /* ============================================
+           DEPOIMENTOS PREMIUM
+           ============================================ */
+        .testimonials-premium {
+            padding: 80px 0 100px;
+            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-premium::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .testimonials-premium .section-tag {
+            background: rgba(217, 177, 110, 0.12);
+            color: var(--gold-bright);
+        }
+
+        .testimonials-premium h2 {
+            color: var(--white);
+        }
+
+        .testimonials-premium .section-desc {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card-premium {
+            background: rgba(255, 248, 237, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(217, 177, 110, 0.08);
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--gold-light));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-card-premium:hover {
+            transform: translateY(-6px);
+            border-color: rgba(217, 177, 110, 0.15);
+            background: rgba(255, 248, 237, 0.06);
+        }
+
+        .testimonial-card-premium:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-card-premium .quote-icon {
+            font-size: 2.5rem;
+            color: rgba(217, 177, 110, 0.15);
+            margin-bottom: 16px;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .testimonial-card-premium .quote-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
             margin-bottom: 24px;
             font-style: italic;
         }
-        .testimonial-author {
+
+        .testimonial-card-premium .quote-text strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .testimonial-card-premium .testimonial-footer {
             display: flex;
             align-items: center;
             gap: 14px;
         }
-        .author-avatar {
+
+        .testimonial-card-premium .testimonial-footer .t-avatar {
             width: 48px;
             height: 48px;
             border-radius: 50%;
@@ -949,186 +1347,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--bg-dark);
-        }
-        .testimonial-author strong {
-            color: var(--white);
-            display: block;
-        }
-        .testimonial-author span {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem;
-        }
-        .carousel-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .carousel-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid rgba(217, 177, 110, 0.3);
-            background: transparent;
-            color: var(--white);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 1rem;
-        }
-        .carousel-btn:hover {
-            background: rgba(217, 177, 110, 0.15);
-            border-color: var(--gold);
-        }
-        .carousel-dots {
-            display: flex;
-            gap: 8px;
-        }
-        .carousel-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .carousel-dots .dot.active {
-            background: var(--gold);
-            width: 30px;
-            border-radius: 5px;
-        }
-
-        /* BLOG */
-        .blog-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-        .blog-carousel {
-            position: relative;
-            overflow: hidden;
-        }
-        .blog-track {
-            display: flex;
-            gap: 24px;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            padding: 10px 0;
-        }
-        .blog-card {
-            min-width: calc(33.333% - 16px);
-            background: var(--white);
-            border: 1px solid rgba(58, 33, 22, 0.06);
-            border-radius: var(--radius);
-            padding: 32px 28px;
-            transition: var(--transition);
+            font-weight: 700;
+            color: var(--bg-dark);
             flex-shrink: 0;
         }
-        .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--gold);
-        }
-        .blog-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.12), rgba(245, 222, 154, 0.12));
-            color: var(--gold);
-            padding: 4px 14px;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-        .blog-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .blog-card p {
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .blog-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid rgba(58, 33, 22, 0.06);
-        }
-        .blog-footer span {
-            color: var(--text-light);
-            font-size: 0.8rem;
-        }
-        .blog-footer a {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .blog-footer a:hover {
-            gap: 10px;
-            color: var(--gold-light);
-        }
-        .blog-carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
-        }
-        .blog-carousel-controls .carousel-btn {
-            border-color: rgba(58, 33, 22, 0.2);
-            color: var(--bg-dark);
-        }
-        .blog-carousel-controls .carousel-btn:hover {
-            background: var(--bg-dark);
-            color: var(--gold);
-            border-color: var(--bg-dark);
-        }
 
-        /* TRANSFORMATION */
-        .transformation-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .transformation-section::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.10), transparent 70%);
-            pointer-events: none;
-        }
-        .transformation-content {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        .transformation-content h2 {
+        .testimonial-card-premium .testimonial-footer .t-info .t-name {
             color: var(--white);
-            margin-bottom: 20px;
-            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-        }
-        .transformation-content p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
-            margin-bottom: 36px;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        /* FAQ */
+        .testimonial-card-premium .testimonial-footer .t-info .t-company {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
+        .testimonial-card-premium .testimonial-footer .t-stars {
+            margin-left: auto;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
         .faq-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -1189,7 +1434,9 @@
             line-height: 1.7;
         }
 
-        /* CONTACT */
+        /* ============================================
+           CONTATO
+           ============================================ */
         .contact-section {
             padding: 100px 0;
             background: var(--white);
@@ -1304,7 +1551,9 @@
             min-height: 80px;
         }
 
-        /* FOOTER */
+        /* ============================================
+           FOOTER
+           ============================================ */
         .footer {
             background: var(--bg-dark);
             padding: 60px 0 0;
@@ -1324,10 +1573,8 @@
             margin-bottom: 16px;
         }
         .footer-logo .logo-icon {
-            width: 100px;
-            height: 100px;
-            background: transparent;
-            border: 3px solid var(--bg-dark);
+            background: var(--gold);
+            border-color: var(--gold);
             color: var(--bg-dark);
         }
         .footer-brand p {
@@ -1385,7 +1632,9 @@
             margin-top: 6px;
         }
 
-        /* WHATSAPP FLOAT */
+        /* ============================================
+           WHATSAPP FLOAT
+           ============================================ */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -1438,7 +1687,9 @@
             }
         }
 
-        /* BACK TO TOP */
+        /* ============================================
+           BACK TO TOP
+           ============================================ */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1469,7 +1720,9 @@
             transform: translateY(-3px);
         }
 
-        /* ANIMAÇÕES */
+        /* ============================================
+           ANIMAÇÕES
+           ============================================ */
         [data-aos] {
             opacity: 0;
             transform: translateY(30px);
@@ -1501,7 +1754,9 @@
             transform: translateX(0);
         }
 
-        /* RESPONSIVO */
+        /* ============================================
+           RESPONSIVO
+           ============================================ */
         @media (max-width: 1024px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -1552,11 +1807,14 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .testimonial-card {
-                min-width: calc(50% - 16px);
+            .testimonial-card-premium {
+                padding: 28px 24px;
             }
-            .blog-card {
-                min-width: calc(50% - 12px);
+            .blog-carousel-card {
+                min-width: calc(50% - 14px);
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1566,7 +1824,7 @@
                 top: 0;
                 right: -100%;
                 width: 80%;
-                max-width: 360px;
+                max-width: 340px;
                 height: 100vh;
                 background: var(--bg-dark);
                 flex-direction: column;
@@ -1574,7 +1832,7 @@
                 align-items: center;
                 gap: 24px;
                 transition: var(--transition);
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
             }
             .nav-menu.active {
                 right: 0;
@@ -1595,11 +1853,8 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            .testimonial-card {
-                min-width: calc(100% - 16px);
-            }
-            .blog-card {
-                min-width: 100%;
+            .blog-carousel-card {
+                min-width: calc(100% - 0px);
             }
             .hero-ctas {
                 flex-direction: column;
@@ -1607,7 +1862,8 @@
             }
             .btn {
                 padding: 14px 28px;
-                font-size: 0.95rem;
+                font-size: 0.9rem;
+                min-height: 48px;
             }
             .contact-form-wrapper {
                 padding: 28px 22px;
@@ -1615,24 +1871,32 @@
             .pain-solution {
                 flex-direction: column;
             }
-            .logo-icon {
-                width: 90px;
-                height: 90px;
+            .testimonial-card-premium .quote-text {
+                font-size: 0.95rem;
+            }
+            .floating-card {
+                display: none;
+            }
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
         @media (max-width: 480px) {
             .hero-badge span {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
             .hero-trust {
                 flex-direction: column;
                 align-items: center;
-                gap: 12px;
+                gap: 10px;
             }
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
+            .blog-carousel-card .card-content {
+                padding: 20px 20px 18px;
+            }
+            .blog-carousel-card .card-title {
+                font-size: 1rem;
             }
             .whatsapp-float {
                 width: 56px;
@@ -1651,13 +1915,14 @@
     </style>
 </head>
 <body>
-
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
-                <div class="logo-icon">
-                    <img src="logo.png" alt="CONNECTA">
+                <div class="logo-icon">C</div>
+                <div class="logo-text">
+                    <span class="logo-name">CONNECTA</span>
+                    <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
                 </div>
             </a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menu">
@@ -1671,7 +1936,7 @@
                 <li><a href="#servicos" class="nav-link">Serviços</a></li>
                 <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
                 <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-                <li><a href="#atualidades" class="nav-link">Blog</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
                 <li><a href="#contato" class="nav-link nav-cta">Fale Comigo</a></li>
             </ul>
@@ -1725,9 +1990,11 @@
                 <div class="hero-image-wrapper">
                     <div class="hero-image-bg"></div>
                     <div class="hero-image-placeholder">
-                        <img src="erilmafundadora.png" alt="Erilma Silva - Fundadora">
-                        <span>Erilma Silva</span>
-                        <small>Fundadora da CONNECTA</small>
+                        <div class="avatar-ring">
+                            <div class="avatar-inner"><i class="fas fa-user-tie"></i></div>
+                        </div>
+                        <span class="avatar-label">Erilma Silva</span>
+                        <span class="avatar-sub">Fundadora da CONNECTA</span>
                     </div>
                     <div class="floating-card card-1">
                         <i class="fas fa-chart-line"></i>
@@ -1758,7 +2025,7 @@
                 <div class="pain-icon">
                     <i class="fas fa-brain"></i>
                 </div>
-                <h2>Você sente que está trabalhando <span class="highlight">só para pagar impostos?</span></h2>
+                <h2>Você sente que está trabalhando <span class="highlight" style="color:var(--gold);">só para pagar impostos?</span></h2>
                 <p class="pain-text">
                     O cérebro humano odeia incerteza. A dúvida sobre impostos, obrigações e finanças
                     gera um estresse silencioso que <strong>paralisa o crescimento do seu negócio</strong>.
@@ -1783,7 +2050,7 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-placeholder">
-                        <img src="erilmacrc.png" alt="Erilma Silva - CRC">
+                        <div class="avatar-circle"><i class="fas fa-user-graduate"></i></div>
                         <span>Erilma Silva</span>
                         <small>CRC Ativo</small>
                     </div>
@@ -1793,7 +2060,7 @@
                     </div>
                 </div>
                 <div class="about-content" data-aos="fade-left">
-                    <h3>Prazer, sou a <span class="highlight">Erilma</span>.</h3>
+                    <h3>Prazer, sou a <span class="highlight" style="color:var(--gold);">Erilma</span>.</h3>
                     <p>
                         Contadora formada pela <strong>UFV – Campus Rio Paranaíba</strong>,
                         apaixonada por unir técnica, gestão e humanidade no atendimento.
@@ -1899,7 +2166,9 @@
         </div>
     </section>
 
-    <!-- ===== DIFERENCIAIS ===== -->
+    <!-- ==========================================
+    DIFERENCIAIS (WHY)
+    ========================================== -->
     <section class="why-section" id="diferenciais">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -1947,166 +2216,102 @@
         </div>
     </section>
 
-    <!-- ===== DEPOIMENTOS ===== -->
-    <section class="testimonials-section" id="depoimentos">
+    <!-- ==========================================
+    CARROSSEL ULTRA PREMIUM - BLOG
+    ========================================== -->
+    <section class="blog-carousel-section" id="blog">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Quem já vive a experiência</span>
-                <h2>O que nossos clientes <span class="gradient-text">dizem sobre nós</span></h2>
-                <p class="section-desc">Histórias reais de empreendedores que encontraram na CONNECTA a parceria que precisavam.</p>
+                <span class="section-tag">Últimas Notícias</span>
+                <h2>Conteúdos que <span class="gradient-text">transformam</span></h2>
+                <p class="section-desc">Artigos exclusivos para ajudar você a tomar as melhores decisões financeiras e tributárias.</p>
             </div>
-            <div class="testimonials-carousel" id="testimonialsCarousel">
-                <div class="testimonials-track" id="testimonialsTrack">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                        <p>"Antes da CONNECTA, eu via a contabilidade como um gasto. Com a Erilma, entendi que é o meu <strong>maior investimento estratégico</strong>. Clareza total! Hoje tomo decisões com segurança porque sei exatamente onde estão meus números."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <strong>João P.</strong>
-                                <span>Empresário — Simples Nacional</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                        <p>"O atendimento próximo faz toda a diferença. <strong>Sinto que tenho uma sócia</strong> cuidando dos meus números enquanto eu foco na minha paixão. A Erilma entende a realidade do campo como ninguém."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <strong>Maria S.</strong>
-                                <span>Produtora Rural</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                        <p>"Eu tinha medo de abrir minha empresa por causa da burocracia. A CONNECTA tornou tudo <strong>simples e transparente</strong>. Hoje sou MEI regularizado e dormindo tranquilo. Recomendo de olhos fechados!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <strong>Carlos M.</strong>
-                                <span>Microempreendedor — MEI</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                        <p>"O que mais me encanta é a <strong>linguagem clara</strong>. Pela primeira vez, entendo meus relatórios e sei para onde meu dinheiro vai. A Erilma não é só contadora — é uma mentora financeira."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <strong>Ana L.</strong>
-                                <span>Autônoma — Profissional Liberal</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                        <p>"Depois que a CONNECTA fez meu planejamento tributário, <strong>reduzi significativamente minha carga de impostos</strong> — tudo dentro da lei. O dinheiro que sobrou reinvesti no meu negócio!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"><i class="fas fa-user"></i></div>
-                            <div>
-                                <strong>Roberto F.</strong>
-                                <span>Empresário — Comércio</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-btn next" id="nextBtn" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== BLOG ===== -->
-    <section class="blog-section" id="atualidades">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Fique por dentro</span>
-                <h2>Atualidades & <span class="gradient-text">Conteúdos Estratégicos</span></h2>
-                <p class="section-desc">Informação é poder. Aqui você encontra atualizações que impactam diretamente o seu bolso.</p>
-            </div>
-            <div class="blog-carousel">
-                <div class="blog-track" id="blogTrack">
-                    <div class="blog-card" data-aos="fade-up">
-                        <div class="blog-tag">Reforma Tributária</div>
-                        <h3>O que muda com a Reforma Tributária para o seu negócio?</h3>
-                        <p>Entenda de forma clara como as novas regras tributárias podem afetar empresas do Simples Nacional, MEIs e produtores rurais. Antecipe-se.</p>
-                        <div class="blog-footer">
-                            <span><i class="fas fa-calendar"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20Reforma%20Tributária." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-delay="100">
-                        <div class="blog-tag">MEI</div>
-                        <h3>MEI: 5 erros que podem cancelar seu CNPJ</h3>
-                        <p>Muitos microempreendedores cometem erros simples que colocam em risco sua regularidade. Descubra quais são e como evitá-los.</p>
-                        <div class="blog-footer">
-                            <span><i class="fas fa-calendar"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20erros%20do%20MEI." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-delay="200">
-                        <div class="blog-tag">Imposto de Renda</div>
-                        <h3>IRPF 2025: Novidades e prazos que você precisa saber</h3>
-                        <p>A temporada do Imposto de Renda se aproxima. Veja o que mudou, quais documentos separar e como declarar de forma inteligente.</p>
-                        <div class="blog-footer">
-                            <span><i class="fas fa-calendar"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20IRPF%202025." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card" data-aos="fade-up" data-delay="300">
-                        <div class="blog-tag">Produtor Rural</div>
-                        <h3>Produtor Rural: Como organizar suas finanças para lucrar mais</h3>
-                        <p>A gestão financeira no campo exige atenção especial. Descubra estratégias práticas para controlar custos e aumentar a rentabilidade.</p>
-                        <div class="blog-footer">
-                            <span><i class="fas fa-calendar"></i> Em breve</span>
-                            <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20quero%20dicas." target="_blank">Ler mais <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-carousel-controls">
-                    <button class="carousel-btn" id="blogPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-btn" id="blogNext" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
+            <div class="blog-carousel-wrapper" id="blogCarousel">
+                <div class="blog-carousel-track" id="blogCarouselTrack">
+                    <!-- Cards gerados pelo JavaScript -->
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ===== CTA ===== -->
-    <section class="transformation-section">
-        <div class="container">
-            <div class="transformation-content" data-aos="fade-up">
-                <h2>O primeiro passo para <span class="gradient-text-light">transformar seu negócio</span> é simples:</h2>
-                <p>Uma conversa. Sem compromisso, sem jargões, sem pressão. Apenas uma escuta atenta do que você precisa e uma direção clara do que podemos construir juntos.</p>
-                <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-light btn-glow" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Dar o Primeiro Passo Agora
+            <div class="carousel-controls-premium">
+                <button class="carousel-btn" id="blogCarouselPrev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-dots" id="blogCarouselDots"></div>
+                <button class="carousel-btn" id="blogCarouselNext" aria-label="Próximo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div style="text-align:center;margin-top:32px;">
+                <a href="#" class="btn btn-primary" style="background:linear-gradient(135deg, var(--gold), var(--gold-light));color:var(--bg-dark);">
+                    Ver todas as notícias
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
+    <!-- ==========================================
+    DEPOIMENTOS PREMIUM
+    ========================================== -->
+    <section class="testimonials-premium" id="depoimentos">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">O que nossos clientes dizem</span>
+                <h2>Histórias reais, <span class="gradient-text">resultados reais</span></h2>
+                <p class="section-desc">A confiança dos nossos clientes é a nossa maior conquista.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="0">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="quote-text">
+                        "A Erilma e Connecta entregam exatamente o que todo empreendedor precisa: <strong>transparência e segurança</strong>. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="t-avatar">V</div>
+                        <div class="t-info">
+                            <div class="t-name">Vigorre</div>
+                            <div class="t-company">Empresa • São Gonçalo/RJ</div>
+                        </div>
+                        <div class="t-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="100">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="quote-text">
+                        "O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá <strong>consciência real sobre os números</strong> e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="t-avatar">A</div>
+                        <div class="t-info">
+                            <div class="t-name">Amovin</div>
+                            <div class="t-company">ONG • Rio Paranaíba/MG</div>
+                        </div>
+                        <div class="t-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FAQ
+    ========================================== -->
     <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -2172,7 +2377,9 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO ===== -->
+    <!-- ==========================================
+    CONTATO
+    ========================================== -->
     <section class="contact-section" id="contato">
         <div class="container">
             <div class="contact-grid">
@@ -2244,14 +2451,18 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <div class="logo-icon">
-                            <img src="logo.png" alt="CONNECTA">
+                        <div class="logo-icon">C</div>
+                        <div class="logo-text">
+                            <span class="logo-name">CONNECTA</span>
+                            <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
                         </div>
                     </div>
                     <p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p>
@@ -2296,30 +2507,208 @@
         </div>
     </footer>
 
-    <!-- ===== WHATSAPP FLOAT ===== -->
+    <!-- ==========================================
+    WHATSAPP FLOAT
+    ========================================== -->
     <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip">Fale conosco!</span>
     </a>
 
-    <!-- ===== BACK TO TOP ===== -->
+    <!-- ==========================================
+    BACK TO TOP
+    ========================================== -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- ==========================================
+    SCRIPTS
+    ========================================== -->
     <script>
+        // ============================================
+        // ARTIGOS PARA O CARROSSEL
+        // ============================================
+        const ARTIGOS = [{
+            id: 1,
+            titulo: "Reforma Tributária: O que muda para sua empresa em 2025",
+            resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio. Prepare-se para as novas regras.",
+            categoria: "Tributário",
+            autor: "Erilma Silva",
+            data: "14 de julho de 2025",
+            tempoLeitura: "5 min",
+            icone: "fa-chart-line",
+            cor: "#3A2116"
+        }, {
+            id: 2,
+            titulo: "MEI: Guia completo para não perder seu CNPJ",
+            resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI e aprenda como manter sua regularidade em dia.",
+            categoria: "MEI",
+            autor: "Erilma Silva",
+            data: "12 de julho de 2025",
+            tempoLeitura: "8 min",
+            icone: "fa-id-card",
+            cor: "#5A3522"
+        }, {
+            id: 3,
+            titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?",
+            resumo: "Análise comparativa entre os regimes tributários. Descubra qual deles pode gerar mais economia para o seu negócio.",
+            categoria: "Simples Nacional",
+            autor: "Erilma Silva",
+            data: "10 de julho de 2025",
+            tempoLeitura: "6 min",
+            icone: "fa-store",
+            cor: "#8A5A35"
+        }, {
+            id: 4,
+            titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais",
+            resumo: "Estratégias práticas para produtores rurais organizarem suas finanças, reduzirem custos e aumentarem a rentabilidade.",
+            categoria: "Produtor Rural",
+            autor: "Erilma Silva",
+            data: "08 de julho de 2025",
+            tempoLeitura: "7 min",
+            icone: "fa-tractor",
+            cor: "#6B4A30"
+        }, {
+            id: 5,
+            titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança",
+            resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio, trazendo mais eficiência e segurança.",
+            categoria: "Consultoria",
+            autor: "Erilma Silva",
+            data: "06 de julho de 2025",
+            tempoLeitura: "4 min",
+            icone: "fa-handshake",
+            cor: "#4A2C1D"
+        }, {
+            id: 6,
+            titulo: "Automação Contábil: O futuro da contabilidade digital",
+            resumo: "Descubra como a automação e a inteligência artificial estão revolucionando a contabilidade e beneficiando os empreendedores.",
+            categoria: "Tecnologia",
+            autor: "Erilma Silva",
+            data: "04 de julho de 2025",
+            tempoLeitura: "6 min",
+            icone: "fa-microchip",
+            cor: "#2C1A0E"
+        }];
+
+        // ============================================
+        // RENDERIZAR CARROSSEL
+        // ============================================
+        function renderizarCarrossel() {
+            const track = document.getElementById('blogCarouselTrack');
+
+            track.innerHTML = ARTIGOS.map((artigo) => {
+                return `
+                        <div class="blog-carousel-card">
+                            <div class="card-image" style="background:linear-gradient(135deg, ${artigo.cor}, ${artigo.cor}dd);">
+                                <div class="card-glow"></div>
+                                <i class="fas ${artigo.icone}" class="card-icon" style="font-size:3.5rem;color:rgba(255,255,255,0.2);z-index:1;"></i>
+                                <span class="card-badge gold">${artigo.categoria}</span>
+                                <span class="card-watermark">CONNECTA</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta">
+                                    <span class="category"><i class="fas fa-tag"></i> ${artigo.categoria}</span>
+                                    <span class="dot-sep"></span>
+                                    <span><i class="far fa-calendar"></i> ${artigo.data}</span>
+                                    <span class="dot-sep"></span>
+                                    <span><i class="far fa-clock"></i> ${artigo.tempoLeitura}</span>
+                                </div>
+                                <h3 class="card-title">${artigo.titulo}</h3>
+                                <p class="card-excerpt">${artigo.resumo}</p>
+                                <div class="card-footer">
+                                    <div class="card-author">
+                                        <div class="avatar">${artigo.autor.charAt(0)}</div>
+                                        <span class="name">${artigo.autor}</span>
+                                    </div>
+                                    <a href="#" class="card-readmore">
+                                        Ler artigo <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+
+            atualizarDots();
+            atualizarCarrossel();
+        }
+
+        // ============================================
+        // CARROSSEL - CONTROLES
+        // ============================================
+        let currentIndex = 0;
+        let cardsPerView = 3;
+        let totalCards = ARTIGOS.length;
+
+        function getCardsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function atualizarDots() {
+            const dotsContainer = document.getElementById('blogCarouselDots');
+            cardsPerView = getCardsPerView();
+            const totalDots = Math.ceil(totalCards / cardsPerView);
+
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === Math.floor(currentIndex / cardsPerView)) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentIndex = i * cardsPerView;
+                    atualizarCarrossel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function atualizarCarrossel() {
+            const track = document.getElementById('blogCarouselTrack');
+            cardsPerView = getCardsPerView();
+
+            const maxIndex = Math.max(0, totalCards - cardsPerView);
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            const cardWidth = document.querySelector('.blog-carousel-card')?.offsetWidth || 300;
+            const gap = 28;
+            const offset = currentIndex * (cardWidth + gap);
+
+            track.style.transform = `translateX(-${offset}px)`;
+
+            const dots = document.querySelectorAll('.dot');
+            const activeDot = Math.floor(currentIndex / cardsPerView);
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === activeDot);
+            });
+        }
+
+        // ============================================
+        // EVENTOS
+        // ============================================
         document.addEventListener('DOMContentLoaded', function() {
-
-            /* NAVBAR SCROLL */
-            var navbar = document.getElementById('navbar');
-            var backToTop = document.getElementById('backToTop');
-
+            // ============================================
+            // NAVBAR SCROLL
+            // ============================================
+            const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 80) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
+            }, { passive: true });
+
+            // ============================================
+            // BACK TO TOP
+            // ============================================
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
                 if (window.scrollY > 500) {
                     backToTop.classList.add('visible');
                 } else {
@@ -2331,9 +2720,11 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            /* MENU MOBILE */
-            var hamburger = document.getElementById('hamburger');
-            var navMenu = document.getElementById('navMenu');
+            // ============================================
+            // MENU MOBILE
+            // ============================================
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
 
             hamburger.addEventListener('click', function() {
                 this.classList.toggle('active');
@@ -2354,13 +2745,15 @@
                 }
             });
 
-            /* PARTÍCULAS */
-            var particlesContainer = document.getElementById('particles');
+            // ============================================
+            // PARTÍCULAS
+            // ============================================
+            const particlesContainer = document.getElementById('particles');
             if (particlesContainer) {
-                for (var i = 0; i < 30; i++) {
-                    var particle = document.createElement('div');
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
                     particle.classList.add('particle');
-                    var size = Math.random() * 8 + 3;
+                    const size = Math.random() * 8 + 3;
                     particle.style.width = size + 'px';
                     particle.style.height = size + 'px';
                     particle.style.left = Math.random() * 100 + '%';
@@ -2370,145 +2763,122 @@
                 }
             }
 
-            /* DEPOIMENTOS CAROUSEL */
-            var testimonialsTrack = document.getElementById('testimonialsTrack');
-            var prevBtn = document.getElementById('prevBtn');
-            var nextBtn = document.getElementById('nextBtn');
-            var dotsContainer = document.getElementById('carouselDots');
+            // ============================================
+            // CARROSSEL
+            // ============================================
+            renderizarCarrossel();
 
-            if (testimonialsTrack) {
-                var cards = testimonialsTrack.querySelectorAll('.testimonial-card');
-                var currentIndex = 0;
-                var cardsPerView = getCardsPerView();
+            setTimeout(() => {
+                atualizarCarrossel();
+            }, 100);
 
-                function getCardsPerView() {
-                    if (window.innerWidth <= 768) return 1;
-                    if (window.innerWidth <= 1024) return 2;
-                    return 3;
+            document.getElementById('blogCarouselPrev').addEventListener('click', function() {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                currentIndex = Math.max(0, currentIndex - cardsPerView);
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                atualizarCarrossel();
+            });
+
+            document.getElementById('blogCarouselNext').addEventListener('click', function() {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                if (currentIndex + cardsPerView < totalCards) {
+                    currentIndex += cardsPerView;
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                } else {
+                    currentIndex = 0;
                 }
+                atualizarCarrossel();
+            });
 
-                function getTotalSlides() {
-                    return Math.max(1, cards.length - cardsPerView + 1);
+            // Autoplay
+            let autoplayInterval = setInterval(() => {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                if (currentIndex + cardsPerView < totalCards) {
+                    currentIndex += cardsPerView;
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                } else {
+                    currentIndex = 0;
                 }
+                atualizarCarrossel();
+            }, 6000);
 
-                function createDots() {
-                    dotsContainer.innerHTML = '';
-                    var total = getTotalSlides();
-                    for (var i = 0; i < total; i++) {
-                        var dot = document.createElement('div');
-                        dot.classList.add('dot');
-                        if (i === 0) dot.classList.add('active');
-                        (function(index) {
-                            dot.addEventListener('click', function() { goToSlide(index); });
-                        })(i);
-                        dotsContainer.appendChild(dot);
+            const carousel = document.getElementById('blogCarousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(() => {
+                    cardsPerView = getCardsPerView();
+                    const maxIndex = Math.max(0, totalCards - cardsPerView);
+                    if (currentIndex + cardsPerView < totalCards) {
+                        currentIndex += cardsPerView;
+                        if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    atualizarCarrossel();
+                }, 6000);
+            });
+
+            // Drag para mobile
+            let startX = 0;
+            let isDragging = false;
+            const track = document.getElementById('blogCarouselTrack');
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        document.getElementById('blogCarouselNext').click();
+                    } else {
+                        document.getElementById('blogCarouselPrev').click();
                     }
                 }
+                isDragging = false;
+            }, { passive: true });
 
-                function updateCarousel() {
-                    var cardWidth = cards[0].offsetWidth + 16;
-                    testimonialsTrack.style.transform = 'translateX(-' + (currentIndex * cardWidth) + 'px)';
-                    var dots = dotsContainer.querySelectorAll('.dot');
-                    dots.forEach(function(dot, i) {
-                        dot.classList.toggle('active', i === currentIndex);
-                    });
-                }
+            window.addEventListener('resize', () => {
+                atualizarDots();
+                atualizarCarrossel();
+            });
 
-                function goToSlide(index) {
-                    currentIndex = Math.max(0, Math.min(index, getTotalSlides() - 1));
-                    updateCarousel();
-                }
-
-                function nextSlide() {
-                    currentIndex = (currentIndex + 1) % getTotalSlides();
-                    updateCarousel();
-                }
-
-                function prevSlide() {
-                    currentIndex = (currentIndex - 1 + getTotalSlides()) % getTotalSlides();
-                    updateCarousel();
-                }
-
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-                createDots();
-
-                var autoPlay = setInterval(nextSlide, 5000);
-                var carousel = testimonialsTrack.closest('.testimonials-carousel');
-                carousel.addEventListener('mouseenter', function() { clearInterval(autoPlay); });
-                carousel.addEventListener('mouseleave', function() { autoPlay = setInterval(nextSlide, 5000); });
-
-                window.addEventListener('resize', function() {
-                    cardsPerView = getCardsPerView();
-                    createDots();
-                    currentIndex = Math.min(currentIndex, getTotalSlides() - 1);
-                    updateCarousel();
-                });
-            }
-
-            /* BLOG CAROUSEL */
-            var blogTrack = document.getElementById('blogTrack');
-            var blogPrev = document.getElementById('blogPrev');
-            var blogNext = document.getElementById('blogNext');
-
-            if (blogTrack) {
-                var blogCards = blogTrack.querySelectorAll('.blog-card');
-                var blogIndex = 0;
-
-                function getBlogPerView() {
-                    if (window.innerWidth <= 768) return 1;
-                    if (window.innerWidth <= 1024) return 2;
-                    return 3;
-                }
-
-                function getBlogTotalSlides() {
-                    return Math.max(1, blogCards.length - getBlogPerView() + 1);
-                }
-
-                function updateBlog() {
-                    var cardWidth = blogCards[0].offsetWidth + 24;
-                    blogTrack.style.transform = 'translateX(-' + (blogIndex * cardWidth) + 'px)';
-                }
-
-                blogNext.addEventListener('click', function() {
-                    blogIndex = (blogIndex + 1) % getBlogTotalSlides();
-                    updateBlog();
-                });
-
-                blogPrev.addEventListener('click', function() {
-                    blogIndex = (blogIndex - 1 + getBlogTotalSlides()) % getBlogTotalSlides();
-                    updateBlog();
-                });
-
-                window.addEventListener('resize', function() {
-                    blogIndex = Math.min(blogIndex, getBlogTotalSlides() - 1);
-                    updateBlog();
-                });
-            }
-
-            /* FAQ */
+            // ============================================
+            // FAQ ACORDEÃO
+            // ============================================
             document.querySelectorAll('.faq-question').forEach(function(btn) {
                 btn.addEventListener('click', function() {
-                    var item = this.parentElement;
-                    var isActive = item.classList.contains('active');
+                    const item = this.parentElement;
+                    const isActive = item.classList.contains('active');
+
                     document.querySelectorAll('.faq-item').forEach(function(el) {
                         el.classList.remove('active');
                     });
+
                     if (!isActive) {
                         item.classList.add('active');
                     }
                 });
             });
 
-            /* FORMULÁRIO */
+            // ============================================
+            // FORMULÁRIO
+            // ============================================
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                var name = document.getElementById('name').value.trim();
-                var phone = document.getElementById('phone').value.trim();
-                var service = document.getElementById('service').value;
-                var message = document.getElementById('message').value.trim();
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value.trim();
 
-                var msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
+                const msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
                 msg += '*Nome:* ' + encodeURIComponent(name) + '%0A';
                 msg += '*WhatsApp:* ' + encodeURIComponent(phone) + '%0A';
                 msg += '*Serviço:* ' + encodeURIComponent(service) + '%0A';
@@ -2520,28 +2890,13 @@
                 window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
             });
 
-            /* ANIMAÇÕES */
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var delay = entry.target.getAttribute('data-delay') || 0;
-                        setTimeout(function() {
-                            entry.target.classList.add('aos-animate');
-                        }, parseInt(delay));
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('[data-aos]').forEach(function(el) {
-                observer.observe(el);
-            });
-
-            /* MÁSCARA TELEFONE */
-            var phoneInput = document.getElementById('phone');
+            // ============================================
+            // MÁSCARA TELEFONE
+            // ============================================
+            const phoneInput = document.getElementById('phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
-                    var value = e.target.value.replace(/\D/g, '');
+                    let value = e.target.value.replace(/\D/g, '');
                     if (value.length > 11) value = value.slice(0, 11);
                     if (value.length > 7) {
                         value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
@@ -2554,6 +2909,24 @@
                 });
             }
 
+            // ============================================
+            // ANIMAÇÕES ON SCROLL
+            // ============================================
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay') || 0;
+                        setTimeout(function() {
+                            entry.target.classList.add('aos-animate');
+                        }, parseInt(delay));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('[data-aos]').forEach(function(el) {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
