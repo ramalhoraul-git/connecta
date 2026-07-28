@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CONNECTA Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #3A2116;
+            --bg-medium: #5A3522;
+            --bg-light: #8A5A35;
+            --gold: #D9B16E;
+            --gold-light: #E5C27A;
+            --gold-bright: #F5DE9A;
+            --white: #FFF8ED;
+            --text-dark: #2C1A0E;
+            --text-medium: #6B4A30;
+            --text-light: #9A7A5A;
+            --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
+            --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-full: 50px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: #1a0f0a;
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            background: rgba(58, 33, 22, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(217, 177, 110, 0.1);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 24px 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .sidebar-brand {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid rgba(217, 177, 110, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-brand .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+        }
+
+        .sidebar-brand span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        .sidebar-brand small {
+            display: block;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+        }
+
+        .sidebar-menu {
+            padding: 24px 12px;
+            flex: 1;
+        }
+
+        .sidebar-menu .menu-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.2);
+            padding: 0 12px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(217, 177, 110, 0.08);
+            color: var(--white);
+        }
+
+        .sidebar-menu a.active {
+            background: rgba(217, 177, 110, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(217, 177, 110, 0.15);
+        }
+
+        .sidebar-menu a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .sidebar-menu a .badge {
+            margin-left: auto;
+            background: var(--gold);
+            color: var(--bg-dark);
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+        }
+
+        .sidebar-footer {
+            padding: 16px 24px;
+            border-top: 1px solid rgba(217, 177, 110, 0.1);
+        }
+
+        .sidebar-footer .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-footer .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-footer .user-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .sidebar-footer .user-role {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: 260px;
+            padding: 32px 40px;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(217, 177, 110, 0.08);
+        }
+
+        .topbar h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .topbar h1 small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.3);
+            margin-left: 12px;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .topbar-actions .btn-logout {
+            padding: 10px 20px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: var(--radius-full);
+            color: #ff6b6b;
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .topbar-actions .btn-logout:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .topbar-actions .btn-logout i {
+            margin-right: 8px;
+        }
+
+        /* ===== STATS CARDS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: rgba(255, 248, 237, 0.04);
+            border: 1px solid rgba(217, 177, 110, 0.08);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 248, 237, 0.06);
+            border-color: rgba(217, 177, 110, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .stat-card .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(217, 177, 110, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 4px;
+        }
+
+        .stat-card .stat-change {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 8px;
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+        }
+
+        .stat-card .stat-change.up {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .stat-card .stat-change.down {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        /* ===== CHARTS ===== */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .chart-card {
+            background: rgba(255, 248, 237, 0.04);
+            border: 1px solid rgba(217, 177, 110, 0.08);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .chart-card .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .chart-card .chart-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .chart-card .chart-title small {
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            border: 1px dashed rgba(217, 177, 110, 0.08);
+        }
+
+        /* ===== RECENT POSTS ===== */
+        .recent-posts {
+            background: rgba(255, 248, 237, 0.04);
+            border: 1px solid rgba(217, 177, 110, 0.08);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .recent-posts .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .recent-posts .section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .recent-posts .section-actions a {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .recent-posts .section-actions a:hover {
+            color: var(--gold-light);
+        }
+
+        .post-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(217, 177, 110, 0.05);
+            transition: var(--transition);
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-item:hover {
+            padding-left: 8px;
+        }
+
+        .post-item .post-thumb {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(217, 177, 110, 0.1);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .post-item .post-info {
+            flex: 1;
+        }
+
+        .post-item .post-info .post-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .post-item .post-info .post-meta {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .post-item .post-status {
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+        }
+
+        .post-item .post-status.published {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+        }
+
+        .post-item .post-status.draft {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+        }
+
+        .post-item .post-status.scheduled {
+            background: rgba(59, 130, 246, 0.12);
+            color: #3b82f6;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 72px;
+                padding: 16px 0;
+            }
+            .sidebar-brand span,
+            .sidebar-brand small,
+            .sidebar-menu .menu-label,
+            .sidebar-menu a span,
+            .sidebar-footer .user-info>div {
+                display: none;
+            }
+            .sidebar-menu a {
+                justify-content: center;
+                padding: 14px;
+            }
+            .sidebar-menu a i {
+                font-size: 1.2rem;
+            }
+            .main-content {
+                margin-left: 72px;
+                padding: 20px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .topbar h1 small {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 16px;
+            }
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="logo-icon">C</div>
+            <div>
+                <span>CONNECTA</span>
+                <small>Painel Administrativo</small>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+            <div class="menu-label">Principal</div>
+            <a href="#" class="active">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-newspaper"></i>
+                <span>Notícias</span>
+                <span class="badge">12</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-tags"></i>
+                <span>Categorias</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-users"></i>
+                <span>Autores</span>
+            </a>
+
+            <div class="menu-label" style="margin-top:24px;">Conteúdo</div>
+            <a href="#">
+                <i class="fas fa-file-alt"></i>
+                <span>Rascunhos</span>
+                <span class="badge">3</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-clock"></i>
+                <span>Agendados</span>
+                <span class="badge">2</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-image"></i>
+                <span>Mídias</span>
+            </a>
+
+            <div class="menu-label" style="margin-top:24px;">Configurações</div>
+            <a href="#">
+                <i class="fas fa-search"></i>
+                <span>SEO</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-user-shield"></i>
+                <span>Usuários</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <div>
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-role">Super Administrador</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <h1>
+                Dashboard
+                <small>Bem-vindo de volta, Administrador</small>
+            </h1>
+            <div class="topbar-actions">
+                <a href="#" class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Sair
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total de Artigos</div>
+                <span class="stat-change up">+3 este mês</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                <div class="stat-number">4.8k</div>
+                <div class="stat-label">Visualizações</div>
+                <span class="stat-change up">+12% esta semana</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">156</div>
+                <div class="stat-label">Visitantes Únicos</div>
+                <span class="stat-change up">+8% esta semana</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                <div class="stat-number">89</div>
+                <div class="stat-label">Assinantes Newsletter</div>
+                <span class="stat-change up">+5 novos</span>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Visitas Mensais <small>Últimos 6 meses</small></span>
+                </div>
+                <div class="chart-placeholder">
+                    <i class="fas fa-chart-bar" style="margin-right:8px;"></i>
+                    Gráfico de visitas (em breve)
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Categorias <small>Distribuição</small></span>
+                </div>
+                <div class="chart-placeholder">
+                    <i class="fas fa-chart-pie" style="margin-right:8px;"></i>
+                    Gráfico de categorias (em breve)
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="recent-posts">
+            <div class="section-header">
+                <span class="section-title">Últimas Publicações</span>
+                <div class="section-actions">
+                    <a href="#">Ver todas →</a>
+                </div>
+            </div>
+
+            <div class="post-item">
+                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="post-info">
+                    <div class="post-title">Reforma Tributária: O que muda para sua empresa em 2025</div>
+                    <div class="post-meta">14/07/2025 • 5 min de leitura</div>
+                </div>
+                <span class="post-status published">Publicado</span>
+            </div>
+
+            <div class="post-item">
+                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="post-info">
+                    <div class="post-title">MEI: Guia completo para não perder seu CNPJ</div>
+                    <div class="post-meta">12/07/2025 • 8 min de leitura</div>
+                </div>
+                <span class="post-status published">Publicado</span>
+            </div>
+
+            <div class="post-item">
+                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="post-info">
+                    <div class="post-title">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div>
+                    <div class="post-meta">10/07/2025 • 6 min de leitura</div>
+                </div>
+                <span class="post-status draft">Rascunho</span>
+            </div>
+
+            <div class="post-item">
+                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="post-info">
+                    <div class="post-title">BPO Financeiro: Terceirize sua contabilidade com segurança</div>
+                    <div class="post-meta">08/07/2025 • 4 min de leitura</div>
+                </div>
+                <span class="post-status scheduled">Agendado</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ============================================
+        // VERIFICAR AUTENTICAÇÃO
+        // ============================================
+        (function checkAuth() {
+            const session = localStorage.getItem('connecta_admin');
+            if (!session) {
+                window.location.href = '/admin/login.html';
+                return;
+            }
+
+            try {
+                const data = JSON.parse(session);
+                if (!data.loggedIn) {
+                    window.location.href = '/admin/login.html';
+                    return;
+                }
+                // Verificar expiração (24h)
+                if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
+                    localStorage.removeItem('connecta_admin');
+                    window.location.href = '/admin/login.html';
+                    return;
+                }
+            } catch (e) {
+                window.location.href = '/admin/login.html';
+            }
+        })();
+
+        // ============================================
+        // LOGOUT
+        // ============================================
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('connecta_admin');
+            window.location.href = '/admin/login.html';
+        });
+    </script>
+
+</body>
+</html>
