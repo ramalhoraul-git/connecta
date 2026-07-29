@@ -184,7 +184,7 @@
         }
 
         /* ============================================
-           NAVBAR - Fundo da logo
+           NAVBAR - Fundo #2C1A0E (cor da logo)
            ============================================ */
         .navbar {
             position: fixed;
@@ -738,9 +738,9 @@
             padding: 40px;
         }
 
-        .about-image-placeholder img {
-            width: 180px;
-            height: 180px;
+        .about-image-placeholder .about-photo {
+            width: 10cm;
+            height: 10cm;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--gold);
@@ -850,6 +850,24 @@
             }
             .about-content .btn {
                 display: inline-flex;
+            }
+            .about-image-placeholder .about-photo {
+                width: 8cm;
+                height: 8cm;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-image-placeholder .about-photo {
+                width: 6cm;
+                height: 6cm;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-image-placeholder .about-photo {
+                width: 5cm;
+                height: 5cm;
             }
         }
 
@@ -1306,7 +1324,7 @@
         }
 
         /* ============================================
-           DEPOIMENTOS
+           DEPOIMENTOS - CARROSSEL 2 EM 2
            ============================================ */
         .testimonials-premium {
             padding: 100px 0 80px;
@@ -1423,41 +1441,8 @@
             transition: var(--transition);
         }
 
-        .testimonial-card-premium:hover .testimonial-stars i {
-            animation: star-pulse 0.6s ease forwards;
-        }
-
-        .testimonial-card-premium:hover .testimonial-stars i:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .testimonial-card-premium:hover .testimonial-stars i:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .testimonial-card-premium:hover .testimonial-stars i:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-        .testimonial-card-premium:hover .testimonial-stars i:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-        .testimonial-card-premium:hover .testimonial-stars i:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        @keyframes star-pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.4);
-                color: var(--gold-bright);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
         .testimonial-card-premium .quote-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 1.05rem;
             line-height: 1.9;
             font-weight: 300;
@@ -1822,12 +1807,13 @@
         }
 
         /* ============================================
-           FOOTER - Fundo #2C1A0E
+           FOOTER - Fundo BRANCO com texto MARROM
            ============================================ */
         .footer {
-            background: #2C1A0E;
+            background: #FFFFFF;
             padding: 60px 0 0;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-dark);
+            border-top: 1px solid rgba(58, 33, 22, 0.06);
         }
 
         .footer-grid {
@@ -1835,7 +1821,7 @@
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             padding-bottom: 40px;
-            border-bottom: 1px solid rgba(217, 177, 110, 0.1);
+            border-bottom: 1px solid rgba(58, 33, 22, 0.06);
         }
 
         .footer-logo {
@@ -1859,6 +1845,7 @@
             font-size: 0.9rem;
             margin-bottom: 20px;
             line-height: 1.6;
+            color: var(--text-medium);
         }
 
         .footer-social {
@@ -1870,14 +1857,14 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(58, 33, 22, 0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-medium);
             font-size: 1.1rem;
             transition: var(--transition);
-            border: 1px solid rgba(217, 177, 110, 0.1);
+            border: 1px solid rgba(58, 33, 22, 0.08);
         }
 
         .footer-social a:hover {
@@ -1888,7 +1875,7 @@
         }
 
         .footer-links h4 {
-            color: var(--white);
+            color: var(--text-dark);
             font-size: 1rem;
             margin-bottom: 20px;
         }
@@ -1899,10 +1886,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-medium);
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-medium);
             transition: var(--transition);
         }
 
@@ -1925,23 +1913,24 @@
             padding: 24px 0;
             text-align: center;
             font-size: 0.8rem;
-            border-top: 1px solid rgba(217, 177, 110, 0.05);
+            border-top: 1px solid rgba(58, 33, 22, 0.06);
             margin-top: 20px;
+            color: var(--text-medium);
         }
 
         .footer-bottom .vigorre-brand {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-top: 8px;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
         }
 
         .footer-bottom .vigorre-brand a {
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-medium);
             transition: var(--transition);
         }
 
@@ -1950,7 +1939,7 @@
         }
 
         .footer-bottom .vigorre-brand .logo-vigorre {
-            height: 1.2cm;
+            height: 1.4cm;
             width: auto;
             display: inline-block;
         }
@@ -1959,6 +1948,16 @@
             height: 100%;
             width: auto;
             object-fit: contain;
+        }
+
+        .footer-bottom .vigorre-brand .separator {
+            color: rgba(58, 33, 22, 0.2);
+        }
+
+        .footer-bottom .copyright-2026 {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-top: 8px;
         }
 
         /* ============================================
@@ -2153,6 +2152,13 @@
                 width: 40px;
                 height: 40px;
             }
+            .footer-bottom .vigorre-brand {
+                font-size: 0.7rem;
+                gap: 8px;
+            }
+            .footer-bottom .vigorre-brand .logo-vigorre {
+                height: 1cm;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2194,12 +2200,21 @@
                 height: 38px;
                 font-size: 0.85rem;
             }
+            .footer-bottom .vigorre-brand {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .footer-bottom .vigorre-brand .separator {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- ==========================================
+    NAVBAR
+    ========================================== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
@@ -2226,7 +2241,7 @@
     </nav>
 
     <!-- ==========================================
-    HERO - Com imagem hero.png de fundo
+    HERO - Com fundo hero.png
     ========================================== -->
     <section class="hero" id="inicio">
         <div class="hero-particles" id="particles"></div>
@@ -2325,7 +2340,7 @@
     </section>
 
     <!-- ==========================================
-    ABOUT SECTION
+    ABOUT SECTION - Foto 10cm x 10cm
     ========================================== -->
     <section class="about-section" id="sobre">
         <div class="container">
@@ -2336,7 +2351,7 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-placeholder">
-                        <img src="/erilmacrc.png" alt="Erilma Silva - CRC Ativo">
+                        <img src="/erilmacrc.png" alt="Erilma Silva - CRC Ativo" class="about-photo">
                         <span>Erilma Silva</span>
                         <small>CRC Ativo</small>
                     </div>
@@ -2541,7 +2556,7 @@
     </section>
 
     <!-- ==========================================
-    DEPOIMENTOS - CARROSSEL AUTOMÁTICO
+    DEPOIMENTOS - CARROSSEL 2 EM 2
     ========================================== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
@@ -2852,7 +2867,7 @@
     </section>
 
     <!-- ==========================================
-    FOOTER - Com VIGORRE TECH
+    FOOTER - Fundo BRANCO com texto MARROM
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2909,17 +2924,19 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
                 <div class="vigorre-brand">
-                    <span>Desenvolvido por</span>
+                    <span>www.vigorre.com.br</span>
+                    <span class="separator">|</span>
+                    <span>(34) 99185-0735</span>
+                    <span class="separator">|</span>
+                    <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
+                    <span class="separator">|</span>
                     <span class="logo-vigorre">
                         <img src="/logo-vigorre.png" alt="VIGORRE TECH">
                     </span>
-                    <a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a>
-                    <span>|</span>
-                    <a href="tel:+5534991850735">(34) 99185-0735</a>
-                    <span>|</span>
-                    <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
                 </div>
-                <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:8px;">© 2026 VIGORRE TECH™. Todos os direitos reservados.</p>
+                <div class="copyright-2026">
+                    © 2026 VIGORRE TECH™. Todos os direitos reservados.
+                </div>
             </div>
         </div>
     </footer>
@@ -3140,7 +3157,7 @@
             });
         }
 
-        // DEPOIMENTOS CARROSSEL
+        // DEPOIMENTOS CARROSSEL - 2 EM 2
         let testimonialIndex = 0;
         let testimonialsPerView = 2;
         const totalTestimonials = 4;
@@ -3252,7 +3269,7 @@
                 }, 6000);
             });
 
-            // DEPOIMENTOS CARROSSEL
+            // DEPOIMENTOS CARROSSEL - 2 EM 2
             document.getElementById('testimonialsPrev').addEventListener('click', function() {
                 testimonialsPerView = getTestimonialsPerView();
                 const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
@@ -3273,7 +3290,7 @@
                 atualizarCarrosselDepoimentos();
             });
 
-            // AUTOPLAY DEPOIMENTOS
+            // AUTOPLAY DEPOIMENTOS - 2 EM 2
             let autoplayDepoimentos = setInterval(() => {
                 testimonialsPerView = getTestimonialsPerView();
                 const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
@@ -3284,7 +3301,7 @@
                     testimonialIndex = 0;
                 }
                 atualizarCarrosselDepoimentos();
-            }, 6000);
+            }, 7000);
 
             const depoimentosCarousel = document.querySelector('.testimonials-carousel-wrapper');
             depoimentosCarousel.addEventListener('mouseenter', () => clearInterval(autoplayDepoimentos));
@@ -3299,7 +3316,7 @@
                         testimonialIndex = 0;
                     }
                     atualizarCarrosselDepoimentos();
-                }, 6000);
+                }, 7000);
             });
 
             // RESIZE
