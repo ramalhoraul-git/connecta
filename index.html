@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ============================================
+           TODOS OS ESTILOS (MANTIDOS)
+           ============================================ */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
@@ -168,6 +171,12 @@
             animation: glow-pulse 3s ease-in-out infinite;
         }
 
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            min-height: 40px;
+        }
+
         @keyframes glow-pulse {
             0%,
             100% {
@@ -178,7 +187,9 @@
             }
         }
 
-        /* ===== NAVBAR ===== */
+        /* ============================================
+           NAVBAR
+           ============================================ */
         .navbar {
             position: fixed;
             top: 0;
@@ -364,7 +375,9 @@
             transform: rotate(-45deg) translate(5px, -6px);
         }
 
-        /* ===== HERO ===== */
+        /* ============================================
+           HERO
+           ============================================ */
         .hero {
             min-height: 100vh;
             background: linear-gradient(145deg,
@@ -609,7 +622,9 @@
             height: 80px;
         }
 
-        /* ===== PAIN ===== */
+        /* ============================================
+           PAIN
+           ============================================ */
         .pain-section {
             padding: 100px 0;
             background: var(--white);
@@ -657,7 +672,9 @@
             flex-shrink: 0;
         }
 
-        /* ===== ABOUT ===== */
+        /* ============================================
+           ABOUT
+           ============================================ */
         .about-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -779,7 +796,9 @@
             color: var(--text-light);
         }
 
-        /* ===== SERVICES ===== */
+        /* ============================================
+           SERVICES
+           ============================================ */
         .services-section {
             padding: 100px 0;
             background: var(--white);
@@ -873,7 +892,9 @@
             color: var(--gold-light);
         }
 
-        /* ===== DIFERENCIAIS ===== */
+        /* ============================================
+           DIFERENCIAIS
+           ============================================ */
         .why-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -930,7 +951,9 @@
             font-size: 0.95rem;
         }
 
-        /* ===== CARROSSEL BLOG ===== */
+        /* ============================================
+           CARROSSEL BLOG
+           ============================================ */
         .blog-carousel-section {
             padding: 80px 0 100px;
             background: var(--white);
@@ -1494,58 +1517,9 @@
             font-size: 0.8rem;
         }
 
-        .testimonial-card-premium.testimonial-highlight {
-            grid-column: 1 / -1;
-            background: rgba(217, 177, 110, 0.04);
-            border-color: rgba(217, 177, 110, 0.10);
-            padding: 40px 40px 32px;
-        }
-
-        .testimonial-card-premium.testimonial-highlight::before {
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.06) 0%, transparent 60%);
-        }
-
-        .testimonial-card-premium.testimonial-highlight .quote-text {
-            font-size: 1.15rem;
-            max-width: 90%;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            padding: 28px 40px;
-            background: rgba(255, 248, 237, 0.03);
-            border: 1px solid rgba(217, 177, 110, 0.06);
-            border-radius: var(--radius);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
-            flex-wrap: wrap;
-        }
-
-        .trust-badge-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .trust-badge-item i {
-            color: var(--gold);
-            font-size: 1.1rem;
-        }
-
-        .trust-badge-divider {
-            width: 1px;
-            height: 28px;
-            background: rgba(217, 177, 110, 0.08);
-        }
-
-        /* ===== FAQ ===== */
+        /* ============================================
+           FAQ
+           ============================================ */
         .faq-section {
             padding: 100px 0;
             background: #FDF8F0;
@@ -1606,7 +1580,9 @@
             line-height: 1.7;
         }
 
-        /* ===== CONTATO ===== */
+        /* ============================================
+           CONTATO
+           ============================================ */
         .contact-section {
             padding: 100px 0;
             background: var(--white);
@@ -1721,7 +1697,9 @@
             min-height: 80px;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============================================
+           FOOTER
+           ============================================ */
         .footer {
             background: var(--bg-dark);
             padding: 60px 0 0;
@@ -1820,7 +1798,9 @@
             margin-top: 6px;
         }
 
-        /* ===== WHATSAPP FLOAT ===== */
+        /* ============================================
+           WHATSAPP FLOAT
+           ============================================ */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -1873,7 +1853,9 @@
             }
         }
 
-        /* ===== BACK TO TOP ===== */
+        /* ============================================
+           BACK TO TOP
+           ============================================ */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1904,7 +1886,9 @@
             transform: translateY(-3px);
         }
 
-        /* ===== ANIMAÇÕES ===== */
+        /* ============================================
+           ANIMAÇÕES
+           ============================================ */
         [data-aos] {
             opacity: 0;
             transform: translateY(30px);
@@ -1995,13 +1979,6 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
-            .testimonial-card-premium.testimonial-highlight {
-                grid-column: 1;
-            }
-            .testimonial-card-premium.testimonial-highlight .quote-text {
-                max-width: 100%;
-                font-size: 1.05rem;
-            }
             .trust-badge {
                 gap: 20px;
                 padding: 20px 24px;
@@ -2074,15 +2051,9 @@
             .testimonial-card-premium {
                 padding: 28px 20px 20px;
             }
-            .testimonial-card-premium.testimonial-highlight {
-                padding: 28px 20px 20px;
-            }
             .testimonial-card-premium .quote-text {
                 font-size: 0.95rem;
                 line-height: 1.8;
-            }
-            .testimonial-card-premium.testimonial-highlight .quote-text {
-                font-size: 0.95rem;
             }
             .testimonial-card-premium .testimonial-footer {
                 flex-direction: column;
@@ -2496,7 +2467,7 @@
     </section>
 
     <!-- ==========================================
-    DEPOIMENTOS ULTRA PREMIUM
+    DEPOIMENTOS ULTRA PREMIUM (CORRIGIDOS)
     ========================================== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
@@ -2507,7 +2478,7 @@
             </div>
 
             <div class="testimonials-grid">
-                <!-- Depoimento 1 -->
+                <!-- Depoimento 1 - Raul -->
                 <div class="testimonial-card-premium" data-aos="fade-up" data-delay="0">
                     <div class="testimonial-header">
                         <div class="quote-icon">
@@ -2544,7 +2515,7 @@
                     </div>
                 </div>
 
-                <!-- Depoimento 2 -->
+                <!-- Depoimento 2 - Daniele -->
                 <div class="testimonial-card-premium" data-aos="fade-up" data-delay="100">
                     <div class="testimonial-header">
                         <div class="quote-icon">
@@ -2581,8 +2552,8 @@
                     </div>
                 </div>
 
-                <!-- Depoimento 3 - Destaque Full Width -->
-                <div class="testimonial-card-premium testimonial-highlight" data-aos="fade-up" data-delay="200">
+                <!-- Depoimento 3 - Gabriela (NOVO) -->
+                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="200">
                     <div class="testimonial-header">
                         <div class="quote-icon">
                             <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
@@ -2599,16 +2570,53 @@
                         </div>
                     </div>
                     <blockquote class="quote-text">
-                        "<strong>Competência e agilidade</strong> no serviço prestado, além da prontidão em ajudar quando tenho dúvidas. Destaco o profissionalismo e o pronto atendimento, estando sempre disponível pelo WhatsApp para a resolução de questões e para tirar dúvidas, com <strong>muita atenção no atendimento e agilidade no serviço</strong>."
+                        "Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço <strong>ágil, eficiente e muito profissional</strong>. Estou muito satisfeita!"
                     </blockquote>
                     <div class="testimonial-footer">
                         <div class="testimonial-author-info">
                             <div class="author-avatar">
-                                <span>C</span>
+                                <span>G</span>
                             </div>
                             <div class="author-details">
-                                <strong class="author-name">Cliente CONNECTA</strong>
-                                <span class="author-company">Rio Paranaíba/MG</span>
+                                <strong class="author-name">Gabriela Melo</strong>
+                                <span class="author-company">Terapia Ocupacional • Rio Paranaíba/MG</span>
+                            </div>
+                        </div>
+                        <div class="author-verified">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cliente verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 4 - Daniela (NOVO) - Full Width -->
+                <div class="testimonial-card-premium testimonial-highlight" data-aos="fade-up" data-delay="300">
+                    <div class="testimonial-header">
+                        <div class="quote-icon">
+                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
+                                <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
+                                <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
+                            </svg>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="quote-text">
+                        "Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com <strong>atenção, organização e muita disponibilidade</strong> para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."
+                    </blockquote>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-author-info">
+                            <div class="author-avatar">
+                                <span>D</span>
+                            </div>
+                            <div class="author-details">
+                                <strong class="author-name">Daniela Boaventura</strong>
+                                <span class="author-company">Fonoaudiologia • Rio Paranaíba/MG</span>
                             </div>
                         </div>
                         <div class="author-verified">
@@ -2639,7 +2647,9 @@
         </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
+    <!-- ==========================================
+    FAQ
+    ========================================== -->
     <section class="faq-section" id="faq">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -2705,7 +2715,9 @@
         </div>
     </section>
 
-    <!-- ===== CONTATO ===== -->
+    <!-- ==========================================
+    CONTATO
+    ========================================== -->
     <section class="contact-section" id="contato">
         <div class="container">
             <div class="contact-grid">
@@ -2777,7 +2789,9 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ==========================================
+    FOOTER (COM BOTÃO PAINEL)
+    ========================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -2796,6 +2810,13 @@
                         <a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <!-- BOTÃO PAINEL ADMIN -->
+                    <div style="margin-top:16px;">
+                        <a href="/admin/login.html" class="btn btn-primary btn-small" style="background:rgba(217,177,110,0.15);color:var(--gold);border:1px solid rgba(217,177,110,0.2);">
+                            <i class="fas fa-user-shield"></i>
+                            Painel Administrativo
+                        </a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -3051,7 +3072,6 @@
                 atualizarCarrossel();
             }, 100);
 
-            // ===== NAVBAR SCROLL =====
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 80) {
@@ -3061,7 +3081,6 @@
                 }
             }, { passive: true });
 
-            // ===== BACK TO TOP =====
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 500) {
@@ -3075,7 +3094,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // ===== MENU MOBILE =====
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
 
@@ -3098,7 +3116,6 @@
                 }
             });
 
-            // ===== PARTÍCULAS =====
             const particlesContainer = document.getElementById('particles');
             if (particlesContainer) {
                 for (let i = 0; i < 30; i++) {
@@ -3114,7 +3131,6 @@
                 }
             }
 
-            // ===== CARROSSEL BOTÕES =====
             document.getElementById('blogCarouselPrev').addEventListener('click', function() {
                 cardsPerView = getCardsPerView();
                 const maxIndex = Math.max(0, totalCards - cardsPerView);
@@ -3135,7 +3151,6 @@
                 atualizarCarrossel();
             });
 
-            // ===== AUTOPLAY =====
             let autoplayInterval = setInterval(() => {
                 cardsPerView = getCardsPerView();
                 const maxIndex = Math.max(0, totalCards - cardsPerView);
@@ -3164,7 +3179,6 @@
                 }, 6000);
             });
 
-            // ===== DRAG MOBILE =====
             let startX = 0;
             let isDragging = false;
             const track = document.getElementById('blogCarouselTrack');
@@ -3188,13 +3202,11 @@
                 isDragging = false;
             }, { passive: true });
 
-            // ===== RESIZE =====
             window.addEventListener('resize', () => {
                 atualizarDots();
                 atualizarCarrossel();
             });
 
-            // ===== FAQ =====
             document.querySelectorAll('.faq-question').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     const item = this.parentElement;
@@ -3208,7 +3220,6 @@
                 });
             });
 
-            // ===== FORMULÁRIO =====
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const name = document.getElementById('name').value.trim();
@@ -3228,7 +3239,6 @@
                 window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
             });
 
-            // ===== MÁSCARA TELEFONE =====
             const phoneInput = document.getElementById('phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
@@ -3245,7 +3255,6 @@
                 });
             }
 
-            // ===== ANIMAÇÕES =====
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
