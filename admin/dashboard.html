@@ -32,6 +32,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--white); color: var(--text-dark); min-height: 100vh; display: flex; }
 
+        /* ===== SIDEBAR ===== */
         .sidebar { 
             width: 260px; 
             background: var(--white); 
@@ -49,9 +50,28 @@
             box-shadow: 2px 0 20px rgba(58,33,22,0.05);
         }
 
-        .sidebar-brand { padding: 0 24px 24px; border-bottom: 1px solid rgba(217,177,110,0.2); display: flex; align-items: center; justify-content: center; }
-        .sidebar-brand .logo-icon { width: auto; height: 1.8cm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .sidebar-brand .logo-icon img { height: 100%; width: auto; object-fit: contain; }
+        .sidebar-brand { 
+            padding: 0 24px 24px; 
+            border-bottom: 1px solid rgba(217,177,110,0.2); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .sidebar-brand .logo-icon { 
+            width: auto; 
+            height: 1.8cm; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+
+        .sidebar-brand .logo-icon img { 
+            height: 100%; 
+            width: auto; 
+            object-fit: contain; 
+        }
 
         .sidebar-menu { padding: 24px 12px; flex: 1; }
         .sidebar-menu .menu-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); padding: 0 12px; margin-bottom: 12px; font-weight: 600; }
@@ -63,12 +83,41 @@
 
         .sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(217,177,110,0.2); }
         .sidebar-footer .user-info { display: flex; align-items: center; gap: 12px; }
-        .sidebar-footer .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-weight: 700; font-size: 0.9rem; }
+        .sidebar-footer .user-avatar { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, var(--gold), var(--gold-light)); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--bg-dark); 
+            font-weight: 700; 
+            font-size: 0.9rem; 
+        }
         .sidebar-footer .user-name { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
         .sidebar-footer .user-role { font-size: 0.65rem; color: var(--text-light); }
-        .sidebar-footer .logout-btn { margin-top: 12px; padding: 10px 16px; background: rgba(58,33,22,0.05); border: 1px solid rgba(58,33,22,0.1); border-radius: var(--radius-sm); color: var(--text-medium); font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .sidebar-footer .logout-btn { 
+            margin-top: 12px; 
+            padding: 10px 16px; 
+            background: rgba(58,33,22,0.05); 
+            border: 1px solid rgba(58,33,22,0.1); 
+            border-radius: var(--radius-sm); 
+            color: var(--text-medium); 
+            font-family: var(--font-main); 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: var(--transition); 
+            width: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+        }
         .sidebar-footer .logout-btn:hover { background: rgba(58,33,22,0.1); color: var(--bg-dark); transform: translateY(-2px); }
 
+        /* ===== MAIN CONTENT ===== */
         .main-content { margin-left: 260px; padding: 32px 40px; width: 100%; min-height: 100vh; background: var(--white); }
 
         .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(58,33,22,0.06); }
@@ -80,8 +129,9 @@
         .topbar-actions .btn-logout:hover { background: rgba(58,33,22,0.1); color: var(--bg-dark); transform: translateY(-2px); }
         .topbar-actions .btn-logout i { margin-right: 8px; }
 
+        /* ===== STATS ===== */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
-        .stat-card { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 24px; transition: var(--transition); box-shadow: 0 2px 10px rgba(58,33,22,0.04); cursor: pointer; }
+        .stat-card { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 24px; transition: var(--transition); box-shadow: 0 2px 10px rgba(58,33,22,0.04); cursor: default; }
         .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(58,33,22,0.08); border-color: var(--gold); }
         .stat-card .stat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(217,177,110,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gold); margin-bottom: 12px; }
         .stat-card .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); line-height: 1; }
@@ -90,46 +140,38 @@
         .stat-card .stat-change.up { background: rgba(16,185,129,0.1); color: #10b981; }
         .stat-card .stat-change.down { background: rgba(239,68,68,0.1); color: #ef4444; }
 
-        /* ===== GERENCIAMENTO DE ARTIGOS ===== */
+        /* ===== TABELA DE ARTIGOS ===== */
         .artigos-section { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 24px; box-shadow: 0 2px 10px rgba(58,33,22,0.04); margin-bottom: 32px; }
         .artigos-section .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
         .artigos-section .header .title { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
-        .artigos-section .header .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .artigos-section .header .title i { color: var(--gold); margin-right: 8px; }
         .artigos-section .header .btn-add { padding: 10px 20px; background: var(--gold); color: var(--bg-dark); border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: var(--transition); }
         .artigos-section .header .btn-add:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(217,177,110,0.3); }
 
-        .artigo-item { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(58,33,22,0.04); flex-wrap: wrap; }
-        .artigo-item:last-child { border-bottom: none; }
-        .artigo-item .info { flex: 1; min-width: 150px; }
-        .artigo-item .info .title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
-        .artigo-item .info .meta { font-size: 0.7rem; color: var(--text-light); }
-        .artigo-item .status { font-size: 0.65rem; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-full); }
-        .artigo-item .status.published { background: rgba(16,185,129,0.1); color: #10b981; }
-        .artigo-item .status.draft { background: rgba(251,191,36,0.1); color: #b45309; }
-        .artigo-item .status.destaque { background: rgba(217,177,110,0.15); color: var(--bg-dark); border: 1px solid var(--gold); }
-        .artigo-item .actions { display: flex; gap: 8px; }
-        .artigo-item .actions button { padding: 6px 14px; border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
-        .artigo-item .actions .btn-destaque { background: rgba(217,177,110,0.15); color: var(--bg-dark); }
-        .artigo-item .actions .btn-destaque:hover { background: var(--gold); }
-        .artigo-item .actions .btn-destaque.active { background: var(--gold); color: var(--bg-dark); }
-        .artigo-item .actions .btn-delete { background: rgba(239,68,68,0.1); color: #ef4444; }
-        .artigo-item .actions .btn-delete:hover { background: rgba(239,68,68,0.2); }
+        .table-wrapper { overflow-x: auto; }
+        .artigos-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .artigos-table th { text-align: left; padding: 12px 8px; border-bottom: 2px solid rgba(58,33,22,0.06); color: var(--text-light); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .artigos-table td { padding: 12px 8px; border-bottom: 1px solid rgba(58,33,22,0.04); vertical-align: middle; }
+        .artigos-table tr:hover { background: rgba(217,177,110,0.03); }
+        .artigos-table .status { font-size: 0.65rem; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full); display: inline-block; }
+        .artigos-table .status.published { background: rgba(16,185,129,0.1); color: #10b981; }
+        .artigos-table .status.draft { background: rgba(251,191,36,0.1); color: #b45309; }
+        .artigos-table .status.destaque { background: rgba(217,177,110,0.15); color: var(--bg-dark); border: 1px solid var(--gold); }
+        .artigos-table .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+        .artigos-table .actions button { padding: 4px 10px; border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-size: 0.65rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .artigos-table .actions .btn-view { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .artigos-table .actions .btn-view:hover { background: rgba(59,130,246,0.2); }
+        .artigos-table .actions .btn-edit { background: rgba(217,177,110,0.15); color: var(--bg-dark); }
+        .artigos-table .actions .btn-edit:hover { background: var(--gold); }
+        .artigos-table .actions .btn-delete { background: rgba(239,68,68,0.1); color: #ef4444; }
+        .artigos-table .actions .btn-delete:hover { background: rgba(239,68,68,0.2); }
+        .artigos-table .actions .btn-destaque { background: rgba(217,177,110,0.1); color: var(--bg-dark); }
+        .artigos-table .actions .btn-destaque:hover { background: var(--gold); }
+        .artigos-table .actions .btn-destaque.active { background: var(--gold); color: var(--bg-dark); }
 
-        .recent-posts { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 24px; box-shadow: 0 2px 10px rgba(58,33,22,0.04); }
-        .recent-posts .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .recent-posts .header .title { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
-        .recent-posts .header .link { color: var(--gold); font-size: 0.8rem; text-decoration: none; cursor: pointer; }
-        .recent-posts .header .link:hover { color: var(--gold-light); }
-        .post-item { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(58,33,22,0.04); cursor: pointer; }
-        .post-item:last-child { border-bottom: none; }
-        .post-item .thumb { width: 48px; height: 48px; border-radius: var(--radius-sm); background: rgba(217,177,110,0.1); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
-        .post-item .info { flex: 1; }
-        .post-item .info .title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
-        .post-item .info .meta { font-size: 0.7rem; color: var(--text-light); }
-        .post-item .status { font-size: 0.65rem; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-full); }
-        .post-item .status.published { background: rgba(16,185,129,0.1); color: #10b981; }
-        .post-item .status.draft { background: rgba(251,191,36,0.1); color: #b45309; }
+        .tempo-ar { font-size: 0.7rem; color: var(--text-light); }
 
+        /* ===== LGPD ===== */
         .lgpd-footer { margin-top: 40px; padding: 16px 24px; background: rgba(58,33,22,0.02); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
         .lgpd-footer .lgpd-text { font-size: 0.7rem; color: var(--text-light); }
         .lgpd-footer .lgpd-text a { color: var(--gold); text-decoration: underline; cursor: pointer; }
@@ -137,7 +179,7 @@
         .lgpd-footer .lgpd-status .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
         .lgpd-footer .lgpd-status .dot.green { background: #10b981; }
 
-        /* Modal */
+        /* ===== MODAL ===== */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
         .modal-overlay.active { display: flex; }
         .modal { background: var(--white); max-width: 600px; width: 100%; border-radius: var(--radius); padding: 40px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--gold); box-shadow: var(--shadow-lg); }
@@ -147,6 +189,9 @@
         .modal .form-group input, .modal .form-group select, .modal .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid rgba(58,33,22,0.08); border-radius: var(--radius-sm); font-family: var(--font-main); font-size: 0.9rem; transition: var(--transition); background: #FDF8F0; }
         .modal .form-group input:focus, .modal .form-group select:focus, .modal .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(217,177,110,0.12); }
         .modal .form-group textarea { resize: vertical; min-height: 80px; }
+        .modal .form-group.checkbox { display: flex; align-items: center; gap: 12px; }
+        .modal .form-group.checkbox input { width: auto; }
+        .modal .form-group.checkbox label { margin: 0; cursor: pointer; }
         .modal .form-actions { display: flex; gap: 12px; margin-top: 20px; justify-content: flex-end; }
         .modal .form-actions button { padding: 10px 24px; border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); }
         .modal .form-actions .btn-save { background: var(--gold); color: var(--bg-dark); }
@@ -154,6 +199,7 @@
         .modal .form-actions .btn-cancel { background: rgba(58,33,22,0.05); color: var(--text-medium); }
         .modal .form-actions .btn-cancel:hover { background: rgba(58,33,22,0.1); }
 
+        /* ===== RESPONSIVO ===== */
         @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .sidebar { width: 72px; padding: 16px 0; }
@@ -167,8 +213,8 @@
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .topbar h1 small { display: none; }
             .lgpd-footer { flex-direction: column; text-align: center; }
-            .artigo-item { flex-direction: column; align-items: flex-start; }
-            .artigo-item .actions { width: 100%; }
+            .artigos-table { font-size: 0.75rem; }
+            .artigos-table .actions { flex-direction: column; gap: 4px; }
         }
         @media (max-width: 480px) { 
             .stats-grid { grid-template-columns: 1fr; } 
@@ -185,7 +231,9 @@
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="logo-icon"><img src="/logo.png" alt="CONNECTA"></div>
+            <div class="logo-icon">
+                <img src="/logo-rodape.png" alt="CONNECTA">
+            </div>
         </div>
         <nav class="sidebar-menu">
             <div class="menu-label">Principal</div>
@@ -198,8 +246,11 @@
         </nav>
         <div class="sidebar-footer">
             <div class="user-info">
-                <div class="user-avatar">A</div>
-                <div><div class="user-name">Admin Master</div><div class="user-role">Super Administrador</div></div>
+                <div class="user-avatar">E</div>
+                <div>
+                    <div class="user-name">Erilma Silva</div>
+                    <div class="user-role">Administrador Master</div>
+                </div>
             </div>
             <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button>
         </div>
@@ -208,7 +259,7 @@
     <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content">
         <div class="topbar">
-            <h1>Dashboard <small>Bem-vindo de volta, Administrador</small></h1>
+            <h1>Dashboard <small>Bem-vinda de volta, Erilma</small></h1>
             <div class="topbar-actions">
                 <span class="session-time" id="sessionTime">Sessão ativa</span>
                 <button class="btn-logout" id="topLogoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>
@@ -217,69 +268,71 @@
 
         <!-- Stats -->
         <div class="stats-grid">
-            <div class="stat-card" onclick="document.getElementById('artigosSection').scrollIntoView({behavior:'smooth'});">
+            <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
                 <div class="stat-number" id="totalArtigos">0</div>
                 <div class="stat-label">Total de Artigos</div>
-                <span class="stat-change up">+3 este mês</span>
+                <span class="stat-change up">Publicados</span>
             </div>
-            <div class="stat-card" onclick="document.getElementById('carrosselSection').scrollIntoView({behavior:'smooth'});">
+            <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-images"></i></div>
                 <div class="stat-number" id="totalDestaques">0</div>
                 <div class="stat-label">Em Destaque</div>
                 <span class="stat-change up">No carrossel</span>
             </div>
-            <div class="stat-card" onclick="window.open('/blog.html','_blank');">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="stat-number" id="totalRascunhos">0</div>
+                <div class="stat-label">Rascunhos</div>
+                <span class="stat-change down">Aguardando</span>
+            </div>
+            <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-eye"></i></div>
                 <div class="stat-number">4.8k</div>
                 <div class="stat-label">Visualizações</div>
                 <span class="stat-change up">+12% esta semana</span>
             </div>
-            <div class="stat-card" onclick="window.open('/#contato','_blank');">
-                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
-                <div class="stat-number">89</div>
-                <div class="stat-label">Assinantes</div>
-                <span class="stat-change up">+5 novos</span>
-            </div>
         </div>
 
-        <!-- ===== GERENCIAMENTO DE ARTIGOS ===== -->
+        <!-- ===== ARTIGOS ===== -->
         <section class="artigos-section" id="artigosSection">
             <div class="header">
-                <span class="title"><i class="fas fa-newspaper" style="color:var(--gold);margin-right:8px;"></i>Gerenciar Artigos</span>
-                <div class="actions">
+                <span class="title"><i class="fas fa-newspaper"></i>Gerenciar Artigos</span>
+                <div>
                     <button class="btn-add" onclick="abrirModalNovoArtigo()"><i class="fas fa-plus"></i> Novo Artigo</button>
-                    <button class="btn-add" style="background:rgba(217,177,110,0.15);color:var(--bg-dark);" onclick="salvarArtigosNoLocalStorage()"><i class="fas fa-save"></i> Salvar Alterações</button>
+                    <button class="btn-add" style="background:rgba(217,177,110,0.15);color:var(--bg-dark);margin-left:8px;" onclick="salvarArtigos()"><i class="fas fa-save"></i> Salvar</button>
                 </div>
             </div>
-            <div id="artigosList">
-                <!-- Artigos carregados pelo JavaScript -->
+            <div class="table-wrapper">
+                <table class="artigos-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Status</th>
+                            <th>Publicado há</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="artigosTableBody">
+                        <!-- Carregado pelo JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </section>
 
         <!-- ===== CARROSSEL ===== -->
         <section class="artigos-section" id="carrosselSection">
             <div class="header">
-                <span class="title"><i class="fas fa-images" style="color:var(--gold);margin-right:8px;"></i>Artigos em Destaque (Carrossel)</span>
-                <span style="font-size:0.8rem;color:var(--text-light);">Artigos com <strong>⭐ Destaque</strong> aparecem no carrossel da Home</span>
+                <span class="title"><i class="fas fa-images"></i>Artigos em Destaque (Carrossel)</span>
+                <span style="font-size:0.8rem;color:var(--text-light);">Selecione os artigos que vão aparecer no carrossel da Home</span>
             </div>
             <div id="carrosselList">
-                <!-- Artigos em destaque carregados pelo JavaScript -->
+                <!-- Carregado pelo JavaScript -->
             </div>
         </section>
 
-        <!-- ===== ÚLTIMAS PUBLICAÇÕES ===== -->
-        <div class="recent-posts">
-            <div class="header">
-                <span class="title">Últimas Publicações</span>
-                <a href="#" onclick="document.getElementById('artigosSection').scrollIntoView({behavior:'smooth'}); return false;" class="link">Gerenciar →</a>
-            </div>
-            <div id="recentPostsList">
-                <!-- Carregado pelo JavaScript -->
-            </div>
-        </div>
-
-        <!-- LGPD -->
+        <!-- ===== LGPD ===== -->
         <div class="lgpd-footer">
             <div class="lgpd-text">
                 <i class="fas fa-shield-alt" style="color:var(--gold);margin-right:8px;"></i>
@@ -327,9 +380,9 @@
                         <option value="Rascunho">Rascunho</option>
                     </select>
                 </div>
-                <div class="form-group" style="display:flex;align-items:center;gap:12px;">
-                    <input type="checkbox" id="modalDestaque" style="width:auto;">
-                    <label for="modalDestaque" style="margin:0;cursor:pointer;">⭐ Mostrar no carrossel (destaque)</label>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="modalDestaque">
+                    <label for="modalDestaque">⭐ Mostrar no carrossel (destaque)</label>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn-cancel" onclick="fecharModal()">Cancelar</button>
@@ -356,12 +409,12 @@
         // ARTIGOS PADRÃO
         // ============================================
         const ARTIGOS_PADRAO = [
-            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária.", categoria: "Tributário", autor: "Erilma Silva", data: "14/07/2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", status: "Publicado", destaque: true, slug: "reforma-tributaria-2025" },
-            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "12/07/2025", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", status: "Publicado", destaque: true, slug: "mei-guia-completo" },
-            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "10/07/2025", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", status: "Rascunho", destaque: false, slug: "simples-nacional-lucro-presumido" },
-            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "08/07/2025", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", status: "Publicado", destaque: false, slug: "produtor-rural-financas" },
-            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "06/07/2025", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", status: "Publicado", destaque: true, slug: "bpo-financeiro" },
-            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "04/07/2025", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", status: "Rascunho", destaque: false, slug: "automacao-contabil" }
+            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária.", categoria: "Tributário", autor: "Erilma Silva", data: "2025-07-14", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", status: "Publicado", destaque: true, slug: "reforma-tributaria-2025" },
+            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "2025-07-12", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", status: "Publicado", destaque: true, slug: "mei-guia-completo" },
+            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "2025-07-10", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", status: "Rascunho", destaque: false, slug: "simples-nacional-lucro-presumido" },
+            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "2025-07-08", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", status: "Publicado", destaque: false, slug: "produtor-rural-financas" },
+            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "2025-07-06", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", status: "Publicado", destaque: true, slug: "bpo-financeiro" },
+            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "2025-07-04", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", status: "Rascunho", destaque: false, slug: "automacao-contabil" }
         ];
 
         // ============================================
@@ -374,15 +427,13 @@
                     return JSON.parse(stored);
                 } catch (e) {}
             }
-            // Salvar padrão se não existir
             localStorage.setItem('connecta_artigos', JSON.stringify(ARTIGOS_PADRAO));
             return ARTIGOS_PADRAO;
         }
 
-        function salvarArtigosNoLocalStorage() {
+        function salvarArtigos() {
             const artigos = getArtigos();
             localStorage.setItem('connecta_artigos', JSON.stringify(artigos));
-            // Mostrar feedback
             const btn = document.querySelector('.btn-add:last-child');
             if (btn) {
                 const original = btn.innerHTML;
@@ -393,38 +444,73 @@
         }
 
         // ============================================
+        // CALCULAR TEMPO NO AR
+        // ============================================
+        function calcularTempoNoAr(dataPublicacao) {
+            if (!dataPublicacao) return 'Não publicado';
+            const publicado = new Date(dataPublicacao);
+            const agora = new Date();
+            const diff = Math.floor((agora - publicado) / (1000 * 60 * 60 * 24));
+            
+            if (diff === 0) return 'Hoje';
+            if (diff === 1) return 'Ontem';
+            if (diff < 7) return `${diff} dias atrás`;
+            if (diff < 30) return `${Math.floor(diff / 7)} semanas atrás`;
+            if (diff < 365) return `${Math.floor(diff / 30)} meses atrás`;
+            return `${Math.floor(diff / 365)} anos atrás`;
+        }
+
+        // ============================================
         // RENDERIZAR
         // ============================================
         function renderizarTudo() {
             const artigos = getArtigos();
-            renderizarListaArtigos(artigos);
+            renderizarTabelaArtigos(artigos);
             renderizarCarrossel(artigos);
-            renderizarRecentPosts(artigos);
             atualizarStats(artigos);
         }
 
-        function renderizarListaArtigos(artigos) {
-            const container = document.getElementById('artigosList');
-            if (!container) return;
+        function renderizarTabelaArtigos(artigos) {
+            const tbody = document.getElementById('artigosTableBody');
+            if (!tbody) return;
 
-            container.innerHTML = artigos.map(a => {
+            // Ordenar por data (mais recentes primeiro)
+            const sorted = [...artigos].sort((a, b) => {
+                if (!a.data) return 1;
+                if (!b.data) return -1;
+                return b.data.localeCompare(a.data);
+            });
+
+            tbody.innerHTML = sorted.map(a => {
                 const statusClass = a.status === 'Publicado' ? 'published' : 'draft';
-                const destaqueClass = a.destaque ? 'destaque' : '';
+                const tempoAr = a.status === 'Publicado' ? calcularTempoNoAr(a.data) : 'Rascunho';
+                
                 return `
-                    <div class="artigo-item">
-                        <div class="info">
-                            <div class="title">${a.titulo}</div>
-                            <div class="meta">${a.data} • ${a.categoria} • ${a.autor}</div>
-                        </div>
-                        <span class="status ${statusClass}">${a.status}</span>
-                        ${a.destaque ? '<span class="status destaque">⭐ Destaque</span>' : ''}
-                        <div class="actions">
-                            <button class="btn-destaque ${a.destaque ? 'active' : ''}" onclick="toggleDestaque(${a.id})">
-                                ${a.destaque ? '⭐ Remover' : '⭐ Destacar'}
-                            </button>
-                            <button class="btn-delete" onclick="deletarArtigo(${a.id})"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>
+                    <tr>
+                        <td>
+                            <strong>${a.titulo}</strong>
+                            ${a.destaque ? ' <span style="color:var(--gold);font-size:0.7rem;">⭐</span>' : ''}
+                        </td>
+                        <td>${a.categoria}</td>
+                        <td><span class="status ${statusClass}">${a.status}</span></td>
+                        <td><span class="tempo-ar">${tempoAr}</span></td>
+                        <td>
+                            <div class="actions">
+                                <button class="btn-view" onclick="window.open('/artigo.html?id=${a.id}','_blank')" title="Visualizar">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-edit" onclick="abrirModalEditar(${a.id})" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-destaque ${a.destaque ? 'active' : ''}" onclick="toggleDestaque(${a.id})" title="${a.destaque ? 'Remover destaque' : 'Destacar'}">
+                                    ${a.destaque ? '⭐' : '☆'}
+                                </button>
+                                <button class="btn-delete" onclick="deletarArtigo(${a.id})" title="Excluir">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
                 `;
             }).join('');
 
@@ -444,20 +530,25 @@
                     <div style="text-align:center;padding:30px 20px;color:var(--text-light);">
                         <i class="fas fa-images" style="font-size:2rem;color:var(--gold);opacity:0.3;margin-bottom:12px;display:block;"></i>
                         <p>Nenhum artigo em destaque no carrossel.</p>
-                        <p style="font-size:0.8rem;">Clique em "⭐ Destacar" em um artigo para aparecer aqui.</p>
+                        <p style="font-size:0.8rem;">Clique em <strong>☆</strong> na tabela acima para adicionar um artigo ao carrossel.</p>
                     </div>
                 `;
                 return;
             }
 
             container.innerHTML = destaques.map((a, index) => `
-                <div class="artigo-item" style="background:rgba(217,177,110,0.03);border-radius:8px;padding:12px 16px;margin-bottom:8px;">
-                    <div class="info">
-                        <div class="title">${index + 1}. ${a.titulo}</div>
-                        <div class="meta">${a.categoria} • ${a.data}</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;margin-bottom:8px;background:rgba(217,177,110,0.05);border-radius:8px;border:1px solid rgba(217,177,110,0.1);flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <span style="font-weight:700;color:var(--gold);margin-right:8px;">#${index + 1}</span>
+                        <strong>${a.titulo}</strong>
+                        <span style="font-size:0.7rem;color:var(--text-light);margin-left:8px;">${a.categoria}</span>
                     </div>
-                    <span class="status destaque">⭐ Destaque #${index + 1}</span>
-                    <button class="btn-delete" onclick="toggleDestaque(${a.id})" style="background:rgba(217,177,110,0.1);color:var(--bg-dark);padding:4px 12px;border:none;border-radius:var(--radius-full);cursor:pointer;font-size:0.7rem;">Remover</button>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="status destaque">⭐ Destaque</span>
+                        <button onclick="toggleDestaque(${a.id})" style="padding:4px 12px;border:none;border-radius:var(--radius-full);background:rgba(239,68,68,0.1);color:#ef4444;cursor:pointer;font-size:0.7rem;font-weight:600;transition:var(--transition);">
+                            Remover
+                        </button>
+                    </div>
                 </div>
             `).join('');
 
@@ -466,37 +557,19 @@
             if (totalDestaques) totalDestaques.textContent = destaques.length;
         }
 
-        function renderizarRecentPosts(artigos) {
-            const container = document.getElementById('recentPostsList');
-            if (!container) return;
-
-            const recentes = [...artigos].sort((a, b) => {
-                const da = a.data.split('/').reverse().join('');
-                const db = b.data.split('/').reverse().join('');
-                return db.localeCompare(da);
-            }).slice(0, 3);
-
-            container.innerHTML = recentes.map(post => {
-                const statusClass = post.status === 'Publicado' ? 'published' : 'draft';
-                return `
-                    <div class="post-item" onclick="window.open('/artigo.html?id=${post.id}','_blank')">
-                        <div class="thumb"><i class="fas fa-file-alt"></i></div>
-                        <div class="info">
-                            <div class="title">${post.titulo} ${post.destaque ? '⭐' : ''}</div>
-                            <div class="meta">${post.data} • ${post.categoria}</div>
-                        </div>
-                        <span class="status ${statusClass}">${post.status}</span>
-                    </div>
-                `;
-            }).join('');
-        }
-
         function atualizarStats(artigos) {
-            const total = document.getElementById('totalArtigos');
-            if (total) total.textContent = artigos.filter(a => a.status === 'Publicado').length;
+            const publicados = artigos.filter(a => a.status === 'Publicado');
+            const destaques = artigos.filter(a => a.destaque === true);
+            const rascunhos = artigos.filter(a => a.status === 'Rascunho');
 
-            const destaques = document.getElementById('totalDestaques');
-            if (destaques) destaques.textContent = artigos.filter(a => a.destaque === true).length;
+            const total = document.getElementById('totalArtigos');
+            if (total) total.textContent = publicados.length;
+
+            const totalDestaques = document.getElementById('totalDestaques');
+            if (totalDestaques) totalDestaques.textContent = destaques.length;
+
+            const totalRascunhos = document.getElementById('totalRascunhos');
+            if (totalRascunhos) totalRascunhos.textContent = rascunhos.length;
         }
 
         // ============================================
@@ -521,7 +594,7 @@
         }
 
         // ============================================
-        // MODAL
+        // MODAL - NOVO ARTIGO
         // ============================================
         function abrirModalNovoArtigo() {
             document.getElementById('modalTitle').textContent = 'Novo Artigo';
@@ -534,6 +607,21 @@
             document.getElementById('modalOverlay').classList.add('active');
         }
 
+        function abrirModalEditar(id) {
+            const artigos = getArtigos();
+            const artigo = artigos.find(a => a.id === id);
+            if (!artigo) return;
+
+            document.getElementById('modalTitle').textContent = 'Editar Artigo';
+            document.getElementById('editId').value = id;
+            document.getElementById('modalTitulo').value = artigo.titulo || '';
+            document.getElementById('modalResumo').value = artigo.resumo || '';
+            document.getElementById('modalCategoria').value = artigo.categoria || 'Tributário';
+            document.getElementById('modalStatus').value = artigo.status || 'Publicado';
+            document.getElementById('modalDestaque').checked = artigo.destaque || false;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
         function fecharModal() {
             document.getElementById('modalOverlay').classList.remove('active');
         }
@@ -543,13 +631,13 @@
 
             const artigos = getArtigos();
             const editId = document.getElementById('editId').value;
-            const novoTitulo = document.getElementById('modalTitulo').value.trim();
-            const novoResumo = document.getElementById('modalResumo').value.trim();
-            const novaCategoria = document.getElementById('modalCategoria').value;
-            const novoStatus = document.getElementById('modalStatus').value;
-            const novoDestaque = document.getElementById('modalDestaque').checked;
+            const titulo = document.getElementById('modalTitulo').value.trim();
+            const resumo = document.getElementById('modalResumo').value.trim();
+            const categoria = document.getElementById('modalCategoria').value;
+            const status = document.getElementById('modalStatus').value;
+            const destaque = document.getElementById('modalDestaque').checked;
 
-            if (!novoTitulo) {
+            if (!titulo) {
                 alert('Por favor, preencha o título.');
                 return;
             }
@@ -558,33 +646,33 @@
                 // Editar
                 const artigo = artigos.find(a => a.id === parseInt(editId));
                 if (artigo) {
-                    artigo.titulo = novoTitulo;
-                    artigo.resumo = novoResumo || 'Artigo sobre ' + novaCategoria;
-                    artigo.categoria = novaCategoria;
-                    artigo.status = novoStatus;
-                    artigo.destaque = novoDestaque;
+                    artigo.titulo = titulo;
+                    artigo.resumo = resumo || 'Artigo sobre ' + categoria;
+                    artigo.categoria = categoria;
+                    artigo.status = status;
+                    artigo.destaque = destaque;
                 }
             } else {
                 // Novo
                 const novoId = Math.max(...artigos.map(a => a.id), 0) + 1;
                 const hoje = new Date();
-                const dataFormatada = hoje.getDate().toString().padStart(2, '0') + '/' + 
-                                      (hoje.getMonth() + 1).toString().padStart(2, '0') + '/' + 
-                                      hoje.getFullYear();
+                const dataFormatada = hoje.getFullYear() + '-' + 
+                                      String(hoje.getMonth() + 1).padStart(2, '0') + '-' + 
+                                      String(hoje.getDate()).padStart(2, '0');
 
                 artigos.push({
                     id: novoId,
-                    titulo: novoTitulo,
-                    resumo: novoResumo || 'Artigo sobre ' + novaCategoria,
-                    categoria: novaCategoria,
+                    titulo: titulo,
+                    resumo: resumo || 'Artigo sobre ' + categoria,
+                    categoria: categoria,
                     autor: 'Erilma Silva',
                     data: dataFormatada,
                     tempoLeitura: '5 min',
                     icone: 'fa-file-alt',
                     cor: '#3A2116',
-                    status: novoStatus,
-                    destaque: novoDestaque,
-                    slug: novoTitulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+                    status: status,
+                    destaque: destaque,
+                    slug: titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')
                 });
             }
 
@@ -593,7 +681,6 @@
             renderizarTudo();
         });
 
-        // Fechar modal com ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') fecharModal();
         });
