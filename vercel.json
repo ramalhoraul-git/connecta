@@ -16,6 +16,7 @@
     { "src": "/blog.html", "dest": "/blog.html" },
     { "src": "/artigo.html", "dest": "/artigo.html" },
     { "src": "/(.*)\\.(png|jpg|jpeg|svg|webp|ico|gif)", "dest": "/$1.$2" },
+    { "src": "/admin/(.*)", "dest": "/admin/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
