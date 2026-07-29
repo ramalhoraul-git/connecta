@@ -13,7 +13,7 @@
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
             --bg-light: #8A5A35;
-            --bg-header-footer: #4A2C1F;
+            --bg-header-footer: #2C1A0E;
             --gold: #D9B16E;
             --gold-light: #E5C27A;
             --gold-bright: #F5DE9A;
@@ -184,7 +184,7 @@
         }
 
         /* ============================================
-           NAVBAR - Fundo #4A2C1F
+           NAVBAR - Fundo da logo
            ============================================ */
         .navbar {
             position: fixed;
@@ -194,11 +194,11 @@
             z-index: 1000;
             padding: 12px 0;
             transition: var(--transition);
-            background: #4A2C1F;
+            background: #2C1A0E;
         }
 
         .navbar.scrolled {
-            background: #4A2C1F;
+            background: #2C1A0E;
             box-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
             padding: 8px 0;
         }
@@ -234,10 +234,6 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-        }
-
-        .logo-text {
-            display: none !important;
         }
 
         .nav-menu {
@@ -335,7 +331,7 @@
                 width: 80%;
                 max-width: 340px;
                 height: 100vh;
-                background: #4A2C1F;
+                background: #2C1A0E;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -362,34 +358,26 @@
         }
 
         /* ============================================
-           HERO
+           HERO - Com fundo hero.png
            ============================================ */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(145deg,
-                    var(--bg-dark) 0%,
-                    #4A2C1D 30%,
-                    var(--bg-medium) 55%,
-                    var(--bg-light) 100%);
+            background: url('/hero.png') center/cover no-repeat;
+            position: relative;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
             padding-top: 80px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -30%;
-            right: -20%;
-            width: 70%;
-            height: 80%;
-            background: radial-gradient(ellipse at top right,
-                    rgba(217, 177, 110, 0.2) 0%,
-                    rgba(245, 222, 154, 0.08) 40%,
-                    transparent 70%);
-            pointer-events: none;
+            inset: 0;
+            background: linear-gradient(145deg,
+                    rgba(58, 33, 22, 0.85) 0%,
+                    rgba(74, 44, 29, 0.80) 40%,
+                    rgba(90, 53, 34, 0.75) 70%,
+                    rgba(138, 90, 53, 0.70) 100%);
             z-index: 1;
         }
 
@@ -527,11 +515,26 @@
             padding: 20px;
         }
 
-        .hero-image-placeholder img {
-            width: 100%;
-            height: 100%;
+        .hero-image-placeholder .avatar-photo {
+            width: 10cm;
+            height: 10cm;
+            border-radius: 50%;
             object-fit: cover;
-            border-radius: 30px;
+            border: 4px solid var(--gold);
+            flex-shrink: 0;
+        }
+
+        .hero-image-placeholder .avatar-label {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gold-bright);
+            margin-top: 12px;
+        }
+
+        .hero-image-placeholder .avatar-sub {
+            opacity: 0.7;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .floating-card {
@@ -593,6 +596,64 @@
             display: block;
             width: 100%;
             height: 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual {
+                display: none;
+            }
+            .hero-image-placeholder .avatar-photo {
+                width: 8cm;
+                height: 8cm;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                padding: 14px 28px;
+                font-size: 0.9rem;
+                min-height: 48px;
+            }
+            .floating-card {
+                display: none;
+            }
+            .hero-image-placeholder .avatar-photo {
+                width: 6cm;
+                height: 6cm;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badge span {
+                font-size: 0.7rem;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .hero-image-placeholder .avatar-photo {
+                width: 5cm;
+                height: 5cm;
+            }
         }
 
         /* ============================================
@@ -767,6 +828,29 @@
         .value-item span {
             font-size: 0.8rem;
             color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-experience {
+                position: relative;
+                right: 0;
+                bottom: 0;
+                margin: 20px auto 0;
+            }
+            .about-values {
+                align-items: center;
+            }
+            .value-item {
+                max-width: 400px;
+                width: 100%;
+            }
+            .about-content .btn {
+                display: inline-flex;
+            }
         }
 
         /* ============================================
@@ -1738,10 +1822,10 @@
         }
 
         /* ============================================
-           FOOTER - Fundo #4A2C1F
+           FOOTER - Fundo #2C1A0E
            ============================================ */
         .footer {
-            background: #4A2C1F;
+            background: #2C1A0E;
             padding: 60px 0 0;
             color: rgba(255, 255, 255, 0.7);
         }
@@ -1769,10 +1853,6 @@
             height: 100%;
             width: auto;
             object-fit: contain;
-        }
-
-        .footer-logo .logo-text {
-            display: none !important;
         }
 
         .footer-brand p {
@@ -1849,8 +1929,36 @@
             margin-top: 20px;
         }
 
-        .footer-bottom p+p {
-            margin-top: 6px;
+        .footer-bottom .vigorre-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom .vigorre-brand a {
+            color: rgba(255, 255, 255, 0.4);
+            transition: var(--transition);
+        }
+
+        .footer-bottom .vigorre-brand a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom .vigorre-brand .logo-vigorre {
+            height: 1.2cm;
+            width: auto;
+            display: inline-block;
+        }
+
+        .footer-bottom .vigorre-brand .logo-vigorre img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
 
         /* ============================================
@@ -2098,10 +2206,6 @@
                 <div class="logo-icon">
                     <img src="/logo.png" alt="CONNECTA">
                 </div>
-                <div class="logo-text">
-                    <span class="logo-name">CONNECTA</span>
-                    <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
-                </div>
             </a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menu">
                 <span></span>
@@ -2121,7 +2225,9 @@
         </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- ==========================================
+    HERO - Com imagem hero.png de fundo
+    ========================================== -->
     <section class="hero" id="inicio">
         <div class="hero-particles" id="particles"></div>
         <div class="hero-container">
@@ -2168,7 +2274,9 @@
                 <div class="hero-image-wrapper">
                     <div class="hero-image-bg"></div>
                     <div class="hero-image-placeholder">
-                        <img src="/hero.png" alt="CONNECTA">
+                        <img src="/erilmafundadora.png" alt="Erilma Silva" class="avatar-photo">
+                        <span class="avatar-label">Erilma Silva</span>
+                        <span class="avatar-sub">Fundadora da CONNECTA</span>
                     </div>
                     <div class="floating-card card-1">
                         <i class="fas fa-chart-line"></i>
@@ -2744,7 +2852,7 @@
     </section>
 
     <!-- ==========================================
-    FOOTER
+    FOOTER - Com VIGORRE TECH
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2753,10 +2861,6 @@
                     <div class="footer-logo">
                         <div class="logo-icon">
                             <img src="/logo.png" alt="CONNECTA">
-                        </div>
-                        <div class="logo-text">
-                            <span class="logo-name">CONNECTA</span>
-                            <span class="logo-tagline">Consultoria & Contabilidade Digital</span>
                         </div>
                     </div>
                     <p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p>
@@ -2767,7 +2871,7 @@
                     </div>
                     <!-- BOTÃO PAINEL -->
                     <div style="margin-top:16px;">
-                        <a href="/admin/login.html" class="btn btn-primary btn-small" style="background:rgba(217,177,110,0.15);color:var(--gold);border:1px solid rgba(217,177,110,0.2);">
+                        <a href="/admin/login.html" class="btn btn-primary btn-small" style="background:rgba(217,177,110,0.15);color:var(--gold);border:1px solid rgba(217,177,110,0.2);display:inline-flex;align-items:center;gap:10px;padding:10px 20px;font-size:0.8rem;min-height:40px;border-radius:var(--radius-full);font-weight:600;cursor:pointer;transition:var(--transition);">
                             <i class="fas fa-user-shield"></i>
                             Painel Administrativo
                         </a>
@@ -2804,7 +2908,18 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
-                <p>Desenvolvido com <i class="fas fa-heart" style="color:#D9B16E"></i> para conectar você ao sucesso.</p>
+                <div class="vigorre-brand">
+                    <span>Desenvolvido por</span>
+                    <span class="logo-vigorre">
+                        <img src="/logo-vigorre.png" alt="VIGORRE TECH">
+                    </span>
+                    <a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a>
+                    <span>|</span>
+                    <a href="tel:+5534991850735">(34) 99185-0735</a>
+                    <span>|</span>
+                    <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
+                </div>
+                <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:8px;">© 2026 VIGORRE TECH™. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
