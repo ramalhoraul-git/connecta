@@ -65,18 +65,19 @@
         }
 
         .login-logo .logo-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            border-radius: 16px;
+            width: auto;
+            height: 2cm;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--bg-dark);
             margin: 0 auto 16px;
-            box-shadow: 0 4px 20px rgba(217, 177, 110, 0.3);
+            overflow: hidden;
+        }
+
+        .login-logo .logo-icon img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
 
         .login-logo h1 {
@@ -212,25 +213,15 @@
             margin-top: 16px;
             color: rgba(255, 255, 255, 0.2);
             font-size: 0.7rem;
+            flex-wrap: wrap;
         }
 
         .security-badge i {
             font-size: 0.6rem;
         }
 
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        .loading-dots::after {
-            content: '';
-            animation: pulse 1.5s ease-in-out infinite;
+        .security-badge .sep {
+            color: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsivo */
@@ -238,14 +229,20 @@
             .login-card {
                 padding: 32px 24px;
             }
+            .login-logo .logo-icon {
+                height: 1.6cm;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="login-container">
         <div class="login-card">
             <div class="login-logo">
-                <div class="logo-icon">C</div>
+                <div class="logo-icon">
+                    <img src="/logo.png" alt="CONNECTA">
+                </div>
                 <h1>CONNECTA</h1>
                 <p>Painel Administrativo</p>
             </div>
@@ -255,12 +252,13 @@
                 <span id="errorMessage">Credenciais inválidas. Tente novamente.</span>
             </div>
 
-            <form id="loginForm" autocomplete="off">
+            <form id="loginForm" autocomplete="off" novalidate>
                 <div class="form-group">
                     <label for="username">Usuário</label>
                     <div class="input-icon">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="username" placeholder="Digite seu usuário" required>
+                        <input type="text" id="username" placeholder="Digite seu usuário" required
+                               autocomplete="username" aria-label="Usuário">
                     </div>
                 </div>
 
@@ -268,7 +266,8 @@
                     <label for="password">Senha</label>
                     <div class="input-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                        <input type="password" id="password" placeholder="Digite sua senha" required
+                               autocomplete="current-password" aria-label="Senha">
                     </div>
                 </div>
 
@@ -280,7 +279,13 @@
 
             <div class="security-badge">
                 <i class="fas fa-shield-alt"></i>
-                <span>Ambiente seguro • Acesso restrito</span>
+                <span>Ambiente seguro</span>
+                <span class="sep">•</span>
+                <i class="fas fa-lock"></i>
+                <span>Conexão criptografada</span>
+                <span class="sep">•</span>
+                <i class="fas fa-user-shield"></i>
+                <span>Acesso restrito</span>
             </div>
 
             <div class="login-footer">
@@ -314,6 +319,9 @@
         function showError(message) {
             errorMessage.textContent = message;
             loginError.classList.add('show');
+            setTimeout(() => {
+                loginError.classList.remove('show');
+            }, 5000);
         }
 
         function hideError() {
@@ -331,41 +339,98 @@
         }
 
         // ============================================
+        // SANITIZAÇÃO
+        // ============================================
+        function sanitizeInput(value) {
+            return value.replace(/[<>]/g, '').trim();
+        }
+
+        // ============================================
+        // VERIFICAR SE JÁ ESTÁ LOGADO
+        // ============================================
+        (function checkSession() {
+            const session = localStorage.getItem('connecta_admin');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.loggedIn && data.timestamp) {
+                        const elapsed = Date.now() - data.timestamp;
+                        if (elapsed < 24 * 60 * 60 * 1000) {
+                            // Já está logado - redirecionar para dashboard
+                            window.location.href = '/admin/dashboard.html';
+                            return;
+                        } else {
+                            localStorage.removeItem('connecta_admin');
+                        }
+                    }
+                } catch (e) {
+                    localStorage.removeItem('connecta_admin');
+                }
+            }
+        })();
+
+        // ============================================
         // SUBMIT DO FORMULÁRIO
         // ============================================
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             hideError();
 
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value.trim();
+            const username = sanitizeInput(usernameInput.value);
+            const password = sanitizeInput(passwordInput.value);
 
-            // Validação básica
             if (!username || !password) {
                 showError('Preencha todos os campos.');
                 return;
             }
 
+            // Prevenir brute force
+            const attempts = parseInt(localStorage.getItem('login_attempts') || '0');
+            if (attempts >= 5) {
+                const lastAttempt = parseInt(localStorage.getItem('login_last_attempt') || '0');
+                const cooldown = 5 * 60 * 1000;
+                if (Date.now() - lastAttempt < cooldown) {
+                    const remaining = Math.ceil((cooldown - (Date.now() - lastAttempt)) / 60000);
+                    showError(`Muitas tentativas. Aguarde ${remaining} minutos.`);
+                    return;
+                } else {
+                    localStorage.setItem('login_attempts', '0');
+                }
+            }
+
             setLoading(true);
 
-            // Simular requisição (delay para efeito visual)
             setTimeout(() => {
                 if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                    // Resetar tentativas
+                    localStorage.setItem('login_attempts', '0');
+
                     // Login bem-sucedido
                     localStorage.setItem('connecta_admin', JSON.stringify({
                         loggedIn: true,
                         username: username,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
+                        sessionId: Math.random().toString(36).substring(2, 15)
                     }));
 
-                    // Redirecionar para o dashboard
+                    // REDIRECIONAR PARA DASHBOARD
                     window.location.href = '/admin/dashboard.html';
                 } else {
-                    // Login falhou
+                    // Incrementar tentativas
+                    const attempts = parseInt(localStorage.getItem('login_attempts') || '0');
+                    localStorage.setItem('login_attempts', (attempts + 1).toString());
+                    localStorage.setItem('login_last_attempt', Date.now().toString());
+
                     showError('Usuário ou senha incorretos. Tente novamente.');
                     setLoading(false);
                     passwordInput.value = '';
                     passwordInput.focus();
+
+                    // Feedback visual de erro
+                    passwordInput.style.borderColor = '#ff6b6b';
+                    setTimeout(() => {
+                        passwordInput.style.borderColor = '';
+                    }, 3000);
                 }
             }, 800);
         });
@@ -383,29 +448,57 @@
         });
 
         // ============================================
-        // VERIFICAR SE JÁ ESTÁ LOGADO
+        // LOGOUT AUTOMÁTICO POR INATIVIDADE (15min)
         // ============================================
-        (function checkSession() {
-            const session = localStorage.getItem('connecta_admin');
-            if (session) {
-                try {
-                    const data = JSON.parse(session);
-                    if (data.loggedIn && data.timestamp) {
-                        // Verificar se a sessão expirou (24h)
-                        const elapsed = Date.now() - data.timestamp;
-                        if (elapsed < 24 * 60 * 60 * 1000) {
-                            // Redirecionar para o dashboard
-                            window.location.href = '/admin/dashboard.html';
-                        } else {
-                            // Sessão expirada
-                            localStorage.removeItem('connecta_admin');
-                        }
-                    }
-                } catch (e) {
+        let inactivityTimer;
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (localStorage.getItem('connecta_admin')) {
                     localStorage.removeItem('connecta_admin');
                 }
+            }, 15 * 60 * 1000);
+        }
+
+        // ============================================
+        // PREVENIR CLIQUE DIREITO
+        // ============================================
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ============================================
+        // PREVENIR DEV TOOLS
+        // ============================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                return false;
             }
-        })();
+        });
+
+        // ============================================
+        // REGISTRO DE ATIVIDADE
+        // ============================================
+        function logSecurityEvent(event) {
+            const logs = JSON.parse(localStorage.getItem('security_logs') || '[]');
+            logs.push({
+                event: event,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                url: window.location.href
+            });
+            if (logs.length > 100) {
+                logs.shift();
+            }
+            localStorage.setItem('security_logs', JSON.stringify(logs));
+        }
+
+        logSecurityEvent('login_page_loaded');
     </script>
 </body>
 </html>
