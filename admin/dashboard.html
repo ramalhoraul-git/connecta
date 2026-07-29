@@ -29,465 +29,99 @@
             --font-main: 'Montserrat', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background: #1a0f0a;
-            color: var(--white);
-            min-height: 100vh;
-            display: flex;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); background: #1a0f0a; color: var(--white); min-height: 100vh; display: flex; }
 
         /* ===== BLOQUEIO DE TELA ===== */
-        .screen-lock {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 99999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: var(--white);
-            gap: 20px;
-        }
-
-        .screen-lock.active {
-            display: flex;
-        }
-
-        .screen-lock i {
-            font-size: 3rem;
-            color: var(--gold);
-        }
-
-        .screen-lock p {
-            font-size: 1.1rem;
-            opacity: 0.7;
-        }
+        .screen-lock { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; flex-direction: column; color: var(--white); gap: 20px; }
+        .screen-lock.active { display: flex; }
+        .screen-lock i { font-size: 3rem; color: var(--gold); }
+        .screen-lock p { font-size: 1.1rem; opacity: 0.7; }
 
         /* ===== SIDEBAR ===== */
-        .sidebar {
-            width: 260px;
-            background: rgba(58, 33, 22, 0.95);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(217, 177, 110, 0.1);
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 24px 0;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .sidebar-brand {
-            padding: 0 24px 24px;
-            border-bottom: 1px solid rgba(217, 177, 110, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar-brand .logo-icon {
-            width: auto;
-            height: 1.6cm;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .sidebar-brand .logo-icon img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .sidebar-brand .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar-brand .brand-text .brand-name {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--white);
-            letter-spacing: 1px;
-        }
-
-        .sidebar-brand .brand-text .brand-sub {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 1px;
-        }
-
-        .sidebar-menu {
-            padding: 24px 12px;
-            flex: 1;
-        }
-
-        .sidebar-menu .menu-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.2);
-            padding: 0 12px;
-            margin-bottom: 12px;
-        }
-
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: var(--radius-sm);
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .sidebar-menu a:hover {
-            background: rgba(217, 177, 110, 0.08);
-            color: var(--white);
-        }
-
-        .sidebar-menu a.active {
-            background: rgba(217, 177, 110, 0.12);
-            color: var(--gold);
-            border: 1px solid rgba(217, 177, 110, 0.15);
-        }
-
-        .sidebar-menu a i {
-            width: 20px;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .sidebar-menu a .badge {
-            margin-left: auto;
-            background: var(--gold);
-            color: var(--bg-dark);
-            font-size: 0.6rem;
-            padding: 2px 8px;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-        }
-
-        .sidebar-footer {
-            padding: 16px 24px;
-            border-top: 1px solid rgba(217, 177, 110, 0.1);
-        }
-
-        .sidebar-footer .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar-footer .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg-dark);
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .sidebar-footer .user-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .sidebar-footer .user-role {
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .sidebar-footer .logout-btn {
-            margin-top: 12px;
-            padding: 10px 16px;
-            background: rgba(255, 0, 0, 0.08);
-            border: 1px solid rgba(255, 0, 0, 0.15);
-            border-radius: var(--radius-sm);
-            color: #ff6b6b;
-            font-family: var(--font-main);
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .sidebar-footer .logout-btn:hover {
-            background: rgba(255, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
+        .sidebar { width: 260px; background: rgba(58,33,22,0.95); backdrop-filter: blur(20px); border-right: 1px solid rgba(217,177,110,0.1); height: 100vh; position: fixed; top: 0; left: 0; padding: 24px 0; display: flex; flex-direction: column; overflow-y: auto; z-index: 100; transition: var(--transition); }
+        .sidebar-brand { padding: 0 24px 24px; border-bottom: 1px solid rgba(217,177,110,0.1); display: flex; align-items: center; gap: 12px; }
+        .sidebar-brand .logo-icon { width: auto; height: 1.6cm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .sidebar-brand .logo-icon img { height: 100%; width: auto; object-fit: contain; }
+        .sidebar-brand .brand-text { display: flex; flex-direction: column; }
+        .sidebar-brand .brand-text .brand-name { font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: 1px; }
+        .sidebar-brand .brand-text .brand-sub { font-size: 0.55rem; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+        .sidebar-menu { padding: 24px 12px; flex: 1; }
+        .sidebar-menu .menu-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.2); padding: 0 12px; margin-bottom: 12px; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius-sm); color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition); font-size: 0.85rem; font-weight: 500; }
+        .sidebar-menu a:hover { background: rgba(217,177,110,0.08); color: var(--white); }
+        .sidebar-menu a.active { background: rgba(217,177,110,0.12); color: var(--gold); border: 1px solid rgba(217,177,110,0.15); }
+        .sidebar-menu a i { width: 20px; text-align: center; font-size: 1rem; }
+        .sidebar-menu a .badge { margin-left: auto; background: var(--gold); color: var(--bg-dark); font-size: 0.6rem; padding: 2px 8px; border-radius: var(--radius-full); font-weight: 700; }
+        .sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(217,177,110,0.1); }
+        .sidebar-footer .user-info { display: flex; align-items: center; gap: 12px; }
+        .sidebar-footer .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-weight: 700; font-size: 0.9rem; }
+        .sidebar-footer .user-name { font-size: 0.85rem; font-weight: 600; color: var(--white); }
+        .sidebar-footer .user-role { font-size: 0.65rem; color: rgba(255,255,255,0.3); }
+        .sidebar-footer .logout-btn { margin-top: 12px; padding: 10px 16px; background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.15); border-radius: var(--radius-sm); color: #ff6b6b; font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .sidebar-footer .logout-btn:hover { background: rgba(255,0,0,0.15); transform: translateY(-2px); }
 
         /* ===== MAIN CONTENT ===== */
-        .main-content {
-            margin-left: 260px;
-            padding: 32px 40px;
-            width: 100%;
-            min-height: 100vh;
-        }
+        .main-content { margin-left: 260px; padding: 32px 40px; width: 100%; min-height: 100vh; }
+        .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(217,177,110,0.08); }
+        .topbar h1 { font-size: 1.5rem; font-weight: 700; color: var(--white); }
+        .topbar h1 small { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.3); margin-left: 12px; }
+        .topbar-actions { display: flex; align-items: center; gap: 16px; }
+        .topbar-actions .session-time { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+        .topbar-actions .btn-logout { padding: 10px 20px; background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.2); border-radius: var(--radius-full); color: #ff6b6b; font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .topbar-actions .btn-logout:hover { background: rgba(255,0,0,0.2); transform: translateY(-2px); }
+        .topbar-actions .btn-logout i { margin-right: 8px; }
 
-        /* ===== TOP BAR ===== */
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(217, 177, 110, 0.08);
-        }
+        /* ===== STATS ===== */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
+        .stat-card { background: rgba(255,248,237,0.04); border: 1px solid rgba(217,177,110,0.08); border-radius: var(--radius); padding: 24px; transition: var(--transition); }
+        .stat-card:hover { background: rgba(255,248,237,0.06); border-color: rgba(217,177,110,0.15); transform: translateY(-2px); }
+        .stat-card .stat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(217,177,110,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gold); margin-bottom: 12px; }
+        .stat-card .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--white); line-height: 1; }
+        .stat-card .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 4px; }
+        .stat-card .stat-change { display: inline-block; font-size: 0.7rem; font-weight: 600; margin-top: 8px; padding: 2px 10px; border-radius: var(--radius-full); }
+        .stat-card .stat-change.up { background: rgba(16,185,129,0.15); color: #10b981; }
+        .stat-card .stat-change.down { background: rgba(239,68,68,0.15); color: #ef4444; }
 
-        .topbar h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
+        /* ===== RECENT POSTS ===== */
+        .recent-posts { background: rgba(255,248,237,0.04); border: 1px solid rgba(217,177,110,0.08); border-radius: var(--radius); padding: 24px; }
+        .recent-posts .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .recent-posts .header .title { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+        .recent-posts .header .link { color: var(--gold); font-size: 0.8rem; text-decoration: none; }
+        .post-item { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(217,177,110,0.05); }
+        .post-item:last-child { border-bottom: none; }
+        .post-item .thumb { width: 48px; height: 48px; border-radius: var(--radius-sm); background: rgba(217,177,110,0.1); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
+        .post-item .info { flex: 1; }
+        .post-item .info .title { font-size: 0.85rem; font-weight: 600; color: var(--white); }
+        .post-item .info .meta { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .post-item .status { font-size: 0.65rem; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-full); }
+        .post-item .status.published { background: rgba(16,185,129,0.12); color: #10b981; }
+        .post-item .status.draft { background: rgba(251,191,36,0.12); color: #fbbf24; }
 
-        .topbar h1 small {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.3);
-            margin-left: 12px;
-        }
-
-        .topbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .topbar-actions .session-time {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .topbar-actions .btn-logout {
-            padding: 10px 20px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            border-radius: var(--radius-full);
-            color: #ff6b6b;
-            font-family: var(--font-main);
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .topbar-actions .btn-logout:hover {
-            background: rgba(255, 0, 0, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .topbar-actions .btn-logout i {
-            margin-right: 8px;
-        }
-
-        /* ===== STATS CARDS ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: rgba(255, 248, 237, 0.04);
-            border: 1px solid rgba(217, 177, 110, 0.08);
-            border-radius: var(--radius);
-            padding: 24px;
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            background: rgba(255, 248, 237, 0.06);
-            border-color: rgba(217, 177, 110, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .stat-card .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(217, 177, 110, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .stat-card .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
-        }
-
-        .stat-card .stat-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 4px;
-        }
-
-        .stat-card .stat-change {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-top: 8px;
-            padding: 2px 10px;
-            border-radius: var(--radius-full);
-        }
-
-        .stat-card .stat-change.up {
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-        }
-
-        .stat-card .stat-change.down {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-        }
-
-        /* ===== LGPD FOOTER ===== */
-        .lgpd-footer {
-            margin-top: 40px;
-            padding: 16px 24px;
-            background: rgba(255, 248, 237, 0.02);
-            border: 1px solid rgba(217, 177, 110, 0.05);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .lgpd-footer .lgpd-text {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .lgpd-footer .lgpd-text a {
-            color: var(--gold);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .lgpd-footer .lgpd-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .lgpd-footer .lgpd-status .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .lgpd-footer .lgpd-status .dot.green {
-            background: #10b981;
-        }
-
-        .lgpd-footer .lgpd-status .dot.red {
-            background: #ef4444;
-        }
+        /* ===== LGPD ===== */
+        .lgpd-footer { margin-top: 40px; padding: 16px 24px; background: rgba(255,248,237,0.02); border: 1px solid rgba(217,177,110,0.05); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .lgpd-footer .lgpd-text { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .lgpd-footer .lgpd-text a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+        .lgpd-footer .lgpd-status { display: flex; align-items: center; gap: 8px; font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+        .lgpd-footer .lgpd-status .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .lgpd-footer .lgpd-status .dot.green { background: #10b981; }
+        .lgpd-footer .lgpd-status .dot.red { background: #ef4444; }
 
         /* ===== RESPONSIVO ===== */
-        @media (max-width: 1024px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
-            .sidebar {
-                width: 72px;
-                padding: 16px 0;
-            }
-            .sidebar-brand .brand-text,
-            .sidebar-menu .menu-label,
-            .sidebar-menu a span,
-            .sidebar-footer .user-info>div {
-                display: none;
-            }
-            .sidebar-menu a {
-                justify-content: center;
-                padding: 14px;
-            }
-            .sidebar-menu a i {
-                font-size: 1.2rem;
-            }
-            .sidebar-brand .logo-icon {
-                height: 1.2cm;
-            }
-            .sidebar-footer .logout-btn span {
-                display: none;
-            }
-            .main-content {
-                margin-left: 72px;
-                padding: 20px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .topbar h1 small {
-                display: none;
-            }
-            .lgpd-footer {
-                flex-direction: column;
-                text-align: center;
-            }
+            .sidebar { width: 72px; padding: 16px 0; }
+            .sidebar-brand .brand-text, .sidebar-menu .menu-label, .sidebar-menu a span, .sidebar-footer .user-info>div { display: none; }
+            .sidebar-menu a { justify-content: center; padding: 14px; }
+            .sidebar-menu a i { font-size: 1.2rem; }
+            .sidebar-brand .logo-icon { height: 1.2cm; }
+            .sidebar-footer .logout-btn span { display: none; }
+            .main-content { margin-left: 72px; padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .topbar h1 small { display: none; }
+            .lgpd-footer { flex-direction: column; text-align: center; }
         }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .main-content {
-                padding: 16px;
-            }
-            .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            .sidebar {
-                width: 60px;
-            }
-            .sidebar-brand .logo-icon {
-                height: 1cm;
-            }
-        }
+        @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } .main-content { padding: 16px; } .topbar { flex-direction: column; align-items: flex-start; gap: 12px; } .sidebar { width: 60px; } .sidebar-brand .logo-icon { height: 1cm; } }
     </style>
 </head>
 <body>
@@ -502,70 +136,27 @@
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="logo-icon">
-                <img src="/logo.png" alt="CONNECTA">
-            </div>
+            <div class="logo-icon"><img src="/logo.png" alt="CONNECTA"></div>
             <div class="brand-text">
                 <span class="brand-name">CONNECTA</span>
                 <span class="brand-sub">Painel Administrativo</span>
             </div>
         </div>
-
         <nav class="sidebar-menu">
             <div class="menu-label">Principal</div>
-            <a href="#" class="active">
-                <i class="fas fa-th-large"></i>
-                <span>Dashboard</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-newspaper"></i>
-                <span>Notícias</span>
-                <span class="badge">12</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-tags"></i>
-                <span>Categorias</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-users"></i>
-                <span>Autores</span>
-            </a>
-
+            <a href="#" class="active"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="#"><i class="fas fa-newspaper"></i><span>Notícias</span><span class="badge">12</span></a>
+            <a href="#"><i class="fas fa-tags"></i><span>Categorias</span></a>
+            <a href="#"><i class="fas fa-users"></i><span>Autores</span></a>
             <div class="menu-label" style="margin-top:24px;">Conteúdo</div>
-            <a href="#">
-                <i class="fas fa-file-alt"></i>
-                <span>Rascunhos</span>
-                <span class="badge">3</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-clock"></i>
-                <span>Agendados</span>
-                <span class="badge">2</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-image"></i>
-                <span>Mídias</span>
-            </a>
-
+            <a href="#"><i class="fas fa-file-alt"></i><span>Rascunhos</span><span class="badge">3</span></a>
+            <a href="#"><i class="fas fa-clock"></i><span>Agendados</span><span class="badge">2</span></a>
+            <a href="#"><i class="fas fa-image"></i><span>Mídias</span></a>
             <div class="menu-label" style="margin-top:24px;">Configurações</div>
-            <a href="#">
-                <i class="fas fa-search"></i>
-                <span>SEO</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-cog"></i>
-                <span>Configurações</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-user-shield"></i>
-                <span>Usuários</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-shield-alt"></i>
-                <span>Segurança</span>
-            </a>
+            <a href="#"><i class="fas fa-search"></i><span>SEO</span></a>
+            <a href="#"><i class="fas fa-cog"></i><span>Configurações</span></a>
+            <a href="#"><i class="fas fa-user-shield"></i><span>Usuários</span></a>
         </nav>
-
         <div class="sidebar-footer">
             <div class="user-info">
                 <div class="user-avatar">A</div>
@@ -574,94 +165,52 @@
                     <div class="user-role">Super Administrador</div>
                 </div>
             </div>
-            <button class="logout-btn" id="logoutBtn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Sair</span>
-            </button>
+            <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button>
         </div>
     </aside>
 
     <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content">
-        <!-- Topbar -->
         <div class="topbar">
-            <h1>
-                Dashboard
-                <small>Bem-vindo de volta, Administrador</small>
-            </h1>
+            <h1>Dashboard <small>Bem-vindo de volta, Administrador</small></h1>
             <div class="topbar-actions">
                 <span class="session-time" id="sessionTime">Sessão ativa</span>
-                <button class="btn-logout" id="topLogoutBtn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Sair
-                </button>
+                <button class="btn-logout" id="topLogoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>
             </div>
         </div>
 
         <!-- Stats -->
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
-                <div class="stat-number">12</div>
-                <div class="stat-label">Total de Artigos</div>
-                <span class="stat-change up">+3 este mês</span>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-eye"></i></div>
-                <div class="stat-number">4.8k</div>
-                <div class="stat-label">Visualizações</div>
-                <span class="stat-change up">+12% esta semana</span>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number">156</div>
-                <div class="stat-label">Visitantes Únicos</div>
-                <span class="stat-change up">+8% esta semana</span>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
-                <div class="stat-number">89</div>
-                <div class="stat-label">Assinantes Newsletter</div>
-                <span class="stat-change up">+5 novos</span>
-            </div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-newspaper"></i></div><div class="stat-number">12</div><div class="stat-label">Total de Artigos</div><span class="stat-change up">+3 este mês</span></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-eye"></i></div><div class="stat-number">4.8k</div><div class="stat-label">Visualizações</div><span class="stat-change up">+12% esta semana</span></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number">156</div><div class="stat-label">Visitantes Únicos</div><span class="stat-change up">+8% esta semana</span></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-envelope"></i></div><div class="stat-number">89</div><div class="stat-label">Assinantes Newsletter</div><span class="stat-change up">+5 novos</span></div>
         </div>
 
         <!-- Recent Posts -->
-        <div style="background:rgba(255,248,237,0.04);border:1px solid rgba(217,177,110,0.08);border-radius:var(--radius);padding:24px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-                <span style="font-size:0.9rem;font-weight:600;color:var(--white);">Últimas Publicações</span>
-                <a href="#" style="color:var(--gold);font-size:0.8rem;text-decoration:none;">Ver todas →</a>
+        <div class="recent-posts">
+            <div class="header">
+                <span class="title">Últimas Publicações</span>
+                <a href="#" class="link">Ver todas →</a>
             </div>
-
-            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
-                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
-                <div style="flex:1;">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">Reforma Tributária: O que muda para sua empresa em 2025</div>
-                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">14/07/2025 • 5 min de leitura</div>
-                </div>
-                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(16,185,129,0.12);color:#10b981;">Publicado</span>
+            <div class="post-item">
+                <div class="thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="info"><div class="title">Reforma Tributária: O que muda para sua empresa em 2025</div><div class="meta">14/07/2025 • 5 min de leitura</div></div>
+                <span class="status published">Publicado</span>
             </div>
-
-            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
-                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
-                <div style="flex:1;">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">MEI: Guia completo para não perder seu CNPJ</div>
-                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">12/07/2025 • 8 min de leitura</div>
-                </div>
-                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(16,185,129,0.12);color:#10b981;">Publicado</span>
+            <div class="post-item">
+                <div class="thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="info"><div class="title">MEI: Guia completo para não perder seu CNPJ</div><div class="meta">12/07/2025 • 8 min de leitura</div></div>
+                <span class="status published">Publicado</span>
             </div>
-
-            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
-                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
-                <div style="flex:1;">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div>
-                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">10/07/2025 • 6 min de leitura</div>
-                </div>
-                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(251,191,36,0.12);color:#fbbf24;">Rascunho</span>
+            <div class="post-item">
+                <div class="thumb"><i class="fas fa-file-alt"></i></div>
+                <div class="info"><div class="title">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div><div class="meta">10/07/2025 • 6 min de leitura</div></div>
+                <span class="status draft">Rascunho</span>
             </div>
         </div>
 
-        <!-- ===== LGPD FOOTER ===== -->
+        <!-- LGPD -->
         <div class="lgpd-footer">
             <div class="lgpd-text">
                 <i class="fas fa-shield-alt" style="color:var(--gold);margin-right:8px;"></i>
@@ -678,29 +227,24 @@
         </div>
     </main>
 
-    <!-- ===== POLÍTICA DE PRIVACIDADE (Modal) ===== -->
+    <!-- ===== PRIVACY MODAL ===== -->
     <div id="privacyModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:99999;align-items:center;justify-content:center;padding:20px;">
         <div style="background:var(--bg-dark);max-width:600px;width:100%;border-radius:var(--radius);padding:40px;color:var(--white);max-height:80vh;overflow-y:auto;border:1px solid rgba(217,177,110,0.1);">
             <h2 style="color:var(--gold);margin-bottom:20px;font-size:1.5rem;">Política de Privacidade</h2>
             <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.8;">
-                <p><strong>Última atualização:</strong> Julho 2025</p>
-                <br>
-                <p>A CONNECTA respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).</p>
-                <br>
+                <p><strong>Última atualização:</strong> Julho 2025</p><br>
+                <p>A CONNECTA respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).</p><br>
                 <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">1. Dados Coletados</h3>
                 <p>Coletamos apenas os dados necessários para:</p>
                 <ul style="padding-left:20px;margin:8px 0;">
                     <li>• Identificação e autenticação no sistema</li>
                     <li>• Gestão de acesso ao painel administrativo</li>
                     <li>• Registro de atividades para segurança</li>
-                </ul>
-                <br>
+                </ul><br>
                 <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">2. Cookies</h3>
-                <p>Utilizamos cookies de sessão para manter sua autenticação. Estes cookies são temporários e expiram ao final da sessão.</p>
-                <br>
+                <p>Utilizamos cookies de sessão para manter sua autenticação. Estes cookies são temporários e expiram ao final da sessão.</p><br>
                 <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">3. Compartilhamento</h3>
-                <p>Não compartilhamos seus dados com terceiros. Todos os dados são armazenados localmente e utilizados exclusivamente para a gestão do sistema.</p>
-                <br>
+                <p>Não compartilhamos seus dados com terceiros. Todos os dados são armazenados localmente e utilizados exclusivamente para a gestão do sistema.</p><br>
                 <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">4. Direitos do Titular</h3>
                 <p>Você tem o direito de:</p>
                 <ul style="padding-left:20px;margin:8px 0;">
@@ -708,8 +252,7 @@
                     <li>• Corrigir dados incorretos</li>
                     <li>• Solicitar a exclusão</li>
                     <li>• Revogar o consentimento</li>
-                </ul>
-                <br>
+                </ul><br>
                 <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">5. Contato</h3>
                 <p>Para questões sobre privacidade, entre em contato pelo e-mail: <strong style="color:var(--gold);">contato@connectacontabilidade.com.br</strong></p>
             </div>
@@ -719,131 +262,55 @@
 
     <script>
         // ============================================
-        // VERIFICAR AUTENTICAÇÃO
+        // VERIFICAR AUTENTICAÇÃO - CORRIGIDO
         // ============================================
         (function checkAuth() {
+            console.log('Verificando autenticação...');
             const session = localStorage.getItem('connecta_admin');
+            console.log('Session data:', session);
+            
             if (!session) {
+                console.log('Nenhuma sessão encontrada, redirecionando para login...');
                 window.location.href = '/admin/login.html';
                 return;
             }
 
             try {
                 const data = JSON.parse(session);
+                console.log('Session parsed:', data);
+                
                 if (!data.loggedIn) {
+                    console.log('Usuário não está logado, redirecionando...');
+                    localStorage.removeItem('connecta_admin');
                     window.location.href = '/admin/login.html';
                     return;
                 }
-                // Verificar expiração (24h)
+                
                 if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
+                    console.log('Sessão expirada, redirecionando...');
                     localStorage.removeItem('connecta_admin');
                     window.location.href = '/admin/login.html';
                     return;
                 }
-                // Verificar CSRF
-                if (!data.sessionId || data.sessionId.length < 10) {
-                    localStorage.removeItem('connecta_admin');
-                    window.location.href = '/admin/login.html';
-                    return;
-                }
+                
+                console.log('Autenticação OK! Dashboard carregado.');
             } catch (e) {
+                console.error('Erro ao ler sessão:', e);
+                localStorage.removeItem('connecta_admin');
                 window.location.href = '/admin/login.html';
             }
         })();
 
         // ============================================
-        // LGPD - MOSTRAR DATA DO CONSENTIMENTO
-        // ============================================
-        function showConsentDate() {
-            const date = localStorage.getItem('lgpd_date');
-            if (date) {
-                const d = new Date(date);
-                document.getElementById('consentDate').textContent =
-                    'Consentido em: ' + d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR');
-            } else {
-                document.getElementById('consentDate').textContent = 'Consentimento não registrado';
-            }
-        }
-        showConsentDate();
-
-        // ============================================
-        // POLÍTICA DE PRIVACIDADE
-        // ============================================
-        function showPrivacyPolicy() {
-            document.getElementById('privacyModal').style.display = 'flex';
-        }
-
-        function closePrivacyPolicy() {
-            document.getElementById('privacyModal').style.display = 'none';
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closePrivacyPolicy();
-            }
-        });
-
-        // ============================================
         // LOGOUT
         // ============================================
         function performLogout() {
-            // Registrar evento de logout
-            const logs = JSON.parse(localStorage.getItem('security_logs') || '[]');
-            logs.push({
-                event: 'logout',
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('security_logs', JSON.stringify(logs));
-
             localStorage.removeItem('connecta_admin');
             window.location.href = '/admin/login.html';
         }
 
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            performLogout();
-        });
-
-        document.getElementById('topLogoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            performLogout();
-        });
-
         // ============================================
-        // BLOQUEIO DE TELA (Prevenir screenshot)
-        // ============================================
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                const screenLock = document.getElementById('screenLock');
-                screenLock.classList.add('active');
-
-                setTimeout(() => {
-                    if (document.hidden) {
-                        performLogout();
-                    }
-                }, 30000);
-            } else {
-                const screenLock = document.getElementById('screenLock');
-                const session = localStorage.getItem('connecta_admin');
-                if (session) {
-                    try {
-                        const data = JSON.parse(session);
-                        if (data.loggedIn) {
-                            screenLock.classList.remove('active');
-                        } else {
-                            performLogout();
-                        }
-                    } catch (e) {
-                        performLogout();
-                    }
-                } else {
-                    performLogout();
-                }
-            }
-        });
-
-        // ============================================
-        // INATIVIDADE - Logout automático
+        // INATIVIDADE
         // ============================================
         let inactivityTimer;
 
@@ -860,23 +327,13 @@
         document.addEventListener('keydown', resetInactivityTimer);
         document.addEventListener('click', resetInactivityTimer);
         document.addEventListener('scroll', resetInactivityTimer);
-        document.addEventListener('touchstart', resetInactivityTimer);
-
-        // ============================================
-        // PREVENIR CLIQUE DIREITO
-        // ============================================
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
 
         // ============================================
         // PREVENIR DEV TOOLS
         // ============================================
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'u')) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
                 return false;
             }
@@ -895,19 +352,45 @@
                     if (remaining > 0) {
                         const hours = Math.floor(remaining / 60);
                         const mins = remaining % 60;
-                        document.getElementById('sessionTime').textContent =
-                            `Sessão: ${hours}h ${mins}m restantes`;
+                        const el = document.getElementById('sessionTime');
+                        if (el) el.textContent = `Sessão: ${hours}h ${mins}m restantes`;
                     } else {
                         performLogout();
                     }
-                } catch (e) {
-                    // Ignorar
-                }
+                } catch (e) {}
             }
         }
 
         updateSessionTime();
         setInterval(updateSessionTime, 60000);
+
+        // ============================================
+        // BOTÕES DE LOGOUT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) logoutBtn.addEventListener('click', function(e) { e.preventDefault(); performLogout(); });
+            const topLogoutBtn = document.getElementById('topLogoutBtn');
+            if (topLogoutBtn) topLogoutBtn.addEventListener('click', function(e) { e.preventDefault(); performLogout(); });
+        });
+
+        // ============================================
+        // PRIVACY POLICY
+        // ============================================
+        function showPrivacyPolicy() { document.getElementById('privacyModal').style.display = 'flex'; }
+        function closePrivacyPolicy() { document.getElementById('privacyModal').style.display = 'none'; }
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrivacyPolicy(); });
+
+        // ============================================
+        // LGPD - CONSENT DATE
+        // ============================================
+        const consentDate = localStorage.getItem('lgpd_date');
+        if (consentDate) {
+            const d = new Date(consentDate);
+            document.getElementById('consentDate').textContent = 'Consentido em: ' + d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR');
+        } else {
+            document.getElementById('consentDate').textContent = 'Consentimento não registrado';
+        }
     </script>
 
 </body>
