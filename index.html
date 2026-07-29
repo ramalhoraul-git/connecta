@@ -9,13 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* ============================================
-           TODOS OS ESTILOS (MANTIDOS)
-           ============================================ */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
             --bg-light: #8A5A35;
+            --bg-header-footer: #4A2C1F;
             --gold: #D9B16E;
             --gold-light: #E5C27A;
             --gold-bright: #F5DE9A;
@@ -36,9 +34,7 @@
             --font-display: 'Playfair Display', serif;
         }
 
-        *,
-        *::before,
-        *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -188,7 +184,7 @@
         }
 
         /* ============================================
-           NAVBAR
+           NAVBAR - Fundo #4A2C1F
            ============================================ */
         .navbar {
             position: fixed;
@@ -196,21 +192,19 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 18px 0;
+            padding: 12px 0;
             transition: var(--transition);
-            background: transparent;
+            background: #4A2C1F;
         }
 
         .navbar.scrolled {
-            background: rgba(58, 33, 22, 0.92);
-            backdrop-filter: blur(24px);
-            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.2);
-            padding: 10px 0;
+            background: #4A2C1F;
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
+            padding: 8px 0;
         }
 
-        .navbar.scrolled .nav-logo .logo-name,
         .navbar.scrolled .nav-link {
-            color: var(--white);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .nav-container {
@@ -225,66 +219,25 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
         .logo-icon {
             width: auto;
             height: 2cm;
-            background: transparent !important;
-            border: none !important;
-            border-radius: 0 !important;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 0;
         }
 
         .logo-icon img {
             height: 100%;
             width: auto;
             object-fit: contain;
-            border-radius: 0 !important;
-            border: none !important;
-        }
-
-        .navbar.scrolled .logo-icon {
-            background: transparent !important;
-            border: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .logo-icon {
-                height: 1.6cm;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-icon {
-                height: 1.4cm;
-            }
         }
 
         .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-name {
-            font-weight: 800;
-            font-size: 1.15rem;
-            color: var(--white);
-            letter-spacing: 2px;
-            transition: var(--transition);
-        }
-
-        .logo-tagline {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            transition: var(--transition);
+            display: none !important;
         }
 
         .nav-menu {
@@ -361,10 +314,6 @@
             transition: var(--transition);
         }
 
-        .navbar.scrolled .hamburger span {
-            background: var(--white);
-        }
-
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 6px);
         }
@@ -373,6 +322,43 @@
         }
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .logo-icon {
+                height: 1.6cm;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 340px;
+                height: 100vh;
+                background: #4A2C1F;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                transition: var(--transition);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+            }
+            .nav-menu.active {
+                right: 0;
+            }
+            .nav-menu .nav-link {
+                color: rgba(255, 255, 255, 0.9) !important;
+                font-size: 1.1rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-icon {
+                height: 1.4cm;
+            }
         }
 
         /* ============================================
@@ -534,31 +520,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
             border: 1px solid rgba(217, 177, 110, 0.15);
             backdrop-filter: blur(10px);
             color: var(--white);
             overflow: hidden;
+            padding: 20px;
         }
 
         .hero-image-placeholder img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 4px solid var(--gold);
-        }
-
-        .hero-image-placeholder span {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--gold-bright);
-        }
-
-        .hero-image-placeholder small {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
         }
 
         .floating-card {
@@ -623,7 +596,7 @@
         }
 
         /* ============================================
-           PAIN
+           PAIN SECTION
            ============================================ */
         .pain-section {
             padding: 100px 0;
@@ -673,7 +646,7 @@
         }
 
         /* ============================================
-           ABOUT
+           ABOUT SECTION
            ============================================ */
         .about-section {
             padding: 100px 0;
@@ -797,7 +770,7 @@
         }
 
         /* ============================================
-           SERVICES
+           SERVICES SECTION
            ============================================ */
         .services-section {
             padding: 100px 0;
@@ -893,7 +866,7 @@
         }
 
         /* ============================================
-           DIFERENCIAIS
+           DIFERENCIAIS (WHY)
            ============================================ */
         .why-section {
             padding: 100px 0;
@@ -959,7 +932,6 @@
             background: var(--white);
             position: relative;
         }
-
         .blog-carousel-section::before {
             content: '';
             position: absolute;
@@ -1250,35 +1222,13 @@
         }
 
         /* ============================================
-           DEPOIMENTOS ULTRA PREMIUM
+           DEPOIMENTOS
            ============================================ */
         .testimonials-premium {
             padding: 100px 0 80px;
             background: linear-gradient(165deg, var(--bg-dark) 0%, #1a0f0a 100%);
             position: relative;
             overflow: hidden;
-        }
-
-        .testimonials-premium::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -30%;
-            width: 80%;
-            height: 100%;
-            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .testimonials-premium::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -20%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.04) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .testimonials-premium .section-tag {
@@ -1295,19 +1245,23 @@
             color: rgba(255, 255, 255, 0.4);
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
+        .testimonials-carousel-wrapper {
             position: relative;
-            z-index: 2;
-            margin-bottom: 48px;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .testimonials-carousel-track {
+            display: flex;
+            gap: 28px;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
         }
 
         .testimonial-card-premium {
+            min-width: calc(50% - 14px);
             background: rgba(255, 248, 237, 0.03);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(217, 177, 110, 0.06);
             border-radius: var(--radius);
             padding: 36px 32px 28px;
@@ -1316,6 +1270,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .testimonial-card-premium::before {
@@ -1517,6 +1472,91 @@
             font-size: 0.8rem;
         }
 
+        .carousel-testimonials-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .carousel-testimonials-controls .carousel-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .carousel-testimonials-controls .carousel-btn:hover {
+            background: rgba(217, 177, 110, 0.1);
+            border-color: var(--gold);
+        }
+
+        .carousel-testimonials-controls .carousel-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-testimonials-controls .carousel-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .carousel-testimonials-controls .carousel-dots .dot.active {
+            background: var(--gold);
+            width: 28px;
+            border-radius: 4px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            padding: 28px 40px;
+            background: rgba(255, 248, 237, 0.03);
+            border: 1px solid rgba(217, 177, 110, 0.06);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .trust-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .trust-badge-item i {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .trust-badge-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(217, 177, 110, 0.08);
+        }
+
         /* ============================================
            FAQ
            ============================================ */
@@ -1698,13 +1738,14 @@
         }
 
         /* ============================================
-           FOOTER
+           FOOTER - Fundo #4A2C1F
            ============================================ */
         .footer {
-            background: var(--bg-dark);
+            background: #4A2C1F;
             padding: 60px 0 0;
             color: rgba(255, 255, 255, 0.7);
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -1712,34 +1753,39 @@
             padding-bottom: 40px;
             border-bottom: 1px solid rgba(217, 177, 110, 0.1);
         }
+
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
             margin-bottom: 16px;
         }
+
         .footer-logo .logo-icon {
-            background: transparent !important;
-            border: none !important;
-            height: 1.6cm;
+            height: 2cm;
             width: auto;
         }
+
         .footer-logo .logo-icon img {
             height: 100%;
             width: auto;
             object-fit: contain;
-            border-radius: 0 !important;
-            border: none !important;
         }
+
+        .footer-logo .logo-text {
+            display: none !important;
+        }
+
         .footer-brand p {
             font-size: 0.9rem;
             margin-bottom: 20px;
             line-height: 1.6;
         }
+
         .footer-social {
             display: flex;
             gap: 12px;
         }
+
         .footer-social a {
             width: 44px;
             height: 44px;
@@ -1753,17 +1799,20 @@
             transition: var(--transition);
             border: 1px solid rgba(217, 177, 110, 0.1);
         }
+
         .footer-social a:hover {
             background: var(--gold);
             color: var(--bg-dark);
             transform: translateY(-3px);
             border-color: var(--gold);
         }
+
         .footer-links h4 {
             color: var(--white);
             font-size: 1rem;
             margin-bottom: 20px;
         }
+
         .footer-links li {
             margin-bottom: 10px;
             font-size: 0.9rem;
@@ -1771,22 +1820,27 @@
             align-items: center;
             gap: 8px;
         }
+
         .footer-links a {
             color: rgba(255, 255, 255, 0.6);
             transition: var(--transition);
         }
+
         .footer-links a:hover {
             color: var(--gold);
             padding-left: 4px;
         }
+
         .footer-links .blog-link {
             color: var(--gold);
             font-weight: 500;
         }
+
         .footer-links .blog-link:hover {
             color: var(--gold-light);
             padding-left: 4px;
         }
+
         .footer-bottom {
             padding: 24px 0;
             text-align: center;
@@ -1794,6 +1848,7 @@
             border-top: 1px solid rgba(217, 177, 110, 0.05);
             margin-top: 20px;
         }
+
         .footer-bottom p+p {
             margin-top: 6px;
         }
@@ -1819,10 +1874,12 @@
             transition: var(--transition);
             animation: whatsapp-bounce 3s ease-in-out infinite;
         }
+
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
         }
+
         .whatsapp-tooltip {
             position: absolute;
             right: 74px;
@@ -1839,10 +1896,12 @@
             transition: var(--transition);
             pointer-events: none;
         }
+
         .whatsapp-float:hover .whatsapp-tooltip {
             opacity: 1;
             transform: translateX(0);
         }
+
         @keyframes whatsapp-bounce {
             0%,
             100% {
@@ -1876,10 +1935,12 @@
             align-items: center;
             justify-content: center;
         }
+
         .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
+
         .back-to-top:hover {
             background: var(--gold);
             color: var(--bg-dark);
@@ -1924,48 +1985,11 @@
            RESPONSIVO
            ============================================ */
         @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-ctas {
-                justify-content: center;
-            }
-            .hero-trust {
-                justify-content: center;
-            }
-            .hero-visual {
-                display: none;
-            }
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .why-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .about-experience {
-                position: relative;
-                right: 0;
-                bottom: 0;
-                margin: 20px auto 0;
-            }
-            .about-values {
-                align-items: center;
-            }
-            .value-item {
-                max-width: 400px;
-                width: 100%;
-            }
-            .about-content .btn {
-                display: inline-flex;
             }
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1976,9 +2000,6 @@
             .blog-carousel-card {
                 min-width: calc(50% - 14px);
             }
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
             .trust-badge {
                 gap: 20px;
                 padding: 20px 24px;
@@ -1986,31 +2007,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 340px;
-                height: 100vh;
-                background: var(--bg-dark);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 24px;
-                transition: var(--transition);
-                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-menu .nav-link {
-                color: rgba(255, 255, 255, 0.9) !important;
-                font-size: 1.1rem;
-            }
-            .hamburger {
-                display: flex;
-            }
             .services-grid {
                 grid-template-columns: 1fr;
             }
@@ -2021,46 +2017,10 @@
                 grid-template-columns: 1fr;
             }
             .blog-carousel-card {
-                min-width: calc(100% - 0px);
-            }
-            .hero-ctas {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn {
-                padding: 14px 28px;
-                font-size: 0.9rem;
-                min-height: 48px;
-            }
-            .contact-form-wrapper {
-                padding: 28px 22px;
-            }
-            .pain-solution {
-                flex-direction: column;
-            }
-            .floating-card {
-                display: none;
-            }
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            .testimonials-premium {
-                padding: 60px 0 40px;
+                min-width: 100%;
             }
             .testimonial-card-premium {
-                padding: 28px 20px 20px;
-            }
-            .testimonial-card-premium .quote-text {
-                font-size: 0.95rem;
-                line-height: 1.8;
-            }
-            .testimonial-card-premium .testimonial-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .testimonial-card-premium .author-verified {
-                margin-left: 0;
+                min-width: 100%;
             }
             .trust-badge {
                 flex-direction: column;
@@ -2071,12 +2031,19 @@
                 width: 60px;
                 height: 1px;
             }
-            .testimonial-card-premium .quote-icon svg {
-                width: 28px;
-                height: 22px;
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
             }
-            .logo-icon {
-                height: 1.6cm;
+            .contact-form-wrapper {
+                padding: 28px 22px;
+            }
+            .carousel-testimonials-controls {
+                gap: 16px;
+            }
+            .carousel-testimonials-controls .carousel-btn {
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -2108,12 +2075,8 @@
                 width: 42px;
                 height: 42px;
             }
-            .logo-icon {
-                height: 1.4cm;
-            }
-            .testimonial-card-premium .testimonial-header {
-                flex-direction: column;
-                gap: 8px;
+            .testimonial-card-premium {
+                padding: 28px 20px 20px;
             }
             .testimonial-card-premium .quote-text {
                 font-size: 0.9rem;
@@ -2121,9 +2084,6 @@
             .testimonial-card-premium .author-avatar {
                 width: 38px;
                 height: 38px;
-                font-size: 0.85rem;
-            }
-            .testimonial-card-premium .author-details .author-name {
                 font-size: 0.85rem;
             }
         }
@@ -2136,7 +2096,7 @@
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
                 <div class="logo-icon">
-                    <img src="/public/logo.png" alt="CONNECTA">
+                    <img src="/logo.png" alt="CONNECTA">
                 </div>
                 <div class="logo-text">
                     <span class="logo-name">CONNECTA</span>
@@ -2156,7 +2116,7 @@
                 <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
                 <li><a href="/blog.html" class="nav-link nav-link-blog">Blog</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="#contato" class="nav-link nav-cta">Fale Comigo</a></li>
+                <li><a href="#contato" class="nav-link nav-cta">Falar com Especialista</a></li>
             </ul>
         </div>
     </nav>
@@ -2182,7 +2142,7 @@
                 <div class="hero-ctas" data-aos="fade-up" data-delay="400">
                     <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA%20e%20gostaria%20de%20uma%20consultoria." class="btn btn-primary btn-glow" target="_blank">
                         <i class="fab fa-whatsapp"></i>
-                        Quero uma Consultoria Gratuita
+                        Falar com Especialista
                     </a>
                     <a href="#servicos" class="btn btn-outline">
                         <i class="fas fa-arrow-down"></i>
@@ -2208,9 +2168,7 @@
                 <div class="hero-image-wrapper">
                     <div class="hero-image-bg"></div>
                     <div class="hero-image-placeholder">
-                        <img src="/public/erilmafundadora.png" alt="Erilma Silva - Fundadora da CONNECTA">
-                        <span>Erilma Silva</span>
-                        <small>Fundadora da CONNECTA</small>
+                        <img src="/hero.png" alt="CONNECTA">
                     </div>
                     <div class="floating-card card-1">
                         <i class="fas fa-chart-line"></i>
@@ -2234,7 +2192,9 @@
         </div>
     </section>
 
-    <!-- ===== PROBLEMA ===== -->
+    <!-- ==========================================
+    PAIN SECTION
+    ========================================== -->
     <section class="pain-section" id="problema">
         <div class="container">
             <div class="pain-content" data-aos="fade-up">
@@ -2256,7 +2216,9 @@
         </div>
     </section>
 
-    <!-- ===== SOBRE ===== -->
+    <!-- ==========================================
+    ABOUT SECTION
+    ========================================== -->
     <section class="about-section" id="sobre">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -2266,7 +2228,7 @@
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-image-placeholder">
-                        <img src="/public/erilmacrc.png" alt="Erilma Silva - CRC Ativo">
+                        <img src="/erilmacrc.png" alt="Erilma Silva - CRC Ativo">
                         <span>Erilma Silva</span>
                         <small>CRC Ativo</small>
                     </div>
@@ -2313,14 +2275,16 @@
                         </div>
                     </div>
                     <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20conhecer%20melhor%20a%20CONNECTA." class="btn btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Falar com a Erilma
+                        <i class="fab fa-whatsapp"></i> Falar com Especialista
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVIÇOS ===== -->
+    <!-- ==========================================
+    SERVICES SECTION
+    ========================================== -->
     <section class="services-section" id="servicos">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -2333,56 +2297,58 @@
                     <div class="service-icon"><i class="fas fa-store"></i></div>
                     <h3>Simples Nacional</h3>
                     <p>Gestão completa para empresas do Simples, com planejamento tributário para você pagar apenas o necessário — dentro da lei.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="100">
                     <div class="service-icon"><i class="fas fa-id-card"></i></div>
                     <h3>Microempreendedor (MEI)</h3>
                     <p>Abertura, regularização e acompanhamento do seu MEI. Sem burocracia, sem dor de cabeça. Você empreende, nós cuidamos do resto.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="200">
                     <div class="service-icon"><i class="fas fa-user-tie"></i></div>
                     <h3>Autônomos</h3>
                     <p>Organização financeira, carnê-leão e declarações para profissionais liberais. Tenha controle total da sua vida fiscal.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card featured" data-aos="fade-up" data-delay="300">
                     <div class="service-badge">Mais procurado</div>
                     <div class="service-icon"><i class="fas fa-tractor"></i></div>
                     <h3>Produtores Rurais</h3>
                     <p>Gestão de custos, IRPF Rural, regularização e planejamento. Do campo à tranquilidade financeira — com quem entende sua realidade.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="400">
                     <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Imposto de Renda</h3>
                     <p>Declaração completa e estratégica. Não basta declarar — é preciso declarar de forma inteligente para você não perder dinheiro.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="500">
                     <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>Consultoria Financeira</h3>
                     <p>Análise profunda da saúde do seu negócio. Identificamos gargalos, oportunidades e traçamos o mapa para o crescimento sustentável.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="600">
                     <div class="service-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Reforma Tributária</h3>
                     <p>Antecipamos as mudanças para que sua única preocupação seja vender mais. Fique à frente enquanto outros ficam perdidos.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card" data-aos="fade-up" data-delay="700">
                     <div class="service-icon"><i class="fas fa-handshake-angle"></i></div>
                     <h3>BPO Financeiro</h3>
                     <p>Terceirize sua rotina financeira com segurança. Contas a pagar, receber, conciliação e relatórios — tudo organizado para você.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== DIFERENCIAIS ===== -->
+    <!-- ==========================================
+    DIFERENCIAIS
+    ========================================== -->
     <section class="why-section" id="diferenciais">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -2431,7 +2397,7 @@
     </section>
 
     <!-- ==========================================
-    CARROSSEL ULTRA PREMIUM - BLOG
+    CARROSSEL BLOG
     ========================================== -->
     <section class="blog-carousel-section" id="blog">
         <div class="container">
@@ -2467,7 +2433,7 @@
     </section>
 
     <!-- ==========================================
-    DEPOIMENTOS ULTRA PREMIUM (CORRIGIDOS)
+    DEPOIMENTOS - CARROSSEL AUTOMÁTICO
     ========================================== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
@@ -2477,158 +2443,146 @@
                 <p class="section-desc">Histórias reais de quem confiou na CONNECTA para transformar sua gestão financeira.</p>
             </div>
 
-            <div class="testimonials-grid">
-                <!-- Depoimento 1 - Raul -->
-                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="0">
-                    <div class="testimonial-header">
-                        <div class="quote-icon">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
-                                <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
-                                <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
-                            </svg>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <blockquote class="quote-text">
-                        "A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: <strong>transparência e segurança</strong>. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author-info">
-                            <div class="author-avatar">
-                                <span>R</span>
+            <div class="testimonials-carousel-wrapper">
+                <div class="testimonials-carousel-track" id="testimonialsCarouselTrack">
+                    <!-- Depoimento 1 - Raul -->
+                    <div class="testimonial-card-premium">
+                        <div class="testimonial-header">
+                            <div class="quote-icon">
+                                <svg width="36" height="28" viewBox="0 0 40 32" fill="none">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
+                                    <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
+                                </svg>
                             </div>
-                            <div class="author-details">
-                                <strong class="author-name">Raul Ramalho</strong>
-                                <span class="author-company">Vigorre • São Gonçalo/RJ</span>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <div class="author-verified">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Cliente verificado</span>
+                        <blockquote class="quote-text">
+                            "A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: <strong>transparência e segurança</strong>. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."
+                        </blockquote>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-info">
+                                <div class="author-avatar"><span>R</span></div>
+                                <div class="author-details">
+                                    <strong class="author-name">Raul Ramalho</strong>
+                                    <span class="author-company">Vigorre • São Gonçalo/RJ</span>
+                                </div>
+                            </div>
+                            <div class="author-verified">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cliente verificado</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Depoimento 2 - Daniele -->
-                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="100">
-                    <div class="testimonial-header">
-                        <div class="quote-icon">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
-                                <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
-                                <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
-                            </svg>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <blockquote class="quote-text">
-                        "O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá <strong>consciência real sobre os números</strong> e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author-info">
-                            <div class="author-avatar">
-                                <span>D</span>
+                    <!-- Depoimento 2 - Daniele -->
+                    <div class="testimonial-card-premium">
+                        <div class="testimonial-header">
+                            <div class="quote-icon">
+                                <svg width="36" height="28" viewBox="0 0 40 32" fill="none">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
+                                    <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
+                                </svg>
                             </div>
-                            <div class="author-details">
-                                <strong class="author-name">Daniele Aparecida</strong>
-                                <span class="author-company">Amovin • Rio Paranaíba/MG</span>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <div class="author-verified">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Cliente verificado</span>
+                        <blockquote class="quote-text">
+                            "O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá <strong>consciência real sobre os números</strong> e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."
+                        </blockquote>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-info">
+                                <div class="author-avatar"><span>D</span></div>
+                                <div class="author-details">
+                                    <strong class="author-name">Daniele Aparecida</strong>
+                                    <span class="author-company">Amovin • Rio Paranaíba/MG</span>
+                                </div>
+                            </div>
+                            <div class="author-verified">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cliente verificado</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Depoimento 3 - Gabriela (NOVO) -->
-                <div class="testimonial-card-premium" data-aos="fade-up" data-delay="200">
-                    <div class="testimonial-header">
-                        <div class="quote-icon">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
-                                <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
-                                <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
-                            </svg>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <blockquote class="quote-text">
-                        "Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço <strong>ágil, eficiente e muito profissional</strong>. Estou muito satisfeita!"
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author-info">
-                            <div class="author-avatar">
-                                <span>G</span>
+                    <!-- Depoimento 3 - Gabriela -->
+                    <div class="testimonial-card-premium">
+                        <div class="testimonial-header">
+                            <div class="quote-icon">
+                                <svg width="36" height="28" viewBox="0 0 40 32" fill="none">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
+                                    <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
+                                </svg>
                             </div>
-                            <div class="author-details">
-                                <strong class="author-name">Gabriela Melo</strong>
-                                <span class="author-company">Terapia Ocupacional • Rio Paranaíba/MG</span>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <div class="author-verified">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Cliente verificado</span>
+                        <blockquote class="quote-text">
+                            "Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço <strong>ágil, eficiente e muito profissional</strong>. Estou muito satisfeita!"
+                        </blockquote>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-info">
+                                <div class="author-avatar"><span>G</span></div>
+                                <div class="author-details">
+                                    <strong class="author-name">Gabriela Melo</strong>
+                                    <span class="author-company">Terapia Ocupacional • Rio Paranaíba/MG</span>
+                                </div>
+                            </div>
+                            <div class="author-verified">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cliente verificado</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Depoimento 4 - Daniela (NOVO) - Full Width -->
-                <div class="testimonial-card-premium testimonial-highlight" data-aos="fade-up" data-delay="300">
-                    <div class="testimonial-header">
-                        <div class="quote-icon">
-                            <svg width="40" height="32" viewBox="0 0 40 32" fill="none">
-                                <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
-                                <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
-                            </svg>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <blockquote class="quote-text">
-                        "Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com <strong>atenção, organização e muita disponibilidade</strong> para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author-info">
-                            <div class="author-avatar">
-                                <span>D</span>
+                    <!-- Depoimento 4 - Daniela Boaventura -->
+                    <div class="testimonial-card-premium">
+                        <div class="testimonial-header">
+                            <div class="quote-icon">
+                                <svg width="36" height="28" viewBox="0 0 40 32" fill="none">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12C0 18.6 5.4 24 12 24C10.8 24 9.6 23.4 8.4 22.8C6 21 4.8 18.6 4.8 15.6C4.8 11.4 8.4 7.8 12.6 7.8C13.8 7.8 15 8.4 16.2 9L16.2 3.6C14.4 1.2 11.4 0 8.4 0H12Z" fill="currentColor" opacity="0.15"/>
+                                    <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
+                                </svg>
                             </div>
-                            <div class="author-details">
-                                <strong class="author-name">Daniela Boaventura</strong>
-                                <span class="author-company">Fonoaudiologia • Rio Paranaíba/MG</span>
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <div class="author-verified">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Cliente verificado</span>
+                        <blockquote class="quote-text">
+                            "Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com <strong>atenção, organização e muita disponibilidade</strong> para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."
+                        </blockquote>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-info">
+                                <div class="author-avatar"><span>D</span></div>
+                                <div class="author-details">
+                                    <strong class="author-name">Daniela Boaventura</strong>
+                                    <span class="author-company">Fonoaudiologia • Rio Paranaíba/MG</span>
+                                </div>
+                            </div>
+                            <div class="author-verified">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cliente verificado</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="carousel-testimonials-controls">
+                <button class="carousel-btn" id="testimonialsPrev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-dots" id="testimonialsDots"></div>
+                <button class="carousel-btn" id="testimonialsNext" aria-label="Próximo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
             <!-- Trust Badge -->
-            <div class="trust-badge" data-aos="fade-up">
+            <div class="trust-badge">
                 <div class="trust-badge-item">
                     <i class="fas fa-users"></i>
                     <span>+50 clientes atendidos</span>
@@ -2781,7 +2735,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             <i class="fab fa-whatsapp"></i>
-                            Enviar via WhatsApp
+                            Falar com Especialista
                         </button>
                     </form>
                 </div>
@@ -2790,7 +2744,7 @@
     </section>
 
     <!-- ==========================================
-    FOOTER (COM BOTÃO PAINEL)
+    FOOTER
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2798,7 +2752,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <div class="logo-icon">
-                            <img src="/public/logo.png" alt="CONNECTA">
+                            <img src="/logo.png" alt="CONNECTA">
                         </div>
                         <div class="logo-text">
                             <span class="logo-name">CONNECTA</span>
@@ -2811,7 +2765,7 @@
                         <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
-                    <!-- BOTÃO PAINEL ADMIN -->
+                    <!-- BOTÃO PAINEL -->
                     <div style="margin-top:16px;">
                         <a href="/admin/login.html" class="btn btn-primary btn-small" style="background:rgba(217,177,110,0.15);color:var(--gold);border:1px solid rgba(217,177,110,0.2);">
                             <i class="fas fa-user-shield"></i>
@@ -2855,18 +2809,24 @@
         </div>
     </footer>
 
-    <!-- ===== WHATSAPP FLOAT ===== -->
+    <!-- ==========================================
+    WHATSAPP FLOAT
+    ========================================== -->
     <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Fale conosco!</span>
+        <span class="whatsapp-tooltip">Falar com Especialista</span>
     </a>
 
-    <!-- ===== BACK TO TOP ===== -->
+    <!-- ==========================================
+    BACK TO TOP
+    ========================================== -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ==========================================
+    SCRIPTS
+    ========================================== -->
     <script>
         const ARTIGOS = [{
             id: 1,
@@ -2962,7 +2922,8 @@
             const artigos = getArtigosCarrossel();
 
             if (artigos.length === 0) {
-                track.innerHTML = `
+                track.innerHTML =
+                    `
                         <div style="min-width:100%;text-align:center;padding:60px 20px;color:var(--text-light);">
                             <i class="fas fa-newspaper" style="font-size:3rem;color:var(--gold);opacity:0.3;margin-bottom:16px;"></i>
                             <h3 style="color:var(--text-dark);">Nenhuma notícia em destaque</h3>
@@ -3006,8 +2967,8 @@
             }).join('');
 
             totalCards = artigos.length;
-            atualizarDots();
-            atualizarCarrossel();
+            atualizarDotsBlog();
+            atualizarCarrosselBlog();
         }
 
         let currentIndex = 0;
@@ -3020,7 +2981,7 @@
             return 3;
         }
 
-        function atualizarDots() {
+        function atualizarDotsBlog() {
             const dotsContainer = document.getElementById('blogCarouselDots');
             cardsPerView = getCardsPerView();
             const totalDots = Math.ceil(totalCards / cardsPerView);
@@ -3034,13 +2995,13 @@
                 }
                 dot.addEventListener('click', () => {
                     currentIndex = i * cardsPerView;
-                    atualizarCarrossel();
+                    atualizarCarrosselBlog();
                 });
                 dotsContainer.appendChild(dot);
             }
         }
 
-        function atualizarCarrossel() {
+        function atualizarCarrosselBlog() {
             const track = document.getElementById('blogCarouselTrack');
             cardsPerView = getCardsPerView();
 
@@ -3057,8 +3018,60 @@
 
             track.style.transform = `translateX(-${offset}px)`;
 
-            const dots = document.querySelectorAll('.dot');
+            const dots = document.querySelectorAll('#blogCarouselDots .dot');
             const activeDot = Math.floor(currentIndex / cardsPerView);
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === activeDot);
+            });
+        }
+
+        // DEPOIMENTOS CARROSSEL
+        let testimonialIndex = 0;
+        let testimonialsPerView = 2;
+        const totalTestimonials = 4;
+
+        function getTestimonialsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            return 2;
+        }
+
+        function atualizarDotsDepoimentos() {
+            const dotsContainer = document.getElementById('testimonialsDots');
+            testimonialsPerView = getTestimonialsPerView();
+            const totalDots = Math.ceil(totalTestimonials / testimonialsPerView);
+
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === Math.floor(testimonialIndex / testimonialsPerView)) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    testimonialIndex = i * testimonialsPerView;
+                    atualizarCarrosselDepoimentos();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function atualizarCarrosselDepoimentos() {
+            const track = document.getElementById('testimonialsCarouselTrack');
+            testimonialsPerView = getTestimonialsPerView();
+
+            const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
+            if (testimonialIndex > maxIndex) testimonialIndex = maxIndex;
+            if (testimonialIndex < 0) testimonialIndex = 0;
+
+            const card = document.querySelector('.testimonial-card-premium');
+            const cardWidth = card?.offsetWidth || 350;
+            const gap = 28;
+            const offset = testimonialIndex * (cardWidth + gap);
+
+            track.style.transform = `translateX(-${offset}px)`;
+
+            const dots = document.querySelectorAll('#testimonialsDots .dot');
+            const activeDot = Math.floor(testimonialIndex / testimonialsPerView);
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === activeDot);
             });
@@ -3067,11 +3080,122 @@
         document.addEventListener('DOMContentLoaded', function() {
             salvarArtigos();
             renderizarCarrossel();
+            atualizarDotsDepoimentos();
 
             setTimeout(() => {
-                atualizarCarrossel();
+                atualizarCarrosselBlog();
+                atualizarCarrosselDepoimentos();
             }, 100);
 
+            // BLOG CARROSSEL
+            document.getElementById('blogCarouselPrev').addEventListener('click', function() {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                currentIndex = Math.max(0, currentIndex - cardsPerView);
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                atualizarCarrosselBlog();
+            });
+
+            document.getElementById('blogCarouselNext').addEventListener('click', function() {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                if (currentIndex + cardsPerView < totalCards) {
+                    currentIndex += cardsPerView;
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                } else {
+                    currentIndex = 0;
+                }
+                atualizarCarrosselBlog();
+            });
+
+            // AUTOPLAY BLOG
+            let autoplayInterval = setInterval(() => {
+                cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                if (currentIndex + cardsPerView < totalCards) {
+                    currentIndex += cardsPerView;
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                } else {
+                    currentIndex = 0;
+                }
+                atualizarCarrosselBlog();
+            }, 6000);
+
+            const carousel = document.getElementById('blogCarousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(() => {
+                    cardsPerView = getCardsPerView();
+                    const maxIndex = Math.max(0, totalCards - cardsPerView);
+                    if (currentIndex + cardsPerView < totalCards) {
+                        currentIndex += cardsPerView;
+                        if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    atualizarCarrosselBlog();
+                }, 6000);
+            });
+
+            // DEPOIMENTOS CARROSSEL
+            document.getElementById('testimonialsPrev').addEventListener('click', function() {
+                testimonialsPerView = getTestimonialsPerView();
+                const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
+                testimonialIndex = Math.max(0, testimonialIndex - testimonialsPerView);
+                if (testimonialIndex > maxIndex) testimonialIndex = maxIndex;
+                atualizarCarrosselDepoimentos();
+            });
+
+            document.getElementById('testimonialsNext').addEventListener('click', function() {
+                testimonialsPerView = getTestimonialsPerView();
+                const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
+                if (testimonialIndex + testimonialsPerView < totalTestimonials) {
+                    testimonialIndex += testimonialsPerView;
+                    if (testimonialIndex > maxIndex) testimonialIndex = maxIndex;
+                } else {
+                    testimonialIndex = 0;
+                }
+                atualizarCarrosselDepoimentos();
+            });
+
+            // AUTOPLAY DEPOIMENTOS
+            let autoplayDepoimentos = setInterval(() => {
+                testimonialsPerView = getTestimonialsPerView();
+                const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
+                if (testimonialIndex + testimonialsPerView < totalTestimonials) {
+                    testimonialIndex += testimonialsPerView;
+                    if (testimonialIndex > maxIndex) testimonialIndex = maxIndex;
+                } else {
+                    testimonialIndex = 0;
+                }
+                atualizarCarrosselDepoimentos();
+            }, 6000);
+
+            const depoimentosCarousel = document.querySelector('.testimonials-carousel-wrapper');
+            depoimentosCarousel.addEventListener('mouseenter', () => clearInterval(autoplayDepoimentos));
+            depoimentosCarousel.addEventListener('mouseleave', () => {
+                autoplayDepoimentos = setInterval(() => {
+                    testimonialsPerView = getTestimonialsPerView();
+                    const maxIndex = Math.max(0, totalTestimonials - testimonialsPerView);
+                    if (testimonialIndex + testimonialsPerView < totalTestimonials) {
+                        testimonialIndex += testimonialsPerView;
+                        if (testimonialIndex > maxIndex) testimonialIndex = maxIndex;
+                    } else {
+                        testimonialIndex = 0;
+                    }
+                    atualizarCarrosselDepoimentos();
+                }, 6000);
+            });
+
+            // RESIZE
+            window.addEventListener('resize', () => {
+                atualizarDotsBlog();
+                atualizarCarrosselBlog();
+                atualizarDotsDepoimentos();
+                atualizarCarrosselDepoimentos();
+            });
+
+            // NAVBAR SCROLL
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 80) {
@@ -3081,6 +3205,7 @@
                 }
             }, { passive: true });
 
+            // BACK TO TOP
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 500) {
@@ -3094,6 +3219,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
+            // MENU MOBILE
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
 
@@ -3116,6 +3242,7 @@
                 }
             });
 
+            // PARTICULAS
             const particlesContainer = document.getElementById('particles');
             if (particlesContainer) {
                 for (let i = 0; i < 30; i++) {
@@ -3131,82 +3258,7 @@
                 }
             }
 
-            document.getElementById('blogCarouselPrev').addEventListener('click', function() {
-                cardsPerView = getCardsPerView();
-                const maxIndex = Math.max(0, totalCards - cardsPerView);
-                currentIndex = Math.max(0, currentIndex - cardsPerView);
-                if (currentIndex > maxIndex) currentIndex = maxIndex;
-                atualizarCarrossel();
-            });
-
-            document.getElementById('blogCarouselNext').addEventListener('click', function() {
-                cardsPerView = getCardsPerView();
-                const maxIndex = Math.max(0, totalCards - cardsPerView);
-                if (currentIndex + cardsPerView < totalCards) {
-                    currentIndex += cardsPerView;
-                    if (currentIndex > maxIndex) currentIndex = maxIndex;
-                } else {
-                    currentIndex = 0;
-                }
-                atualizarCarrossel();
-            });
-
-            let autoplayInterval = setInterval(() => {
-                cardsPerView = getCardsPerView();
-                const maxIndex = Math.max(0, totalCards - cardsPerView);
-                if (currentIndex + cardsPerView < totalCards) {
-                    currentIndex += cardsPerView;
-                    if (currentIndex > maxIndex) currentIndex = maxIndex;
-                } else {
-                    currentIndex = 0;
-                }
-                atualizarCarrossel();
-            }, 6000);
-
-            const carousel = document.getElementById('blogCarousel');
-            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-            carousel.addEventListener('mouseleave', () => {
-                autoplayInterval = setInterval(() => {
-                    cardsPerView = getCardsPerView();
-                    const maxIndex = Math.max(0, totalCards - cardsPerView);
-                    if (currentIndex + cardsPerView < totalCards) {
-                        currentIndex += cardsPerView;
-                        if (currentIndex > maxIndex) currentIndex = maxIndex;
-                    } else {
-                        currentIndex = 0;
-                    }
-                    atualizarCarrossel();
-                }, 6000);
-            });
-
-            let startX = 0;
-            let isDragging = false;
-            const track = document.getElementById('blogCarouselTrack');
-
-            track.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            }, { passive: true });
-
-            track.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        document.getElementById('blogCarouselNext').click();
-                    } else {
-                        document.getElementById('blogCarouselPrev').click();
-                    }
-                }
-                isDragging = false;
-            }, { passive: true });
-
-            window.addEventListener('resize', () => {
-                atualizarDots();
-                atualizarCarrossel();
-            });
-
+            // FAQ
             document.querySelectorAll('.faq-question').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     const item = this.parentElement;
@@ -3220,6 +3272,7 @@
                 });
             });
 
+            // FORMULARIO
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const name = document.getElementById('name').value.trim();
@@ -3239,6 +3292,7 @@
                 window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
             });
 
+            // MASCARA TELEFONE
             const phoneInput = document.getElementById('phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
@@ -3255,6 +3309,7 @@
                 });
             }
 
+            // ANIMACOES
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
