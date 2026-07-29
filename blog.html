@@ -226,54 +226,194 @@
         .empty-state h3 { color: var(--text-dark); margin-bottom: 8px; }
 
         /* ============================================
-           FOOTER - IGUAL AO SITE PRINCIPAL
+           FOOTER - IGUAL AO SITE PRINCIPAL (BRANCO)
            ============================================ */
-        .footer { background: #2C1A0E; padding: 60px 0 0; color: rgba(255,255,255,0.7); }
+        .footer {
+            background: #FFFFFF;
+            padding: 60px 0 0;
+            color: var(--text-dark);
+            border-top: 1px solid rgba(58, 33, 22, 0.06);
+        }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 40px;
             padding-bottom: 40px;
-            border-bottom: 1px solid rgba(217,177,110,0.1);
+            border-bottom: 1px solid rgba(58, 33, 22, 0.06);
         }
+
         .footer-logo {
             display: flex;
             align-items: center;
             margin-bottom: 16px;
         }
-        .footer-logo .logo-icon { height: 2cm; width: auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .footer-logo .logo-icon img { height: 100%; width: auto; object-fit: contain; }
-        .footer-brand p { font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
-        .footer-social { display: flex; gap: 12px; }
+
+        .footer-logo .logo-icon {
+            height: 2cm;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .footer-logo .logo-icon img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--text-medium);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
         .footer-social a {
-            width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.06);
-            display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6);
-            font-size: 1.1rem; transition: var(--transition); border: 1px solid rgba(217,177,110,0.1);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(58, 33, 22, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 1px solid rgba(58, 33, 22, 0.08);
         }
-        .footer-social a:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); border-color: var(--gold); }
-        .footer-links h4 { color: var(--white); font-size: 1rem; margin-bottom: 20px; }
-        .footer-links li { margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-        .footer-links a { color: rgba(255,255,255,0.6); transition: var(--transition); }
-        .footer-links a:hover { color: var(--gold); padding-left: 4px; }
-        .footer-links .blog-link { color: var(--gold); font-weight: 500; }
-        .footer-links .blog-link:hover { color: var(--gold-light); padding-left: 4px; }
-        .footer-bottom { padding: 24px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(217,177,110,0.05); margin-top: 20px; }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .footer-links h4 {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-medium);
+        }
+
+        .footer-links a {
+            color: var(--text-medium);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 4px;
+        }
+
+        .footer-links .blog-link {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .footer-links .blog-link:hover {
+            color: var(--gold-light);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            padding: 24px 0;
+            border-top: 1px solid rgba(58, 33, 22, 0.06);
+            margin-top: 20px;
+            color: var(--text-medium);
+        }
+
         .footer-bottom .vigorre-brand {
-            display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
-            font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-medium);
         }
-        .footer-bottom .vigorre-brand .logo-vigorre { height: 1.8cm; width: auto; display: inline-block; flex-shrink: 0; }
-        .footer-bottom .vigorre-brand .logo-vigorre img { height: 100%; width: auto; object-fit: contain; }
-        .footer-bottom .vigorre-brand .brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-        .footer-bottom .vigorre-brand .brand-text .site { font-weight: 600; color: rgba(255,255,255,0.8); }
-        .footer-bottom .vigorre-brand .brand-text .site a { color: rgba(255,255,255,0.8); transition: var(--transition); }
-        .footer-bottom .vigorre-brand .brand-text .site a:hover { color: var(--gold); }
-        .footer-bottom .vigorre-brand .brand-text .contacts { display: flex; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
-        .footer-bottom .vigorre-brand .brand-text .contacts a { color: rgba(255,255,255,0.4); transition: var(--transition); }
-        .footer-bottom .vigorre-brand .brand-text .contacts a:hover { color: var(--gold); }
-        .footer-bottom .vigorre-brand .brand-text .contacts .sep { color: rgba(255,255,255,0.1); }
-        .footer-bottom .copyright-2026 { text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.2); margin-top: 8px; }
-        .footer-bottom .copyright-2026 strong { color: rgba(255,255,255,0.5); }
+
+        .footer-bottom .vigorre-brand .logo-vigorre {
+            height: 1.8cm;
+            width: auto;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom .vigorre-brand .logo-vigorre img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-bottom .vigorre-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site a {
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts .sep {
+            color: rgba(58, 33, 22, 0.15);
+        }
+
+        .footer-bottom .copyright-2026 {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .footer-bottom .copyright-2026 strong {
+            color: var(--text-dark);
+        }
 
         /* ============================================
            WHATSAPP FLOAT
@@ -326,7 +466,7 @@
 <body>
 
     <!-- ==========================================
-    NAVBAR - IGUAL AO SITE PRINCIPAL
+    NAVBAR
     ========================================== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -404,7 +544,7 @@
     </section>
 
     <!-- ==========================================
-    FOOTER - IGUAL AO SITE PRINCIPAL
+    FOOTER - BRANCO IGUAL AO SITE PRINCIPAL
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -502,7 +642,7 @@
     ========================================== -->
     <script>
         // ============================================
-        // ARTIGOS - MESMOS DO SITE PRINCIPAL
+        // ARTIGOS
         // ============================================
         const ARTIGOS = [
             { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "14 de julho de 2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true, slug: "reforma-tributaria-2025", visualizacoes: 156, compartilhamentos: 23 },
