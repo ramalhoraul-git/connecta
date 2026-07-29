@@ -43,6 +43,34 @@
             display: flex;
         }
 
+        /* ===== BLOQUEIO DE TELA ===== */
+        .screen-lock {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--white);
+            gap: 20px;
+        }
+
+        .screen-lock.active {
+            display: flex;
+        }
+
+        .screen-lock i {
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .screen-lock p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
         /* ===== SIDEBAR ===== */
         .sidebar {
             width: 260px;
@@ -70,29 +98,36 @@
         }
 
         .sidebar-brand .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            border-radius: 12px;
+            width: auto;
+            height: 1.6cm;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--bg-dark);
+            overflow: hidden;
         }
 
-        .sidebar-brand span {
+        .sidebar-brand .logo-icon img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .sidebar-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-brand .brand-text .brand-name {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--white);
+            letter-spacing: 1px;
         }
 
-        .sidebar-brand small {
-            display: block;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 400;
+        .sidebar-brand .brand-text .brand-sub {
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
         }
 
         .sidebar-menu {
@@ -184,6 +219,30 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
+        .sidebar-footer .logout-btn {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid rgba(255, 0, 0, 0.15);
+            border-radius: var(--radius-sm);
+            color: #ff6b6b;
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .sidebar-footer .logout-btn:hover {
+            background: rgba(255, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
         /* ===== MAIN CONTENT ===== */
         .main-content {
             margin-left: 260px;
@@ -219,6 +278,11 @@
             display: flex;
             align-items: center;
             gap: 16px;
+        }
+
+        .topbar-actions .session-time {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
         }
 
         .topbar-actions .btn-logout {
@@ -310,158 +374,58 @@
             color: #ef4444;
         }
 
-        /* ===== CHARTS ===== */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .chart-card {
-            background: rgba(255, 248, 237, 0.04);
-            border: 1px solid rgba(217, 177, 110, 0.08);
-            border-radius: var(--radius);
-            padding: 24px;
-        }
-
-        .chart-card .chart-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .chart-card .chart-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .chart-card .chart-title small {
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.75rem;
-        }
-
-        .chart-placeholder {
-            height: 200px;
-            background: rgba(255, 255, 255, 0.02);
+        /* ===== LGPD FOOTER ===== */
+        .lgpd-footer {
+            margin-top: 40px;
+            padding: 16px 24px;
+            background: rgba(255, 248, 237, 0.02);
+            border: 1px solid rgba(217, 177, 110, 0.05);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.8rem;
-            border: 1px dashed rgba(217, 177, 110, 0.08);
-        }
-
-        /* ===== RECENT POSTS ===== */
-        .recent-posts {
-            background: rgba(255, 248, 237, 0.04);
-            border: 1px solid rgba(217, 177, 110, 0.08);
-            border-radius: var(--radius);
-            padding: 24px;
-        }
-
-        .recent-posts .section-header {
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .recent-posts .section-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .recent-posts .section-actions a {
-            color: var(--gold);
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .recent-posts .section-actions a:hover {
-            color: var(--gold-light);
-        }
-
-        .post-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(217, 177, 110, 0.05);
-            transition: var(--transition);
-        }
-
-        .post-item:last-child {
-            border-bottom: none;
-        }
-
-        .post-item:hover {
-            padding-left: 8px;
-        }
-
-        .post-item .post-thumb {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-sm);
-            background: rgba(217, 177, 110, 0.1);
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .post-item .post-info {
-            flex: 1;
-        }
-
-        .post-item .post-info .post-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .post-item .post-info .post-meta {
+        .lgpd-footer .lgpd-text {
             font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.3);
         }
 
-        .post-item .post-status {
-            font-size: 0.65rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: var(--radius-full);
+        .lgpd-footer .lgpd-text a {
+            color: var(--gold);
+            text-decoration: underline;
+            cursor: pointer;
         }
 
-        .post-item .post-status.published {
-            background: rgba(16, 185, 129, 0.12);
-            color: #10b981;
+        .lgpd-footer .lgpd-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
         }
 
-        .post-item .post-status.draft {
-            background: rgba(251, 191, 36, 0.12);
-            color: #fbbf24;
+        .lgpd-footer .lgpd-status .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
         }
 
-        .post-item .post-status.scheduled {
-            background: rgba(59, 130, 246, 0.12);
-            color: #3b82f6;
+        .lgpd-footer .lgpd-status .dot.green {
+            background: #10b981;
+        }
+
+        .lgpd-footer .lgpd-status .dot.red {
+            background: #ef4444;
         }
 
         /* ===== RESPONSIVO ===== */
         @media (max-width: 1024px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .charts-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -470,8 +434,7 @@
                 width: 72px;
                 padding: 16px 0;
             }
-            .sidebar-brand span,
-            .sidebar-brand small,
+            .sidebar-brand .brand-text,
             .sidebar-menu .menu-label,
             .sidebar-menu a span,
             .sidebar-footer .user-info>div {
@@ -484,6 +447,12 @@
             .sidebar-menu a i {
                 font-size: 1.2rem;
             }
+            .sidebar-brand .logo-icon {
+                height: 1.2cm;
+            }
+            .sidebar-footer .logout-btn span {
+                display: none;
+            }
             .main-content {
                 margin-left: 72px;
                 padding: 20px;
@@ -493,6 +462,10 @@
             }
             .topbar h1 small {
                 display: none;
+            }
+            .lgpd-footer {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -508,18 +481,33 @@
                 align-items: flex-start;
                 gap: 12px;
             }
+            .sidebar {
+                width: 60px;
+            }
+            .sidebar-brand .logo-icon {
+                height: 1cm;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== BLOQUEIO DE TELA ===== -->
+    <div class="screen-lock" id="screenLock">
+        <i class="fas fa-lock"></i>
+        <p>Sessão bloqueada por segurança</p>
+        <p style="font-size:0.8rem;opacity:0.4;">Faça login novamente para continuar</p>
+    </div>
+
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="logo-icon">C</div>
-            <div>
-                <span>CONNECTA</span>
-                <small>Painel Administrativo</small>
+            <div class="logo-icon">
+                <img src="/logo.png" alt="CONNECTA">
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">CONNECTA</span>
+                <span class="brand-sub">Painel Administrativo</span>
             </div>
         </div>
 
@@ -572,6 +560,10 @@
                 <i class="fas fa-user-shield"></i>
                 <span>Usuários</span>
             </a>
+            <a href="#">
+                <i class="fas fa-shield-alt"></i>
+                <span>Segurança</span>
+            </a>
         </nav>
 
         <div class="sidebar-footer">
@@ -582,6 +574,10 @@
                     <div class="user-role">Super Administrador</div>
                 </div>
             </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
         </div>
     </aside>
 
@@ -594,10 +590,11 @@
                 <small>Bem-vindo de volta, Administrador</small>
             </h1>
             <div class="topbar-actions">
-                <a href="#" class="btn-logout" id="logoutBtn">
+                <span class="session-time" id="sessionTime">Sessão ativa</span>
+                <button class="btn-logout" id="topLogoutBtn">
                     <i class="fas fa-sign-out-alt"></i>
                     Sair
-                </a>
+                </button>
             </div>
         </div>
 
@@ -629,74 +626,96 @@
             </div>
         </div>
 
-        <!-- Charts -->
-        <div class="charts-grid">
-            <div class="chart-card">
-                <div class="chart-header">
-                    <span class="chart-title">Visitas Mensais <small>Últimos 6 meses</small></span>
-                </div>
-                <div class="chart-placeholder">
-                    <i class="fas fa-chart-bar" style="margin-right:8px;"></i>
-                    Gráfico de visitas (em breve)
-                </div>
+        <!-- Recent Posts -->
+        <div style="background:rgba(255,248,237,0.04);border:1px solid rgba(217,177,110,0.08);border-radius:var(--radius);padding:24px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <span style="font-size:0.9rem;font-weight:600;color:var(--white);">Últimas Publicações</span>
+                <a href="#" style="color:var(--gold);font-size:0.8rem;text-decoration:none;">Ver todas →</a>
             </div>
-            <div class="chart-card">
-                <div class="chart-header">
-                    <span class="chart-title">Categorias <small>Distribuição</small></span>
+
+            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
+                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
+                <div style="flex:1;">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">Reforma Tributária: O que muda para sua empresa em 2025</div>
+                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">14/07/2025 • 5 min de leitura</div>
                 </div>
-                <div class="chart-placeholder">
-                    <i class="fas fa-chart-pie" style="margin-right:8px;"></i>
-                    Gráfico de categorias (em breve)
+                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(16,185,129,0.12);color:#10b981;">Publicado</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
+                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
+                <div style="flex:1;">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">MEI: Guia completo para não perder seu CNPJ</div>
+                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">12/07/2025 • 8 min de leitura</div>
                 </div>
+                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(16,185,129,0.12);color:#10b981;">Publicado</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(217,177,110,0.05);">
+                <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:rgba(217,177,110,0.1);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;flex-shrink:0;"><i class="fas fa-file-alt"></i></div>
+                <div style="flex:1;">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--white);">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div>
+                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);">10/07/2025 • 6 min de leitura</div>
+                </div>
+                <span style="font-size:0.65rem;font-weight:600;padding:4px 12px;border-radius:var(--radius-full);background:rgba(251,191,36,0.12);color:#fbbf24;">Rascunho</span>
             </div>
         </div>
 
-        <!-- Recent Posts -->
-        <div class="recent-posts">
-            <div class="section-header">
-                <span class="section-title">Últimas Publicações</span>
-                <div class="section-actions">
-                    <a href="#">Ver todas →</a>
-                </div>
+        <!-- ===== LGPD FOOTER ===== -->
+        <div class="lgpd-footer">
+            <div class="lgpd-text">
+                <i class="fas fa-shield-alt" style="color:var(--gold);margin-right:8px;"></i>
+                Este sistema está em conformidade com a
+                <a href="#" onclick="showPrivacyPolicy(); return false;">Lei Geral de Proteção de Dados (LGPD)</a>
+                e com a Política de Privacidade da CONNECTA.
             </div>
-
-            <div class="post-item">
-                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="post-info">
-                    <div class="post-title">Reforma Tributária: O que muda para sua empresa em 2025</div>
-                    <div class="post-meta">14/07/2025 • 5 min de leitura</div>
-                </div>
-                <span class="post-status published">Publicado</span>
-            </div>
-
-            <div class="post-item">
-                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="post-info">
-                    <div class="post-title">MEI: Guia completo para não perder seu CNPJ</div>
-                    <div class="post-meta">12/07/2025 • 8 min de leitura</div>
-                </div>
-                <span class="post-status published">Publicado</span>
-            </div>
-
-            <div class="post-item">
-                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="post-info">
-                    <div class="post-title">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div>
-                    <div class="post-meta">10/07/2025 • 6 min de leitura</div>
-                </div>
-                <span class="post-status draft">Rascunho</span>
-            </div>
-
-            <div class="post-item">
-                <div class="post-thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="post-info">
-                    <div class="post-title">BPO Financeiro: Terceirize sua contabilidade com segurança</div>
-                    <div class="post-meta">08/07/2025 • 4 min de leitura</div>
-                </div>
-                <span class="post-status scheduled">Agendado</span>
+            <div class="lgpd-status">
+                <span class="dot green"></span>
+                <span>Consentimento ativo</span>
+                <span style="margin:0 8px;color:rgba(255,255,255,0.1);">|</span>
+                <span id="consentDate">Carregando...</span>
             </div>
         </div>
     </main>
+
+    <!-- ===== POLÍTICA DE PRIVACIDADE (Modal) ===== -->
+    <div id="privacyModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+        <div style="background:var(--bg-dark);max-width:600px;width:100%;border-radius:var(--radius);padding:40px;color:var(--white);max-height:80vh;overflow-y:auto;border:1px solid rgba(217,177,110,0.1);">
+            <h2 style="color:var(--gold);margin-bottom:20px;font-size:1.5rem;">Política de Privacidade</h2>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.8;">
+                <p><strong>Última atualização:</strong> Julho 2025</p>
+                <br>
+                <p>A CONNECTA respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).</p>
+                <br>
+                <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">1. Dados Coletados</h3>
+                <p>Coletamos apenas os dados necessários para:</p>
+                <ul style="padding-left:20px;margin:8px 0;">
+                    <li>• Identificação e autenticação no sistema</li>
+                    <li>• Gestão de acesso ao painel administrativo</li>
+                    <li>• Registro de atividades para segurança</li>
+                </ul>
+                <br>
+                <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">2. Cookies</h3>
+                <p>Utilizamos cookies de sessão para manter sua autenticação. Estes cookies são temporários e expiram ao final da sessão.</p>
+                <br>
+                <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">3. Compartilhamento</h3>
+                <p>Não compartilhamos seus dados com terceiros. Todos os dados são armazenados localmente e utilizados exclusivamente para a gestão do sistema.</p>
+                <br>
+                <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">4. Direitos do Titular</h3>
+                <p>Você tem o direito de:</p>
+                <ul style="padding-left:20px;margin:8px 0;">
+                    <li>• Acessar seus dados</li>
+                    <li>• Corrigir dados incorretos</li>
+                    <li>• Solicitar a exclusão</li>
+                    <li>• Revogar o consentimento</li>
+                </ul>
+                <br>
+                <h3 style="color:var(--gold);font-size:1rem;margin:16px 0 8px;">5. Contato</h3>
+                <p>Para questões sobre privacidade, entre em contato pelo e-mail: <strong style="color:var(--gold);">contato@connectacontabilidade.com.br</strong></p>
+            </div>
+            <button onclick="closePrivacyPolicy()" style="margin-top:24px;padding:12px 32px;background:var(--gold);color:var(--bg-dark);border:none;border-radius:var(--radius-full);font-family:var(--font-main);font-weight:700;cursor:pointer;width:100%;">Fechar</button>
+        </div>
+    </div>
 
     <script>
         // ============================================
@@ -721,19 +740,174 @@
                     window.location.href = '/admin/login.html';
                     return;
                 }
+                // Verificar CSRF
+                if (!data.sessionId || data.sessionId.length < 10) {
+                    localStorage.removeItem('connecta_admin');
+                    window.location.href = '/admin/login.html';
+                    return;
+                }
             } catch (e) {
                 window.location.href = '/admin/login.html';
             }
         })();
 
         // ============================================
+        // LGPD - MOSTRAR DATA DO CONSENTIMENTO
+        // ============================================
+        function showConsentDate() {
+            const date = localStorage.getItem('lgpd_date');
+            if (date) {
+                const d = new Date(date);
+                document.getElementById('consentDate').textContent =
+                    'Consentido em: ' + d.toLocaleDateString('pt-BR') + ' às ' + d.toLocaleTimeString('pt-BR');
+            } else {
+                document.getElementById('consentDate').textContent = 'Consentimento não registrado';
+            }
+        }
+        showConsentDate();
+
+        // ============================================
+        // POLÍTICA DE PRIVACIDADE
+        // ============================================
+        function showPrivacyPolicy() {
+            document.getElementById('privacyModal').style.display = 'flex';
+        }
+
+        function closePrivacyPolicy() {
+            document.getElementById('privacyModal').style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePrivacyPolicy();
+            }
+        });
+
+        // ============================================
         // LOGOUT
         // ============================================
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
+        function performLogout() {
+            // Registrar evento de logout
+            const logs = JSON.parse(localStorage.getItem('security_logs') || '[]');
+            logs.push({
+                event: 'logout',
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('security_logs', JSON.stringify(logs));
+
             localStorage.removeItem('connecta_admin');
             window.location.href = '/admin/login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            performLogout();
         });
+
+        document.getElementById('topLogoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            performLogout();
+        });
+
+        // ============================================
+        // BLOQUEIO DE TELA (Prevenir screenshot)
+        // ============================================
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                const screenLock = document.getElementById('screenLock');
+                screenLock.classList.add('active');
+
+                setTimeout(() => {
+                    if (document.hidden) {
+                        performLogout();
+                    }
+                }, 30000);
+            } else {
+                const screenLock = document.getElementById('screenLock');
+                const session = localStorage.getItem('connecta_admin');
+                if (session) {
+                    try {
+                        const data = JSON.parse(session);
+                        if (data.loggedIn) {
+                            screenLock.classList.remove('active');
+                        } else {
+                            performLogout();
+                        }
+                    } catch (e) {
+                        performLogout();
+                    }
+                } else {
+                    performLogout();
+                }
+            }
+        });
+
+        // ============================================
+        // INATIVIDADE - Logout automático
+        // ============================================
+        let inactivityTimer;
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (localStorage.getItem('connecta_admin')) {
+                    performLogout();
+                }
+            }, 15 * 60 * 1000);
+        }
+
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keydown', resetInactivityTimer);
+        document.addEventListener('click', resetInactivityTimer);
+        document.addEventListener('scroll', resetInactivityTimer);
+        document.addEventListener('touchstart', resetInactivityTimer);
+
+        // ============================================
+        // PREVENIR CLIQUE DIREITO
+        // ============================================
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ============================================
+        // PREVENIR DEV TOOLS
+        // ============================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ============================================
+        // ATUALIZAR TIMER DA SESSÃO
+        // ============================================
+        function updateSessionTime() {
+            const session = localStorage.getItem('connecta_admin');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    const elapsed = Math.floor((Date.now() - data.timestamp) / 60000);
+                    const remaining = 24 * 60 - elapsed;
+                    if (remaining > 0) {
+                        const hours = Math.floor(remaining / 60);
+                        const mins = remaining % 60;
+                        document.getElementById('sessionTime').textContent =
+                            `Sessão: ${hours}h ${mins}m restantes`;
+                    } else {
+                        performLogout();
+                    }
+                } catch (e) {
+                    // Ignorar
+                }
+            }
+        }
+
+        updateSessionTime();
+        setInterval(updateSessionTime, 60000);
     </script>
 
 </body>
