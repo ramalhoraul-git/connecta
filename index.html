@@ -173,6 +173,21 @@
             min-height: 40px;
         }
 
+        /* Botão do Painel - Marrom Premium */
+        .btn-painel {
+            background: var(--bg-dark);
+            color: var(--gold);
+            border: 1px solid rgba(217, 177, 110, 0.2);
+            transition: var(--transition);
+        }
+
+        .btn-painel:hover {
+            background: var(--bg-medium);
+            color: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(58, 33, 22, 0.3);
+        }
+
         @keyframes glow-pulse {
             0%,
             100% {
@@ -184,7 +199,7 @@
         }
 
         /* ============================================
-           NAVBAR - Fundo #2C1A0E (cor da logo)
+           NAVBAR - Fundo #2C1A0E
            ============================================ */
         .navbar {
             position: fixed;
@@ -358,7 +373,7 @@
         }
 
         /* ============================================
-           HERO - Com fundo hero.png
+           HERO
            ============================================ */
         .hero {
             min-height: 100vh;
@@ -1324,7 +1339,7 @@
         }
 
         /* ============================================
-           DEPOIMENTOS - CARROSSEL 2 EM 2
+           DEPOIMENTOS - CARROSSEL 2 EM 2 COM QUEBRA
            ============================================ */
         .testimonials-premium {
             padding: 100px 0 80px;
@@ -1627,6 +1642,69 @@
         }
 
         /* ============================================
+           TRANSFORMATION CTA - Fundo Marrom
+           ============================================ */
+        .transformation-section {
+            padding: 100px 0;
+            background: var(--bg-dark);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transformation-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .transformation-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .transformation-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+        }
+
+        .transformation-content .gradient-text-light {
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .transformation-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+        }
+
+        /* Botão Especialista - Fundo Marrom */
+        .btn-especialista {
+            background: var(--bg-medium);
+            color: var(--white);
+            border: 2px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .btn-especialista:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(217, 177, 110, 0.4);
+        }
+
+        /* ============================================
            FAQ
            ============================================ */
         .faq-section {
@@ -1911,8 +1989,6 @@
 
         .footer-bottom {
             padding: 24px 0;
-            text-align: center;
-            font-size: 0.8rem;
             border-top: 1px solid rgba(58, 33, 22, 0.06);
             margin-top: 20px;
             color: var(--text-medium);
@@ -1922,26 +1998,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
-            margin-top: 12px;
             font-size: 0.85rem;
             color: var(--text-medium);
         }
 
-        .footer-bottom .vigorre-brand a {
-            color: var(--text-medium);
-            transition: var(--transition);
-        }
-
-        .footer-bottom .vigorre-brand a:hover {
-            color: var(--gold);
-        }
-
         .footer-bottom .vigorre-brand .logo-vigorre {
-            height: 1.4cm;
+            height: 2cm;
             width: auto;
             display: inline-block;
+            flex-shrink: 0;
         }
 
         .footer-bottom .vigorre-brand .logo-vigorre img {
@@ -1950,14 +2017,57 @@
             object-fit: contain;
         }
 
-        .footer-bottom .vigorre-brand .separator {
-            color: rgba(58, 33, 22, 0.2);
+        .footer-bottom .vigorre-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site a {
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .site a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom .vigorre-brand .brand-text .contacts .sep {
+            color: rgba(58, 33, 22, 0.15);
         }
 
         .footer-bottom .copyright-2026 {
+            text-align: center;
             font-size: 0.7rem;
             color: var(--text-light);
-            margin-top: 8px;
+            margin-top: 12px;
+        }
+
+        .footer-bottom .copyright-2026 strong {
+            color: var(--text-dark);
         }
 
         /* ============================================
@@ -2111,6 +2221,12 @@
                 gap: 20px;
                 padding: 20px 24px;
             }
+            .footer-bottom .vigorre-brand {
+                gap: 12px;
+            }
+            .footer-bottom .vigorre-brand .logo-vigorre {
+                height: 1.6cm;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2153,11 +2269,19 @@
                 height: 40px;
             }
             .footer-bottom .vigorre-brand {
-                font-size: 0.7rem;
+                flex-direction: column;
                 gap: 8px;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-bottom .vigorre-brand .brand-text {
+                align-items: center;
+            }
+            .footer-bottom .vigorre-brand .brand-text .contacts {
+                justify-content: center;
             }
             .footer-bottom .vigorre-brand .logo-vigorre {
-                height: 1cm;
+                height: 1.6cm;
             }
         }
 
@@ -2200,12 +2324,15 @@
                 height: 38px;
                 font-size: 0.85rem;
             }
-            .footer-bottom .vigorre-brand {
+            .footer-bottom .vigorre-brand .brand-text .contacts {
                 flex-direction: column;
-                gap: 4px;
+                gap: 2px;
             }
-            .footer-bottom .vigorre-brand .separator {
+            .footer-bottom .vigorre-brand .brand-text .contacts .sep {
                 display: none;
+            }
+            .footer-bottom .vigorre-brand .logo-vigorre {
+                height: 1.4cm;
             }
         }
     </style>
@@ -2241,7 +2368,7 @@
     </nav>
 
     <!-- ==========================================
-    HERO - Com fundo hero.png
+    HERO
     ========================================== -->
     <section class="hero" id="inicio">
         <div class="hero-particles" id="particles"></div>
@@ -2340,7 +2467,7 @@
     </section>
 
     <!-- ==========================================
-    ABOUT SECTION - Foto 10cm x 10cm
+    ABOUT SECTION
     ========================================== -->
     <section class="about-section" id="sobre">
         <div class="container">
@@ -2725,6 +2852,22 @@
     </section>
 
     <!-- ==========================================
+    TRANSFORMATION CTA - Fundo Marrom
+    ========================================== -->
+    <section class="transformation-section">
+        <div class="container">
+            <div class="transformation-content" data-aos="fade-up">
+                <h2>O primeiro passo para <span class="gradient-text-light">transformar seu negócio</span> é simples:</h2>
+                <p>Uma conversa. Sem compromisso, sem jargões, sem pressão. Apenas uma escuta atenta do que você precisa e uma direção clara do que podemos construir juntos.</p>
+                <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-especialista btn-glow" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Falar com Especialista
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
     FAQ
     ========================================== -->
     <section class="faq-section" id="faq">
@@ -2867,7 +3010,7 @@
     </section>
 
     <!-- ==========================================
-    FOOTER - Fundo BRANCO com texto MARROM
+    FOOTER - Fundo BRANCO
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2884,9 +3027,9 @@
                         <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
-                    <!-- BOTÃO PAINEL -->
+                    <!-- BOTÃO PAINEL - MARROM PREMIUM -->
                     <div style="margin-top:16px;">
-                        <a href="/admin/login.html" class="btn btn-primary btn-small" style="background:rgba(217,177,110,0.15);color:var(--gold);border:1px solid rgba(217,177,110,0.2);display:inline-flex;align-items:center;gap:10px;padding:10px 20px;font-size:0.8rem;min-height:40px;border-radius:var(--radius-full);font-weight:600;cursor:pointer;transition:var(--transition);">
+                        <a href="/admin/login.html" class="btn btn-small btn-painel" style="display:inline-flex;align-items:center;gap:10px;padding:10px 20px;font-size:0.8rem;min-height:40px;border-radius:var(--radius-full);font-weight:600;cursor:pointer;transition:var(--transition);background:var(--bg-dark);color:var(--gold);border:1px solid rgba(217,177,110,0.2);">
                             <i class="fas fa-user-shield"></i>
                             Painel Administrativo
                         </a>
@@ -2924,18 +3067,20 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
                 <div class="vigorre-brand">
-                    <span>www.vigorre.com.br</span>
-                    <span class="separator">|</span>
-                    <span>(34) 99185-0735</span>
-                    <span class="separator">|</span>
-                    <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
-                    <span class="separator">|</span>
-                    <span class="logo-vigorre">
-                        <img src="/logo-vigorre.png" alt="VIGORRE TECH">
-                    </span>
+                    <div class="logo-vigorre">
+                        <img src="/logo-rodape.png" alt="VIGORRE TECH">
+                    </div>
+                    <div class="brand-text">
+                        <span class="site"><a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a></span>
+                        <div class="contacts">
+                            <span>(34) 99185-0735</span>
+                            <span class="sep">|</span>
+                            <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="copyright-2026">
-                    © 2026 VIGORRE TECH™. Todos os direitos reservados.
+                    © 2026 <strong>VIGORRE TECH™</strong>. Todos os direitos reservados.
                 </div>
             </div>
         </div>
