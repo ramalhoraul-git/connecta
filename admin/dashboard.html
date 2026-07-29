@@ -32,7 +32,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--white); color: var(--text-dark); min-height: 100vh; display: flex; }
 
-        /* ===== SIDEBAR - CORES INVERTIDAS ===== */
+        /* ===== SIDEBAR ===== */
         .sidebar { 
             width: 260px; 
             background: var(--white); 
@@ -159,7 +159,7 @@
             transform: translateY(-2px); 
         }
 
-        /* ===== MAIN CONTENT - CORES INVERTIDAS ===== */
+        /* ===== MAIN CONTENT ===== */
         .main-content { 
             margin-left: 260px; 
             padding: 32px 40px; 
@@ -302,7 +302,9 @@
         .lgpd-footer .lgpd-status .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
         .lgpd-footer .lgpd-status .dot.green { background: #10b981; }
 
-        /* ===== RESPONSIVO ===== */
+        /* ============================================
+           RESPONSIVO
+           ============================================ */
         @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .sidebar { width: 72px; padding: 16px 0; }
@@ -337,18 +339,38 @@
         </div>
         <nav class="sidebar-menu">
             <div class="menu-label">Principal</div>
-            <a href="/admin/dashboard.html" class="active"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-newspaper"></i><span>Notícias</span><span class="badge">12</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-tags"></i><span>Categorias</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-users"></i><span>Autores</span></a>
+            <a href="/admin/dashboard.html" class="active">
+                <i class="fas fa-th-large"></i><span>Dashboard</span>
+            </a>
+            <a href="/blog.html" target="_blank">
+                <i class="fas fa-newspaper"></i><span>Notícias</span><span class="badge">6</span>
+            </a>
+            <a href="/#servicos" target="_blank">
+                <i class="fas fa-tags"></i><span>Categorias</span>
+            </a>
+            <a href="/#sobre" target="_blank">
+                <i class="fas fa-users"></i><span>Autores</span>
+            </a>
             <div class="menu-label" style="margin-top:24px;">Conteúdo</div>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-file-alt"></i><span>Rascunhos</span><span class="badge">3</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-clock"></i><span>Agendados</span><span class="badge">2</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-image"></i><span>Mídias</span></a>
+            <a href="/admin/dashboard.html#rascunhos">
+                <i class="fas fa-file-alt"></i><span>Rascunhos</span><span class="badge">3</span>
+            </a>
+            <a href="/admin/dashboard.html#agendados">
+                <i class="fas fa-clock"></i><span>Agendados</span><span class="badge">2</span>
+            </a>
+            <a href="/#blog" target="_blank">
+                <i class="fas fa-image"></i><span>Mídias</span>
+            </a>
             <div class="menu-label" style="margin-top:24px;">Configurações</div>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-search"></i><span>SEO</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-cog"></i><span>Configurações</span></a>
-            <a href="#" onclick="alert('Módulo em desenvolvimento'); return false;"><i class="fas fa-user-shield"></i><span>Usuários</span></a>
+            <a href="/#servicos" target="_blank">
+                <i class="fas fa-search"></i><span>SEO</span>
+            </a>
+            <a href="/admin/dashboard.html#config">
+                <i class="fas fa-cog"></i><span>Configurações</span>
+            </a>
+            <a href="/admin/login.html">
+                <i class="fas fa-user-shield"></i><span>Usuários</span>
+            </a>
         </nav>
         <div class="sidebar-footer">
             <div class="user-info">
@@ -358,7 +380,9 @@
                     <div class="user-role">Super Administrador</div>
                 </div>
             </div>
-            <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i><span>Sair</span>
+            </button>
         </div>
     </aside>
 
@@ -374,32 +398,40 @@
 
         <!-- Stats -->
         <div class="stats-grid">
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-newspaper"></i></div><div class="stat-number">12</div><div class="stat-label">Total de Artigos</div><span class="stat-change up">+3 este mês</span></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-eye"></i></div><div class="stat-number">4.8k</div><div class="stat-label">Visualizações</div><span class="stat-change up">+12% esta semana</span></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number">156</div><div class="stat-label">Visitantes Únicos</div><span class="stat-change up">+8% esta semana</span></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-envelope"></i></div><div class="stat-number">89</div><div class="stat-label">Assinantes Newsletter</div><span class="stat-change up">+5 novos</span></div>
+            <div class="stat-card" onclick="window.open('/blog.html','_blank')" style="cursor:pointer;">
+                <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="stat-number" id="totalArtigos">6</div>
+                <div class="stat-label">Total de Artigos</div>
+                <span class="stat-change up">+3 este mês</span>
+            </div>
+            <div class="stat-card" onclick="window.open('/blog.html','_blank')" style="cursor:pointer;">
+                <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                <div class="stat-number">4.8k</div>
+                <div class="stat-label">Visualizações</div>
+                <span class="stat-change up">+12% esta semana</span>
+            </div>
+            <div class="stat-card" onclick="window.open('/#depoimentos','_blank')" style="cursor:pointer;">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">156</div>
+                <div class="stat-label">Visitantes Únicos</div>
+                <span class="stat-change up">+8% esta semana</span>
+            </div>
+            <div class="stat-card" onclick="window.open('/#contato','_blank')" style="cursor:pointer;">
+                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                <div class="stat-number">89</div>
+                <div class="stat-label">Assinantes Newsletter</div>
+                <span class="stat-change up">+5 novos</span>
+            </div>
         </div>
 
         <!-- Recent Posts -->
         <div class="recent-posts">
             <div class="header">
                 <span class="title">Últimas Publicações</span>
-                <a href="#" class="link" onclick="alert('Ver todas as publicações'); return false;">Ver todas →</a>
+                <a href="/blog.html" target="_blank" class="link">Ver todas →</a>
             </div>
-            <div class="post-item">
-                <div class="thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="info"><div class="title">Reforma Tributária: O que muda para sua empresa em 2025</div><div class="meta">14/07/2025 • 5 min de leitura</div></div>
-                <span class="status published">Publicado</span>
-            </div>
-            <div class="post-item">
-                <div class="thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="info"><div class="title">MEI: Guia completo para não perder seu CNPJ</div><div class="meta">12/07/2025 • 8 min de leitura</div></div>
-                <span class="status published">Publicado</span>
-            </div>
-            <div class="post-item">
-                <div class="thumb"><i class="fas fa-file-alt"></i></div>
-                <div class="info"><div class="title">Simples Nacional x Lucro Presumido: Qual o melhor para você?</div><div class="meta">10/07/2025 • 6 min de leitura</div></div>
-                <span class="status draft">Rascunho</span>
+            <div id="recentPostsList">
+                <!-- Artigos carregados pelo JavaScript -->
             </div>
         </div>
 
@@ -480,6 +512,55 @@
                 window.location.href = '/admin/login.html';
             }
         })();
+
+        // ============================================
+        // ARTIGOS - MESMOS DO SITE PRINCIPAL
+        // ============================================
+        const ARTIGOS = [
+            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", data: "14/07/2025", status: "Publicado", categoria: "Tributário" },
+            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", data: "12/07/2025", status: "Publicado", categoria: "MEI" },
+            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", data: "10/07/2025", status: "Rascunho", categoria: "Simples Nacional" },
+            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", data: "08/07/2025", status: "Publicado", categoria: "Produtor Rural" },
+            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", data: "06/07/2025", status: "Publicado", categoria: "Consultoria" },
+            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", data: "04/07/2025", status: "Rascunho", categoria: "Tecnologia" }
+        ];
+
+        // ============================================
+        // CARREGAR ÚLTIMAS PUBLICAÇÕES
+        // ============================================
+        function carregarPosts() {
+            const container = document.getElementById('recentPostsList');
+            if (!container) return;
+
+            // Ordenar por data (mais recentes primeiro)
+            const sorted = [...ARTIGOS].sort((a, b) => {
+                const da = a.data.split('/').reverse().join('');
+                const db = b.data.split('/').reverse().join('');
+                return db.localeCompare(da);
+            });
+
+            const posts = sorted.slice(0, 3);
+
+            container.innerHTML = posts.map(post => {
+                const statusClass = post.status === 'Publicado' ? 'published' : 'draft';
+                return `
+                    <div class="post-item" onclick="window.open('/artigo.html?id=${post.id}','_blank')" style="cursor:pointer;">
+                        <div class="thumb"><i class="fas fa-file-alt"></i></div>
+                        <div class="info">
+                            <div class="title">${post.titulo}</div>
+                            <div class="meta">${post.data} • ${post.categoria}</div>
+                        </div>
+                        <span class="status ${statusClass}">${post.status}</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Atualizar contador de artigos
+            const totalEl = document.getElementById('totalArtigos');
+            if (totalEl) {
+                totalEl.textContent = ARTIGOS.filter(a => a.status === 'Publicado').length;
+            }
+        }
 
         // ============================================
         // LOGOUT
@@ -569,23 +650,12 @@
         });
 
         // ============================================
-        // BLOQUEIO DE TELA (Prevenir screenshot)
+        // INICIAR
         // ============================================
-        const screenLock = document.getElementById('screenLock');
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                if (screenLock) screenLock.classList.add('active');
-                setTimeout(() => {
-                    if (document.hidden && localStorage.getItem('connecta_admin')) {
-                        performLogout();
-                    }
-                }, 30000);
-            } else {
-                if (screenLock) screenLock.classList.remove('active');
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarPosts();
+            console.log('✅ Dashboard CONNECTA carregado com sucesso!');
         });
-
-        console.log('✅ Dashboard CONNECTA carregado com sucesso!');
     </script>
 
 </body>
