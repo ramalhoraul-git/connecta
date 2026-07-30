@@ -35,2374 +35,335 @@
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: var(--font-main);
-            color: var(--text-dark);
-            background: var(--white);
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        ul {
-            list-style: none;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            line-height: 1.2;
-            font-weight: 700;
-        }
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-        }
-        h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-        }
-        h3 {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gradient-text-light {
-            background: linear-gradient(135deg, var(--gold-bright), var(--gold-highlight));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.12), rgba(245, 222, 154, 0.12));
-            color: var(--gold);
-            padding: 6px 20px;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            max-width: 640px;
-            margin: 12px auto 0;
-        }
-
-        /* ===== BOTÕES ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            border-radius: var(--radius-full);
-            font-family: var(--font-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            justify-content: center;
-            min-height: 56px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--bg-dark);
-            box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 40px rgba(217, 177, 110, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.25);
-        }
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        .btn-glow {
-            animation: glow-pulse 3s ease-in-out infinite;
-        }
-
-        .btn-small {
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            min-height: 40px;
-        }
-
-        .btn-painel {
-            background: var(--bg-dark);
-            color: var(--gold);
-            border: 1px solid rgba(217, 177, 110, 0.2);
-        }
-        .btn-painel:hover {
-            background: var(--bg-medium);
-            color: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(58, 33, 22, 0.3);
-        }
-
-        .btn-especialista {
-            background: var(--bg-medium);
-            color: var(--white);
-            border: 2px solid var(--gold);
-        }
-        .btn-especialista:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(217, 177, 110, 0.4);
-        }
-
-        @keyframes glow-pulse {
-            0%,
-            100% {
-                box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35);
-            }
-            50% {
-                box-shadow: 0 4px 48px rgba(217, 177, 110, 0.6);
-            }
-        }
-
-        /* ============================================
-           NAVBAR
-           ============================================ */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 12px 0;
-            transition: var(--transition);
-            background: #2C1A0E;
-        }
-
-        .navbar.scrolled {
-            background: #2C1A0E;
-            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.3);
-            padding: 8px 0;
-        }
-
-        .navbar.scrolled .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            width: auto;
-            height: 2cm;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .logo-icon img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 36px;
-        }
-
-        .nav-link {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link-blog {
-            color: var(--gold) !important;
-            font-weight: 600;
-        }
-        .nav-link-blog::after {
-            background: var(--gold) !important;
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--bg-dark) !important;
-            padding: 10px 24px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-        }
-        .nav-cta::after {
-            display: none;
-        }
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(217, 177, 110, 0.4);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 1001;
-            background: transparent;
-            border: none;
-        }
-
-        .hamburger span {
-            width: 28px;
-            height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
-
-        @media(max-width:768px) {
-            .logo-icon {
-                height: 1.6cm;
-            }
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 340px;
-                height: 100vh;
-                background: #2C1A0E;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 24px;
-                transition: var(--transition);
-                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-menu .nav-link {
-                color: rgba(255, 255, 255, 0.9) !important;
-                font-size: 1.1rem;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        @media(max-width:480px) {
-            .logo-icon {
-                height: 1.4cm;
-            }
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            background: url('/hero.png') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(145deg,
-                    rgba(58, 33, 22, 0.85) 0%,
-                    rgba(74, 44, 29, 0.80) 40%,
-                    rgba(90, 53, 34, 0.75) 70%,
-                    rgba(138, 90, 53, 0.70) 100%);
-            z-index: 1;
-        }
-
-        .hero-particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .hero-particles .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(217, 177, 110, 0.06);
-            animation: float-particle linear infinite;
-        }
-
-        @keyframes float-particle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(217, 177, 110, 0.15);
-            padding: 8px 18px;
-            border-radius: var(--radius-full);
-            color: var(--gold-bright);
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero h1 {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.15rem;
-            margin-bottom: 36px;
-            max-width: 520px;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .hero-trust {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .trust-item i {
-            color: var(--gold);
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            width: 420px;
-            height: 500px;
-        }
-
-        .hero-image-bg {
-            position: absolute;
-            inset: 20px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            border-radius: 40px;
-            transform: rotate(4deg) scale(0.95);
-            opacity: 0.12;
-            filter: blur(20px);
-        }
-
-        .hero-image-placeholder {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-            border-radius: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(217, 177, 110, 0.15);
-            backdrop-filter: blur(10px);
-            color: var(--white);
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        .hero-image-placeholder .avatar-photo {
-            width: 10cm;
-            height: 10cm;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--gold);
-            flex-shrink: 0;
-        }
-
-        .hero-image-placeholder .avatar-label {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--gold-bright);
-            margin-top: 12px;
-        }
-
-        .hero-image-placeholder .avatar-sub {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(255, 248, 237, 0.92);
-            backdrop-filter: blur(12px);
-            border-radius: var(--radius-sm);
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: var(--shadow-xl);
-            color: var(--bg-dark);
-            font-weight: 600;
-            font-size: 0.85rem;
-            animation: float-card 5s ease-in-out infinite;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .floating-card i {
-            font-size: 1.3rem;
-            color: var(--gold);
-        }
-
-        .card-1 {
-            top: 20px;
-            right: -30px;
-            animation-delay: 0s;
-        }
-        .card-2 {
-            bottom: 120px;
-            left: -40px;
-            animation-delay: 1.5s;
-        }
-        .card-3 {
-            bottom: 20px;
-            right: -10px;
-            animation-delay: 3s;
-        }
-
-        @keyframes float-card {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-14px);
-            }
-        }
-
-        .hero-wave {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            z-index: 3;
-        }
-
-        .hero-wave svg {
-            display: block;
-            width: 100%;
-            height: 80px;
-        }
-
-        @media(max-width:1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-ctas {
-                justify-content: center;
-            }
-            .hero-trust {
-                justify-content: center;
-            }
-            .hero-visual {
-                display: none;
-            }
-            .hero-image-placeholder .avatar-photo {
-                width: 8cm;
-                height: 8cm;
-            }
-        }
-
-        @media(max-width:768px) {
-            .hero-ctas {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn {
-                padding: 14px 28px;
-                font-size: 0.9rem;
-                min-height: 48px;
-            }
-            .floating-card {
-                display: none;
-            }
-            .hero-image-placeholder .avatar-photo {
-                width: 6cm;
-                height: 6cm;
-            }
-        }
-
-        @media(max-width:480px) {
-            .hero-badge span {
-                font-size: 0.7rem;
-            }
-            .hero-trust {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .hero-image-placeholder .avatar-photo {
-                width: 5cm;
-                height: 5cm;
-            }
-        }
-
-        /* ============================================
-           PAIN SECTION
-           ============================================ */
-        .pain-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .pain-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .pain-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.15), rgba(245, 222, 154, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-        }
-        .pain-icon i {
-            font-size: 2rem;
-            color: var(--gold);
-        }
-
-        .pain-text {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            margin: 24px 0;
-            line-height: 1.8;
-        }
-
-        .pain-solution {
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.08), rgba(245, 222, 154, 0.08));
-            border-left: 4px solid var(--gold);
-            padding: 24px 30px;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            text-align: left;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-top: 30px;
-        }
-        .pain-solution i {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        /* ============================================
-           ABOUT SECTION
-           ============================================ */
-        .about-section {
-            padding: 100px 0;
-            background: #FDF8F0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image-placeholder {
-            width: 100%;
-            aspect-ratio: 3/4;
-            max-height: 500px;
-            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: var(--white);
-            border: 1px solid rgba(217, 177, 110, 0.2);
-            padding: 40px;
-        }
-
-        .about-image-placeholder .about-photo {
-            width: 10cm;
-            height: 10cm;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--gold);
-        }
-
-        .about-image-placeholder span {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--gold-bright);
-        }
-
-        .about-image-placeholder small {
-            opacity: 0.7;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .about-experience {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px 24px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border: 1px solid rgba(217, 177, 110, 0.2);
-        }
-
-        .exp-number {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--gold);
-        }
-
-        .exp-text {
-            font-size: 0.8rem;
-            color: var(--text-medium);
-            line-height: 1.4;
-        }
-
-        .about-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .about-content p {
-            color: var(--text-medium);
-            margin-bottom: 16px;
-            font-size: 1.05rem;
-        }
-
-        .about-values {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin: 30px 0;
-        }
-
-        .value-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 14px 18px;
-            background: var(--white);
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-            border: 1px solid rgba(217, 177, 110, 0.1);
-        }
-        .value-item:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow);
-            border-color: var(--gold);
-        }
-
-        .value-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.15), rgba(245, 222, 154, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .value-item strong {
-            display: block;
-            font-size: 0.95rem;
-        }
-        .value-item span {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        @media(max-width:1024px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .about-experience {
-                position: relative;
-                right: 0;
-                bottom: 0;
-                margin: 20px auto 0;
-            }
-            .about-values {
-                align-items: center;
-            }
-            .value-item {
-                max-width: 400px;
-                width: 100%;
-            }
-            .about-content .btn {
-                display: inline-flex;
-            }
-            .about-image-placeholder .about-photo {
-                width: 8cm;
-                height: 8cm;
-            }
-        }
-
-        @media(max-width:768px) {
-            .about-image-placeholder .about-photo {
-                width: 6cm;
-                height: 6cm;
-            }
-        }
-
-        @media(max-width:480px) {
-            .about-image-placeholder .about-photo {
-                width: 5cm;
-                height: 5cm;
-            }
-        }
-
-        /* ============================================
-           SERVICES SECTION
-           ============================================ */
-        .services-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border: 1px solid rgba(58, 33, 22, 0.08);
-            border-radius: var(--radius);
-            padding: 36px 28px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            transform: scaleX(0);
-            transition: var(--transition);
-            transform-origin: left;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card.featured {
-            border: 2px solid var(--gold);
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.03), rgba(245, 222, 154, 0.03));
-        }
-        .service-card.featured::before {
-            transform: scaleX(1);
-        }
-
-        .service-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--bg-dark);
-            font-size: 0.7rem;
-            padding: 4px 12px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.12), rgba(245, 222, 154, 0.12));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .service-icon i {
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .service-card h3 {
-            margin-bottom: 12px;
-            font-size: 1.15rem;
-        }
-
-        .service-card p {
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .service-link {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .service-link:hover {
-            gap: 10px;
-            color: var(--gold-light);
-        }
-
-        /* ============================================
-           DIFERENCIAIS (WHY)
-           ============================================ */
-        .why-section {
-            padding: 100px 0;
-            background: #FDF8F0;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .why-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(217, 177, 110, 0.08);
-        }
-        .why-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--gold);
-        }
-
-        .why-number {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            font-size: 3rem;
-            font-weight: 900;
-            color: rgba(217, 177, 110, 0.08);
-            line-height: 1;
-        }
-
-        .why-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            border: 1px solid rgba(217, 177, 110, 0.2);
-        }
-        .why-icon i {
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .why-card h3 {
-            margin-bottom: 12px;
-        }
-        .why-card p {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-
-        /* ============================================
-           CARROSSEL BLOG
-           ============================================ */
-        .blog-carousel-section {
-            padding: 80px 0 100px;
-            background: var(--white);
-            position: relative;
-        }
-
-        .blog-carousel-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 20% 50%, rgba(217, 177, 110, 0.03) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .blog-carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 10px 4px 20px;
-            margin: 0 -4px;
-        }
-
-        .blog-carousel-track {
-            display: flex;
-            gap: 28px;
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: transform;
-        }
-
-        .blog-carousel-card {
-            min-width: calc(33.333% - 19px);
-            background: var(--white);
-            border-radius: var(--radius);
-            border: 1px solid rgba(58, 33, 22, 0.04);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            flex-shrink: 0;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .blog-carousel-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius);
-            padding: 1px;
-            background: linear-gradient(135deg, transparent 40%, rgba(217, 177, 110, 0.15), transparent 60%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .blog-carousel-card:hover::before {
-            opacity: 1;
-        }
-
-        .blog-carousel-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .blog-carousel-card .card-image {
-            width: 100%;
-            height: 220px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .blog-carousel-card .card-image .card-glow {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 30% 20%, rgba(217, 177, 110, 0.2), transparent 70%);
-            pointer-events: none;
-        }
-
-        .blog-carousel-card .card-image .card-icon {
-            font-size: 3.5rem;
-            color: rgba(255, 255, 255, 0.2);
-            z-index: 1;
-        }
-
-        .blog-carousel-card .card-image .card-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            color: var(--white);
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: var(--radius-full);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            z-index: 2;
-        }
-
-        .blog-carousel-card .card-image .card-badge.gold {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--bg-dark);
-        }
-
-        .blog-carousel-card .card-image .card-watermark {
-            position: absolute;
-            bottom: 12px;
-            right: 16px;
-            font-size: 0.5rem;
-            color: rgba(255, 255, 255, 0.15);
-            letter-spacing: 2px;
-            z-index: 1;
-        }
-
-        .blog-carousel-card .card-content {
-            padding: 28px 30px 24px;
-        }
-
-        .blog-carousel-card .card-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .blog-carousel-card .card-meta .category {
-            color: var(--gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .blog-carousel-card .card-meta .dot-sep {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--text-light);
-            opacity: 0.3;
-        }
-
-        .blog-carousel-card .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-family: var(--font-display);
-        }
-
-        .blog-carousel-card .card-excerpt {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            line-height: 1.7;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 18px;
-        }
-
-        .blog-carousel-card .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 16px;
-            border-top: 1px solid rgba(58, 33, 22, 0.04);
-        }
-
-        .blog-carousel-card .card-author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .blog-carousel-card .card-author .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--bg-dark);
-        }
-
-        .blog-carousel-card .card-author .name {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .blog-carousel-card .card-readmore {
-            color: var(--gold);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 0;
-        }
-        .blog-carousel-card .card-readmore:hover {
-            gap: 12px;
-            color: var(--gold-light);
-        }
-        .blog-carousel-card .card-readmore i {
-            transition: var(--transition);
-            font-size: 0.7rem;
-        }
-
-        .carousel-controls-premium {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .carousel-controls-premium .carousel-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(58, 33, 22, 0.08);
-            background: var(--white);
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            box-shadow: var(--shadow);
-        }
-
-        .carousel-controls-premium .carousel-btn:hover {
-            background: var(--bg-dark);
-            color: var(--gold);
-            border-color: var(--bg-dark);
-            transform: scale(1.05);
-        }
-
-        .carousel-controls-premium .carousel-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .carousel-controls-premium .carousel-dots .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(58, 33, 22, 0.1);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .carousel-controls-premium .carousel-dots .dot::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1.5px solid transparent;
-            transition: var(--transition);
-        }
-
-        .carousel-controls-premium .carousel-dots .dot.active {
-            background: var(--gold);
-            width: 28px;
-            border-radius: 4px;
-        }
-
-        .carousel-controls-premium .carousel-dots .dot.active::after {
-            border-color: var(--gold);
-        }
-
-        /* ============================================
-           DEPOIMENTOS - CARROSSEL 2 EM 2
-           ============================================ */
-        .testimonials-premium {
-            padding: 100px 0 80px;
-            background: linear-gradient(165deg, var(--bg-dark) 0%, #1a0f0a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials-premium .section-tag {
-            background: rgba(217, 177, 110, 0.10);
-            color: var(--gold-bright);
-            border: 1px solid rgba(217, 177, 110, 0.08);
-        }
-
-        .testimonials-premium h2 {
-            color: var(--white);
-        }
-
-        .testimonials-premium .section-desc {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .testimonials-carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 10px 0;
-        }
-
-        .testimonials-carousel-track {
-            display: flex;
-            gap: 28px;
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: transform;
-        }
-
-        .testimonial-card-premium {
-            min-width: calc(50% - 14px);
-            background: rgba(255, 248, 237, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(217, 177, 110, 0.06);
-            border-radius: var(--radius);
-            padding: 36px 32px 28px;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-
-        .testimonial-card-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(217, 177, 110, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .testimonial-card-premium::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--gold), var(--gold-light), transparent);
-            opacity: 0;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .testimonial-card-premium:hover {
-            transform: translateY(-8px);
-            border-color: rgba(217, 177, 110, 0.15);
-            background: rgba(255, 248, 237, 0.06);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .testimonial-card-premium:hover::after {
-            opacity: 1;
-        }
-
-        .testimonial-card-premium .testimonial-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-card-premium .quote-icon {
-            color: rgba(217, 177, 110, 0.12);
-            line-height: 1;
-            flex-shrink: 0;
-        }
-
-        .testimonial-card-premium .quote-icon svg {
-            width: 36px;
-            height: 28px;
-        }
-
-        .testimonial-card-premium .testimonial-stars {
-            display: flex;
-            gap: 3px;
-            color: var(--gold);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            flex-shrink: 0;
-            padding-top: 4px;
-        }
-
-        .testimonial-card-premium .testimonial-stars i {
-            transition: var(--transition);
-        }
-
-        .testimonial-card-premium .quote-text {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.05rem;
-            line-height: 1.9;
-            font-weight: 300;
-            margin-bottom: 24px;
-            flex: 1;
-            font-style: italic;
-            letter-spacing: 0.3px;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            white-space: normal;
-        }
-
-        .testimonial-card-premium .quote-text strong {
-            color: var(--gold-bright);
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        .testimonial-card-premium .testimonial-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(217, 177, 110, 0.06);
-        }
-
-        .testimonial-card-premium .testimonial-author-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .testimonial-card-premium .author-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--bg-dark);
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .testimonial-card-premium .author-avatar::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 2px solid rgba(217, 177, 110, 0.15);
-            animation: avatar-ring 3s ease-in-out infinite;
-        }
-
-        @keyframes avatar-ring {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0;
-            }
-        }
-
-        .testimonial-card-premium .author-details .author-name {
-            display: block;
-            color: var(--white);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .testimonial-card-premium .author-details .author-company {
-            display: block;
-            color: rgba(255, 255, 255, 0.35);
-            font-size: 0.75rem;
-        }
-
-        .testimonial-card-premium .author-verified {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.2);
-            font-weight: 500;
-            flex-shrink: 0;
-        }
-
-        .testimonial-card-premium .author-verified i {
-            color: #10b981;
-            font-size: 0.8rem;
-        }
-
-        .carousel-testimonials-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .carousel-testimonials-controls .carousel-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255, 255, 255, 0.1);
-            background: transparent;
-            color: var(--white);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .carousel-testimonials-controls .carousel-btn:hover {
-            background: rgba(217, 177, 110, 0.1);
-            border-color: var(--gold);
-        }
-
-        .carousel-testimonials-controls .carousel-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .carousel-testimonials-controls .carousel-dots .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .carousel-testimonials-controls .carousel-dots .dot.active {
-            background: var(--gold);
-            width: 28px;
-            border-radius: 4px;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            padding: 28px 40px;
-            background: rgba(255, 248, 237, 0.03);
-            border: 1px solid rgba(217, 177, 110, 0.06);
-            border-radius: var(--radius);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 2;
-            flex-wrap: wrap;
-            margin-top: 48px;
-        }
-
-        .trust-badge-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .trust-badge-item i {
-            color: var(--gold);
-            font-size: 1.1rem;
-        }
-
-        .trust-badge-divider {
-            width: 1px;
-            height: 28px;
-            background: rgba(217, 177, 110, 0.08);
-        }
-
-        /* ============================================
-           TRANSFORMATION CTA
-           ============================================ */
-        .transformation-section {
-            padding: 100px 0;
-            background: var(--bg-dark);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .transformation-section::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse, rgba(217, 177, 110, 0.08), transparent 70%);
-            pointer-events: none;
-        }
-
-        .transformation-content {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .transformation-content h2 {
-            color: var(--white);
-            margin-bottom: 20px;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-        }
-
-        .transformation-content p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.1rem;
-            margin-bottom: 36px;
-        }
-
-        /* ============================================
-           FAQ
-           ============================================ */
-        .faq-section {
-            padding: 100px 0;
-            background: #FDF8F0;
-        }
-
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            border: 1px solid rgba(58, 33, 22, 0.06);
-            transition: var(--transition);
-        }
-
-        .faq-item.active {
-            box-shadow: var(--shadow);
-            border-color: var(--gold);
-        }
-
-        .faq-question {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 22px 28px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-align: left;
-            transition: var(--transition);
-        }
-
-        .faq-question i {
-            font-size: 0.9rem;
-            color: var(--gold);
-            transition: var(--transition);
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .faq-answer p {
-            padding: 0 28px 22px;
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           CONTATO
-           ============================================ */
-        .contact-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .contact-content h2 {
-            margin-top: 16px;
-            margin-bottom: 16px;
-        }
-
-        .contact-content p {
-            color: var(--text-medium);
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-        }
-
-        .contact-channels {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 18px 22px;
-            background: #FDF8F0;
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .contact-item:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow);
-            border-color: var(--gold);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-
-        .contact-icon.whatsapp {
-            background: #25D366;
-        }
-        .contact-icon.instagram {
-            background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
-        }
-        .contact-icon.email {
-            background: var(--gold);
-        }
-
-        .contact-item strong {
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .contact-item span {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .contact-form-wrapper {
-            background: var(--white);
-            border: 1px solid rgba(58, 33, 22, 0.06);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-form h3 {
-            margin-bottom: 28px;
-            font-size: 1.4rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid rgba(58, 33, 22, 0.08);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-main);
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            transition: var(--transition);
-            background: #FDF8F0;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(217, 177, 110, 0.12);
-            background: var(--white);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            background: #FFFFFF;
-            padding: 60px 0 0;
-            color: var(--text-dark);
-            border-top: 1px solid rgba(58, 33, 22, 0.06);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(58, 33, 22, 0.06);
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        .footer-logo .logo-icon {
-            height: 2cm;
-            width: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .footer-logo .logo-icon img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: var(--text-medium);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-
-        .footer-social a {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(58, 33, 22, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: 1px solid rgba(58, 33, 22, 0.08);
-        }
-
-        .footer-social a:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-            border-color: var(--gold);
-        }
-
-        .footer-links h4 {
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-medium);
-        }
-
-        .footer-links a {
-            color: var(--text-medium);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-            padding-left: 4px;
-        }
-
-        .footer-links .blog-link {
-            color: var(--gold);
-            font-weight: 500;
-        }
-        .footer-links .blog-link:hover {
-            color: var(--gold-light);
-            padding-left: 4px;
-        }
-
-        .footer-bottom {
-            padding: 24px 0;
-            border-top: 1px solid rgba(58, 33, 22, 0.06);
-            margin-top: 20px;
-            color: var(--text-medium);
-        }
-
-        .footer-bottom .vigorre-brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: var(--text-medium);
-        }
-
-        .footer-bottom .vigorre-brand .logo-vigorre {
-            height: 1.8cm;
-            width: auto;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        .footer-bottom .vigorre-brand .logo-vigorre img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .footer-bottom .vigorre-brand .brand-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2px;
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .site {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-        .footer-bottom .vigorre-brand .brand-text .site a {
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-        .footer-bottom .vigorre-brand .brand-text .site a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts {
-            display: flex;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            flex-wrap: wrap;
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts a {
-            color: var(--text-light);
-            transition: var(--transition);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts .sep {
-            color: rgba(58, 33, 22, 0.15);
-        }
-
-        .footer-bottom .copyright-2026 {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
-        .footer-bottom .copyright-2026 strong {
-            color: var(--text-dark);
-        }
-
-        /* ============================================
-           WHATSAPP FLOAT
-           ============================================ */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 64px;
-            height: 64px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--white);
-            z-index: 999;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: var(--transition);
-            animation: whatsapp-bounce 3s ease-in-out infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            right: 74px;
-            background: var(--white);
-            color: var(--text-dark);
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: var(--transition);
-            pointer-events: none;
-        }
-
-        .whatsapp-float:hover .whatsapp-tooltip {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        @keyframes whatsapp-bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        /* ============================================
-           BACK TO TOP
-           ============================================ */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--bg-dark);
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            cursor: pointer;
-            font-size: 1rem;
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--gold);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-        }
-
-        /* ============================================
-           ANIMAÇÕES
-           ============================================ */
-        [data-aos] {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        [data-aos="fade-up"].aos-animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        [data-aos="fade-down"] {
-            transform: translateY(-30px);
-        }
-        [data-aos="fade-down"].aos-animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        [data-aos="fade-right"] {
-            transform: translateX(-30px);
-        }
-        [data-aos="fade-right"].aos-animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        [data-aos="fade-left"] {
-            transform: translateX(30px);
-        }
-        [data-aos="fade-left"].aos-animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* ============================================
-           RESPONSIVO
-           ============================================ */
-        @media(max-width:1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .why-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .blog-carousel-card {
-                min-width: calc(50% - 14px);
-            }
-            .trust-badge {
-                gap: 20px;
-                padding: 20px 24px;
-            }
-            .footer-bottom .vigorre-brand {
-                gap: 12px;
-            }
-            .footer-bottom .vigorre-brand .logo-vigorre {
-                height: 1.6cm;
-            }
-        }
-
-        @media(max-width:768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .blog-carousel-card {
-                min-width: 100%;
-            }
-            .testimonial-card-premium {
-                min-width: 100%;
-            }
-            .trust-badge {
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px 20px;
-            }
-            .trust-badge-divider {
-                width: 60px;
-                height: 1px;
-            }
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            .contact-form-wrapper {
-                padding: 28px 22px;
-            }
-            .carousel-testimonials-controls {
-                gap: 16px;
-            }
-            .carousel-testimonials-controls .carousel-btn {
-                width: 40px;
-                height: 40px;
-            }
-            .footer-bottom .vigorre-brand {
-                flex-direction: column;
-                gap: 8px;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-bottom .vigorre-brand .brand-text {
-                align-items: center;
-            }
-            .footer-bottom .vigorre-brand .brand-text .contacts {
-                justify-content: center;
-            }
-            .footer-bottom .vigorre-brand .logo-vigorre {
-                height: 1.6cm;
-            }
-        }
-
-        @media(max-width:480px) {
-            .hero-badge span {
-                font-size: 0.7rem;
-            }
-            .hero-trust {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .blog-carousel-card .card-content {
-                padding: 20px 20px 18px;
-            }
-            .blog-carousel-card .card-title {
-                font-size: 1rem;
-            }
-            .whatsapp-float {
-                width: 56px;
-                height: 56px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
-            .back-to-top {
-                bottom: 20px;
-                left: 20px;
-                width: 42px;
-                height: 42px;
-            }
-            .testimonial-card-premium {
-                padding: 28px 20px 20px;
-            }
-            .testimonial-card-premium .quote-text {
-                font-size: 0.9rem;
-            }
-            .testimonial-card-premium .author-avatar {
-                width: 38px;
-                height: 38px;
-                font-size: 0.85rem;
-            }
-            .footer-bottom .vigorre-brand .brand-text .contacts {
-                flex-direction: column;
-                gap: 2px;
-            }
-            .footer-bottom .vigorre-brand .brand-text .contacts .sep {
-                display: none;
-            }
-            .footer-bottom .vigorre-brand .logo-vigorre {
-                height: 1.4cm;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: var(--font-main); color: var(--text-dark); background: var(--white); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; height: auto; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+        h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        .gradient-text { background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text-light { background: linear-gradient(135deg, var(--gold-bright), var(--gold-highlight)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-tag { display: inline-block; background: linear-gradient(135deg, rgba(217, 177, 110, 0.12), rgba(245, 222, 154, 0.12)); color: var(--gold); padding: 6px 20px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; backdrop-filter: blur(10px); }
+        .section-desc { font-size: 1.1rem; color: var(--text-medium); max-width: 640px; margin: 12px auto 0; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: var(--transition); text-align: center; justify-content: center; min-height: 56px; position: relative; overflow: hidden; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(217, 177, 110, 0.5); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255, 255, 255, 0.25); }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--gold); transform: translateY(-2px); }
+        .btn-glow { animation: glow-pulse 3s ease-in-out infinite; }
+        .btn-small { padding: 10px 20px; font-size: 0.8rem; min-height: 40px; }
+        .btn-painel { background: var(--bg-dark); color: var(--gold); border: 1px solid rgba(217, 177, 110, 0.2); }
+        .btn-painel:hover { background: var(--bg-medium); color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(58, 33, 22, 0.3); }
+        .btn-especialista { background: var(--bg-medium); color: var(--white); border: 2px solid var(--gold); }
+        .btn-especialista:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(217, 177, 110, 0.4); }
+        @keyframes glow-pulse { 0%,100% { box-shadow: 0 4px 24px rgba(217, 177, 110, 0.35); } 50% { box-shadow: 0 4px 48px rgba(217, 177, 110, 0.6); } }
+
+        /* ===== NAVBAR ===== */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 12px 0; transition: var(--transition); background: #2C1A0E; }
+        .navbar.scrolled { background: #2C1A0E; box-shadow: 0 2px 40px rgba(0,0,0,0.3); padding: 8px 0; }
+        .navbar.scrolled .nav-link { color: rgba(255,255,255,0.8); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; align-items: center; }
+        .logo-icon { width: auto; height: 2cm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .logo-icon img { height: 100%; width: auto; object-fit: contain; }
+        .nav-menu { display: flex; align-items: center; gap: 36px; }
+        .nav-link { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: var(--transition); position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link-blog { color: var(--gold) !important; font-weight: 600; }
+        .nav-link-blog::after { background: var(--gold) !important; }
+        .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark) !important; padding: 10px 24px; border-radius: var(--radius-full); font-weight: 600; }
+        .nav-cta::after { display: none; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(217,177,110,0.4); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001; background: transparent; border: none; }
+        .hamburger span { width: 28px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-6px); }
+        @media(max-width:768px) { .logo-icon { height: 1.6cm; } .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 340px; height: 100vh; background: #2C1A0E; flex-direction: column; justify-content: center; align-items: center; gap: 24px; transition: var(--transition); box-shadow: -10px 0 40px rgba(0,0,0,0.5); } .nav-menu.active { right: 0; } .nav-menu .nav-link { color: rgba(255,255,255,0.9) !important; font-size: 1.1rem; } .hamburger { display: flex; } }
+        @media(max-width:480px) { .logo-icon { height: 1.4cm; } }
+
+        /* ===== HERO ===== */
+        .hero { min-height: 100vh; background: url('/hero.png') center/cover no-repeat; position: relative; display: flex; align-items: center; padding-top: 80px; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(58,33,22,0.85) 0%, rgba(74,44,29,0.80) 40%, rgba(90,53,34,0.75) 70%, rgba(138,90,53,0.70) 100%); z-index: 1; }
+        .hero-particles { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+        .hero-particles .particle { position: absolute; border-radius: 50%; background: rgba(217,177,110,0.06); animation: float-particle linear infinite; }
+        @keyframes float-particle { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+        .hero-container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(217,177,110,0.15); padding: 8px 18px; border-radius: var(--radius-full); color: var(--gold-bright); font-size: 0.8rem; font-weight: 500; margin-bottom: 24px; backdrop-filter: blur(10px); }
+        .hero h1 { color: var(--white); margin-bottom: 20px; }
+        .hero-subtitle { color: rgba(255,255,255,0.7); font-size: 1.15rem; margin-bottom: 36px; max-width: 520px; font-weight: 300; line-height: 1.8; }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 500; }
+        .trust-item i { color: var(--gold); }
+        .hero-visual { display: flex; justify-content: center; align-items: center; }
+        .hero-image-wrapper { position: relative; width: 420px; height: 500px; }
+        .hero-image-bg { position: absolute; inset: 20px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); border-radius: 40px; transform: rotate(4deg) scale(0.95); opacity: 0.12; filter: blur(20px); }
+        .hero-image-placeholder { position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(217,177,110,0.15); backdrop-filter: blur(10px); color: var(--white); overflow: hidden; padding: 20px; }
+        .hero-image-placeholder .avatar-photo { width: 10cm; height: 10cm; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); flex-shrink: 0; }
+        .hero-image-placeholder .avatar-label { font-weight: 700; font-size: 1.2rem; color: var(--gold-bright); margin-top: 12px; }
+        .hero-image-placeholder .avatar-sub { opacity: 0.7; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .floating-card { position: absolute; background: rgba(255,248,237,0.92); backdrop-filter: blur(12px); border-radius: var(--radius-sm); padding: 14px 20px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow-xl); color: var(--bg-dark); font-weight: 600; font-size: 0.85rem; animation: float-card 5s ease-in-out infinite; border: 1px solid rgba(255,255,255,0.2); }
+        .floating-card i { font-size: 1.3rem; color: var(--gold); }
+        .card-1 { top: 20px; right: -30px; animation-delay: 0s; }
+        .card-2 { bottom: 120px; left: -40px; animation-delay: 1.5s; }
+        .card-3 { bottom: 20px; right: -10px; animation-delay: 3s; }
+        @keyframes float-card { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
+        .hero-wave { position: absolute; bottom: -2px; left: 0; width: 100%; z-index: 3; }
+        .hero-wave svg { display: block; width: 100%; height: 80px; }
+        @media(max-width:1024px) { .hero-container { grid-template-columns: 1fr; text-align: center; } .hero-subtitle { margin-left: auto; margin-right: auto; } .hero-ctas { justify-content: center; } .hero-trust { justify-content: center; } .hero-visual { display: none; } .hero-image-placeholder .avatar-photo { width: 8cm; height: 8cm; } }
+        @media(max-width:768px) { .hero-ctas { flex-direction: column; align-items: center; } .btn { padding: 14px 28px; font-size: 0.9rem; min-height: 48px; } .floating-card { display: none; } .hero-image-placeholder .avatar-photo { width: 6cm; height: 6cm; } }
+        @media(max-width:480px) { .hero-badge span { font-size: 0.7rem; } .hero-trust { flex-direction: column; align-items: center; gap: 10px; } .hero-image-placeholder .avatar-photo { width: 5cm; height: 5cm; } }
+
+        /* ===== PAIN ===== */
+        .pain-section { padding: 100px 0; background: var(--white); }
+        .pain-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .pain-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, rgba(217,177,110,0.15), rgba(245,222,154,0.15)); display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; }
+        .pain-icon i { font-size: 2rem; color: var(--gold); }
+        .pain-text { font-size: 1.1rem; color: var(--text-medium); margin: 24px 0; line-height: 1.8; }
+        .pain-solution { background: linear-gradient(135deg, rgba(217,177,110,0.08), rgba(245,222,154,0.08)); border-left: 4px solid var(--gold); padding: 24px 30px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; text-align: left; display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; }
+        .pain-solution i { color: var(--gold); font-size: 1.3rem; margin-top: 3px; flex-shrink: 0; }
+
+        /* ===== ABOUT ===== */
+        .about-section { padding: 100px 0; background: #FDF8F0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .about-image { position: relative; }
+        .about-image-placeholder { width: 100%; aspect-ratio: 3/4; max-height: 500px; background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium)); border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--white); border: 1px solid rgba(217,177,110,0.2); padding: 40px; }
+        .about-image-placeholder .about-photo { width: 10cm; height: 10cm; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); }
+        .about-image-placeholder span { font-weight: 700; font-size: 1.1rem; color: var(--gold-bright); }
+        .about-image-placeholder small { opacity: 0.7; color: rgba(255,255,255,0.6); }
+        .about-experience { position: absolute; bottom: -20px; right: -20px; background: var(--white); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 14px; border: 1px solid rgba(217,177,110,0.2); }
+        .exp-number { font-size: 1.5rem; font-weight: 900; color: var(--gold); }
+        .exp-text { font-size: 0.8rem; color: var(--text-medium); line-height: 1.4; }
+        .about-content h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .about-content p { color: var(--text-medium); margin-bottom: 16px; font-size: 1.05rem; }
+        .about-values { display: flex; flex-direction: column; gap: 16px; margin: 30px 0; }
+        .value-item { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: var(--white); border-radius: var(--radius-sm); transition: var(--transition); border: 1px solid rgba(217,177,110,0.1); }
+        .value-item:hover { transform: translateX(8px); box-shadow: var(--shadow); border-color: var(--gold); }
+        .value-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, rgba(217,177,110,0.15), rgba(245,222,154,0.15)); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
+        .value-item strong { display: block; font-size: 0.95rem; }
+        .value-item span { font-size: 0.8rem; color: var(--text-light); }
+        @media(max-width:1024px) { .about-grid { grid-template-columns: 1fr; text-align: center; } .about-experience { position: relative; right: 0; bottom: 0; margin: 20px auto 0; } .about-values { align-items: center; } .value-item { max-width: 400px; width: 100%; } .about-content .btn { display: inline-flex; } .about-image-placeholder .about-photo { width: 8cm; height: 8cm; } }
+        @media(max-width:768px) { .about-image-placeholder .about-photo { width: 6cm; height: 6cm; } }
+        @media(max-width:480px) { .about-image-placeholder .about-photo { width: 5cm; height: 5cm; } }
+
+        /* ===== SERVICES ===== */
+        .services-section { padding: 100px 0; background: var(--white); }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .service-card { background: var(--white); border: 1px solid rgba(58,33,22,0.08); border-radius: var(--radius); padding: 36px 28px; transition: var(--transition); position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transition: var(--transition); transform-origin: left; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card.featured { border: 2px solid var(--gold); background: linear-gradient(135deg, rgba(217,177,110,0.03), rgba(245,222,154,0.03)); }
+        .service-card.featured::before { transform: scaleX(1); }
+        .service-badge { position: absolute; top: 16px; right: 16px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); font-size: 0.7rem; padding: 4px 12px; border-radius: var(--radius-full); font-weight: 600; }
+        .service-icon { width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, rgba(217,177,110,0.12), rgba(245,222,154,0.12)); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .service-icon i { font-size: 1.5rem; color: var(--gold); }
+        .service-card h3 { margin-bottom: 12px; font-size: 1.15rem; }
+        .service-card p { color: var(--text-medium); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+        .service-link { color: var(--gold); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; }
+        .service-link:hover { gap: 10px; color: var(--gold-light); }
+
+        /* ===== DIFERENCIAIS ===== */
+        .why-section { padding: 100px 0; background: #FDF8F0; }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .why-card { background: var(--white); border-radius: var(--radius); padding: 40px 30px; text-align: center; transition: var(--transition); position: relative; overflow: hidden; border: 1px solid rgba(217,177,110,0.08); }
+        .why-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
+        .why-number { position: absolute; top: 16px; right: 20px; font-size: 3rem; font-weight: 900; color: rgba(217,177,110,0.08); line-height: 1; }
+        .why-icon { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium)); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; border: 1px solid rgba(217,177,110,0.2); }
+        .why-icon i { font-size: 1.5rem; color: var(--gold); }
+        .why-card h3 { margin-bottom: 12px; }
+        .why-card p { color: var(--text-medium); font-size: 0.95rem; }
+
+        /* ===== BLOG CARROSSEL ===== */
+        .blog-carousel-section { padding: 80px 0 100px; background: var(--white); position: relative; }
+        .blog-carousel-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 50%, rgba(217,177,110,0.03) 0%, transparent 60%); pointer-events: none; }
+        .blog-carousel-wrapper { position: relative; overflow: hidden; padding: 10px 4px 20px; margin: 0 -4px; }
+        .blog-carousel-track { display: flex; gap: 28px; transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+        .blog-carousel-card { min-width: calc(33.333% - 19px); background: var(--white); border-radius: var(--radius); border: 1px solid rgba(58,33,22,0.04); overflow: hidden; transition: var(--transition-smooth); flex-shrink: 0; box-shadow: var(--shadow); position: relative; }
+        .blog-carousel-card::before { content: ''; position: absolute; inset: 0; border-radius: var(--radius); padding: 1px; background: linear-gradient(135deg, transparent 40%, rgba(217,177,110,0.15), transparent 60%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: 0; transition: var(--transition); }
+        .blog-carousel-card:hover::before { opacity: 1; }
+        .blog-carousel-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-xl); }
+        .blog-carousel-card .card-image { width: 100%; height: 220px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .blog-carousel-card .card-image .card-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(217,177,110,0.2), transparent 70%); pointer-events: none; }
+        .blog-carousel-card .card-image .card-icon { font-size: 3.5rem; color: rgba(255,255,255,0.2); z-index: 1; }
+        .blog-carousel-card .card-image .card-badge { position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); color: var(--white); font-size: 0.6rem; font-weight: 700; padding: 4px 14px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.8px; z-index: 2; }
+        .blog-carousel-card .card-image .card-badge.gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); }
+        .blog-carousel-card .card-image .card-watermark { position: absolute; bottom: 12px; right: 16px; font-size: 0.5rem; color: rgba(255,255,255,0.15); letter-spacing: 2px; z-index: 1; }
+        .blog-carousel-card .card-content { padding: 28px 30px 24px; }
+        .blog-carousel-card .card-meta { display: flex; align-items: center; gap: 16px; font-size: 0.7rem; color: var(--text-light); margin-bottom: 12px; font-weight: 500; }
+        .blog-carousel-card .card-meta .category { color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .blog-carousel-card .card-meta .dot-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--text-light); opacity: 0.3; }
+        .blog-carousel-card .card-title { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--font-display); }
+        .blog-carousel-card .card-excerpt { font-size: 0.9rem; color: var(--text-medium); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 18px; }
+        .blog-carousel-card .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(58,33,22,0.04); }
+        .blog-carousel-card .card-author { display: flex; align-items: center; gap: 10px; }
+        .blog-carousel-card .card-author .avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--bg-dark); }
+        .blog-carousel-card .card-author .name { font-size: 0.8rem; font-weight: 600; color: var(--text-dark); }
+        .blog-carousel-card .card-readmore { color: var(--gold); font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; padding: 6px 0; }
+        .blog-carousel-card .card-readmore:hover { gap: 12px; color: var(--gold-light); }
+        .blog-carousel-card .card-readmore i { transition: var(--transition); font-size: 0.7rem; }
+        .carousel-controls-premium { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; }
+        .carousel-controls-premium .carousel-btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(58,33,22,0.08); background: var(--white); color: var(--text-dark); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; box-shadow: var(--shadow); }
+        .carousel-controls-premium .carousel-btn:hover { background: var(--bg-dark); color: var(--gold); border-color: var(--bg-dark); transform: scale(1.05); }
+        .carousel-controls-premium .carousel-dots { display: flex; gap: 10px; }
+        .carousel-controls-premium .carousel-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(58,33,22,0.1); cursor: pointer; transition: var(--transition); position: relative; }
+        .carousel-controls-premium .carousel-dots .dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid transparent; transition: var(--transition); }
+        .carousel-controls-premium .carousel-dots .dot.active { background: var(--gold); width: 28px; border-radius: 4px; }
+        .carousel-controls-premium .carousel-dots .dot.active::after { border-color: var(--gold); }
+
+        /* ===== DEPOIMENTOS - CARROSSEL 2 EM 2 ===== */
+        .testimonials-premium { padding: 100px 0 80px; background: linear-gradient(165deg, var(--bg-dark) 0%, #1a0f0a 100%); position: relative; overflow: hidden; }
+        .testimonials-premium .section-tag { background: rgba(217,177,110,0.10); color: var(--gold-bright); border: 1px solid rgba(217,177,110,0.08); }
+        .testimonials-premium h2 { color: var(--white); }
+        .testimonials-premium .section-desc { color: rgba(255,255,255,0.4); }
+        .testimonials-carousel-wrapper { position: relative; overflow: hidden; padding: 10px 0; }
+        .testimonials-carousel-track { display: flex; gap: 28px; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+        .testimonial-card-premium { min-width: calc(50% - 14px); background: rgba(255,248,237,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(217,177,110,0.06); border-radius: var(--radius); padding: 36px 32px 28px; transition: all 0.6s cubic-bezier(0.22,1,0.36,1); position: relative; overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0; }
+        .testimonial-card-premium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(217,177,110,0.03) 0%, transparent 50%); pointer-events: none; }
+        .testimonial-card-premium::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--gold), var(--gold-light), transparent); opacity: 0; transition: all 0.6s cubic-bezier(0.22,1,0.36,1); }
+        .testimonial-card-premium:hover { transform: translateY(-8px); border-color: rgba(217,177,110,0.15); background: rgba(255,248,237,0.06); box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+        .testimonial-card-premium:hover::after { opacity: 1; }
+        .testimonial-card-premium .testimonial-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+        .testimonial-card-premium .quote-icon { color: rgba(217,177,110,0.12); line-height: 1; flex-shrink: 0; }
+        .testimonial-card-premium .quote-icon svg { width: 36px; height: 28px; }
+        .testimonial-card-premium .testimonial-stars { display: flex; gap: 3px; color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; flex-shrink: 0; padding-top: 4px; }
+        .testimonial-card-premium .testimonial-stars i { transition: var(--transition); }
+        .testimonial-card-premium .quote-text { color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.9; font-weight: 300; margin-bottom: 24px; flex: 1; font-style: italic; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; white-space: normal; }
+        .testimonial-card-premium .quote-text strong { color: var(--gold-bright); font-weight: 600; font-style: normal; }
+        .testimonial-card-premium .testimonial-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(217,177,110,0.06); }
+        .testimonial-card-premium .testimonial-author-info { display: flex; align-items: center; gap: 14px; }
+        .testimonial-card-premium .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: var(--bg-dark); flex-shrink: 0; position: relative; }
+        .testimonial-card-premium .author-avatar::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(217,177,110,0.15); animation: avatar-ring 3s ease-in-out infinite; }
+        @keyframes avatar-ring { 0%,100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.1); opacity: 0; } }
+        .testimonial-card-premium .author-details .author-name { display: block; color: var(--white); font-weight: 600; font-size: 0.95rem; }
+        .testimonial-card-premium .author-details .author-company { display: block; color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+        .testimonial-card-premium .author-verified { display: flex; align-items: center; gap: 6px; font-size: 0.65rem; color: rgba(255,255,255,0.2); font-weight: 500; flex-shrink: 0; }
+        .testimonial-card-premium .author-verified i { color: #10b981; font-size: 0.8rem; }
+        .carousel-testimonials-controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; }
+        .carousel-testimonials-controls .carousel-btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.1); background: transparent; color: var(--white); cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .carousel-testimonials-controls .carousel-btn:hover { background: rgba(217,177,110,0.1); border-color: var(--gold); }
+        .carousel-testimonials-controls .carousel-dots { display: flex; gap: 10px; }
+        .carousel-testimonials-controls .carousel-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); cursor: pointer; transition: var(--transition); position: relative; }
+        .carousel-testimonials-controls .carousel-dots .dot.active { background: var(--gold); width: 28px; border-radius: 4px; }
+        .trust-badge { display: flex; align-items: center; justify-content: center; gap: 32px; padding: 28px 40px; background: rgba(255,248,237,0.03); border: 1px solid rgba(217,177,110,0.06); border-radius: var(--radius); backdrop-filter: blur(10px); position: relative; z-index: 2; flex-wrap: wrap; margin-top: 48px; }
+        .trust-badge-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 500; }
+        .trust-badge-item i { color: var(--gold); font-size: 1.1rem; }
+        .trust-badge-divider { width: 1px; height: 28px; background: rgba(217,177,110,0.08); }
+
+        /* ===== TRANSFORMATION ===== */
+        .transformation-section { padding: 100px 0; background: var(--bg-dark); text-align: center; position: relative; overflow: hidden; }
+        .transformation-section::before { content: ''; position: absolute; top: -30%; right: -10%; width: 60%; height: 100%; background: radial-gradient(ellipse, rgba(217,177,110,0.08), transparent 70%); pointer-events: none; }
+        .transformation-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+        .transformation-content h2 { color: var(--white); margin-bottom: 20px; font-size: clamp(1.8rem,4vw,2.8rem); }
+        .transformation-content p { color: rgba(255,255,255,0.6); font-size: 1.1rem; margin-bottom: 36px; }
+
+        /* ===== FAQ ===== */
+        .faq-section { padding: 100px 0; background: #FDF8F0; }
+        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: var(--white); border-radius: var(--radius-sm); overflow: hidden; border: 1px solid rgba(58,33,22,0.06); transition: var(--transition); }
+        .faq-item.active { box-shadow: var(--shadow); border-color: var(--gold); }
+        .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border: none; background: transparent; cursor: pointer; font-family: var(--font-main); font-size: 1rem; font-weight: 600; color: var(--text-dark); text-align: left; transition: var(--transition); }
+        .faq-question i { font-size: 0.9rem; color: var(--gold); transition: var(--transition); flex-shrink: 0; margin-left: 16px; }
+        .faq-item.active .faq-question i { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .faq-answer p { padding: 0 28px 22px; color: var(--text-medium); font-size: 0.95rem; line-height: 1.7; }
+
+        /* ===== CONTATO ===== */
+        .contact-section { padding: 100px 0; background: var(--white); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .contact-content h2 { margin-top: 16px; margin-bottom: 16px; }
+        .contact-content p { color: var(--text-medium); font-size: 1.05rem; margin-bottom: 30px; }
+        .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+        .contact-item { display: flex; align-items: center; gap: 16px; padding: 18px 22px; background: #FDF8F0; border-radius: var(--radius-sm); transition: var(--transition); border: 1px solid transparent; }
+        .contact-item:hover { transform: translateX(8px); box-shadow: var(--shadow); border-color: var(--gold); }
+        .contact-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--white); flex-shrink: 0; }
+        .contact-icon.whatsapp { background: #25D366; }
+        .contact-icon.instagram { background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737); }
+        .contact-icon.email { background: var(--gold); }
+        .contact-item strong { display: block; font-size: 0.95rem; }
+        .contact-item span { font-size: 0.85rem; color: var(--text-light); }
+        .contact-form-wrapper { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
+        .contact-form h3 { margin-bottom: 28px; font-size: 1.4rem; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-dark); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 2px solid rgba(58,33,22,0.08); border-radius: var(--radius-sm); font-family: var(--font-main); font-size: 0.95rem; color: var(--text-dark); transition: var(--transition); background: #FDF8F0; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(217,177,110,0.12); background: var(--white); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        /* ===== FOOTER ===== */
+        .footer { background: #FFFFFF; padding: 60px 0 0; color: var(--text-dark); border-top: 1px solid rgba(58,33,22,0.06); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(58,33,22,0.06); }
+        .footer-logo { display: flex; align-items: center; margin-bottom: 16px; }
+        .footer-logo .logo-icon { height: 2cm; width: auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .footer-logo .logo-icon img { height: 100%; width: auto; object-fit: contain; }
+        .footer-brand p { font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; color: var(--text-medium); }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a { width: 44px; height: 44px; border-radius: 12px; background: rgba(58,33,22,0.06); display: flex; align-items: center; justify-content: center; color: var(--text-medium); font-size: 1.1rem; transition: var(--transition); border: 1px solid rgba(58,33,22,0.08); }
+        .footer-social a:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); border-color: var(--gold); }
+        .footer-links h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 20px; }
+        .footer-links li { margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; color: var(--text-medium); }
+        .footer-links a { color: var(--text-medium); transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); padding-left: 4px; }
+        .footer-links .blog-link { color: var(--gold); font-weight: 500; }
+        .footer-links .blog-link:hover { color: var(--gold-light); padding-left: 4px; }
+        .footer-bottom { padding: 24px 0; border-top: 1px solid rgba(58,33,22,0.06); margin-top: 20px; color: var(--text-medium); }
+        .footer-bottom .vigorre-brand { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-medium); }
+        .footer-bottom .vigorre-brand .logo-vigorre { height: 1.8cm; width: auto; display: inline-block; flex-shrink: 0; }
+        .footer-bottom .vigorre-brand .logo-vigorre img { height: 100%; width: auto; object-fit: contain; }
+        .footer-bottom .vigorre-brand .brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+        .footer-bottom .vigorre-brand .brand-text .site { font-weight: 600; color: var(--text-dark); }
+        .footer-bottom .vigorre-brand .brand-text .site a { color: var(--text-dark); transition: var(--transition); }
+        .footer-bottom .vigorre-brand .brand-text .site a:hover { color: var(--gold); }
+        .footer-bottom .vigorre-brand .brand-text .contacts { display: flex; gap: 8px; font-size: 0.8rem; color: var(--text-light); flex-wrap: wrap; }
+        .footer-bottom .vigorre-brand .brand-text .contacts a { color: var(--text-light); transition: var(--transition); }
+        .footer-bottom .vigorre-brand .brand-text .contacts a:hover { color: var(--gold); }
+        .footer-bottom .vigorre-brand .brand-text .contacts .sep { color: rgba(58,33,22,0.15); }
+        .footer-bottom .copyright-2026 { text-align: center; font-size: 0.7rem; color: var(--text-light); margin-top: 8px; }
+        .footer-bottom .copyright-2026 strong { color: var(--text-dark); }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 64px; height: 64px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); z-index: 999; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); animation: whatsapp-bounce 3s ease-in-out infinite; }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.6); }
+        .whatsapp-tooltip { position: absolute; right: 74px; background: var(--white); color: var(--text-dark); padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; box-shadow: var(--shadow); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+        .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
+        @keyframes whatsapp-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top { position: fixed; bottom: 30px; left: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-size: 1rem; z-index: 998; opacity: 0; visibility: hidden; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); }
+
+        /* ===== ANIMAÇÕES ===== */
+        [data-aos] { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        [data-aos="fade-up"].aos-animate { opacity: 1; transform: translateY(0); }
+        [data-aos="fade-down"] { transform: translateY(-30px); }
+        [data-aos="fade-down"].aos-animate { opacity: 1; transform: translateY(0); }
+        [data-aos="fade-right"] { transform: translateX(-30px); }
+        [data-aos="fade-right"].aos-animate { opacity: 1; transform: translateX(0); }
+        [data-aos="fade-left"] { transform: translateX(30px); }
+        [data-aos="fade-left"].aos-animate { opacity: 1; transform: translateX(0); }
+
+        /* ===== RESPONSIVO ===== */
+        @media(max-width:1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .why-grid { grid-template-columns: repeat(2, 1fr); } .contact-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } .blog-carousel-card { min-width: calc(50% - 14px); } .trust-badge { gap: 20px; padding: 20px 24px; } .footer-bottom .vigorre-brand { gap: 12px; } .footer-bottom .vigorre-brand .logo-vigorre { height: 1.6cm; } }
+        @media(max-width:768px) { .services-grid { grid-template-columns: 1fr; } .why-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .blog-carousel-card { min-width: 100%; } .testimonial-card-premium { min-width: 100%; } .trust-badge { flex-direction: column; gap: 12px; padding: 16px 20px; } .trust-badge-divider { width: 60px; height: 1px; } .contact-item { flex-direction: column; text-align: center; } .contact-form-wrapper { padding: 28px 22px; } .carousel-testimonials-controls { gap: 16px; } .carousel-testimonials-controls .carousel-btn { width: 40px; height: 40px; } .footer-bottom .vigorre-brand { flex-direction: column; gap: 8px; align-items: center; text-align: center; } .footer-bottom .vigorre-brand .brand-text { align-items: center; } .footer-bottom .vigorre-brand .brand-text .contacts { justify-content: center; } .footer-bottom .vigorre-brand .logo-vigorre { height: 1.6cm; } }
+        @media(max-width:480px) { .hero-badge span { font-size: 0.7rem; } .hero-trust { flex-direction: column; align-items: center; gap: 10px; } .blog-carousel-card .card-content { padding: 20px 20px 18px; } .blog-carousel-card .card-title { font-size: 1rem; } .whatsapp-float { width: 56px; height: 56px; font-size: 1.5rem; bottom: 20px; right: 20px; } .back-to-top { bottom: 20px; left: 20px; width: 42px; height: 42px; } .testimonial-card-premium { padding: 28px 20px 20px; } .testimonial-card-premium .quote-text { font-size: 0.9rem; } .testimonial-card-premium .author-avatar { width: 38px; height: 38px; font-size: 0.85rem; } .footer-bottom .vigorre-brand .brand-text .contacts { flex-direction: column; gap: 2px; } .footer-bottom .vigorre-brand .brand-text .contacts .sep { display: none; } .footer-bottom .vigorre-brand .logo-vigorre { height: 1.4cm; } }
     </style>
 </head>
 <body>
 
-    <!-- ==========================================
-    NAVBAR
-    ========================================== -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#inicio" class="nav-logo">
-                <div class="logo-icon">
-                    <img src="/logo.png" alt="CONNECTA">
-                </div>
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <a href="#inicio" class="nav-logo"><div class="logo-icon"><img src="/logo.png" alt="CONNECTA"></div></a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio" class="nav-link">Início</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
@@ -2416,35 +377,17 @@
         </div>
     </nav>
 
-    <!-- ==========================================
-    HERO
-    ========================================== -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="inicio">
         <div class="hero-particles" id="particles"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge" data-aos="fade-down">
-                    <i class="fas fa-shield-halved"></i>
-                    <span>Sua segurança financeira começa aqui</span>
-                </div>
-                <h1 data-aos="fade-up">
-                    Transforme números<br>
-                    complexos em <span class="gradient-text">decisões de lucro.</span>
-                </h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-delay="200">
-                    Contabilidade Digital com alma humana e direção estratégica
-                    para o crescimento do seu negócio. Sem "contabilês",
-                    sem complicação — apenas <strong>clareza</strong> e <strong>resultados</strong>.
-                </p>
+                <div class="hero-badge" data-aos="fade-down"><i class="fas fa-shield-halved"></i><span>Sua segurança financeira começa aqui</span></div>
+                <h1 data-aos="fade-up">Transforme números<br>complexos em <span class="gradient-text">decisões de lucro.</span></h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-delay="200">Contabilidade Digital com alma humana e direção estratégica para o crescimento do seu negócio. Sem "contabilês", sem complicação — apenas <strong>clareza</strong> e <strong>resultados</strong>.</p>
                 <div class="hero-ctas" data-aos="fade-up" data-delay="400">
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA%20e%20gostaria%20de%20uma%20consultoria." class="btn btn-primary btn-glow" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        Falar com Especialista
-                    </a>
-                    <a href="#servicos" class="btn btn-outline">
-                        <i class="fas fa-arrow-down"></i>
-                        Conhecer Serviços
-                    </a>
+                    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA%20e%20gostaria%20de%20uma%20consultoria." class="btn btn-primary btn-glow" target="_blank"><i class="fab fa-whatsapp"></i> Falar com Especialista</a>
+                    <a href="#servicos" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Conhecer Serviços</a>
                 </div>
                 <div class="hero-trust" data-aos="fade-up" data-delay="600">
                     <div class="trust-item"><i class="fas fa-check-circle"></i><span>100% Digital</span></div>
@@ -2466,50 +409,29 @@
                 </div>
             </div>
         </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,60 1440,40 L1440,120 L0,120 Z" fill="#FFF8ED"/>
-            </svg>
-        </div>
+        <div class="hero-wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,60 1440,40 L1440,120 L0,120 Z" fill="#FFF8ED"/></svg></div>
     </section>
 
-    <!-- ==========================================
-    PAIN SECTION
-    ========================================== -->
+    <!-- ===== PAIN ===== -->
     <section class="pain-section" id="problema">
         <div class="container">
             <div class="pain-content" data-aos="fade-up">
                 <div class="pain-icon"><i class="fas fa-brain"></i></div>
                 <h2>Você sente que está trabalhando <span style="color:var(--gold);">só para pagar impostos?</span></h2>
                 <p class="pain-text">O cérebro humano odeia incerteza. A dúvida sobre impostos, obrigações e finanças gera um estresse silencioso que <strong>paralisa o crescimento do seu negócio</strong>. Você abre sua empresa para viver seu sonho — não para se perder em burocracia.</p>
-                <div class="pain-solution">
-                    <i class="fas fa-lightbulb"></i>
-                    <strong>Imagine ter alguém que traduz toda essa complexidade em um caminho claro, seguro e lucrativo para você.</strong>
-                </div>
+                <div class="pain-solution"><i class="fas fa-lightbulb"></i><strong>Imagine ter alguém que traduz toda essa complexidade em um caminho claro, seguro e lucrativo para você.</strong></div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    ABOUT SECTION
-    ========================================== -->
+    <!-- ===== ABOUT ===== -->
     <section class="about-section" id="sobre">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Quem está por trás</span>
-                <h2>Conheça a mente por trás da <span class="gradient-text">CONNECTA</span></h2>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Quem está por trás</span><h2>Conheça a mente por trás da <span class="gradient-text">CONNECTA</span></h2></div>
             <div class="about-grid">
                 <div class="about-image" data-aos="fade-right">
-                    <div class="about-image-placeholder">
-                        <img src="/erilmacrc.png" alt="Erilma Silva - CRC Ativo" class="about-photo">
-                        <span>Erilma Silva</span>
-                        <small>CRC Ativo</small>
-                    </div>
-                    <div class="about-experience">
-                        <div class="exp-number">UFV</div>
-                        <div class="exp-text">Universidade Federal de Viçosa<br>Campus Rio Paranaíba</div>
-                    </div>
+                    <div class="about-image-placeholder"><img src="/erilmacrc.png" alt="Erilma Silva - CRC Ativo" class="about-photo"><span>Erilma Silva</span><small>CRC Ativo</small></div>
+                    <div class="about-experience"><div class="exp-number">UFV</div><div class="exp-text">Universidade Federal de Viçosa<br>Campus Rio Paranaíba</div></div>
                 </div>
                 <div class="about-content" data-aos="fade-left">
                     <h3>Prazer, sou a <span style="color:var(--gold);">Erilma</span>.</h3>
@@ -2520,87 +442,33 @@
                         <div class="value-item"><div class="value-icon"><i class="fas fa-heart"></i></div><div><strong>Atendimento Humano</strong><span>Você não é só um CNPJ</span></div></div>
                         <div class="value-item"><div class="value-icon"><i class="fas fa-rocket"></i></div><div><strong>Foco no Crescimento</strong><span>Seu lucro é minha meta</span></div></div>
                     </div>
-                    <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20conhecer%20melhor%20a%20CONNECTA." class="btn btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Falar com Especialista
-                    </a>
+                    <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20conhecer%20melhor%20a%20CONNECTA." class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Falar com Especialista</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    SERVICES SECTION
-    ========================================== -->
+    <!-- ===== SERVICES ===== -->
     <section class="services-section" id="servicos">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Nossas Soluções</span>
-                <h2>Tudo que o seu negócio precisa em <span class="gradient-text">um só lugar</span></h2>
-                <p class="section-desc">Não oferecemos apenas contabilidade. Oferecemos <strong>liberdade</strong> para você focar no que ama, enquanto cuidamos da sua saúde financeira.</p>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Nossas Soluções</span><h2>Tudo que o seu negócio precisa em <span class="gradient-text">um só lugar</span></h2><p class="section-desc">Não oferecemos apenas contabilidade. Oferecemos <strong>liberdade</strong> para você focar no que ama, enquanto cuidamos da sua saúde financeira.</p></div>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-delay="0">
-                    <div class="service-icon"><i class="fas fa-store"></i></div>
-                    <h3>Simples Nacional</h3>
-                    <p>Gestão completa para empresas do Simples, com planejamento tributário para você pagar apenas o necessário — dentro da lei.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="100">
-                    <div class="service-icon"><i class="fas fa-id-card"></i></div>
-                    <h3>Microempreendedor (MEI)</h3>
-                    <p>Abertura, regularização e acompanhamento do seu MEI. Sem burocracia, sem dor de cabeça. Você empreende, nós cuidamos do resto.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="200">
-                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
-                    <h3>Autônomos</h3>
-                    <p>Organização financeira, carnê-leão e declarações para profissionais liberais. Tenha controle total da sua vida fiscal.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card featured" data-aos="fade-up" data-delay="300">
-                    <div class="service-badge">Mais procurado</div>
-                    <div class="service-icon"><i class="fas fa-tractor"></i></div>
-                    <h3>Produtores Rurais</h3>
-                    <p>Gestão de custos, IRPF Rural, regularização e planejamento. Do campo à tranquilidade financeira — com quem entende sua realidade.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="400">
-                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h3>Imposto de Renda</h3>
-                    <p>Declaração completa e estratégica. Não basta declarar — é preciso declarar de forma inteligente para você não perder dinheiro.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="500">
-                    <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3>Consultoria Financeira</h3>
-                    <p>Análise profunda da saúde do seu negócio. Identificamos gargalos, oportunidades e traçamos o mapa para o crescimento sustentável.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="600">
-                    <div class="service-icon"><i class="fas fa-gavel"></i></div>
-                    <h3>Reforma Tributária</h3>
-                    <p>Antecipamos as mudanças para que sua única preocupação seja vender mais. Fique à frente enquanto outros ficam perdidos.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-delay="700">
-                    <div class="service-icon"><i class="fas fa-handshake-angle"></i></div>
-                    <h3>BPO Financeiro</h3>
-                    <p>Terceirize sua rotina financeira com segurança. Contas a pagar, receber, conciliação e relatórios — tudo organizado para você.</p>
-                    <a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a>
-                </div>
+                <div class="service-card" data-aos="fade-up" data-delay="0"><div class="service-icon"><i class="fas fa-store"></i></div><h3>Simples Nacional</h3><p>Gestão completa para empresas do Simples, com planejamento tributário para você pagar apenas o necessário — dentro da lei.</p><a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20mais%20sobre%20Simples%20Nacional." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="100"><div class="service-icon"><i class="fas fa-id-card"></i></div><h3>Microempreendedor (MEI)</h3><p>Abertura, regularização e acompanhamento do seu MEI. Sem burocracia, sem dor de cabeça. Você empreende, nós cuidamos do resto.</p><a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20MEI." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="200"><div class="service-icon"><i class="fas fa-user-tie"></i></div><h3>Autônomos</h3><p>Organização financeira, carnê-leão e declarações para profissionais liberais. Tenha controle total da sua vida fiscal.</p><a href="https://wa.me/5534998847279?text=Olá!%20Sou%20autônomo%20e%20preciso%20de%20contabilidade." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card featured" data-aos="fade-up" data-delay="300"><div class="service-badge">Mais procurado</div><div class="service-icon"><i class="fas fa-tractor"></i></div><h3>Produtores Rurais</h3><p>Gestão de custos, IRPF Rural, regularização e planejamento. Do campo à tranquilidade financeira — com quem entende sua realidade.</p><a href="https://wa.me/5534998847279?text=Olá!%20Sou%20produtor%20rural%20e%20preciso%20de%20consultoria." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="400"><div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div><h3>Imposto de Renda</h3><p>Declaração completa e estratégica. Não basta declarar — é preciso declarar de forma inteligente para você não perder dinheiro.</p><a href="https://wa.me/5534998847279?text=Olá!%20Preciso%20declarar%20meu%20Imposto%20de%20Renda." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="500"><div class="service-icon"><i class="fas fa-chart-pie"></i></div><h3>Consultoria Financeira</h3><p>Análise profunda da saúde do seu negócio. Identificamos gargalos, oportunidades e traçamos o mapa para o crescimento sustentável.</p><a href="https://wa.me/5534998847279?text=Olá!%20Quero%20uma%20consultoria%20financeira." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="600"><div class="service-icon"><i class="fas fa-gavel"></i></div><h3>Reforma Tributária</h3><p>Antecipamos as mudanças para que sua única preocupação seja vender mais. Fique à frente enquanto outros ficam perdidos.</p><a href="https://wa.me/5534998847279?text=Olá!%20Quero%20entender%20o%20impacto%20da%20Reforma%20Tributária." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
+                <div class="service-card" data-aos="fade-up" data-delay="700"><div class="service-icon"><i class="fas fa-handshake-angle"></i></div><h3>BPO Financeiro</h3><p>Terceirize sua rotina financeira com segurança. Contas a pagar, receber, conciliação e relatórios — tudo organizado para você.</p><a href="https://wa.me/5534998847279?text=Olá!%20Quero%20saber%20sobre%20BPO%20Financeiro." class="service-link" target="_blank">Falar com Especialista <i class="fas fa-arrow-right"></i></a></div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    DIFERENCIAIS
-    ========================================== -->
+    <!-- ===== DIFERENCIAIS ===== -->
     <section class="why-section" id="diferenciais">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Por que a CONNECTA?</span>
-                <h2>Não somos apenas contadores.<br>Somos <span class="gradient-text">parceiros do seu crescimento.</span></h2>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Por que a CONNECTA?</span><h2>Não somos apenas contadores.<br>Somos <span class="gradient-text">parceiros do seu crescimento.</span></h2></div>
             <div class="why-grid">
                 <div class="why-card" data-aos="fade-up" data-delay="0"><div class="why-number">01</div><div class="why-icon"><i class="fas fa-globe"></i></div><h3>Contabilidade 100% Digital</h3><p>Conectamos você de qualquer lugar do Brasil. Sem deslocamento, sem filas, sem perda de tempo. Tudo na palma da sua mão.</p></div>
                 <div class="why-card" data-aos="fade-up" data-delay="100"><div class="why-number">02</div><div class="why-icon"><i class="fas fa-comments"></i></div><h3>Linguagem Clara</h3><p>Zero "contabilês". Respondemos suas dúvidas de forma simples, objetiva e prática. Você entende cada passo do processo.</p></div>
@@ -2612,16 +480,10 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    CARROSSEL BLOG
-    ========================================== -->
+    <!-- ===== BLOG CARROSSEL ===== -->
     <section class="blog-carousel-section" id="blog">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Últimas Notícias</span>
-                <h2>Conteúdos que <span class="gradient-text">transformam</span></h2>
-                <p class="section-desc">Artigos exclusivos para ajudar você a tomar as melhores decisões financeiras e tributárias.</p>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Últimas Notícias</span><h2>Conteúdos que <span class="gradient-text">transformam</span></h2><p class="section-desc">Artigos exclusivos para ajudar você a tomar as melhores decisões financeiras e tributárias.</p></div>
             <div class="blog-carousel-wrapper" id="blogCarousel">
                 <div class="blog-carousel-track" id="blogCarouselTrack"></div>
             </div>
@@ -2630,28 +492,16 @@
                 <div class="carousel-dots" id="blogCarouselDots"></div>
                 <button class="carousel-btn" id="blogCarouselNext" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <div style="text-align:center;margin-top:32px;">
-                <a href="/blog.html" class="btn btn-primary" style="background:linear-gradient(135deg, var(--gold), var(--gold-light));color:var(--bg-dark);">
-                    Ver todas as notícias <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+            <div style="text-align:center;margin-top:32px;"><a href="/blog.html" class="btn btn-primary" style="background:linear-gradient(135deg, var(--gold), var(--gold-light));color:var(--bg-dark);">Ver todas as notícias <i class="fas fa-arrow-right"></i></a></div>
         </div>
     </section>
 
-    <!-- ==========================================
-    DEPOIMENTOS - CARROSSEL 2 EM 2 (FINAL)
-    ========================================== -->
+    <!-- ===== DEPOIMENTOS - CARROSSEL 2 EM 2 ===== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Depoimentos</span>
-                <h2>O que nossos <span class="gradient-text">clientes dizem</span></h2>
-                <p class="section-desc">Histórias reais de quem confiou na CONNECTA para transformar sua gestão financeira.</p>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Depoimentos</span><h2>O que nossos <span class="gradient-text">clientes dizem</span></h2><p class="section-desc">Histórias reais de quem confiou na CONNECTA para transformar sua gestão financeira.</p></div>
             <div class="testimonials-carousel-wrapper">
-                <div class="testimonials-carousel-track" id="testimonialsCarouselTrack">
-                    <!-- Depoimentos gerados pelo JavaScript -->
-                </div>
+                <div class="testimonials-carousel-track" id="testimonialsCarouselTrack"></div>
             </div>
             <div class="carousel-testimonials-controls">
                 <button class="carousel-btn" id="testimonialsPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
@@ -2668,30 +518,17 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    TRANSFORMATION CTA
-    ========================================== -->
+    <!-- ===== TRANSFORMATION ===== -->
     <section class="transformation-section">
         <div class="container">
-            <div class="transformation-content" data-aos="fade-up">
-                <h2>O primeiro passo para <span class="gradient-text-light">transformar seu negócio</span> é simples:</h2>
-                <p>Uma conversa. Sem compromisso, sem jargões, sem pressão. Apenas uma escuta atenta do que você precisa e uma direção clara do que podemos construir juntos.</p>
-                <a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-especialista btn-glow" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Falar com Especialista
-                </a>
-            </div>
+            <div class="transformation-content" data-aos="fade-up"><h2>O primeiro passo para <span class="gradient-text-light">transformar seu negócio</span> é simples:</h2><p>Uma conversa. Sem compromisso, sem jargões, sem pressão. Apenas uma escuta atenta do que você precisa e uma direção clara do que podemos construir juntos.</p><a href="https://wa.me/5534998847279?text=Olá%20Erilma!%20Quero%20dar%20o%20primeiro%20passo%20com%20a%20CONNECTA." class="btn btn-especialista btn-glow" target="_blank"><i class="fab fa-whatsapp"></i> Falar com Especialista</a></div>
         </div>
     </section>
 
-    <!-- ==========================================
-    FAQ
-    ========================================== -->
+    <!-- ===== FAQ ===== -->
     <section class="faq-section" id="faq">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Tire suas dúvidas</span>
-                <h2>Perguntas <span class="gradient-text">Frequentes</span></h2>
-            </div>
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Tire suas dúvidas</span><h2>Perguntas <span class="gradient-text">Frequentes</span></h2></div>
             <div class="faq-grid" data-aos="fade-up">
                 <div class="faq-item"><button class="faq-question"><span>O atendimento digital é realmente seguro?</span><i class="fas fa-plus"></i></button><div class="faq-answer"><p>Absolutamente! Utilizamos plataformas seguras e criptografadas para troca de documentos. Todos os processos seguem as normas do Conselho Federal de Contabilidade. Seus dados estão protegidos como se estivessem em um cofre — mas acessíveis para você a qualquer momento.</p></div></div>
                 <div class="faq-item"><button class="faq-question"><span>Como funciona o atendimento 100% digital?</span><i class="fas fa-plus"></i></button><div class="faq-answer"><p>Tudo acontece de forma simples: você envia seus documentos por WhatsApp ou plataforma segura, fazemos reuniões por videochamada quando necessário, e todos os relatórios ficam disponíveis digitalmente. É como ter uma contadora ao seu lado — sem sair de casa.</p></div></div>
@@ -2703,29 +540,15 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    CONTATO
-    ========================================== -->
+    <!-- ===== CONTATO ===== -->
     <section class="contact-section" id="contato">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-content" data-aos="fade-right">
-                    <span class="section-tag">Vamos conversar?</span>
-                    <h2>Seu próximo nível começa com uma <span class="gradient-text">conexão.</span></h2>
-                    <p>Entre em contato agora e descubra como a CONNECTA pode transformar a realidade financeira do seu negócio.</p>
+                <div class="contact-content" data-aos="fade-right"><span class="section-tag">Vamos conversar?</span><h2>Seu próximo nível começa com uma <span class="gradient-text">conexão.</span></h2><p>Entre em contato agora e descubra como a CONNECTA pode transformar a realidade financeira do seu negócio.</p>
                     <div class="contact-channels">
-                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank">
-                            <div class="contact-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
-                            <div><strong>WhatsApp</strong><span>(34) 99884-7279</span></div>
-                        </a>
-                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank">
-                            <div class="contact-icon instagram"><i class="fab fa-instagram"></i></div>
-                            <div><strong>Instagram</strong><span>@erilmasilva.contabilidade</span></div>
-                        </a>
-                        <a href="mailto:contato@connectacontabilidade.com.br" class="contact-item">
-                            <div class="contact-icon email"><i class="fas fa-envelope"></i></div>
-                            <div><strong>E-mail</strong><span>contato@connectacontabilidade.com.br</span></div>
-                        </a>
+                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank"><div class="contact-icon whatsapp"><i class="fab fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>(34) 99884-7279</span></div></a>
+                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank"><div class="contact-icon instagram"><i class="fab fa-instagram"></i></div><div><strong>Instagram</strong><span>@erilmasilva.contabilidade</span></div></a>
+                        <a href="mailto:contato@connectacontabilidade.com.br" class="contact-item"><div class="contact-icon email"><i class="fas fa-envelope"></i></div><div><strong>E-mail</strong><span>contato@connectacontabilidade.com.br</span></div></a>
                     </div>
                 </div>
                 <div class="contact-form-wrapper" data-aos="fade-left">
@@ -2742,213 +565,52 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    FOOTER
-    ========================================== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="logo-icon">
-                            <img src="/logo-rodape.png" alt="CONNECTA">
-                        </div>
-                    </div>
-                    <p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p>
-                    <div class="footer-social">
-                        <a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                    <div style="margin-top:16px;">
-                        <a href="/admin/login.html" class="btn btn-small btn-painel">
-                            <i class="fas fa-user-shield"></i> Painel Administrativo
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#depoimentos">Depoimentos</a></li>
-                        <li><a href="/blog.html" class="blog-link">Blog</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#servicos">Simples Nacional</a></li>
-                        <li><a href="#servicos">MEI</a></li>
-                        <li><a href="#servicos">Produtor Rural</a></li>
-                        <li><a href="#servicos">Imposto de Renda</a></li>
-                        <li><a href="#servicos">Consultoria</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li><i class="fab fa-whatsapp"></i> (34) 99884-7279</li>
-                        <li><i class="fab fa-instagram"></i> @erilmasilva.contabilidade</li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><div class="footer-logo"><div class="logo-icon"><img src="/logo-rodape.png" alt="CONNECTA"></div></div><p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p><div class="footer-social"><a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a></div><div style="margin-top:16px;"><a href="/admin/login.html" class="btn btn-small btn-painel"><i class="fas fa-user-shield"></i> Painel Administrativo</a></div></div>
+                <div class="footer-links"><h4>Navegação</h4><ul><li><a href="#inicio">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#depoimentos">Depoimentos</a></li><li><a href="/blog.html" class="blog-link">Blog</a></li><li><a href="#contato">Contato</a></li></ul></div>
+                <div class="footer-links"><h4>Serviços</h4><ul><li><a href="#servicos">Simples Nacional</a></li><li><a href="#servicos">MEI</a></li><li><a href="#servicos">Produtor Rural</a></li><li><a href="#servicos">Imposto de Renda</a></li><li><a href="#servicos">Consultoria</a></li></ul></div>
+                <div class="footer-links"><h4>Contato</h4><ul><li><i class="fab fa-whatsapp"></i> (34) 99884-7279</li><li><i class="fab fa-instagram"></i> @erilmasilva.contabilidade</li></ul></div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
-                <div class="vigorre-brand">
-                    <div class="logo-vigorre">
-                        <img src="/logo-vigorre.png" alt="VIGORRE TECH">
-                    </div>
-                    <div class="brand-text">
-                        <span class="site"><a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a></span>
-                        <div class="contacts">
-                            <span>(34) 99185-0735</span>
-                            <span class="sep">|</span>
-                            <a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="copyright-2026">
-                    © 2026 <strong>VIGORRE TECH™</strong>. Todos os direitos reservados.
-                </div>
+                <div class="vigorre-brand"><div class="logo-vigorre"><img src="/logo-vigorre.png" alt="VIGORRE TECH"></div><div class="brand-text"><span class="site"><a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a></span><div class="contacts"><span>(34) 99185-0735</span><span class="sep">|</span><a href="mailto:contato@vigorre.com.br">contato@vigorre.com.br</a></div></div></div>
+                <div class="copyright-2026">© 2026 <strong>VIGORRE TECH™</strong>. Todos os direitos reservados.</div>
             </div>
         </div>
     </footer>
 
-    <!-- ==========================================
-    WHATSAPP FLOAT
-    ========================================== -->
-    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Falar com Especialista</span>
-    </a>
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Falar com Especialista</span></a>
 
-    <!-- ==========================================
-    BACK TO TOP
-    ========================================== -->
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- ==========================================
-    SCRIPT COMPLETO - CARROSSEL DE DEPOIMENTOS FINAL
-    ========================================== -->
+    <!-- ===== SCRIPT - CORREÇÃO RADICAL ===== -->
     <script>
         // ============================================
         // ARTIGOS
         // ============================================
-        const ARTIGOS = [{
-            id: 1,
-            titulo: "Reforma Tributária: O que muda para sua empresa em 2025",
-            resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.",
-            categoria: "Tributário",
-            autor: "Erilma Silva",
-            data: "14 de julho de 2025",
-            tempoLeitura: "5 min",
-            icone: "fa-chart-line",
-            cor: "#3A2116",
-            carrossel: true,
-            slug: "reforma-tributaria-2025"
-        }, {
-            id: 2,
-            titulo: "MEI: Guia completo para não perder seu CNPJ",
-            resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.",
-            categoria: "MEI",
-            autor: "Erilma Silva",
-            data: "12 de julho de 2025",
-            tempoLeitura: "8 min",
-            icone: "fa-id-card",
-            cor: "#5A3522",
-            carrossel: true,
-            slug: "mei-guia-completo"
-        }, {
-            id: 3,
-            titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?",
-            resumo: "Análise comparativa entre os regimes tributários.",
-            categoria: "Simples Nacional",
-            autor: "Erilma Silva",
-            data: "10 de julho de 2025",
-            tempoLeitura: "6 min",
-            icone: "fa-store",
-            cor: "#8A5A35",
-            carrossel: true,
-            slug: "simples-nacional-lucro-presumido"
-        }, {
-            id: 4,
-            titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais",
-            resumo: "Estratégias práticas para produtores rurais organizarem suas finanças.",
-            categoria: "Produtor Rural",
-            autor: "Erilma Silva",
-            data: "08 de julho de 2025",
-            tempoLeitura: "7 min",
-            icone: "fa-tractor",
-            cor: "#6B4A30",
-            carrossel: false,
-            slug: "produtor-rural-financas"
-        }, {
-            id: 5,
-            titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança",
-            resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio.",
-            categoria: "Consultoria",
-            autor: "Erilma Silva",
-            data: "06 de julho de 2025",
-            tempoLeitura: "4 min",
-            icone: "fa-handshake",
-            cor: "#4A2C1D",
-            carrossel: true,
-            slug: "bpo-financeiro"
-        }, {
-            id: 6,
-            titulo: "Automação Contábil: O futuro da contabilidade digital",
-            resumo: "Descubra como a automação está revolucionando a contabilidade.",
-            categoria: "Tecnologia",
-            autor: "Erilma Silva",
-            data: "04 de julho de 2025",
-            tempoLeitura: "6 min",
-            icone: "fa-microchip",
-            cor: "#2C1A0E",
-            carrossel: false,
-            slug: "automacao-contabil"
-        }];
+        const ARTIGOS = [
+            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "14 de julho de 2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true, slug: "reforma-tributaria-2025" },
+            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "12 de julho de 2025", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", carrossel: true, slug: "mei-guia-completo" },
+            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "10 de julho de 2025", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", carrossel: true, slug: "simples-nacional-lucro-presumido" },
+            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais organizarem suas finanças.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "08 de julho de 2025", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", carrossel: false, slug: "produtor-rural-financas" },
+            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "06 de julho de 2025", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", carrossel: true, slug: "bpo-financeiro" },
+            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "04 de julho de 2025", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", carrossel: false, slug: "automacao-contabil" }
+        ];
 
         // ============================================
-        // DEPOIMENTOS - DADOS
+        // DEPOIMENTOS
         // ============================================
-        const DEPOIMENTOS = [{
-            id: 1,
-            nome: "Raul Ramalho",
-            empresa: "Vigorre • São Gonçalo/RJ",
-            iniciais: "R",
-            texto: '"A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: transparência e segurança. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."',
-            nota: 5,
-            data: "Junho 2025"
-        }, {
-            id: 2,
-            nome: "Daniele Aparecida",
-            empresa: "Amovin • Rio Paranaíba/MG",
-            iniciais: "D",
-            texto: '"O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá consciência real sobre os números e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."',
-            nota: 5,
-            data: "Maio 2025"
-        }, {
-            id: 3,
-            nome: "Gabriela Melo",
-            empresa: "Terapia Ocupacional • Rio Paranaíba/MG",
-            iniciais: "G",
-            texto: '"Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço ágil, eficiente e muito profissional. Estou muito satisfeita!"',
-            nota: 5,
-            data: "Abril 2025"
-        }, {
-            id: 4,
-            nome: "Daniela Boaventura",
-            empresa: "Fonoaudiologia • Rio Paranaíba/MG",
-            iniciais: "D",
-            texto: '"Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com atenção, organização e muita disponibilidade para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."',
-            nota: 5,
-            data: "Março 2025"
-        }];
+        const DEPOIMENTOS = [
+            { id: 1, nome: "Raul Ramalho", empresa: "Vigorre • São Gonçalo/RJ", iniciais: "R", texto: '"A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: transparência e segurança. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."', nota: 5, data: "Junho 2025" },
+            { id: 2, nome: "Daniele Aparecida", empresa: "Amovin • Rio Paranaíba/MG", iniciais: "D", texto: '"O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá consciência real sobre os números e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."', nota: 5, data: "Maio 2025" },
+            { id: 3, nome: "Gabriela Melo", empresa: "Terapia Ocupacional • Rio Paranaíba/MG", iniciais: "G", texto: '"Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço ágil, eficiente e muito profissional. Estou muito satisfeita!"', nota: 5, data: "Abril 2025" },
+            { id: 4, nome: "Daniela Boaventura", empresa: "Fonoaudiologia • Rio Paranaíba/MG", iniciais: "D", texto: '"Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com atenção, organização e muita disponibilidade para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."', nota: 5, data: "Março 2025" }
+        ];
 
         // ============================================
         // FUNÇÕES AUXILIARES
@@ -2958,16 +620,13 @@
                 localStorage.setItem('connecta_artigos', JSON.stringify(ARTIGOS));
             }
         }
-
         function getArtigos() {
             const data = localStorage.getItem('connecta_artigos');
             return data ? JSON.parse(data) : ARTIGOS;
         }
-
         function getArtigosCarrossel() {
             return getArtigos().filter(a => a.carrossel === true);
         }
-
         function gerarEstrelas(nota) {
             return '★'.repeat(nota) + '☆'.repeat(5 - nota);
         }
@@ -2989,18 +648,11 @@
             const track = document.getElementById('blogCarouselTrack');
             const artigos = getArtigosCarrossel();
             totalBlogCards = artigos.length;
-
             if (totalBlogCards === 0) {
-                track.innerHTML =
-                    `<div style="min-width:100%;text-align:center;padding:60px 20px;color:var(--text-light);">
-                        <i class="fas fa-newspaper" style="font-size:3rem;color:var(--gold);opacity:0.3;margin-bottom:16px;"></i>
-                        <h3 style="color:var(--text-dark);">Nenhuma notícia em destaque</h3>
-                        <p style="font-size:0.9rem;">Configure os destaques no painel administrativo.</p>
-                    </div>`;
+                track.innerHTML = `<div style="min-width:100%;text-align:center;padding:60px 20px;color:var(--text-light);"><i class="fas fa-newspaper" style="font-size:3rem;color:var(--gold);opacity:0.3;margin-bottom:16px;"></i><h3 style="color:var(--text-dark);">Nenhuma notícia em destaque</h3><p style="font-size:0.9rem;">Configure os destaques no painel administrativo.</p></div>`;
                 atualizarDotsBlog();
                 return;
             }
-
             track.innerHTML = artigos.map((artigo) =>
                 `<div class="blog-carousel-card">
                     <div class="card-image" style="background:linear-gradient(135deg, ${artigo.cor}, ${artigo.cor}dd);">
@@ -3029,7 +681,6 @@
                     </div>
                 </div>`
             ).join('');
-
             atualizarDotsBlog();
             setTimeout(atualizarCarrosselBlog, 100);
         }
@@ -3043,10 +694,8 @@
                 const dot = document.createElement('span');
                 dot.classList.add('dot');
                 if (i === Math.floor(blogIndex / blogCardsPerView)) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    blogIndex = i * blogCardsPerView;
-                    atualizarCarrosselBlog();
-                });
+                dot.addEventListener('click', () => { blogIndex = i * blogCardsPerView;
+                    atualizarCarrosselBlog(); });
                 dotsContainer.appendChild(dot);
             }
         }
@@ -3058,20 +707,18 @@
             const maxIndex = Math.max(0, totalBlogCards - blogCardsPerView);
             if (blogIndex > maxIndex) blogIndex = maxIndex;
             if (blogIndex < 0) blogIndex = 0;
-
             const card = document.querySelector('.blog-carousel-card');
             const cardWidth = card?.offsetWidth || 300;
             const gap = 28;
             const offset = blogIndex * (cardWidth + gap);
             track.style.transform = `translateX(-${offset}px)`;
-
             const dots = document.querySelectorAll('#blogCarouselDots .dot');
             const activeDot = Math.floor(blogIndex / blogCardsPerView);
             dots.forEach((dot, i) => { dot.classList.toggle('active', i === activeDot); });
         }
 
         // ============================================
-        // DEPOIMENTOS CARROSSEL - 2 EM 2 (FINAL)
+        // DEPOIMENTOS CARROSSEL - 2 EM 2 (CORREÇÃO RADICAL)
         // ============================================
         let depoimentoIndex = 0;
         let depoimentosPerView = 2;
@@ -3086,8 +733,9 @@
             const track = document.getElementById('testimonialsCarouselTrack');
             if (!track) return;
 
+            // Renderiza todos os depoimentos
             track.innerHTML = DEPOIMENTOS.map(d => `
-                <div class="testimonial-card-premium">
+                <div class="testimonial-card-premium" data-id="${d.id}">
                     <div class="testimonial-header">
                         <div class="quote-icon">
                             <svg width="36" height="28" viewBox="0 0 40 32" fill="none">
@@ -3114,14 +762,27 @@
                 </div>
             `).join('');
 
-            // Aguarda renderização para calcular largura
-            setTimeout(() => {
+            // FORÇA A ATUALIZAÇÃO COM MÚLTIPLOS RETRYS
+            function atualizarComRetry(tentativa) {
+                tentativa = tentativa || 0;
+                if (tentativa > 10) {
+                    console.log('❌ Falha ao renderizar depoimentos após 10 tentativas');
+                    return;
+                }
+                console.log(`🔄 Tentativa ${tentativa + 1} de renderizar depoimentos...`);
                 atualizarDotsDepoimentos();
-                setTimeout(() => {
-                    atualizarCarrosselDepoimentos();
-                    console.log('✅ Depoimentos renderizados e carrossel atualizado!');
-                }, 100);
-            }, 150);
+                atualizarCarrosselDepoimentos();
+                // Verifica se funcionou
+                const trackEl = document.getElementById('testimonialsCarouselTrack');
+                const cards = trackEl?.querySelectorAll('.testimonial-card-premium');
+                if (cards && cards.length > 0) {
+                    console.log(`✅ Depoimentos renderizados com sucesso! ${cards.length} cards encontrados.`);
+                    return;
+                }
+                setTimeout(() => atualizarComRetry(tentativa + 1), 200);
+            }
+
+            setTimeout(() => atualizarComRetry(0), 100);
         }
 
         function atualizarDotsDepoimentos() {
@@ -3140,7 +801,6 @@
                 });
                 dotsContainer.appendChild(dot);
             }
-            console.log(`📊 Dots atualizados: ${totalDots} dots, depoimentosPorVez: ${depoimentosPerView}`);
         }
 
         function atualizarCarrosselDepoimentos() {
@@ -3152,22 +812,36 @@
             if (depoimentoIndex > maxIndex) depoimentoIndex = maxIndex;
             if (depoimentoIndex < 0) depoimentoIndex = 0;
 
-            // Pega a largura real do card
+            // PEGA A LARGURA REAL DO CARD
             const cards = track.querySelectorAll('.testimonial-card-premium');
             if (cards.length === 0) {
-                console.log('⚠️ Nenhum card encontrado, tentando novamente...');
+                // Tenta novamente em 200ms
                 setTimeout(atualizarCarrosselDepoimentos, 200);
                 return;
             }
 
-            const cardWidth = cards[0].offsetWidth;
+            // CALCULA A LARGURA CORRETA
+            let cardWidth = cards[0].offsetWidth;
+            // Se a largura for 0, tenta calcular de outra forma
+            if (cardWidth === 0) {
+                const parentWidth = track.parentElement?.offsetWidth || 0;
+                const gap = 28;
+                if (depoimentosPerView === 2) {
+                    cardWidth = (parentWidth - gap) / 2;
+                } else {
+                    cardWidth = parentWidth;
+                }
+            }
+
             const gap = 28;
             const cardTotalWidth = cardWidth + gap;
             const offset = depoimentoIndex * cardTotalWidth;
 
+            // Aplica a transição
             track.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
             track.style.transform = `translateX(-${offset}px)`;
 
+            // Atualiza os dots
             const dots = document.querySelectorAll('#testimonialsDots .dot');
             const activeDot = Math.floor(depoimentoIndex / depoimentosPerView);
             dots.forEach((dot, i) => {
@@ -3183,7 +857,6 @@
         function setupBlogCarouselNavigation() {
             const prevBtn = document.getElementById('blogCarouselPrev');
             const nextBtn = document.getElementById('blogCarouselNext');
-
             if (prevBtn) {
                 prevBtn.addEventListener('click', function() {
                     blogCardsPerView = getBlogCardsPerView();
@@ -3194,7 +867,6 @@
                     resetBlogAutoplay();
                 });
             }
-
             if (nextBtn) {
                 nextBtn.addEventListener('click', function() {
                     blogCardsPerView = getBlogCardsPerView();
@@ -3214,7 +886,6 @@
         function setupDepoimentosCarouselNavigation() {
             const prevBtn = document.getElementById('testimonialsPrev');
             const nextBtn = document.getElementById('testimonialsNext');
-
             if (prevBtn) {
                 prevBtn.addEventListener('click', function() {
                     depoimentosPerView = getDepoimentosPerView();
@@ -3225,7 +896,6 @@
                     resetDepoimentosAutoplay();
                 });
             }
-
             if (nextBtn) {
                 nextBtn.addEventListener('click', function() {
                     depoimentosPerView = getDepoimentosPerView();
@@ -3265,10 +935,8 @@
         }
 
         function stopBlogAutoplay() {
-            if (blogAutoplayInterval) {
-                clearInterval(blogAutoplayInterval);
-                blogAutoplayInterval = null;
-            }
+            if (blogAutoplayInterval) { clearInterval(blogAutoplayInterval);
+                blogAutoplayInterval = null; }
         }
 
         function resetBlogAutoplay() {
@@ -3292,10 +960,8 @@
         }
 
         function stopDepoimentosAutoplay() {
-            if (depoimentosAutoplayInterval) {
-                clearInterval(depoimentosAutoplayInterval);
-                depoimentosAutoplayInterval = null;
-            }
+            if (depoimentosAutoplayInterval) { clearInterval(depoimentosAutoplayInterval);
+                depoimentosAutoplayInterval = null; }
         }
 
         function resetDepoimentosAutoplay() {
@@ -3312,7 +978,6 @@
                 blogCarousel.addEventListener('mouseenter', stopBlogAutoplay);
                 blogCarousel.addEventListener('mouseleave', startBlogAutoplay);
             }
-
             const depoimentosCarousel = document.querySelector('.testimonials-carousel-wrapper');
             if (depoimentosCarousel) {
                 depoimentosCarousel.addEventListener('mouseenter', stopDepoimentosAutoplay);
@@ -3334,7 +999,6 @@
                     atualizarDotsBlog();
                 }
                 atualizarCarrosselBlog();
-
                 const newDepoimentosPerView = getDepoimentosPerView();
                 if (newDepoimentosPerView !== depoimentosPerView) {
                     depoimentosPerView = newDepoimentosPerView;
@@ -3348,30 +1012,19 @@
         // UI - MENU, SCROLL, FAQ, FORM, ETC
         // ============================================
         function setupUI() {
-            // Navbar scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 80) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+                if (window.scrollY > 80) { navbar.classList.add('scrolled'); } else { navbar.classList.remove(
+                    'scrolled'); }
             }, { passive: true });
 
-            // Back to top
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
+                if (window.scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList.remove(
+                    'visible'); }
             }, { passive: true });
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-            // Hamburger menu
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
             hamburger.addEventListener('click', function() {
@@ -3391,7 +1044,6 @@
                 }
             });
 
-            // FAQ
             document.querySelectorAll('.faq-question').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     const item = this.parentElement;
@@ -3401,7 +1053,6 @@
                 });
             });
 
-            // Contact form
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
@@ -3410,7 +1061,6 @@
                     const phone = document.getElementById('phone').value.trim();
                     const service = document.getElementById('service').value;
                     const message = document.getElementById('message').value.trim();
-
                     let msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
                     msg += '*Nome:* ' + encodeURIComponent(name) + '%0A';
                     msg += '*WhatsApp:* ' + encodeURIComponent(phone) + '%0A';
@@ -3421,7 +1071,6 @@
                 });
             }
 
-            // Phone input mask
             const phoneInput = document.getElementById('phone');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
@@ -3438,7 +1087,6 @@
                 });
             }
 
-            // AOS Animations
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -3450,7 +1098,6 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('[data-aos]').forEach(function(el) { observer.observe(el); });
 
-            // Particles
             const particlesContainer = document.getElementById('particles');
             if (particlesContainer) {
                 for (let i = 0; i < 30; i++) {
@@ -3472,36 +1119,36 @@
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Inicializando CONNECTA...');
-
             salvarArtigos();
-
             renderizarCarrosselBlog();
             renderizarCarrosselDepoimentos();
-
             setupBlogCarouselNavigation();
             setupDepoimentosCarouselNavigation();
-
             setTimeout(() => {
                 startBlogAutoplay();
                 startDepoimentosAutoplay();
                 console.log('✅ Autoplay iniciado!');
-            }, 1200);
-
+            }, 1500);
             setupHoverPause();
             window.addEventListener('resize', handleResize);
             setupUI();
-
             console.log('✅ CONNECTA - Carrossel de Depoimentos 2 em 2 CORRIGIDO!');
             console.log(`📊 Total de depoimentos: ${totalDepoimentos}`);
             console.log(`📱 Depoimentos por vez: ${getDepoimentosPerView()}`);
         });
 
+        // Força recálculo múltiplas vezes para garantir
         window.addEventListener('load', function() {
             setTimeout(() => {
-                console.log('🔄 Forçando recálculo do carrossel de depoimentos...');
+                console.log('🔄 Forçando recálculo do carrossel de depoimentos (load)...');
                 atualizarDotsDepoimentos();
                 atualizarCarrosselDepoimentos();
-            }, 800);
+            }, 500);
+            setTimeout(() => {
+                console.log('🔄 Forçando recálculo do carrossel de depoimentos (load 2)...');
+                atualizarDotsDepoimentos();
+                atualizarCarrosselDepoimentos();
+            }, 1000);
         });
 
         setTimeout(function() {
@@ -3509,6 +1156,27 @@
             atualizarDotsDepoimentos();
             atualizarCarrosselDepoimentos();
         }, 2000);
+
+        // Força a cada 3 segundos até funcionar (emergência)
+        let emergencyInterval = setInterval(function() {
+            const track = document.getElementById('testimonialsCarouselTrack');
+            const cards = track?.querySelectorAll('.testimonial-card-premium');
+            if (cards && cards.length > 0) {
+                console.log('✅ Cards encontrados, parando emergência');
+                clearInterval(emergencyInterval);
+                atualizarDotsDepoimentos();
+                atualizarCarrosselDepoimentos();
+                return;
+            }
+            console.log('🔄 Emergência: tentando renderizar novamente...');
+            renderizarCarrosselDepoimentos();
+        }, 1000);
+
+        // Para a emergência após 10 segundos
+        setTimeout(function() {
+            clearInterval(emergencyInterval);
+        }, 10000);
     </script>
+
 </body>
 </html>
