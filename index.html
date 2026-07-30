@@ -1386,7 +1386,7 @@
         }
 
         /* ============================================
-           DEPOIMENTOS - CARROSSEL 2 EM 2 (CORRIGIDO)
+           DEPOIMENTOS - CARROSSEL 2 EM 2
            ============================================ */
         .testimonials-premium {
             padding: 100px 0 80px;
@@ -1512,7 +1512,6 @@
             flex: 1;
             font-style: italic;
             letter-spacing: 0.3px;
-            /* QUEBRA DE TEXTO AUTOMÁTICA */
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: auto;
@@ -2640,7 +2639,7 @@
     </section>
 
     <!-- ==========================================
-    DEPOIMENTOS - CARROSSEL 2 EM 2 (CORRIGIDO)
+    DEPOIMENTOS - CARROSSEL 2 EM 2 (FINAL)
     ========================================== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
@@ -2834,7 +2833,7 @@
     </button>
 
     <!-- ==========================================
-    SCRIPT COMPLETO
+    SCRIPT COMPLETO - CARROSSEL DE DEPOIMENTOS FINAL
     ========================================== -->
     <script>
         // ============================================
@@ -2915,7 +2914,7 @@
         }];
 
         // ============================================
-        // DEPOIMENTOS - DADOS (4 depoimentos)
+        // DEPOIMENTOS - DADOS
         // ============================================
         const DEPOIMENTOS = [{
             id: 1,
@@ -3032,7 +3031,7 @@
             ).join('');
 
             atualizarDotsBlog();
-            atualizarCarrosselBlog();
+            setTimeout(atualizarCarrosselBlog, 100);
         }
 
         function atualizarDotsBlog() {
@@ -3072,7 +3071,7 @@
         }
 
         // ============================================
-        // DEPOIMENTOS CARROSSEL - 2 EM 2 (CORRIGIDO)
+        // DEPOIMENTOS CARROSSEL - 2 EM 2 (FINAL)
         // ============================================
         let depoimentoIndex = 0;
         let depoimentosPerView = 2;
@@ -3115,11 +3114,14 @@
                 </div>
             `).join('');
 
-            // Aguardar renderização para calcular largura
+            // Aguarda renderização para calcular largura
             setTimeout(() => {
                 atualizarDotsDepoimentos();
-                atualizarCarrosselDepoimentos();
-            }, 100);
+                setTimeout(() => {
+                    atualizarCarrosselDepoimentos();
+                    console.log('✅ Depoimentos renderizados e carrossel atualizado!');
+                }, 100);
+            }, 150);
         }
 
         function atualizarDotsDepoimentos() {
@@ -3138,6 +3140,7 @@
                 });
                 dotsContainer.appendChild(dot);
             }
+            console.log(`📊 Dots atualizados: ${totalDots} dots, depoimentosPorVez: ${depoimentosPerView}`);
         }
 
         function atualizarCarrosselDepoimentos() {
@@ -3149,23 +3152,29 @@
             if (depoimentoIndex > maxIndex) depoimentoIndex = maxIndex;
             if (depoimentoIndex < 0) depoimentoIndex = 0;
 
-            // Pega a largura real do primeiro card
+            // Pega a largura real do card
             const cards = track.querySelectorAll('.testimonial-card-premium');
-            if (cards.length === 0) return;
+            if (cards.length === 0) {
+                console.log('⚠️ Nenhum card encontrado, tentando novamente...');
+                setTimeout(atualizarCarrosselDepoimentos, 200);
+                return;
+            }
 
-            const cardWidth = cards[0].offsetWidth || 350;
+            const cardWidth = cards[0].offsetWidth;
             const gap = 28;
-            const offset = depoimentoIndex * (cardWidth + gap);
+            const cardTotalWidth = cardWidth + gap;
+            const offset = depoimentoIndex * cardTotalWidth;
 
             track.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
             track.style.transform = `translateX(-${offset}px)`;
 
-            // Atualiza os dots
             const dots = document.querySelectorAll('#testimonialsDots .dot');
             const activeDot = Math.floor(depoimentoIndex / depoimentosPerView);
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === activeDot);
             });
+
+            console.log(`📊 Depoimentos: índice=${depoimentoIndex}, porVez=${depoimentosPerView}, total=${totalDepoimentos}, offset=${offset}px, cardWidth=${cardWidth}px`);
         }
 
         // ============================================
@@ -3476,7 +3485,7 @@
                 startBlogAutoplay();
                 startDepoimentosAutoplay();
                 console.log('✅ Autoplay iniciado!');
-            }, 800);
+            }, 1200);
 
             setupHoverPause();
             window.addEventListener('resize', handleResize);
@@ -3489,11 +3498,17 @@
 
         window.addEventListener('load', function() {
             setTimeout(() => {
+                console.log('🔄 Forçando recálculo do carrossel de depoimentos...');
+                atualizarDotsDepoimentos();
                 atualizarCarrosselDepoimentos();
-                console.log('🔄 Recálculo forçado após load');
-            }, 500);
+            }, 800);
         });
-    </script>
 
+        setTimeout(function() {
+            console.log('🔄 Garantia extra: recalculando carrossel...');
+            atualizarDotsDepoimentos();
+            atualizarCarrosselDepoimentos();
+        }, 2000);
+    </script>
 </body>
 </html>
