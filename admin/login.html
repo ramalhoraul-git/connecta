@@ -20,76 +20,66 @@
             --text-dark: #2C1A0E;
             --text-medium: #6B4A30;
             --text-light: #9A7A5A;
-            --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
-            --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
+            --shadow: 0 8px 32px rgba(58,33,22,0.15);
+            --shadow-lg: 0 20px 60px rgba(58,33,22,0.25);
             --radius: 16px;
             --radius-sm: 10px;
             --radius-full: 50px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
             --font-main: 'Montserrat', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: var(--font-main);
+            background: var(--white);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
-            padding: 20px;
+            background: linear-gradient(165deg, var(--white) 0%, #F5EDE0 100%);
         }
 
         .login-container {
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .login-card {
-            background: rgba(255, 248, 237, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(217, 177, 110, 0.2);
+            background: var(--white);
             border-radius: var(--radius);
             padding: 48px 40px;
+            max-width: 420px;
+            width: 100%;
             box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(217,177,110,0.1);
         }
 
-        .login-logo {
+        .login-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
-        .login-logo .logo-icon {
+        .login-header .logo {
             width: auto;
             height: 2cm;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
             overflow: hidden;
         }
 
-        .login-logo .logo-icon img {
+        .login-header .logo img {
             height: 100%;
             width: auto;
             object-fit: contain;
         }
 
-        .login-logo h1 {
-            color: var(--white);
-            font-size: 1.5rem;
+        .login-header h1 {
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            color: var(--text-dark);
         }
 
-        .login-logo p {
-            color: rgba(255, 255, 255, 0.5);
+        .login-header p {
             font-size: 0.85rem;
+            color: var(--text-light);
             margin-top: 4px;
         }
 
@@ -99,33 +89,29 @@
 
         .form-group label {
             display: block;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            border: 2px solid rgba(58,33,22,0.08);
             border-radius: var(--radius-sm);
-            color: var(--white);
             font-family: var(--font-main);
-            font-size: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
             transition: var(--transition);
+            background: #FDF8F0;
         }
 
         .form-group input:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(217, 177, 110, 0.15);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 4px rgba(217,177,110,0.12);
+            background: var(--white);
         }
 
         .form-group .input-icon {
@@ -134,10 +120,10 @@
 
         .form-group .input-icon i {
             position: absolute;
-            left: 16px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--text-light);
         }
 
         .form-group .input-icon input {
@@ -146,7 +132,7 @@
 
         .btn-login {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--bg-dark);
             border: none;
@@ -164,7 +150,7 @@
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(217, 177, 110, 0.4);
+            box-shadow: 0 8px 30px rgba(217,177,110,0.3);
         }
 
         .btn-login:disabled {
@@ -173,63 +159,84 @@
             transform: none;
         }
 
-        .login-error {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            border-radius: var(--radius-sm);
-            padding: 12px 16px;
-            color: #ff6b6b;
-            font-size: 0.85rem;
-            display: none;
-            margin-bottom: 20px;
+        .btn-login i.fa-spinner {
+            animation: spin 1s linear infinite;
         }
 
-        .login-error.show {
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.15);
+            color: #dc2626;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .error-message.show {
             display: block;
         }
 
         .login-footer {
             text-align: center;
             margin-top: 24px;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
         }
 
         .login-footer a {
             color: var(--gold);
-            text-decoration: none;
-            transition: var(--transition);
+            font-weight: 600;
         }
 
         .login-footer a:hover {
             color: var(--gold-light);
         }
 
-        .security-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 16px;
-            color: rgba(255, 255, 255, 0.2);
+        .status-badge {
+            text-align: center;
             font-size: 0.7rem;
-            flex-wrap: wrap;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            background: rgba(16,185,129,0.06);
+            border: 1px solid rgba(16,185,129,0.1);
         }
 
-        .security-badge i {
-            font-size: 0.6rem;
+        .status-badge .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
         }
 
-        .security-badge .sep {
-            color: rgba(255, 255, 255, 0.1);
+        .status-badge .dot.online {
+            background: #10b981;
+            animation: pulse-dot 2s ease-in-out infinite;
         }
 
-        /* Responsivo */
+        .status-badge .dot.offline {
+            background: #ef4444;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
         @media (max-width: 480px) {
-            .login-card {
+            .login-container {
                 padding: 32px 24px;
+                margin: 16px;
             }
-            .login-logo .logo-icon {
+            .login-header .logo {
                 height: 1.6cm;
             }
         }
@@ -238,267 +245,223 @@
 <body>
 
     <div class="login-container">
-        <div class="login-card">
-            <div class="login-logo">
-                <div class="logo-icon">
-                    <img src="/logo.png" alt="CONNECTA">
+        <!-- Header -->
+        <div class="login-header">
+            <div class="logo">
+                <img src="/logo.png" alt="CONNECTA">
+            </div>
+            <h1>Área Administrativa</h1>
+            <p>Faça login para gerenciar o site</p>
+        </div>
+
+        <!-- Status do Banco -->
+        <div class="status-badge" id="statusBanco">
+            <span class="dot online" id="statusDot"></span>
+            <span id="statusTexto">Verificando conexão...</span>
+        </div>
+
+        <!-- Mensagem de erro -->
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Credenciais inválidas</span>
+        </div>
+
+        <!-- Formulário -->
+        <form id="loginForm" autocomplete="off">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="admin@connecta.com.br" value="admin@connecta.com.br" required>
                 </div>
-                <h1>CONNECTA</h1>
-                <p>Painel Administrativo</p>
             </div>
 
-            <div class="login-error" id="loginError">
-                <i class="fas fa-exclamation-circle"></i>
-                <span id="errorMessage">Credenciais inválidas. Tente novamente.</span>
-            </div>
-
-            <form id="loginForm" autocomplete="off" novalidate>
-                <div class="form-group">
-                    <label for="username">Usuário</label>
-                    <div class="input-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="username" placeholder="Digite seu usuário" required
-                               autocomplete="username" aria-label="Usuário">
-                    </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" placeholder="••••••••" value="admin123" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <div class="input-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Digite sua senha" required
-                               autocomplete="current-password" aria-label="Senha">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-login" id="loginBtn">
-                    <i class="fas fa-arrow-right"></i>
-                    Entrar
-                </button>
-            </form>
-
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Ambiente seguro</span>
-                <span class="sep">•</span>
-                <i class="fas fa-lock"></i>
-                <span>Conexão criptografada</span>
-                <span class="sep">•</span>
-                <i class="fas fa-user-shield"></i>
-                <span>Acesso restrito</span>
             </div>
 
-            <div class="login-footer">
-                <a href="/">← Voltar para o site</a>
-            </div>
+            <button type="submit" class="btn-login" id="btnLogin">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Entrar</span>
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p>CONNECTA Contabilidade &copy; 2025</p>
         </div>
     </div>
 
     <script>
         // ============================================
-        // CONFIGURAÇÃO DO ADMIN MASTER
+        // SUPABASE CONFIG
         // ============================================
-        const ADMIN_CREDENTIALS = {
-            username: 'connecta',
-            password: 'Admin@2025!'
-        };
+        const SUPABASE_URL = 'https://spztajsribpyaittolnr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
 
         // ============================================
         // ELEMENTOS
         // ============================================
         const form = document.getElementById('loginForm');
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const loginBtn = document.getElementById('loginBtn');
-        const loginError = document.getElementById('loginError');
+        const emailInput = document.getElementById('email');
+        const senhaInput = document.getElementById('senha');
+        const btnLogin = document.getElementById('btnLogin');
         const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const statusTexto = document.getElementById('statusTexto');
+        const statusDot = document.getElementById('statusDot');
 
         // ============================================
-        // FUNÇÕES
+        // VERIFICAR STATUS DO SUPABASE
         // ============================================
-        function showError(message) {
-            errorMessage.textContent = message;
-            loginError.classList.add('show');
-            setTimeout(() => {
-                loginError.classList.remove('show');
-            }, 5000);
-        }
-
-        function hideError() {
-            loginError.classList.remove('show');
-        }
-
-        function setLoading(isLoading) {
-            if (isLoading) {
-                loginBtn.disabled = true;
-                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Autenticando...';
-            } else {
-                loginBtn.disabled = false;
-                loginBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Entrar';
-            }
-        }
-
-        // ============================================
-        // SANITIZAÇÃO
-        // ============================================
-        function sanitizeInput(value) {
-            return value.replace(/[<>]/g, '').trim();
-        }
-
-        // ============================================
-        // VERIFICAR SE JÁ ESTÁ LOGADO
-        // ============================================
-        (function checkSession() {
-            const session = localStorage.getItem('connecta_admin');
-            if (session) {
-                try {
-                    const data = JSON.parse(session);
-                    if (data.loggedIn && data.timestamp) {
-                        const elapsed = Date.now() - data.timestamp;
-                        if (elapsed < 24 * 60 * 60 * 1000) {
-                            // Já está logado - redirecionar para dashboard
-                            window.location.href = '/admin/dashboard.html';
-                            return;
-                        } else {
-                            localStorage.removeItem('connecta_admin');
-                        }
+        async function verificarStatus() {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/usuarios?limit=1`, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
                     }
-                } catch (e) {
-                    localStorage.removeItem('connecta_admin');
+                });
+
+                if (response.ok) {
+                    statusDot.className = 'dot online';
+                    statusTexto.textContent = '✅ Banco conectado';
+                } else {
+                    statusDot.className = 'dot offline';
+                    statusTexto.textContent = '⚠️ Banco indisponível';
                 }
+            } catch (error) {
+                statusDot.className = 'dot offline';
+                statusTexto.textContent = '❌ Erro de conexão';
             }
-        })();
+        }
+
+        // ============================================
+        // FAZER LOGIN
+        // ============================================
+        async function fazerLogin(email, senha) {
+            try {
+                // Buscar usuário no Supabase
+                const url = `${SUPABASE_URL}/rest/v1/usuarios?email=eq.${encodeURIComponent(email)}`;
+                const response = await fetch(url, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar usuário');
+                }
+
+                const usuarios = await response.json();
+
+                if (usuarios.length === 0) {
+                    throw new Error('Usuário não encontrado');
+                }
+
+                const usuario = usuarios[0];
+
+                // Verificar senha (em produção, use hash)
+                if (usuario.senha !== senha) {
+                    throw new Error('Senha incorreta');
+                }
+
+                // Login bem-sucedido
+                const sessionData = {
+                    loggedIn: true,
+                    user: {
+                        id: usuario.id,
+                        email: usuario.email,
+                        nome: usuario.nome || 'Administrador',
+                        role: usuario.role || 'admin'
+                    },
+                    timestamp: Date.now()
+                };
+
+                localStorage.setItem('connecta_admin', JSON.stringify(sessionData));
+
+                // Redirecionar
+                window.location.href = '/admin/dashboard.html';
+
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        }
 
         // ============================================
         // SUBMIT DO FORMULÁRIO
         // ============================================
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            hideError();
 
-            const username = sanitizeInput(usernameInput.value);
-            const password = sanitizeInput(passwordInput.value);
+            const email = emailInput.value.trim();
+            const senha = senhaInput.value.trim();
 
-            if (!username || !password) {
-                showError('Preencha todos os campos.');
+            if (!email || !senha) {
+                mostrarErro('Preencha todos os campos');
                 return;
             }
 
-            // Prevenir brute force
-            const attempts = parseInt(localStorage.getItem('login_attempts') || '0');
-            if (attempts >= 5) {
-                const lastAttempt = parseInt(localStorage.getItem('login_last_attempt') || '0');
-                const cooldown = 5 * 60 * 1000;
-                if (Date.now() - lastAttempt < cooldown) {
-                    const remaining = Math.ceil((cooldown - (Date.now() - lastAttempt)) / 60000);
-                    showError(`Muitas tentativas. Aguarde ${remaining} minutos.`);
-                    return;
-                } else {
-                    localStorage.setItem('login_attempts', '0');
-                }
-            }
+            // Desabilitar botão
+            btnLogin.disabled = true;
+            btnLogin.innerHTML = '<i class="fas fa-spinner"></i><span>Entrando...</span>';
+            errorMessage.classList.remove('show');
 
-            setLoading(true);
-
-            setTimeout(() => {
-                if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-                    // Resetar tentativas
-                    localStorage.setItem('login_attempts', '0');
-
-                    // Login bem-sucedido
-                    localStorage.setItem('connecta_admin', JSON.stringify({
-                        loggedIn: true,
-                        username: username,
-                        timestamp: Date.now(),
-                        sessionId: Math.random().toString(36).substring(2, 15)
-                    }));
-
-                    // REDIRECIONAR PARA DASHBOARD
-                    window.location.href = '/admin/dashboard.html';
-                } else {
-                    // Incrementar tentativas
-                    const attempts = parseInt(localStorage.getItem('login_attempts') || '0');
-                    localStorage.setItem('login_attempts', (attempts + 1).toString());
-                    localStorage.setItem('login_last_attempt', Date.now().toString());
-
-                    showError('Usuário ou senha incorretos. Tente novamente.');
-                    setLoading(false);
-                    passwordInput.value = '';
-                    passwordInput.focus();
-
-                    // Feedback visual de erro
-                    passwordInput.style.borderColor = '#ff6b6b';
-                    setTimeout(() => {
-                        passwordInput.style.borderColor = '';
-                    }, 3000);
-                }
-            }, 800);
-        });
-
-        // ============================================
-        // ENTER PARA SUBMIT
-        // ============================================
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const active = document.activeElement;
-                if (active === usernameInput || active === passwordInput) {
-                    form.dispatchEvent(new Event('submit'));
-                }
+            try {
+                await fazerLogin(email, senha);
+            } catch (error) {
+                mostrarErro(error.message);
+                btnLogin.disabled = false;
+                btnLogin.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Entrar</span>';
             }
         });
 
         // ============================================
-        // LOGOUT AUTOMÁTICO POR INATIVIDADE (15min)
+        // MOSTRAR ERRO
         // ============================================
-        let inactivityTimer;
-
-        function resetInactivityTimer() {
-            clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(() => {
-                if (localStorage.getItem('connecta_admin')) {
-                    localStorage.removeItem('connecta_admin');
-                }
-            }, 15 * 60 * 1000);
+        function mostrarErro(mensagem) {
+            errorText.textContent = mensagem;
+            errorMessage.classList.add('show');
         }
 
         // ============================================
-        // PREVENIR CLIQUE DIREITO
-        // ============================================
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        // ============================================
-        // PREVENIR DEV TOOLS
+        // PREVENIR ENTER DUPLO
         // ============================================
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                return false;
+            if (e.key === 'Enter' && !btnLogin.disabled) {
+                form.dispatchEvent(new Event('submit'));
             }
         });
 
         // ============================================
-        // REGISTRO DE ATIVIDADE
+        // INICIALIZAR
         // ============================================
-        function logSecurityEvent(event) {
-            const logs = JSON.parse(localStorage.getItem('security_logs') || '[]');
-            logs.push({
-                event: event,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                url: window.location.href
-            });
-            if (logs.length > 100) {
-                logs.shift();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se já está logado
+            const session = localStorage.getItem('connecta_admin');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.loggedIn && Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+                        window.location.href = '/admin/dashboard.html';
+                        return;
+                    }
+                } catch (e) {}
             }
-            localStorage.setItem('security_logs', JSON.stringify(logs));
-        }
 
-        logSecurityEvent('login_page_loaded');
+            verificarStatus();
+
+            // Verificar status a cada 30 segundos
+            setInterval(verificarStatus, 30000);
+
+            console.log('🔐 Login com Supabase carregado!');
+        });
     </script>
+
 </body>
 </html>
