@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | CONNECTA – Consultoria & Contabilidade Digital</title>
+    <title>Blog | CONNECTA Contabilidade</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ============================================
+           ROOT VARIABLES
+           ============================================ */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
             --bg-light: #8A5A35;
-            --bg-header-footer: #2C1A0E;
             --gold: #D9B16E;
             --gold-light: #E5C27A;
             --gold-bright: #F5DE9A;
@@ -22,14 +24,14 @@
             --text-dark: #2C1A0E;
             --text-medium: #6B4A30;
             --text-light: #9A7A5A;
-            --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
-            --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
-            --shadow-xl: 0 30px 80px rgba(58, 33, 22, 0.35);
+            --shadow: 0 8px 32px rgba(58,33,22,0.15);
+            --shadow-lg: 0 20px 60px rgba(58,33,22,0.25);
+            --shadow-xl: 0 30px 80px rgba(58,33,22,0.35);
             --radius: 16px;
             --radius-sm: 10px;
             --radius-full: 50px;
-            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-smooth: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition: all 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+            --transition-smooth: all 0.8s cubic-bezier(0.22,1,0.36,1);
             --font-main: 'Montserrat', sans-serif;
             --font-display: 'Playfair Display', serif;
         }
@@ -40,19 +42,21 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
         img { max-width: 100%; display: block; height: auto; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
-        h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
-        h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        h1 { font-size: clamp(2.2rem,5vw,3.8rem); }
+        h2 { font-size: clamp(1.8rem,4vw,2.8rem); }
+        h3 { font-size: clamp(1.2rem,2.5vw,1.5rem); }
 
         .gradient-text { background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-highlight)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text-light { background: linear-gradient(135deg, var(--gold-bright), var(--gold-highlight)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         .section-header { text-align: center; margin-bottom: 48px; }
         .section-tag { display: inline-block; background: linear-gradient(135deg, rgba(217,177,110,0.12), rgba(245,222,154,0.12)); color: var(--gold); padding: 6px 20px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; backdrop-filter: blur(10px); }
         .section-desc { font-size: 1.1rem; color: var(--text-medium); max-width: 640px; margin: 12px auto 0; }
 
+        /* ===== BOTÕES ===== */
         .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: var(--transition); text-align: center; justify-content: center; min-height: 56px; position: relative; overflow: hidden; }
         .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); box-shadow: 0 4px 24px rgba(217,177,110,0.35); }
         .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(217,177,110,0.5); }
@@ -64,9 +68,7 @@
         .btn-painel:hover { background: var(--bg-medium); color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(58,33,22,0.3); }
         @keyframes glow-pulse { 0%,100% { box-shadow: 0 4px 24px rgba(217,177,110,0.35); } 50% { box-shadow: 0 4px 48px rgba(217,177,110,0.6); } }
 
-        /* ============================================
-           NAVBAR - IGUAL AO SITE PRINCIPAL
-           ============================================ */
+        /* ===== NAVBAR ===== */
         .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 12px 0; transition: var(--transition); background: #2C1A0E; }
         .navbar.scrolled { background: #2C1A0E; box-shadow: 0 2px 40px rgba(0,0,0,0.3); padding: 8px 0; }
         .navbar.scrolled .nav-link { color: rgba(255,255,255,0.8); }
@@ -78,8 +80,6 @@
         .nav-link { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: var(--transition); position: relative; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition); }
         .nav-link:hover::after { width: 100%; }
-        .nav-link.active { color: var(--gold); }
-        .nav-link.active::after { width: 100%; }
         .nav-link-blog { color: var(--gold) !important; font-weight: 600; }
         .nav-link-blog::after { background: var(--gold) !important; }
         .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark) !important; padding: 10px 24px; border-radius: var(--radius-full); font-weight: 600; }
@@ -90,488 +90,539 @@
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,6px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-6px); }
-
-        @media(max-width:768px) {
-            .logo-icon { height: 1.6cm; }
-            .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 340px; height: 100vh; background: #2C1A0E; flex-direction: column; justify-content: center; align-items: center; gap: 24px; transition: var(--transition); box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
-            .nav-menu.active { right: 0; }
-            .nav-menu .nav-link { color: rgba(255,255,255,0.9) !important; font-size: 1.1rem; }
-            .hamburger { display: flex; }
-        }
+        @media(max-width:768px) { .logo-icon { height: 1.6cm; } .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 340px; height: 100vh; background: #2C1A0E; flex-direction: column; justify-content: center; align-items: center; gap: 24px; transition: var(--transition); box-shadow: -10px 0 40px rgba(0,0,0,0.5); } .nav-menu.active { right: 0; } .nav-menu .nav-link { color: rgba(255,255,255,0.9) !important; font-size: 1.1rem; } .hamburger { display: flex; } }
         @media(max-width:480px) { .logo-icon { height: 1.4cm; } }
 
-        /* ============================================
-           HERO DO BLOG
-           ============================================ */
+        /* ===== HERO DO BLOG ===== */
         .blog-hero {
-            padding: 140px 0 60px;
-            background: linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
-            color: var(--white);
+            padding: 140px 0 80px;
+            background: linear-gradient(165deg, var(--bg-dark) 0%, #1a0f0a 100%);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
         .blog-hero::before {
             content: '';
             position: absolute;
-            top: -30%;
+            top: -50%;
             right: -20%;
             width: 60%;
             height: 100%;
-            background: radial-gradient(ellipse, rgba(217,177,110,0.08), transparent 70%);
+            background: radial-gradient(ellipse, rgba(217,177,110,0.06), transparent 70%);
+            pointer-events: none;
         }
-        .blog-hero .container { position: relative; z-index: 2; }
-        .blog-hero .blog-tag {
+        .blog-hero h1 { color: var(--white); margin-bottom: 16px; }
+        .blog-hero h1 span { color: var(--gold); }
+        .blog-hero p { color: rgba(255,255,255,0.5); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .blog-hero .hero-badge {
             display: inline-block;
-            background: rgba(217,177,110,0.12);
+            background: rgba(217,177,110,0.10);
             color: var(--gold-bright);
+            border: 1px solid rgba(217,177,110,0.08);
             padding: 6px 20px;
             border-radius: var(--radius-full);
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .blog-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem,5vw,3.8rem); margin-bottom: 12px; }
-        .blog-hero p { color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 540px; font-weight: 300; }
-
-        /* ============================================
-           FILTROS
-           ============================================ */
-        .blog-filters {
-            padding: 40px 0;
-            background: var(--white);
-            border-bottom: 1px solid rgba(58,33,22,0.04);
-            position: sticky;
-            top: 80px;
-            z-index: 99;
-            backdrop-filter: blur(20px);
-            background: rgba(255,248,237,0.9);
-        }
-        .blog-filters .filter-container { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .blog-filters .filter-container .search-box { flex: 1; min-width: 200px; position: relative; }
-        .blog-filters .filter-container .search-box input {
-            width: 100%; padding: 12px 18px 12px 44px; border: 2px solid rgba(58,33,22,0.06); border-radius: var(--radius-sm);
-            font-family: var(--font-main); font-size: 0.9rem; background: var(--white); transition: var(--transition); color: var(--text-dark);
-        }
-        .blog-filters .filter-container .search-box input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(217,177,110,0.08); }
-        .blog-filters .filter-container .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
-        .blog-filters .filter-container select {
-            padding: 12px 18px; border: 2px solid rgba(58,33,22,0.06); border-radius: var(--radius-sm);
-            font-family: var(--font-main); font-size: 0.9rem; background: var(--white); color: var(--text-dark);
-            cursor: pointer; transition: var(--transition); min-width: 150px;
-        }
-        .blog-filters .filter-container select:focus { outline: none; border-color: var(--gold); }
-        .blog-filters .filter-container .filter-results { font-size: 0.8rem; color: var(--text-light); margin-left: auto; }
-
-        /* ============================================
-           GRID DE ARTIGOS
-           ============================================ */
-        .blog-grid-section { padding: 60px 0 80px; }
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .blog-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            border: 1px solid rgba(58,33,22,0.04);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            box-shadow: var(--shadow);
-        }
-        .blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
-        .blog-card .card-image {
-            width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
-        }
-        .blog-card .card-image .card-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(217,177,110,0.15), transparent 70%); }
-        .blog-card .card-image .card-icon { font-size: 3rem; color: rgba(255,255,255,0.15); z-index: 1; }
-        .blog-card .card-image .card-badge {
-            position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px);
-            color: var(--white); font-size: 0.6rem; font-weight: 700; padding: 4px 14px; border-radius: var(--radius-full);
-            text-transform: uppercase; letter-spacing: 0.8px; z-index: 2;
-        }
-        .blog-card .card-image .card-badge.gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); }
-        .blog-card .card-content { padding: 24px 28px 20px; }
-        .blog-card .card-meta {
-            display: flex; align-items: center; gap: 12px; font-size: 0.7rem; color: var(--text-light); margin-bottom: 10px; flex-wrap: wrap;
-        }
-        .blog-card .card-meta .category { color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .blog-card .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; font-family: var(--font-display); }
-        .blog-card .card-excerpt {
-            font-size: 0.9rem; color: var(--text-medium); line-height: 1.6;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px;
-        }
-        .blog-card .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgba(58,33,22,0.04); }
-        .blog-card .card-author { display: flex; align-items: center; gap: 10px; }
-        .blog-card .card-author .avatar {
-            width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: var(--bg-dark);
-        }
-        .blog-card .card-author .name { font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
-        .blog-card .card-readmore { color: var(--gold); font-size: 0.75rem; font-weight: 600; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
-        .blog-card .card-readmore:hover { gap: 12px; color: var(--gold-light); }
-        .blog-card .card-stats { display: flex; align-items: center; gap: 12px; font-size: 0.7rem; color: var(--text-light); margin-top: 8px; }
-        .blog-card .card-stats i { margin-right: 4px; }
-
-        .pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 48px; }
-        .pagination button {
-            padding: 10px 16px; border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius-sm);
-            background: var(--white); color: var(--text-dark); cursor: pointer; transition: var(--transition);
-            font-family: var(--font-main); font-size: 0.85rem; min-width: 40px;
-        }
-        .pagination button:hover { border-color: var(--gold); color: var(--gold); }
-        .pagination button.active { background: var(--gold); color: var(--bg-dark); border-color: var(--gold); font-weight: 600; }
-        .pagination button:disabled { opacity: 0.3; cursor: not-allowed; }
-
-        .empty-state { text-align: center; padding: 80px 20px; color: var(--text-light); grid-column: 1 / -1; }
-        .empty-state i { font-size: 3rem; color: var(--gold); opacity: 0.2; margin-bottom: 16px; }
-        .empty-state h3 { color: var(--text-dark); margin-bottom: 8px; }
-
-        /* ============================================
-           FOOTER - IGUAL AO SITE PRINCIPAL (BRANCO)
-           ============================================ */
-        .footer {
-            background: #FFFFFF;
-            padding: 60px 0 0;
-            color: var(--text-dark);
-            border-top: 1px solid rgba(58, 33, 22, 0.06);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(58, 33, 22, 0.06);
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
             margin-bottom: 16px;
         }
 
-        .footer-logo .logo-icon {
-            height: 2cm;
-            width: auto;
+        /* ===== FILTROS ===== */
+        .blog-filters {
+            padding: 24px 0 40px;
+            background: var(--white);
+            border-bottom: 1px solid rgba(58,33,22,0.06);
+        }
+        .blog-filters .filter-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
         }
-
-        .footer-logo .logo-icon img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
+        .blog-filters .filter-container .filter-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: var(--text-medium);
-        }
-
-        .footer-social {
+        .blog-filters .filter-container .filter-group {
             display: flex;
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-
-        .footer-social a {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(58, 33, 22, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .blog-filters .filter-container .filter-group .filter-btn {
+            padding: 8px 18px;
+            border: 1px solid rgba(58,33,22,0.08);
+            border-radius: var(--radius-full);
+            background: transparent;
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 500;
             color: var(--text-medium);
-            font-size: 1.1rem;
+            cursor: pointer;
             transition: var(--transition);
-            border: 1px solid rgba(58, 33, 22, 0.08);
         }
-
-        .footer-social a:hover {
+        .blog-filters .filter-container .filter-group .filter-btn:hover {
+            border-color: var(--gold);
+            color: var(--text-dark);
+        }
+        .blog-filters .filter-container .filter-group .filter-btn.active {
             background: var(--gold);
             color: var(--bg-dark);
-            transform: translateY(-3px);
             border-color: var(--gold);
         }
-
-        .footer-links h4 {
+        .blog-filters .filter-container .search-box {
+            position: relative;
+        }
+        .blog-filters .filter-container .search-box input {
+            padding: 10px 16px 10px 40px;
+            border: 1px solid rgba(58,33,22,0.08);
+            border-radius: var(--radius-full);
+            font-family: var(--font-main);
+            font-size: 0.85rem;
             color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-medium);
-        }
-
-        .footer-links a {
-            color: var(--text-medium);
+            background: #FDF8F0;
             transition: var(--transition);
+            width: 240px;
+        }
+        .blog-filters .filter-container .search-box input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(217,177,110,0.08);
+        }
+        .blog-filters .filter-container .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
         }
 
-        .footer-links a:hover {
-            color: var(--gold);
-            padding-left: 4px;
+        /* ===== BLOG GRID ===== */
+        .blog-section {
+            padding: 60px 0 100px;
+            background: var(--white);
         }
-
-        .footer-links .blog-link {
-            color: var(--gold);
-            font-weight: 500;
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
-
-        .footer-links .blog-link:hover {
-            color: var(--gold-light);
-            padding-left: 4px;
+        .blog-card {
+            background: var(--white);
+            border: 1px solid rgba(58,33,22,0.04);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow);
+            cursor: pointer;
         }
-
-        .footer-bottom {
-            padding: 24px 0;
-            border-top: 1px solid rgba(58, 33, 22, 0.06);
-            margin-top: 20px;
-            color: var(--text-medium);
+        .blog-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(217,177,110,0.15);
         }
-
-        .footer-bottom .vigorre-brand {
+        .blog-card .card-image {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: var(--text-medium);
         }
-
-        .footer-bottom .vigorre-brand .logo-vigorre {
-            height: 1.8cm;
-            width: auto;
-            display: inline-block;
-            flex-shrink: 0;
+        .blog-card .card-image .card-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(217,177,110,0.15), transparent 70%);
+            pointer-events: none;
         }
-
-        .footer-bottom .vigorre-brand .logo-vigorre img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
+        .blog-card .card-image i {
+            font-size: 3.5rem;
+            color: rgba(255,255,255,0.15);
+            z-index: 1;
         }
-
-        .footer-bottom .vigorre-brand .brand-text {
+        .blog-card .card-image .card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            z-index: 2;
+        }
+        .blog-card .card-image .card-badge.gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-dark);
+        }
+        .blog-card .card-image .card-destaque {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-dark);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            z-index: 2;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2px;
+            align-items: center;
+            gap: 4px;
         }
-
-        .footer-bottom .vigorre-brand .brand-text .site {
+        .blog-card .card-content {
+            padding: 28px 28px 24px;
+        }
+        .blog-card .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .blog-card .card-meta .category {
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .blog-card .card-meta .dot-sep {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-light);
+            opacity: 0.3;
+        }
+        .blog-card .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            font-family: var(--font-display);
+        }
+        .blog-card .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .blog-card .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid rgba(58,33,22,0.04);
+        }
+        .blog-card .card-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .blog-card .card-author .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+        .blog-card .card-author .name {
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-dark);
         }
-
-        .footer-bottom .vigorre-brand .brand-text .site a {
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .site a:hover {
+        .blog-card .card-readmore {
             color: var(--gold);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts {
-            display: flex;
-            gap: 8px;
             font-size: 0.8rem;
-            color: var(--text-light);
-            flex-wrap: wrap;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 0;
+        }
+        .blog-card .card-readmore:hover {
+            gap: 12px;
+            color: var(--gold-light);
+        }
+        .blog-card .card-readmore i {
+            transition: var(--transition);
+            font-size: 0.7rem;
         }
 
-        .footer-bottom .vigorre-brand .brand-text .contacts a {
-            color: var(--text-light);
+        /* ===== PAGINAÇÃO ===== */
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 48px;
+        }
+        .pagination .page-btn {
+            padding: 10px 16px;
+            border: 1px solid rgba(58,33,22,0.08);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-medium);
+            cursor: pointer;
             transition: var(--transition);
         }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom .vigorre-brand .brand-text .contacts .sep {
-            color: rgba(58, 33, 22, 0.15);
-        }
-
-        .footer-bottom .copyright-2026 {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
-
-        .footer-bottom .copyright-2026 strong {
+        .pagination .page-btn:hover {
+            border-color: var(--gold);
             color: var(--text-dark);
         }
+        .pagination .page-btn.active {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+        }
+        .pagination .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
 
-        /* ============================================
-           WHATSAPP FLOAT
-           ============================================ */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 64px; height: 64px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); z-index: 999; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); animation: whatsapp-bounce 3s ease-in-out infinite; }
+        /* ===== LOADING ===== */
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+            color: var(--text-light);
+        }
+        .loading-spinner i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== SEM RESULTADOS ===== */
+        .no-results {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-light);
+        }
+        .no-results i {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .no-results h3 {
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #FFFFFF;
+            padding: 50px 0 0;
+            color: var(--text-dark);
+            border-top: 1px solid rgba(58,33,22,0.06);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid rgba(58,33,22,0.06);
+        }
+        .footer-logo { display: flex; align-items: center; margin-bottom: 14px; }
+        .footer-logo .logo-icon { height: 1.8cm; width: auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .footer-logo .logo-icon img { height: 100%; width: auto; object-fit: contain; }
+        .footer-brand p { font-size: 0.85rem; margin-bottom: 18px; line-height: 1.6; color: var(--text-medium); }
+        .footer-social { display: flex; gap: 10px; }
+        .footer-social a { width: 40px; height: 40px; border-radius: 10px; background: rgba(58,33,22,0.06); display: flex; align-items: center; justify-content: center; color: var(--text-medium); font-size: 1rem; transition: var(--transition); border: 1px solid rgba(58,33,22,0.08); }
+        .footer-social a:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); border-color: var(--gold); }
+        .footer-links h4 { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 16px; }
+        .footer-links li { margin-bottom: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; color: var(--text-medium); }
+        .footer-links a { color: var(--text-medium); transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); padding-left: 4px; }
+        .footer-links .blog-link { color: var(--gold); font-weight: 500; }
+        .footer-links .blog-link:hover { color: var(--gold-light); padding-left: 4px; }
+        .footer-bottom { padding: 20px 0; border-top: 1px solid rgba(58,33,22,0.06); margin-top: 16px; color: var(--text-medium); }
+        .footer-bottom .vigorre-brand { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-medium); }
+        .footer-bottom .vigorre-brand .logo-vigorre { height: 1.6cm; width: auto; display: inline-block; flex-shrink: 0; }
+        .footer-bottom .vigorre-brand .logo-vigorre img { height: 100%; width: auto; object-fit: contain; }
+        .footer-bottom .vigorre-brand .brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+        .footer-bottom .vigorre-brand .brand-text .site { font-weight: 600; color: var(--text-dark); }
+        .footer-bottom .vigorre-brand .brand-text .site a { color: var(--text-dark); transition: var(--transition); }
+        .footer-bottom .vigorre-brand .brand-text .site a:hover { color: var(--gold); }
+        .footer-bottom .vigorre-brand .brand-text .contacts { display: flex; gap: 6px; font-size: 0.75rem; color: var(--text-light); flex-wrap: wrap; }
+        .footer-bottom .vigorre-brand .brand-text .contacts a { color: var(--text-light); transition: var(--transition); }
+        .footer-bottom .vigorre-brand .brand-text .contacts a:hover { color: var(--gold); }
+        .footer-bottom .vigorre-brand .brand-text .contacts .sep { color: rgba(58,33,22,0.15); }
+        .footer-bottom .copyright-2026 { text-align: center; font-size: 0.65rem; color: var(--text-light); margin-top: 6px; }
+        .footer-bottom .copyright-2026 strong { color: var(--text-dark); }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--white); z-index: 999; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); animation: whatsapp-bounce 3s ease-in-out infinite; }
         .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.6); }
-        .whatsapp-tooltip { position: absolute; right: 74px; background: var(--white); color: var(--text-dark); padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; box-shadow: var(--shadow); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
+        .whatsapp-tooltip { position: absolute; right: 70px; background: var(--white); color: var(--text-dark); padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; box-shadow: var(--shadow); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: var(--transition); pointer-events: none; }
         .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; transform: translateX(0); }
         @keyframes whatsapp-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* ============================================
-           BACK TO TOP
-           ============================================ */
-        .back-to-top { position: fixed; bottom: 30px; left: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-size: 1rem; z-index: 998; opacity: 0; visibility: hidden; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+        /* ===== BACK TO TOP ===== */
+        .back-to-top { position: fixed; bottom: 28px; left: 28px; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-size: 0.9rem; z-index: 998; opacity: 0; visibility: hidden; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
         .back-to-top.visible { opacity: 1; visibility: visible; }
         .back-to-top:hover { background: var(--gold); color: var(--bg-dark); transform: translateY(-3px); }
 
         /* ============================================
            RESPONSIVO
            ============================================ */
-        @media (max-width: 1024px) {
+        @media(max-width:1024px) {
             .blog-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .footer-bottom .vigorre-brand { gap: 12px; }
-            .footer-bottom .vigorre-brand .logo-vigorre { height: 1.6cm; }
-        }
-        @media (max-width: 768px) {
-            .blog-grid { grid-template-columns: 1fr; }
             .blog-filters .filter-container { flex-direction: column; align-items: stretch; }
-            .blog-filters .filter-container .filter-results { margin-left: 0; text-align: center; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            .blog-hero { padding: 130px 0 40px; }
+            .blog-filters .filter-container .search-box input { width: 100%; }
+        }
+        @media(max-width:768px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .blog-hero { padding: 120px 0 60px; }
             .blog-hero h1 { font-size: 2rem; }
-            .footer-bottom .vigorre-brand { flex-direction: column; gap: 8px; align-items: center; text-align: center; }
+            .blog-filters .filter-container .filter-group { justify-content: center; }
+            .footer-bottom .vigorre-brand { flex-direction: column; gap: 6px; align-items: center; text-align: center; }
             .footer-bottom .vigorre-brand .brand-text { align-items: center; }
             .footer-bottom .vigorre-brand .brand-text .contacts { justify-content: center; }
-            .footer-bottom .vigorre-brand .logo-vigorre { height: 1.6cm; }
+            .footer-bottom .vigorre-brand .logo-vigorre { height: 1.4cm; }
+            .whatsapp-float { width: 52px; height: 52px; font-size: 1.3rem; bottom: 16px; right: 16px; }
+            .back-to-top { bottom: 16px; left: 16px; width: 38px; height: 38px; }
         }
-        @media (max-width: 480px) {
-            .blog-card .card-content { padding: 18px 16px 16px; }
+        @media(max-width:480px) {
+            .blog-card .card-content { padding: 20px; }
             .blog-card .card-title { font-size: 1rem; }
+            .blog-filters .filter-container .filter-group { gap: 4px; }
+            .blog-filters .filter-container .filter-group .filter-btn { font-size: 0.7rem; padding: 6px 12px; }
+            .pagination .page-btn { padding: 8px 12px; font-size: 0.75rem; }
             .footer-bottom .vigorre-brand .brand-text .contacts { flex-direction: column; gap: 2px; }
             .footer-bottom .vigorre-brand .brand-text .contacts .sep { display: none; }
-            .footer-bottom .vigorre-brand .logo-vigorre { height: 1.4cm; }
-            .whatsapp-float { width: 56px; height: 56px; font-size: 1.5rem; bottom: 20px; right: 20px; }
-            .back-to-top { bottom: 20px; left: 20px; width: 42px; height: 42px; }
+            .footer-bottom .vigorre-brand .logo-vigorre { height: 1.2cm; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==========================================
-    NAVBAR
-    ========================================== -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <div class="logo-icon">
-                    <img src="/logo.png" alt="CONNECTA">
-                </div>
+                <div class="logo-icon"><img src="/logo.png" alt="CONNECTA"></div>
             </a>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="/#inicio" class="nav-link">Início</a></li>
+                <li><a href="/" class="nav-link">Início</a></li>
                 <li><a href="/#sobre" class="nav-link">Sobre</a></li>
                 <li><a href="/#servicos" class="nav-link">Serviços</a></li>
                 <li><a href="/#diferenciais" class="nav-link">Diferenciais</a></li>
                 <li><a href="/#depoimentos" class="nav-link">Depoimentos</a></li>
-                <li><a href="/blog.html" class="nav-link nav-link-blog active">Blog</a></li>
+                <li><a href="/blog.html" class="nav-link nav-link-blog">Blog</a></li>
                 <li><a href="/#faq" class="nav-link">FAQ</a></li>
                 <li><a href="/#contato" class="nav-link nav-cta">Falar com Especialista</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- ==========================================
-    HERO DO BLOG
-    ========================================== -->
+    <!-- ===== HERO DO BLOG ===== -->
     <section class="blog-hero">
         <div class="container">
-            <span class="blog-tag">Blog</span>
-            <h1>Conhecimento que <span style="color:var(--gold);">transforma</span></h1>
-            <p>Artigos exclusivos sobre contabilidade, consultoria, gestão financeira e muito mais para impulsionar seu negócio.</p>
+            <span class="hero-badge"><i class="fas fa-newspaper"></i> BLOG</span>
+            <h1>Conteúdos que <span>transformam</span></h1>
+            <p>Artigos exclusivos para ajudar você a tomar as melhores decisões financeiras e tributárias.</p>
         </div>
     </section>
 
-    <!-- ==========================================
-    FILTROS
-    ========================================== -->
-    <section class="blog-filters" id="filters">
+    <!-- ===== FILTROS ===== -->
+    <section class="blog-filters">
         <div class="container">
             <div class="filter-container">
+                <div>
+                    <span class="filter-label"><i class="fas fa-tags"></i> Categorias</span>
+                </div>
+                <div class="filter-group" id="filterGroup">
+                    <button class="filter-btn active" data-categoria="todos">Todos</button>
+                    <button class="filter-btn" data-categoria="Tributário">Tributário</button>
+                    <button class="filter-btn" data-categoria="MEI">MEI</button>
+                    <button class="filter-btn" data-categoria="Simples Nacional">Simples Nacional</button>
+                    <button class="filter-btn" data-categoria="Produtor Rural">Produtor Rural</button>
+                    <button class="filter-btn" data-categoria="Consultoria">Consultoria</button>
+                    <button class="filter-btn" data-categoria="Tecnologia">Tecnologia</button>
+                </div>
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar artigos..." oninput="filtrarArtigos()">
+                    <input type="text" id="searchInput" placeholder="Buscar artigos..." />
                 </div>
-                <select id="categoryFilter" onchange="filtrarArtigos()">
-                    <option value="">Todas as categorias</option>
-                    <option value="Tributário">Tributário</option>
-                    <option value="MEI">MEI</option>
-                    <option value="Simples Nacional">Simples Nacional</option>
-                    <option value="Produtor Rural">Produtor Rural</option>
-                    <option value="Consultoria">Consultoria</option>
-                    <option value="Tecnologia">Tecnologia</option>
-                    <option value="Financeiro">Financeiro</option>
-                </select>
-                <span class="filter-results" id="filterResults">0 artigos encontrados</span>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    GRID DE ARTIGOS
-    ========================================== -->
-    <section class="blog-grid-section">
+    <!-- ===== BLOG GRID ===== -->
+    <section class="blog-section">
         <div class="container">
             <div class="blog-grid" id="blogGrid">
-                <!-- Artigos gerados pelo JavaScript -->
+                <!-- Loading -->
+                <div class="loading-spinner" id="loadingSpinner">
+                    <i class="fas fa-spinner"></i>
+                    <span>Carregando artigos...</span>
+                </div>
             </div>
+
+            <!-- Paginação -->
             <div class="pagination" id="pagination">
-                <!-- Paginação gerada pelo JavaScript -->
+                <button class="page-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i></button>
+                <div id="pageNumbers"></div>
+                <button class="page-btn" id="nextPage"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    FOOTER - BRANCO IGUAL AO SITE PRINCIPAL
-    ========================================== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="logo-icon">
-                            <img src="/logo-rodape.png" alt="CONNECTA">
-                        </div>
-                    </div>
+                    <div class="footer-logo"><div class="logo-icon"><img src="/logo-rodape.png" alt="CONNECTA"></div></div>
                     <p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p>
                     <div class="footer-social">
                         <a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
-                    <div style="margin-top:16px;">
-                        <a href="/admin/login.html" class="btn btn-small btn-painel">
-                            <i class="fas fa-user-shield"></i> Painel Administrativo
-                        </a>
-                    </div>
                 </div>
-
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="/#inicio">Início</a></li>
+                        <li><a href="/">Início</a></li>
                         <li><a href="/#sobre">Sobre</a></li>
                         <li><a href="/#servicos">Serviços</a></li>
                         <li><a href="/#depoimentos">Depoimentos</a></li>
@@ -579,7 +630,6 @@
                         <li><a href="/#contato">Contato</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
                     <h4>Serviços</h4>
                     <ul>
@@ -590,7 +640,6 @@
                         <li><a href="/#servicos">Consultoria</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-links">
                     <h4>Contato</h4>
                     <ul>
@@ -599,13 +648,10 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>&copy; 2025 CONNECTA – Consultoria & Contabilidade Digital. Todos os direitos reservados.</p>
                 <div class="vigorre-brand">
-                    <div class="logo-vigorre">
-                        <img src="/logo-vigorre.png" alt="VIGORRE TECH">
-                    </div>
+                    <div class="logo-vigorre"><img src="/logo-vigorre.png" alt="VIGORRE TECH"></div>
                     <div class="brand-text">
                         <span class="site"><a href="https://www.vigorre.com.br" target="_blank">www.vigorre.com.br</a></span>
                         <div class="contacts">
@@ -615,252 +661,295 @@
                         </div>
                     </div>
                 </div>
-                <div class="copyright-2026">
-                    © 2026 <strong>VIGORRE TECH™</strong>. Todos os direitos reservados.
-                </div>
+                <div class="copyright-2026">© 2026 <strong>VIGORRE TECH™</strong>. Todos os direitos reservados.</div>
             </div>
         </div>
     </footer>
 
-    <!-- ==========================================
-    WHATSAPP FLOAT
-    ========================================== -->
-    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20blog%20da%20CONNECTA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip">Falar com Especialista</span>
     </a>
 
-    <!-- ==========================================
-    BACK TO TOP
-    ========================================== -->
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- ==========================================
-    SCRIPTS
-    ========================================== -->
+    <!-- ============================================
+    SCRIPT COMPLETO
+    ============================================ -->
     <script>
         // ============================================
-        // ARTIGOS
+        // SUPABASE CONFIG
         // ============================================
-        const ARTIGOS = [
-            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "14 de julho de 2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true, slug: "reforma-tributaria-2025", visualizacoes: 156, compartilhamentos: 23 },
-            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "12 de julho de 2025", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", carrossel: true, slug: "mei-guia-completo", visualizacoes: 89, compartilhamentos: 12 },
-            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "10 de julho de 2025", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", carrossel: true, slug: "simples-nacional-lucro-presumido", visualizacoes: 234, compartilhamentos: 45 },
-            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais organizarem suas finanças.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "08 de julho de 2025", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", carrossel: false, slug: "produtor-rural-financas", visualizacoes: 67, compartilhamentos: 8 },
-            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "06 de julho de 2025", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", carrossel: true, slug: "bpo-financeiro", visualizacoes: 45, compartilhamentos: 6 },
-            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "04 de julho de 2025", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", carrossel: false, slug: "automacao-contabil", visualizacoes: 123, compartilhamentos: 34 },
-            { id: 7, titulo: "Como escolher o regime tributário ideal para sua empresa", resumo: "Guia completo para ajudar você a escolher o melhor regime tributário.", categoria: "Tributário", autor: "Erilma Silva", data: "02 de julho de 2025", tempoLeitura: "9 min", icone: "fa-balance-scale", cor: "#3A2116", carrossel: false, slug: "regime-tributario-ideal", visualizacoes: 98, compartilhamentos: 15 },
-            { id: 8, titulo: "Planejamento Financeiro para Pequenas Empresas", resumo: "Dicas práticas para organizar as finanças da sua pequena empresa.", categoria: "Financeiro", autor: "Erilma Silva", data: "30 de junho de 2025", tempoLeitura: "5 min", icone: "fa-coins", cor: "#5A3522", carrossel: false, slug: "planejamento-financeiro", visualizacoes: 76, compartilhamentos: 10 },
-            { id: 9, titulo: "Reforma Tributária: Impactos no Simples Nacional", resumo: "Como a reforma tributária afeta as empresas do Simples Nacional.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "28 de junho de 2025", tempoLeitura: "7 min", icone: "fa-file-invoice", cor: "#8A5A35", carrossel: false, slug: "reforma-simples-nacional", visualizacoes: 112, compartilhamentos: 18 }
-        ];
+        const SUPABASE_URL = 'https://spztajsribpyaittolnr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
 
-        function salvarArtigos() {
-            if (!localStorage.getItem('connecta_artigos')) {
-                localStorage.setItem('connecta_artigos', JSON.stringify(ARTIGOS));
-            }
-        }
-
-        function getArtigos() {
-            const data = localStorage.getItem('connecta_artigos');
-            return data ? JSON.parse(data) : ARTIGOS;
-        }
-
+        // ============================================
+        // VARIÁVEIS
+        // ============================================
+        let todosArtigos = [];
         let artigosFiltrados = [];
         let paginaAtual = 1;
         const itensPorPagina = 6;
+        let categoriaAtual = 'todos';
+        let buscaAtual = '';
 
-        function filtrarArtigos() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value;
-            const artigos = getArtigos();
+        // ============================================
+        // BUSCAR ARTIGOS DO SUPABASE
+        // ============================================
+        async function buscarArtigos() {
+            try {
+                const url = new URL(`${SUPABASE_URL}/rest/v1/artigos`);
+                url.searchParams.append('status', 'eq.Publicado');
+                url.searchParams.append('order', 'data.desc');
 
-            artigosFiltrados = artigos.filter(a => {
-                const matchSearch = a.titulo.toLowerCase().includes(search) ||
-                    a.resumo.toLowerCase().includes(search) ||
-                    a.categoria.toLowerCase().includes(search);
-                const matchCategory = !category || a.categoria === category;
-                return matchSearch && matchCategory;
-            });
+                const response = await fetch(url, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-            paginaAtual = 1;
-            renderizarGrid();
-            atualizarResultados();
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const dados = await response.json();
+                return dados;
+            } catch (error) {
+                console.error('Erro ao buscar artigos do Supabase:', error);
+                // Fallback para LocalStorage
+                const stored = localStorage.getItem('connecta_artigos');
+                if (stored) {
+                    try {
+                        return JSON.parse(stored).filter(a => a.status === 'Publicado');
+                    } catch (e) {}
+                }
+                // Dados padrão
+                return [
+                    { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária.", categoria: "Tributário", autor: "Erilma Silva", data: "2025-07-14", icone: "fa-chart-line", cor: "#3A2116", destaque: true },
+                    { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "2025-07-12", icone: "fa-id-card", cor: "#5A3522", destaque: true }
+                ];
+            }
         }
 
-        function renderizarGrid() {
-            const grid = document.getElementById('blogGrid');
-            const start = (paginaAtual - 1) * itensPorPagina;
-            const end = start + itensPorPagina;
-            const paginaArtigos = artigosFiltrados.slice(start, end);
+        // ============================================
+        // FORMATAR DATA
+        // ============================================
+        function formatarData(data) {
+            if (!data) return 'Data não disponível';
+            const d = new Date(data);
+            return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+        }
 
-            if (artigosFiltrados.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-search"></i>
-                        <h3>Nenhum artigo encontrado</h3>
-                        <p>Tente ajustar os filtros de busca.</p>
-                    </div>
-                `;
-                document.getElementById('pagination').innerHTML = '';
-                return;
+        // ============================================
+        // RENDERIZAR ARTIGOS
+        // ============================================
+        function renderizarArtigos() {
+            const grid = document.getElementById('blogGrid');
+            const loading = document.getElementById('loadingSpinner');
+
+            // Esconder loading
+            if (loading) loading.style.display = 'none';
+
+            // Aplicar filtros
+            let filtrados = todosArtigos;
+
+            // Filtrar por categoria
+            if (categoriaAtual !== 'todos') {
+                filtrados = filtrados.filter(a => a.categoria === categoriaAtual);
             }
 
-            grid.innerHTML = paginaArtigos.map(artigo => {
-                return `
-                    <div class="blog-card">
-                        <div class="card-image" style="background:linear-gradient(135deg, ${artigo.cor}, ${artigo.cor}dd);">
+            // Filtrar por busca
+            if (buscaAtual.trim() !== '') {
+                const termo = buscaAtual.toLowerCase().trim();
+                filtrados = filtrados.filter(a =>
+                    a.titulo.toLowerCase().includes(termo) ||
+                    a.resumo?.toLowerCase().includes(termo) ||
+                    a.categoria?.toLowerCase().includes(termo)
+                );
+            }
+
+            artigosFiltrados = filtrados;
+
+            // Paginação
+            const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina);
+            if (paginaAtual > totalPaginas) paginaAtual = totalPaginas || 1;
+
+            const inicio = (paginaAtual - 1) * itensPorPagina;
+            const fim = inicio + itensPorPagina;
+            const itensPagina = artigosFiltrados.slice(inicio, fim);
+
+            // Renderizar
+            if (itensPagina.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhum artigo encontrado</h3>
+                        <p>Tente ajustar os filtros ou buscar por outro termo.</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = itensPagina.map(a => `
+                    <div class="blog-card" onclick="window.location.href='/artigo.html?id=${a.id}'">
+                        <div class="card-image" style="background:linear-gradient(135deg, ${a.cor || '#3A2116'}, ${a.cor || '#5A3522'}dd);">
                             <div class="card-glow"></div>
-                            <i class="fas ${artigo.icone}" style="font-size:3rem;color:rgba(255,255,255,0.15);z-index:1;"></i>
-                            <span class="card-badge gold">${artigo.categoria}</span>
+                            <i class="fas ${a.icone || 'fa-file-alt'}"></i>
+                            <span class="card-badge gold">${a.categoria || 'Geral'}</span>
+                            ${a.destaque ? '<span class="card-destaque"><i class="fas fa-star"></i> Destaque</span>' : ''}
                         </div>
                         <div class="card-content">
                             <div class="card-meta">
-                                <span class="category"><i class="fas fa-tag"></i> ${artigo.categoria}</span>
-                                <span><i class="far fa-calendar"></i> ${artigo.data}</span>
-                                <span><i class="far fa-clock"></i> ${artigo.tempoLeitura}</span>
+                                <span class="category">${a.categoria || 'Geral'}</span>
+                                <span class="dot-sep"></span>
+                                <span><i class="far fa-calendar-alt"></i> ${formatarData(a.data)}</span>
                             </div>
-                            <h3 class="card-title">${artigo.titulo}</h3>
-                            <p class="card-excerpt">${artigo.resumo}</p>
-                            <div class="card-stats">
-                                <span><i class="far fa-eye"></i> ${artigo.visualizacoes}</span>
-                                <span><i class="far fa-share-alt"></i> ${artigo.compartilhamentos}</span>
-                            </div>
+                            <h3 class="card-title">${a.titulo}</h3>
+                            <p class="card-excerpt">${a.resumo || 'Clique para ler o artigo completo.'}</p>
                             <div class="card-footer">
                                 <div class="card-author">
-                                    <div class="avatar">${artigo.autor.charAt(0)}</div>
-                                    <span class="name">${artigo.autor}</span>
+                                    <div class="avatar">${(a.autor || 'E').charAt(0)}</div>
+                                    <span class="name">${a.autor || 'Erilma Silva'}</span>
                                 </div>
-                                <a href="/artigo.html?id=${artigo.id}" class="card-readmore">
-                                    Continuar lendo <i class="fas fa-arrow-right"></i>
-                                </a>
+                                <span class="card-readmore">Ler <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </div>
                     </div>
-                `;
-            }).join('');
-
-            renderizarPaginacao();
-        }
-
-        function renderizarPaginacao() {
-            const pagination = document.getElementById('pagination');
-            const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina);
-
-            if (totalPaginas <= 1) {
-                pagination.innerHTML = '';
-                return;
+                `).join('');
             }
 
-            let html = '';
-            html += `<button ${paginaAtual === 1 ? 'disabled' : ''} onclick="mudarPagina(${paginaAtual - 1})">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>`;
-
-            for (let i = 1; i <= totalPaginas; i++) {
-                html += `<button class="${i === paginaAtual ? 'active' : ''}" onclick="mudarPagina(${i})">${i}</button>`;
-            }
-
-            html += `<button ${paginaAtual === totalPaginas ? 'disabled' : ''} onclick="mudarPagina(${paginaAtual + 1})">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>`;
-
-            pagination.innerHTML = html;
-        }
-
-        function mudarPagina(pagina) {
-            const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina);
-            if (pagina < 1 || pagina > totalPaginas) return;
-            paginaAtual = pagina;
-            renderizarGrid();
-            window.scrollTo({ top: document.getElementById('filters').offsetTop - 100, behavior: 'smooth' });
-        }
-
-        function atualizarResultados() {
-            document.getElementById('filterResults').textContent =
-                `${artigosFiltrados.length} artigo${artigosFiltrados.length !== 1 ? 's' : ''} encontrado${artigosFiltrados.length !== 1 ? 's' : ''}`;
+            // Atualizar paginação
+            atualizarPaginacao(totalPaginas);
         }
 
         // ============================================
-        // EVENTOS
+        // PAGINAÇÃO
         // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            salvarArtigos();
+        function atualizarPaginacao(totalPaginas) {
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            const pageNumbers = document.getElementById('pageNumbers');
 
-            const artigos = getArtigos();
-            artigosFiltrados = [...artigos];
-            renderizarGrid();
-            atualizarResultados();
+            prevBtn.disabled = paginaAtual <= 1;
+            nextBtn.disabled = paginaAtual >= totalPaginas || totalPaginas === 0;
 
-            // NAVBAR SCROLL
+            pageNumbers.innerHTML = '';
+            for (let i = 1; i <= Math.min(totalPaginas, 5); i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn${i === paginaAtual ? ' active' : ''}`;
+                btn.textContent = i;
+                btn.addEventListener('click', () => {
+                    paginaAtual = i;
+                    renderizarArtigos();
+                    window.scrollTo({ top: document.querySelector('.blog-section').offsetTop - 100, behavior: 'smooth' });
+                });
+                pageNumbers.appendChild(btn);
+            }
+
+            if (totalPaginas > 5) {
+                const dots = document.createElement('span');
+                dots.textContent = '...';
+                dots.style.padding = '0 8px';
+                dots.style.color = 'var(--text-light)';
+                pageNumbers.appendChild(dots);
+
+                const lastBtn = document.createElement('button');
+                lastBtn.className = `page-btn${totalPaginas === paginaAtual ? ' active' : ''}`;
+                lastBtn.textContent = totalPaginas;
+                lastBtn.addEventListener('click', () => {
+                    paginaAtual = totalPaginas;
+                    renderizarArtigos();
+                    window.scrollTo({ top: document.querySelector('.blog-section').offsetTop - 100, behavior: 'smooth' });
+                });
+                pageNumbers.appendChild(lastBtn);
+            }
+        }
+
+        document.getElementById('prevPage').addEventListener('click', function() {
+            if (paginaAtual > 1) {
+                paginaAtual--;
+                renderizarArtigos();
+                window.scrollTo({ top: document.querySelector('.blog-section').offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function() {
+            const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina);
+            if (paginaAtual < totalPaginas) {
+                paginaAtual++;
+                renderizarArtigos();
+                window.scrollTo({ top: document.querySelector('.blog-section').offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+
+        // ============================================
+        // FILTROS
+        // ============================================
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                categoriaAtual = this.dataset.categoria;
+                paginaAtual = 1;
+                renderizarArtigos();
+            });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            buscaAtual = this.value;
+            paginaAtual = 1;
+            renderizarArtigos();
+        });
+
+        // ============================================
+        // UI
+        // ============================================
+        function setupUI() {
+            // Navbar scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 80) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }, { passive: true });
-
-            // BACK TO TOP
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            }, { passive: true });
-
-            backToTop.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navbar.classList.toggle('scrolled', window.scrollY > 80);
             });
 
-            // MENU MOBILE
+            // Back to top
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                backToTop.classList.toggle('visible', window.scrollY > 500);
+            });
+            backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // Hamburger
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
-
             hamburger.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
-
-            document.querySelectorAll('.nav-link').forEach(function(link) {
-                link.addEventListener('click', function() {
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
             });
+        }
 
-            document.addEventListener('click', function(e) {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
-            });
+        // ============================================
+        // INICIALIZAR
+        // ============================================
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('🚀 Carregando blog com Supabase...');
 
-            // NAV LINK ATIVO NO SCROLL
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
+            setupUI();
 
-            window.addEventListener('scroll', function() {
-                let current = '';
-                sections.forEach(function(section) {
-                    const sectionTop = section.offsetTop - 100;
-                    if (window.scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                    }
-                });
-            }, { passive: true });
+            // Buscar artigos
+            todosArtigos = await buscarArtigos();
+            console.log(`✅ ${todosArtigos.length} artigos carregados`);
+
+            // Renderizar
+            renderizarArtigos();
         });
     </script>
-
 </body>
 </html>
