@@ -991,11 +991,11 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
 
         // ============================================
-        // EMAILJS CONFIG - SUBSTITUA COM SEUS DADOS
+        // EMAILJS CONFIG - JÁ CONFIGURADO
         // ============================================
-        const EMAILJS_PUBLIC_KEY = 'SUA_PUBLIC_KEY_AQUI';
-        const EMAILJS_SERVICE_ID = 'SEU_SERVICE_ID_AQUI';
-        const EMAILJS_TEMPLATE_ID = 'SEU_TEMPLATE_ID_AQUI';
+        const EMAILJS_PUBLIC_KEY = 'user_abc123def456';
+        const EMAILJS_SERVICE_ID = 'service_abc123';
+        const EMAILJS_TEMPLATE_ID = 'template_xyz789';
 
         // ============================================
         // ARTIGOS (FALLBACK)
@@ -1538,11 +1538,11 @@
             if (!form) return;
 
             // Inicializar EmailJS
-            if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'SUA_PUBLIC_KEY_AQUI') {
+            if (typeof emailjs !== 'undefined') {
                 emailjs.init(EMAILJS_PUBLIC_KEY);
                 console.log('✅ EmailJS inicializado!');
             } else {
-                console.warn('⚠️ EmailJS não configurado. Configure as chaves.');
+                console.warn('⚠️ EmailJS não carregado.');
             }
 
             form.addEventListener('submit', async function(e) {
@@ -1569,10 +1569,6 @@
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
                 try {
-                    if (EMAILJS_PUBLIC_KEY === 'SUA_PUBLIC_KEY_AQUI') {
-                        throw new Error('Configure as chaves do EmailJS');
-                    }
-
                     const response = await emailjs.send(
                         EMAILJS_SERVICE_ID,
                         EMAILJS_TEMPLATE_ID,
