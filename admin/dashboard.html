@@ -9,9 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* ============================================
-           ROOT VARIABLES
-           ============================================ */
         :root {
             --bg-dark: #3A2116;
             --bg-medium: #5A3522;
@@ -23,396 +20,116 @@
             --text-dark: #2C1A0E;
             --text-medium: #6B4A30;
             --text-light: #9A7A5A;
-            --shadow: 0 8px 32px rgba(58, 33, 22, 0.15);
-            --shadow-lg: 0 20px 60px rgba(58, 33, 22, 0.25);
+            --shadow: 0 8px 32px rgba(58,33,22,0.15);
+            --shadow-lg: 0 20px 60px rgba(58,33,22,0.25);
             --radius: 16px;
             --radius-sm: 10px;
             --radius-full: 50px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
             --font-main: 'Montserrat', sans-serif;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--white); color: var(--text-dark); min-height: 100vh; display: flex; }
 
-        /* ===== SIDEBAR ===== */
-        .sidebar { 
-            width: 260px; 
-            background: var(--white); 
-            border-right: 2px solid var(--gold); 
-            height: 100vh; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            padding: 24px 0; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-y: auto; 
-            z-index: 100; 
-            transition: var(--transition); 
-            box-shadow: 2px 0 20px rgba(58,33,22,0.05);
-        }
-
-        .sidebar-brand { 
-            padding: 0 24px 24px; 
-            border-bottom: 1px solid rgba(217,177,110,0.2); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
-
-        .sidebar-brand .logo-icon { 
-            width: auto; 
-            height: 1.8cm; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-        }
-
-        .sidebar-brand .logo-icon img { 
-            height: 100%; 
-            width: auto; 
-            object-fit: contain; 
-        }
-
+        .sidebar { width: 260px; background: var(--white); border-right: 2px solid var(--gold); height: 100vh; position: fixed; top: 0; left: 0; padding: 24px 0; display: flex; flex-direction: column; overflow-y: auto; z-index: 100; transition: var(--transition); box-shadow: 2px 0 20px rgba(58,33,22,0.05); }
+        .sidebar-brand { padding: 0 24px 24px; border-bottom: 1px solid rgba(217,177,110,0.2); display: flex; align-items: center; justify-content: center; }
+        .sidebar-brand .logo-icon { width: auto; height: 1.8cm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .sidebar-brand .logo-icon img { height: 100%; width: auto; object-fit: contain; }
         .sidebar-menu { padding: 24px 12px; flex: 1; }
-        .sidebar-menu .menu-label { 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: var(--text-light); 
-            padding: 0 12px; 
-            margin-bottom: 12px; 
-            font-weight: 600; 
-        }
-        .sidebar-menu a { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            padding: 12px 16px; 
-            border-radius: var(--radius-sm); 
-            color: var(--text-medium); 
-            text-decoration: none; 
-            transition: var(--transition); 
-            font-size: 0.85rem; 
-            font-weight: 500; 
-            cursor: pointer; 
-        }
-        .sidebar-menu a:hover { 
-            background: rgba(217,177,110,0.1); 
-            color: var(--bg-dark); 
-        }
-        .sidebar-menu a.active { 
-            background: rgba(217,177,110,0.12); 
-            color: var(--bg-dark); 
-            border: 1px solid rgba(217,177,110,0.15); 
-        }
+        .sidebar-menu .menu-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); padding: 0 12px; margin-bottom: 12px; font-weight: 600; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius-sm); color: var(--text-medium); text-decoration: none; transition: var(--transition); font-size: 0.85rem; font-weight: 500; cursor: pointer; }
+        .sidebar-menu a:hover { background: rgba(217,177,110,0.1); color: var(--bg-dark); }
+        .sidebar-menu a.active { background: rgba(217,177,110,0.12); color: var(--bg-dark); border: 1px solid rgba(217,177,110,0.15); }
         .sidebar-menu a i { width: 20px; text-align: center; font-size: 1rem; color: var(--gold); }
-        .sidebar-menu a .badge { 
-            margin-left: auto; 
-            background: var(--gold); 
-            color: var(--bg-dark); 
-            font-size: 0.6rem; 
-            padding: 2px 8px; 
-            border-radius: var(--radius-full); 
-            font-weight: 700; 
-        }
-
-        .sidebar-footer { 
-            padding: 16px 24px; 
-            border-top: 1px solid rgba(217,177,110,0.2); 
-        }
+        .sidebar-menu a .badge { margin-left: auto; background: var(--gold); color: var(--bg-dark); font-size: 0.6rem; padding: 2px 8px; border-radius: var(--radius-full); font-weight: 700; }
+        .sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(217,177,110,0.2); }
         .sidebar-footer .user-info { display: flex; align-items: center; gap: 12px; }
-        .sidebar-footer .user-avatar { 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
-            background: linear-gradient(135deg, var(--gold), var(--gold-light)); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--bg-dark); 
-            font-weight: 700; 
-            font-size: 0.9rem; 
-        }
+        .sidebar-footer .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-weight: 700; font-size: 0.9rem; }
         .sidebar-footer .user-name { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
         .sidebar-footer .user-role { font-size: 0.65rem; color: var(--text-light); }
-        .sidebar-footer .logout-btn { 
-            margin-top: 12px; 
-            padding: 10px 16px; 
-            background: rgba(58,33,22,0.05); 
-            border: 1px solid rgba(58,33,22,0.1); 
-            border-radius: var(--radius-sm); 
-            color: var(--text-medium); 
-            font-family: var(--font-main); 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: var(--transition); 
-            width: 100%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-        }
-        .sidebar-footer .logout-btn:hover { 
-            background: rgba(58,33,22,0.1); 
-            color: var(--bg-dark); 
-            transform: translateY(-2px); 
-        }
+        .sidebar-footer .logout-btn { margin-top: 12px; padding: 10px 16px; background: rgba(58,33,22,0.05); border: 1px solid rgba(58,33,22,0.1); border-radius: var(--radius-sm); color: var(--text-medium); font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .sidebar-footer .logout-btn:hover { background: rgba(58,33,22,0.1); color: var(--bg-dark); transform: translateY(-2px); }
 
-        /* ===== MAIN CONTENT ===== */
-        .main-content { 
-            margin-left: 260px; 
-            padding: 32px 40px; 
-            width: 100%; 
-            min-height: 100vh; 
-            background: var(--white); 
-        }
-
-        .topbar { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            margin-bottom: 32px; 
-            padding-bottom: 20px; 
-            border-bottom: 1px solid rgba(58,33,22,0.06); 
-        }
+        .main-content { margin-left: 260px; padding: 32px 40px; width: 100%; min-height: 100vh; background: var(--white); }
+        .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(58,33,22,0.06); }
         .topbar h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
         .topbar h1 small { font-size: 0.8rem; font-weight: 400; color: var(--text-light); margin-left: 12px; }
         .topbar-actions { display: flex; align-items: center; gap: 16px; }
         .topbar-actions .session-time { font-size: 0.75rem; color: var(--text-light); }
-        .topbar-actions .btn-logout { 
-            padding: 10px 20px; 
-            background: rgba(58,33,22,0.05); 
-            border: 1px solid rgba(58,33,22,0.1); 
-            border-radius: var(--radius-full); 
-            color: var(--text-medium); 
-            font-family: var(--font-main); 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: var(--transition); 
-        }
-        .topbar-actions .btn-logout:hover { 
-            background: rgba(58,33,22,0.1); 
-            color: var(--bg-dark); 
-            transform: translateY(-2px); 
-        }
+        .topbar-actions .btn-logout { padding: 10px 20px; background: rgba(58,33,22,0.05); border: 1px solid rgba(58,33,22,0.1); border-radius: var(--radius-full); color: var(--text-medium); font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .topbar-actions .btn-logout:hover { background: rgba(58,33,22,0.1); color: var(--bg-dark); transform: translateY(-2px); }
         .topbar-actions .btn-logout i { margin-right: 8px; }
 
-        /* ===== STATUS DO BANCO ===== */
-        .status-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 32px;
-        }
+        .status-container { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+        .status-card { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 20px 24px; transition: var(--transition); box-shadow: 0 2px 10px rgba(58,33,22,0.04); }
+        .status-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(58,33,22,0.08); border-color: var(--gold); }
+        .status-card .status-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .status-card .status-header .label { font-size: 0.75rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+        .status-card .status-header .status-icon { width: 10px; height: 10px; border-radius: 50%; display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
+        .status-card .status-header .status-icon.online { background: #10b981; box-shadow: 0 0 12px rgba(16,185,129,0.4); }
+        .status-card .status-header .status-icon.offline { background: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.4); animation: none; }
+        .status-card .status-header .status-icon.checking { background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.4); animation: pulse-dot 1s ease-in-out infinite; }
+        @keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .status-card .status-value { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); line-height: 1.2; }
+        .status-card .status-value .small { font-size: 0.8rem; font-weight: 400; color: var(--text-light); margin-left: 4px; }
+        .status-card .status-sub { font-size: 0.75rem; color: var(--text-light); margin-top: 4px; }
+        .status-card .progress-bar { width: 100%; height: 6px; background: rgba(58,33,22,0.06); border-radius: 3px; margin-top: 12px; overflow: hidden; }
+        .status-card .progress-bar .fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+        .status-card .progress-bar .fill.warning { background: linear-gradient(90deg, #f59e0b, #f97316); }
+        .status-card .progress-bar .fill.danger { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .status-card .status-detail { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-light); margin-top: 6px; }
 
-        .status-card {
-            background: var(--white);
-            border: 1px solid rgba(58,33,22,0.06);
-            border-radius: var(--radius);
-            padding: 20px 24px;
-            transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(58,33,22,0.04);
-        }
-        .status-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(58,33,22,0.08);
-            border-color: var(--gold);
-        }
-
-        .status-card .status-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .status-card .status-header .label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .status-card .status-header .status-icon {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-        .status-card .status-header .status-icon.online {
-            background: #10b981;
-            box-shadow: 0 0 12px rgba(16,185,129,0.4);
-        }
-        .status-card .status-header .status-icon.offline {
-            background: #ef4444;
-            box-shadow: 0 0 12px rgba(239,68,68,0.4);
-            animation: none;
-        }
-        .status-card .status-header .status-icon.checking {
-            background: #f59e0b;
-            box-shadow: 0 0 12px rgba(245,158,11,0.4);
-            animation: pulse-dot 1s ease-in-out infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
-        }
-
-        .status-card .status-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-        .status-card .status-value .small {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: var(--text-light);
-            margin-left: 4px;
-        }
-        .status-card .status-sub {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
-
-        .status-card .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(58,33,22,0.06);
-            border-radius: 3px;
-            margin-top: 12px;
-            overflow: hidden;
-        }
-        .status-card .progress-bar .fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.8s ease;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-        }
-        .status-card .progress-bar .fill.warning {
-            background: linear-gradient(90deg, #f59e0b, #f97316);
-        }
-        .status-card .progress-bar .fill.danger {
-            background: linear-gradient(90deg, #ef4444, #dc2626);
-        }
-
-        .status-card .status-detail {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-top: 6px;
-        }
-
-        /* ===== STATS ===== */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px; }
-        .stat-card { 
-            background: var(--white); 
-            border: 1px solid rgba(58,33,22,0.06); 
-            border-radius: var(--radius); 
-            padding: 24px; 
-            transition: var(--transition); 
-            box-shadow: 0 2px 10px rgba(58,33,22,0.04); 
-            cursor: pointer;
-        }
-        .stat-card:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 30px rgba(58,33,22,0.08); 
-            border-color: var(--gold); 
-        }
-        .stat-card .stat-icon { 
-            width: 44px; 
-            height: 44px; 
-            border-radius: 12px; 
-            background: rgba(217,177,110,0.1); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 1.2rem; 
-            color: var(--gold); 
-            margin-bottom: 12px; 
-        }
+        .stat-card { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 24px; transition: var(--transition); box-shadow: 0 2px 10px rgba(58,33,22,0.04); cursor: pointer; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(58,33,22,0.08); border-color: var(--gold); }
+        .stat-card .stat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(217,177,110,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gold); margin-bottom: 12px; }
         .stat-card .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); line-height: 1; }
         .stat-card .stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
 
-        /* ===== RECENT POSTS ===== */
-        .recent-posts { 
-            background: var(--white); 
-            border: 1px solid rgba(58,33,22,0.06); 
-            border-radius: var(--radius); 
-            padding: 24px; 
-            box-shadow: 0 2px 10px rgba(58,33,22,0.04); 
-        }
-        .recent-posts .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .recent-posts .header .title { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
-        .recent-posts .header .link { color: var(--gold); font-size: 0.8rem; text-decoration: none; cursor: pointer; }
-        .recent-posts .header .link:hover { color: var(--gold-light); }
-        .post-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 16px; 
-            padding: 12px 0; 
-            border-bottom: 1px solid rgba(58,33,22,0.04); 
-            cursor: pointer;
-        }
-        .post-item:last-child { border-bottom: none; }
-        .post-item .thumb { 
-            width: 48px; 
-            height: 48px; 
-            border-radius: var(--radius-sm); 
-            background: rgba(217,177,110,0.1); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--gold); 
-            font-size: 1.2rem; 
-            flex-shrink: 0; 
-        }
-        .post-item .info { flex: 1; }
-        .post-item .info .title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
-        .post-item .info .meta { font-size: 0.7rem; color: var(--text-light); }
-        .post-item .status { 
-            font-size: 0.65rem; 
-            font-weight: 600; 
-            padding: 4px 12px; 
-            border-radius: var(--radius-full); 
-        }
-        .post-item .status.published { background: rgba(16,185,129,0.1); color: #10b981; }
-        .post-item .status.draft { background: rgba(251,191,36,0.1); color: #b45309; }
+        .section-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin: 32px 0 16px; display: flex; align-items: center; gap: 12px; }
+        .section-title .btn-add { padding: 8px 20px; background: var(--gold); color: var(--bg-dark); border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.75rem; cursor: pointer; transition: var(--transition); }
+        .section-title .btn-add:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(217,177,110,0.3); }
 
-        /* ============================================
-           RESPONSIVO
-           ============================================ */
-        @media (max-width: 1024px) {
-            .status-container { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .sidebar { width: 72px; padding: 16px 0; }
-            .sidebar-menu .menu-label, .sidebar-menu a span, .sidebar-footer .user-info>div { display: none; }
-            .sidebar-menu a { justify-content: center; padding: 14px; }
-            .sidebar-menu a i { font-size: 1.2rem; }
-            .sidebar-brand .logo-icon { height: 1.2cm; }
-            .sidebar-footer .logout-btn span { display: none; }
-            .sidebar-footer .logout-btn { justify-content: center; }
-            .main-content { margin-left: 72px; padding: 20px; }
-            .status-container { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .topbar h1 small { display: none; }
-        }
-        @media (max-width: 480px) {
-            .main-content { padding: 16px; }
-            .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .sidebar { width: 60px; }
-            .sidebar-brand .logo-icon { height: 1cm; }
-        }
+        .table-container { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(58,33,22,0.04); }
+        .table-container table { width: 100%; border-collapse: collapse; }
+        .table-container th { text-align: left; padding: 14px 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); border-bottom: 1px solid rgba(58,33,22,0.06); background: rgba(217,177,110,0.03); }
+        .table-container td { padding: 12px 20px; font-size: 0.85rem; border-bottom: 1px solid rgba(58,33,22,0.04); }
+        .table-container tr:last-child td { border-bottom: none; }
+        .table-container .status-badge { font-size: 0.6rem; font-weight: 600; padding: 3px 12px; border-radius: var(--radius-full); }
+        .table-container .status-badge.published { background: rgba(16,185,129,0.1); color: #10b981; }
+        .table-container .status-badge.draft { background: rgba(251,191,36,0.1); color: #b45309; }
+        .table-container .status-badge.destaque { background: rgba(217,177,110,0.15); color: var(--bg-dark); border: 1px solid var(--gold); }
+        .table-container .actions { display: flex; gap: 8px; }
+        .table-container .actions button { padding: 4px 12px; border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .table-container .actions .btn-edit { background: rgba(217,177,110,0.15); color: var(--bg-dark); }
+        .table-container .actions .btn-edit:hover { background: var(--gold); }
+        .table-container .actions .btn-delete { background: rgba(239,68,68,0.1); color: #ef4444; }
+        .table-container .actions .btn-delete:hover { background: rgba(239,68,68,0.2); }
+
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .modal-overlay.active { display: flex; }
+        .modal { background: var(--white); max-width: 600px; width: 100%; border-radius: var(--radius); padding: 40px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--gold); box-shadow: var(--shadow-lg); }
+        .modal h2 { color: var(--text-dark); margin-bottom: 24px; font-size: 1.3rem; }
+        .modal .form-group { margin-bottom: 16px; }
+        .modal .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-dark); }
+        .modal .form-group input, .modal .form-group select, .modal .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid rgba(58,33,22,0.08); border-radius: var(--radius-sm); font-family: var(--font-main); font-size: 0.9rem; transition: var(--transition); background: #FDF8F0; }
+        .modal .form-group input:focus, .modal .form-group select:focus, .modal .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(217,177,110,0.12); }
+        .modal .form-group textarea { resize: vertical; min-height: 80px; }
+        .modal .form-actions { display: flex; gap: 12px; margin-top: 20px; justify-content: flex-end; }
+        .modal .form-actions button { padding: 10px 24px; border: none; border-radius: var(--radius-full); font-family: var(--font-main); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition); }
+        .modal .form-actions .btn-save { background: var(--gold); color: var(--bg-dark); }
+        .modal .form-actions .btn-save:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(217,177,110,0.3); }
+        .modal .form-actions .btn-cancel { background: rgba(58,33,22,0.05); color: var(--text-medium); }
+        .modal .form-actions .btn-cancel:hover { background: rgba(58,33,22,0.1); }
+
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--bg-dark); color: var(--white); padding: 16px 24px; border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); border-left: 4px solid var(--gold); z-index: 10000; transform: translateX(120%); transition: transform 0.4s ease; }
+        .toast.show { transform: translateX(0); }
+        .toast.success { border-left-color: #10b981; }
+        .toast.error { border-left-color: #ef4444; }
+
+        @media (max-width: 1024px) { .status-container { grid-template-columns: repeat(2, 1fr); } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .sidebar { width: 72px; padding: 16px 0; } .sidebar-menu .menu-label, .sidebar-menu a span, .sidebar-footer .user-info>div { display: none; } .sidebar-menu a { justify-content: center; padding: 14px; } .sidebar-menu a i { font-size: 1.2rem; } .sidebar-brand .logo-icon { height: 1.2cm; } .sidebar-footer .logout-btn span { display: none; } .sidebar-footer .logout-btn { justify-content: center; } .main-content { margin-left: 72px; padding: 20px; } .status-container { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } .topbar h1 small { display: none; } }
+        @media (max-width: 480px) { .main-content { padding: 16px; } .topbar { flex-direction: column; align-items: flex-start; gap: 12px; } .sidebar { width: 60px; } .sidebar-brand .logo-icon { height: 1cm; } }
     </style>
 </head>
 <body>
@@ -420,40 +137,20 @@
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <div class="logo-icon">
-                <img src="/logo.png" alt="CONNECTA">
-            </div>
+            <div class="logo-icon"><img src="/logo.png" alt="CONNECTA"></div>
         </div>
         <nav class="sidebar-menu">
             <div class="menu-label">Principal</div>
-            <a href="/admin/dashboard.html" class="active">
-                <i class="fas fa-th-large"></i><span>Dashboard</span>
-            </a>
-            <a href="#" onclick="document.getElementById('artigosSection').scrollIntoView({behavior:'smooth'}); return false;">
-                <i class="fas fa-newspaper"></i><span>Artigos</span><span class="badge" id="artigosBadge">0</span>
-            </a>
-            <a href="#" onclick="document.getElementById('depoimentosSection').scrollIntoView({behavior:'smooth'}); return false;">
-                <i class="fas fa-comments"></i><span>Depoimentos</span><span class="badge" id="depoimentosBadge">0</span>
-            </a>
-            <a href="/blog.html" target="_blank">
-                <i class="fas fa-external-link-alt"></i><span>Ver Site</span>
-            </a>
+            <a href="/admin/dashboard.html" class="active"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="#" onclick="document.getElementById('artigosSection').scrollIntoView({behavior:'smooth'}); return false;"><i class="fas fa-newspaper"></i><span>Artigos</span><span class="badge" id="artigosBadge">0</span></a>
+            <a href="#" onclick="document.getElementById('depoimentosSection').scrollIntoView({behavior:'smooth'}); return false;"><i class="fas fa-comments"></i><span>Depoimentos</span><span class="badge" id="depoimentosBadge">0</span></a>
+            <a href="/blog.html" target="_blank"><i class="fas fa-external-link-alt"></i><span>Ver Site</span></a>
             <div class="menu-label" style="margin-top:24px;">Configurações</div>
-            <a href="/admin/login.html">
-                <i class="fas fa-user-shield"></i><span>Usuários</span>
-            </a>
+            <a href="/admin/login.html"><i class="fas fa-user-shield"></i><span>Usuários</span></a>
         </nav>
         <div class="sidebar-footer">
-            <div class="user-info">
-                <div class="user-avatar">A</div>
-                <div>
-                    <div class="user-name">Admin Master</div>
-                    <div class="user-role">Super Administrador</div>
-                </div>
-            </div>
-            <button class="logout-btn" id="logoutBtn">
-                <i class="fas fa-sign-out-alt"></i><span>Sair</span>
-            </button>
+            <div class="user-info"><div class="user-avatar">A</div><div><div class="user-name">Admin Master</div><div class="user-role">Super Administrador</div></div></div>
+            <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button>
         </div>
     </aside>
 
@@ -467,96 +164,149 @@
             </div>
         </div>
 
-        <!-- ===== STATUS DO BANCO DE DADOS ===== -->
+        <!-- ===== STATUS DO BANCO ===== -->
         <div class="status-container" id="statusContainer">
-            <!-- Status da Conexão -->
             <div class="status-card" id="statusConexao">
-                <div class="status-header">
-                    <span class="label"><i class="fas fa-database"></i> Conexão</span>
-                    <span class="status-icon checking" id="statusIcon"></span>
-                </div>
+                <div class="status-header"><span class="label"><i class="fas fa-database"></i> Conexão</span><span class="status-icon checking" id="statusIcon"></span></div>
                 <div class="status-value" id="statusTexto">Verificando...</div>
                 <div class="status-sub" id="statusSub">Conectando ao Supabase</div>
             </div>
-
-            <!-- Artigos no Banco -->
             <div class="status-card">
-                <div class="status-header">
-                    <span class="label"><i class="fas fa-newspaper"></i> Artigos</span>
-                </div>
+                <div class="status-header"><span class="label"><i class="fas fa-newspaper"></i> Artigos</span></div>
                 <div class="status-value" id="totalArtigosDb">0 <span class="small">registros</span></div>
                 <div class="progress-bar"><div class="fill" id="artigosProgress" style="width:0%"></div></div>
-                <div class="status-detail">
-                    <span>Limite: 100</span>
-                    <span id="artigosPercent">0% usado</span>
-                </div>
+                <div class="status-detail"><span>Limite: 100</span><span id="artigosPercent">0% usado</span></div>
             </div>
-
-            <!-- Depoimentos no Banco -->
             <div class="status-card">
-                <div class="status-header">
-                    <span class="label"><i class="fas fa-comments"></i> Depoimentos</span>
-                </div>
+                <div class="status-header"><span class="label"><i class="fas fa-comments"></i> Depoimentos</span></div>
                 <div class="status-value" id="totalDepoimentosDb">0 <span class="small">registros</span></div>
                 <div class="progress-bar"><div class="fill" id="depoimentosProgress" style="width:0%"></div></div>
-                <div class="status-detail">
-                    <span>Limite: 50</span>
-                    <span id="depoimentosPercent">0% usado</span>
-                </div>
+                <div class="status-detail"><span>Limite: 50</span><span id="depoimentosPercent">0% usado</span></div>
             </div>
-
-            <!-- Uso Total do Banco -->
             <div class="status-card">
-                <div class="status-header">
-                    <span class="label"><i class="fas fa-chart-pie"></i> Uso Total</span>
-                </div>
+                <div class="status-header"><span class="label"><i class="fas fa-chart-pie"></i> Uso Total</span></div>
                 <div class="status-value" id="totalUso">0%</div>
                 <div class="progress-bar"><div class="fill" id="totalProgress" style="width:0%"></div></div>
-                <div class="status-detail">
-                    <span>Plano: Gratuito</span>
-                    <span id="totalStatus">Limite: 500MB</span>
-                </div>
+                <div class="status-detail"><span>Plano: Gratuito</span><span id="totalStatus">Limite: 500MB</span></div>
             </div>
         </div>
 
         <!-- ===== STATS ===== -->
         <div class="stats-grid">
-            <div class="stat-card" onclick="window.open('/blog.html','_blank')">
+            <div class="stat-card" onclick="document.getElementById('artigosSection').scrollIntoView({behavior:'smooth'});">
                 <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
                 <div class="stat-number" id="totalArtigos">0</div>
                 <div class="stat-label">Total de Artigos</div>
             </div>
-            <div class="stat-card" onclick="window.open('/blog.html','_blank')">
+            <div class="stat-card" onclick="document.getElementById('depoimentosSection').scrollIntoView({behavior:'smooth'});">
+                <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                <div class="stat-number" id="totalDepoimentos">0</div>
+                <div class="stat-label">Depoimentos</div>
+            </div>
+            <div class="stat-card" onclick="window.open('/blog.html','_blank');">
                 <div class="stat-icon"><i class="fas fa-eye"></i></div>
                 <div class="stat-number">4.8k</div>
                 <div class="stat-label">Visualizações</div>
             </div>
-            <div class="stat-card" onclick="window.open('/#depoimentos','_blank')">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number" id="totalDepoimentos">0</div>
-                <div class="stat-label">Depoimentos</div>
-            </div>
-            <div class="stat-card" onclick="window.open('/#contato','_blank')">
+            <div class="stat-card" onclick="window.open('/#contato','_blank');">
                 <div class="stat-icon"><i class="fas fa-envelope"></i></div>
                 <div class="stat-number">89</div>
-                <div class="stat-label">Assinantes Newsletter</div>
+                <div class="stat-label">Assinantes</div>
             </div>
         </div>
 
-        <!-- ===== ÚLTIMAS PUBLICAÇÕES ===== -->
-        <div class="recent-posts">
-            <div class="header">
-                <span class="title">Últimas Publicações</span>
-                <a href="/blog.html" target="_blank" class="link">Ver todas →</a>
-            </div>
-            <div id="recentPostsList">
-                <!-- Carregado pelo JavaScript -->
-            </div>
+        <!-- ===== ARTIGOS ===== -->
+        <div class="section-title" id="artigosSection">
+            <i class="fas fa-newspaper" style="color:var(--gold);"></i> Artigos
+            <button class="btn-add" onclick="abrirModalArtigo()"><i class="fas fa-plus"></i> Novo Artigo</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Título</th><th>Categoria</th><th>Status</th><th>Data</th><th>Ações</th></tr></thead>
+                <tbody id="artigosTableBody"></tbody>
+            </table>
+        </div>
+
+        <!-- ===== DEPOIMENTOS ===== -->
+        <div class="section-title" id="depoimentosSection" style="margin-top:40px;">
+            <i class="fas fa-comments" style="color:var(--gold);"></i> Depoimentos
+            <button class="btn-add" onclick="abrirModalDepoimento()"><i class="fas fa-plus"></i> Novo Depoimento</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Nome</th><th>Empresa</th><th>Nota</th><th>Status</th><th>Ações</th></tr></thead>
+                <tbody id="depoimentosTableBody"></tbody>
+            </table>
         </div>
     </main>
 
+    <!-- ===== MODAL ARTIGO ===== -->
+    <div class="modal-overlay" id="modalArtigo">
+        <div class="modal">
+            <h2 id="modalArtigoTitle">Novo Artigo</h2>
+            <form id="formArtigo">
+                <input type="hidden" id="editArtigoId" value="">
+                <div class="form-group"><label>Título</label><input type="text" id="artigoTitulo" placeholder="Título do artigo" required></div>
+                <div class="form-group"><label>Resumo</label><textarea id="artigoResumo" placeholder="Resumo do artigo" rows="2"></textarea></div>
+                <div class="form-group"><label>Categoria</label>
+                    <select id="artigoCategoria">
+                        <option value="Tributário">Tributário</option>
+                        <option value="MEI">MEI</option>
+                        <option value="Simples Nacional">Simples Nacional</option>
+                        <option value="Produtor Rural">Produtor Rural</option>
+                        <option value="Consultoria">Consultoria</option>
+                        <option value="Tecnologia">Tecnologia</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Status</label>
+                    <select id="artigoStatus">
+                        <option value="Publicado">Publicado</option>
+                        <option value="Rascunho">Rascunho</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display:flex;align-items:center;gap:12px;">
+                    <input type="checkbox" id="artigoDestaque" style="width:auto;">
+                    <label for="artigoDestaque" style="margin:0;cursor:pointer;">⭐ Destaque no carrossel</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="fecharModal('modalArtigo')">Cancelar</button>
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DEPOIMENTO ===== -->
+    <div class="modal-overlay" id="modalDepoimento">
+        <div class="modal">
+            <h2 id="modalDepoimentoTitle">Novo Depoimento</h2>
+            <form id="formDepoimento">
+                <input type="hidden" id="editDepoimentoId" value="">
+                <div class="form-group"><label>Nome</label><input type="text" id="depoimentoNome" placeholder="Nome do cliente" required></div>
+                <div class="form-group"><label>Empresa</label><input type="text" id="depoimentoEmpresa" placeholder="Empresa / Cargo"></div>
+                <div class="form-group"><label>Depoimento</label><textarea id="depoimentoTexto" placeholder="Texto do depoimento" rows="4" required></textarea></div>
+                <div class="form-group"><label>Nota (1-5)</label>
+                    <select id="depoimentoNota">
+                        <option value="5">★★★★★ (5)</option>
+                        <option value="4">★★★★☆ (4)</option>
+                        <option value="3">★★★☆☆ (3)</option>
+                        <option value="2">★★☆☆☆ (2)</option>
+                        <option value="1">★☆☆☆☆ (1)</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="fecharModal('modalDepoimento')">Cancelar</button>
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"></div>
+
     <!-- ============================================
-    SCRIPT
+    SCRIPT COMPLETO
     ============================================ -->
     <script>
         // ============================================
@@ -566,34 +316,7 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
 
         // ============================================
-        // VERIFICAR AUTENTICAÇÃO
-        // ============================================
-        (function checkAuth() {
-            const session = localStorage.getItem('connecta_admin');
-            if (!session) {
-                window.location.href = '/admin/login.html';
-                return;
-            }
-            try {
-                const data = JSON.parse(session);
-                if (!data.loggedIn) {
-                    localStorage.removeItem('connecta_admin');
-                    window.location.href = '/admin/login.html';
-                    return;
-                }
-                if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
-                    localStorage.removeItem('connecta_admin');
-                    window.location.href = '/admin/login.html';
-                    return;
-                }
-            } catch (e) {
-                localStorage.removeItem('connecta_admin');
-                window.location.href = '/admin/login.html';
-            }
-        })();
-
-        // ============================================
-        // FUNÇÕES DO SUPABASE
+        // FUNÇÕES SUPABASE
         // ============================================
         async function fetchSupabase(endpoint, options = {}) {
             const url = `${SUPABASE_URL}/rest/v1/${endpoint}`;
@@ -603,13 +326,117 @@
                     'apikey': SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Content-Type': 'application/json',
+                    'Prefer': 'return=representation',
                     ...options.headers
                 }
             });
             if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
+                const errorText = await response.text();
+                throw new Error(`HTTP ${response.status}: ${errorText}`);
             }
             return response.json();
+        }
+
+        // ============================================
+        // CRUD ARTIGOS
+        // ============================================
+        async function listarArtigos() {
+            try {
+                const data = await fetchSupabase('artigos?order=data.desc');
+                return data;
+            } catch (error) {
+                console.error('Erro ao listar artigos:', error);
+                return [];
+            }
+        }
+
+        async function criarArtigo(artigo) {
+            try {
+                const data = await fetchSupabase('artigos', {
+                    method: 'POST',
+                    body: JSON.stringify(artigo)
+                });
+                return data[0] || data;
+            } catch (error) {
+                console.error('Erro ao criar artigo:', error);
+                throw error;
+            }
+        }
+
+        async function atualizarArtigo(id, artigo) {
+            try {
+                const data = await fetchSupabase(`artigos?id=eq.${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify(artigo)
+                });
+                return data[0] || data;
+            } catch (error) {
+                console.error('Erro ao atualizar artigo:', error);
+                throw error;
+            }
+        }
+
+        async function deletarArtigo(id) {
+            try {
+                await fetchSupabase(`artigos?id=eq.${id}`, {
+                    method: 'DELETE'
+                });
+                return true;
+            } catch (error) {
+                console.error('Erro ao deletar artigo:', error);
+                throw error;
+            }
+        }
+
+        // ============================================
+        // CRUD DEPOIMENTOS
+        // ============================================
+        async function listarDepoimentos() {
+            try {
+                const data = await fetchSupabase('depoimentos?order=data.desc');
+                return data;
+            } catch (error) {
+                console.error('Erro ao listar depoimentos:', error);
+                return [];
+            }
+        }
+
+        async function criarDepoimento(depoimento) {
+            try {
+                const data = await fetchSupabase('depoimentos', {
+                    method: 'POST',
+                    body: JSON.stringify(depoimento)
+                });
+                return data[0] || data;
+            } catch (error) {
+                console.error('Erro ao criar depoimento:', error);
+                throw error;
+            }
+        }
+
+        async function atualizarDepoimento(id, depoimento) {
+            try {
+                const data = await fetchSupabase(`depoimentos?id=eq.${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify(depoimento)
+                });
+                return data[0] || data;
+            } catch (error) {
+                console.error('Erro ao atualizar depoimento:', error);
+                throw error;
+            }
+        }
+
+        async function deletarDepoimento(id) {
+            try {
+                await fetchSupabase(`depoimentos?id=eq.${id}`, {
+                    method: 'DELETE'
+                });
+                return true;
+            } catch (error) {
+                console.error('Erro ao deletar depoimento:', error);
+                throw error;
+            }
         }
 
         // ============================================
@@ -621,25 +448,41 @@
             const statusSub = document.getElementById('statusSub');
 
             try {
-                // Testar conexão com Supabase
                 const startTime = Date.now();
                 const data = await fetchSupabase('artigos?limit=1');
                 const endTime = Date.now();
                 const tempoResposta = endTime - startTime;
 
-                // Conexão OK
                 statusIcon.className = 'status-icon online';
                 statusTexto.textContent = '✅ Online';
                 statusSub.textContent = `Tempo de resposta: ${tempoResposta}ms`;
 
-                // Buscar contagens
-                const artigos = await fetchSupabase('artigos?select=count');
-                const depoimentos = await fetchSupabase('depoimentos?select=count');
+                // Recarregar dados
+                await carregarDados();
 
-                const totalArtigos = Array.isArray(artigos) ? artigos.length : 0;
-                const totalDepoimentos = Array.isArray(depoimentos) ? depoimentos.length : 0;
+            } catch (error) {
+                console.error('Erro ao verificar status:', error);
+                statusIcon.className = 'status-icon offline';
+                statusTexto.textContent = '❌ Offline';
+                statusSub.textContent = 'Erro ao conectar ao Supabase';
+                carregarDadosFallback();
+            }
+        }
 
-                // Atualizar stats
+        // ============================================
+        // CARREGAR DADOS
+        // ============================================
+        async function carregarDados() {
+            try {
+                const [artigos, depoimentos] = await Promise.all([
+                    listarArtigos(),
+                    listarDepoimentos()
+                ]);
+
+                const totalArtigos = artigos.length;
+                const totalDepoimentos = depoimentos.length;
+
+                // Atualizar status
                 document.getElementById('totalArtigosDb').innerHTML = `${totalArtigos} <span class="small">registros</span>`;
                 document.getElementById('totalDepoimentosDb').innerHTML = `${totalDepoimentos} <span class="small">registros</span>`;
                 document.getElementById('totalArtigos').textContent = totalArtigos;
@@ -647,133 +490,310 @@
                 document.getElementById('artigosBadge').textContent = totalArtigos;
                 document.getElementById('depoimentosBadge').textContent = totalDepoimentos;
 
-                // Calcular percentuais
+                // Percentuais
                 const limiteArtigos = 100;
                 const limiteDepoimentos = 50;
                 const percentArtigos = Math.min((totalArtigos / limiteArtigos) * 100, 100);
                 const percentDepoimentos = Math.min((totalDepoimentos / limiteDepoimentos) * 100, 100);
                 const percentTotal = Math.min(((totalArtigos + totalDepoimentos) / 150) * 100, 100);
 
-                // Atualizar barras de progresso
-                const artigosFill = document.getElementById('artigosProgress');
-                const depoimentosFill = document.getElementById('depoimentosProgress');
-                const totalFill = document.getElementById('totalProgress');
-
-                artigosFill.style.width = `${percentArtigos}%`;
-                depoimentosFill.style.width = `${percentDepoimentos}%`;
-                totalFill.style.width = `${percentTotal}%`;
-
-                // Adicionar classes de warning/danger
-                artigosFill.className = 'fill' + (percentArtigos > 80 ? ' warning' : '');
-                depoimentosFill.className = 'fill' + (percentDepoimentos > 80 ? ' warning' : '');
-                totalFill.className = 'fill' + (percentTotal > 80 ? ' warning' : '');
-
-                // Atualizar textos de percentual
+                document.getElementById('artigosProgress').style.width = `${percentArtigos}%`;
+                document.getElementById('depoimentosProgress').style.width = `${percentDepoimentos}%`;
+                document.getElementById('totalProgress').style.width = `${percentTotal}%`;
                 document.getElementById('artigosPercent').textContent = `${Math.round(percentArtigos)}% usado`;
                 document.getElementById('depoimentosPercent').textContent = `${Math.round(percentDepoimentos)}% usado`;
                 document.getElementById('totalUso').textContent = `${Math.round(percentTotal)}%`;
 
-                // Carregar últimos artigos
-                carregarUltimosArtigos();
+                // Renderizar tabelas
+                renderizarTabelaArtigos(artigos);
+                renderizarTabelaDepoimentos(depoimentos);
 
-                // Iniciar autoplay de atualização
-                iniciarAutoplay();
+                // Salvar no LocalStorage como cache
+                localStorage.setItem('connecta_artigos', JSON.stringify(artigos));
+                localStorage.setItem('connecta_depoimentos', JSON.stringify(depoimentos));
 
             } catch (error) {
-                console.error('Erro ao verificar status do banco:', error);
-                statusIcon.className = 'status-icon offline';
-                statusTexto.textContent = '❌ Offline';
-                statusSub.textContent = 'Erro ao conectar ao Supabase';
-                
-                // Tentar carregar dados do LocalStorage
+                console.error('Erro ao carregar dados:', error);
                 carregarDadosFallback();
             }
         }
 
         // ============================================
-        // CARREGAR ÚLTIMOS ARTIGOS
+        // RENDERIZAR TABELA ARTIGOS
         // ============================================
-        function carregarUltimosArtigos() {
-            const container = document.getElementById('recentPostsList');
-            if (!container) return;
-
-            // Buscar do LocalStorage ou usar dados padrão
-            let artigos = [];
-            try {
-                const stored = localStorage.getItem('connecta_artigos');
-                if (stored) {
-                    artigos = JSON.parse(stored);
-                }
-            } catch (e) {}
-
-            if (artigos.length === 0) {
-                artigos = [
-                    { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", data: "14/07/2025", categoria: "Tributário", status: "Publicado" },
-                    { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", data: "12/07/2025", categoria: "MEI", status: "Publicado" },
-                    { id: 3, titulo: "Simples Nacional x Lucro Presumido", data: "10/07/2025", categoria: "Simples Nacional", status: "Rascunho" }
-                ];
+        function renderizarTabelaArtigos(artigos) {
+            const tbody = document.getElementById('artigosTableBody');
+            if (!artigos || artigos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-light);padding:30px;">Nenhum artigo encontrado</td></tr>`;
+                return;
             }
 
-            // Ordenar por data (mais recentes primeiro)
-            const sorted = [...artigos].sort((a, b) => {
-                const da = a.data?.split('/').reverse().join('') || '';
-                const db = b.data?.split('/').reverse().join('') || '';
-                return db.localeCompare(da);
-            });
-
-            const posts = sorted.slice(0, 3);
-
-            container.innerHTML = posts.map(post => {
-                const statusClass = post.status === 'Publicado' ? 'published' : 'draft';
-                return `
-                    <div class="post-item" onclick="window.open('/artigo.html?id=${post.id}','_blank')">
-                        <div class="thumb"><i class="fas fa-file-alt"></i></div>
-                        <div class="info">
-                            <div class="title">${post.titulo}</div>
-                            <div class="meta">${post.data || 'Data não disponível'} • ${post.categoria || 'Geral'}</div>
+            tbody.innerHTML = artigos.map(a => `
+                <tr>
+                    <td><strong>${a.titulo}</strong></td>
+                    <td>${a.categoria || 'Geral'}</td>
+                    <td>
+                        <span class="status-badge ${a.status === 'Publicado' ? 'published' : 'draft'}">${a.status || 'Rascunho'}</span>
+                        ${a.destaque ? '<span class="status-badge destaque">⭐ Destaque</span>' : ''}
+                    </td>
+                    <td>${a.data ? new Date(a.data).toLocaleDateString('pt-BR') : '-'}</td>
+                    <td>
+                        <div class="actions">
+                            <button class="btn-edit" onclick="editarArtigo(${a.id})"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="excluirArtigo(${a.id})"><i class="fas fa-trash"></i></button>
                         </div>
-                        <span class="status ${statusClass}">${post.status || 'Rascunho'}</span>
-                    </div>
-                `;
-            }).join('');
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // ============================================
+        // RENDERIZAR TABELA DEPOIMENTOS
+        // ============================================
+        function renderizarTabelaDepoimentos(depoimentos) {
+            const tbody = document.getElementById('depoimentosTableBody');
+            if (!depoimentos || depoimentos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-light);padding:30px;">Nenhum depoimento encontrado</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = depoimentos.map(d => `
+                <tr>
+                    <td><strong>${d.nome}</strong></td>
+                    <td>${d.empresa || '-'}</td>
+                    <td>${'★'.repeat(d.nota || 5)}</td>
+                    <td><span class="status-badge ${d.ativo !== false ? 'published' : 'draft'}">${d.ativo !== false ? 'Ativo' : 'Inativo'}</span></td>
+                    <td>
+                        <div class="actions">
+                            <button class="btn-edit" onclick="editarDepoimento(${d.id})"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" onclick="excluirDepoimento(${d.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
         }
 
         // ============================================
         // DADOS FALLBACK (LOCALSTORAGE)
         // ============================================
         function carregarDadosFallback() {
-            // Tentar carregar do LocalStorage
             let artigos = [];
+            let depoimentos = [];
+
             try {
-                const stored = localStorage.getItem('connecta_artigos');
-                if (stored) {
-                    artigos = JSON.parse(stored);
-                }
+                const storedArtigos = localStorage.getItem('connecta_artigos');
+                if (storedArtigos) artigos = JSON.parse(storedArtigos);
             } catch (e) {}
 
-            const totalArtigos = artigos.length || 6;
-            const totalDepoimentos = 4;
+            try {
+                const storedDepoimentos = localStorage.getItem('connecta_depoimentos');
+                if (storedDepoimentos) depoimentos = JSON.parse(storedDepoimentos);
+            } catch (e) {}
 
-            document.getElementById('totalArtigosDb').innerHTML = `${totalArtigos} <span class="small">registros (cache)</span>`;
-            document.getElementById('totalDepoimentosDb').innerHTML = `${totalDepoimentos} <span class="small">registros (cache)</span>`;
-            document.getElementById('totalArtigos').textContent = totalArtigos;
-            document.getElementById('totalDepoimentos').textContent = totalDepoimentos;
-            document.getElementById('artigosBadge').textContent = totalArtigos;
-            document.getElementById('depoimentosBadge').textContent = totalDepoimentos;
+            if (artigos.length === 0) {
+                artigos = [
+                    { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", categoria: "Tributário", status: "Publicado", data: "2025-07-14", destaque: true },
+                    { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", categoria: "MEI", status: "Publicado", data: "2025-07-12", destaque: true }
+                ];
+            }
 
-            carregarUltimosArtigos();
+            if (depoimentos.length === 0) {
+                depoimentos = [
+                    { id: 1, nome: "Raul Ramalho", empresa: "Vigorre", nota: 5, ativo: true },
+                    { id: 2, nome: "Daniele Aparecida", empresa: "Amovin", nota: 5, ativo: true }
+                ];
+            }
+
+            document.getElementById('totalArtigosDb').innerHTML = `${artigos.length} <span class="small">registros (cache)</span>`;
+            document.getElementById('totalDepoimentosDb').innerHTML = `${depoimentos.length} <span class="small">registros (cache)</span>`;
+            document.getElementById('totalArtigos').textContent = artigos.length;
+            document.getElementById('totalDepoimentos').textContent = depoimentos.length;
+            document.getElementById('artigosBadge').textContent = artigos.length;
+            document.getElementById('depoimentosBadge').textContent = depoimentos.length;
+
+            renderizarTabelaArtigos(artigos);
+            renderizarTabelaDepoimentos(depoimentos);
         }
 
         // ============================================
-        // AUTOPLAY - ATUALIZAR A CADA 30 SEGUNDOS
+        // MODAL ARTIGO
         // ============================================
-        let autoplayInterval = null;
+        function abrirModalArtigo(artigo = null) {
+            const modal = document.getElementById('modalArtigo');
+            const title = document.getElementById('modalArtigoTitle');
+            const form = document.getElementById('formArtigo');
 
-        function iniciarAutoplay() {
-            if (autoplayInterval) clearInterval(autoplayInterval);
-            autoplayInterval = setInterval(() => {
-                verificarStatusBanco();
-            }, 30000); // 30 segundos
+            if (artigo) {
+                title.textContent = 'Editar Artigo';
+                document.getElementById('editArtigoId').value = artigo.id;
+                document.getElementById('artigoTitulo').value = artigo.titulo || '';
+                document.getElementById('artigoResumo').value = artigo.resumo || '';
+                document.getElementById('artigoCategoria').value = artigo.categoria || 'Tributário';
+                document.getElementById('artigoStatus').value = artigo.status || 'Rascunho';
+                document.getElementById('artigoDestaque').checked = artigo.destaque || false;
+            } else {
+                title.textContent = 'Novo Artigo';
+                document.getElementById('editArtigoId').value = '';
+                form.reset();
+            }
+
+            modal.classList.add('active');
+        }
+
+        document.getElementById('formArtigo').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById('editArtigoId').value;
+            const artigo = {
+                titulo: document.getElementById('artigoTitulo').value.trim(),
+                resumo: document.getElementById('artigoResumo').value.trim(),
+                categoria: document.getElementById('artigoCategoria').value,
+                status: document.getElementById('artigoStatus').value,
+                destaque: document.getElementById('artigoDestaque').checked,
+                autor: 'Erilma Silva',
+                data: new Date().toISOString().split('T')[0]
+            };
+
+            try {
+                if (id) {
+                    await atualizarArtigo(id, artigo);
+                    showToast('✅ Artigo atualizado com sucesso!', 'success');
+                } else {
+                    await criarArtigo(artigo);
+                    showToast('✅ Artigo criado com sucesso!', 'success');
+                }
+
+                fecharModal('modalArtigo');
+                await carregarDados();
+            } catch (error) {
+                showToast('❌ Erro ao salvar artigo: ' + error.message, 'error');
+            }
+        });
+
+        async function editarArtigo(id) {
+            try {
+                const artigos = await listarArtigos();
+                const artigo = artigos.find(a => a.id == id);
+                if (artigo) {
+                    abrirModalArtigo(artigo);
+                }
+            } catch (error) {
+                showToast('❌ Erro ao carregar artigo', 'error');
+            }
+        }
+
+        async function excluirArtigo(id) {
+            if (!confirm('Tem certeza que deseja excluir este artigo?')) return;
+            try {
+                await deletarArtigo(id);
+                showToast('✅ Artigo excluído com sucesso!', 'success');
+                await carregarDados();
+            } catch (error) {
+                showToast('❌ Erro ao excluir artigo', 'error');
+            }
+        }
+
+        // ============================================
+        // MODAL DEPOIMENTO
+        // ============================================
+        function abrirModalDepoimento(depoimento = null) {
+            const modal = document.getElementById('modalDepoimento');
+            const title = document.getElementById('modalDepoimentoTitle');
+
+            if (depoimento) {
+                title.textContent = 'Editar Depoimento';
+                document.getElementById('editDepoimentoId').value = depoimento.id;
+                document.getElementById('depoimentoNome').value = depoimento.nome || '';
+                document.getElementById('depoimentoEmpresa').value = depoimento.empresa || '';
+                document.getElementById('depoimentoTexto').value = depoimento.texto || '';
+                document.getElementById('depoimentoNota').value = depoimento.nota || 5;
+            } else {
+                title.textContent = 'Novo Depoimento';
+                document.getElementById('editDepoimentoId').value = '';
+                document.getElementById('formDepoimento').reset();
+            }
+
+            modal.classList.add('active');
+        }
+
+        document.getElementById('formDepoimento').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById('editDepoimentoId').value;
+            const depoimento = {
+                nome: document.getElementById('depoimentoNome').value.trim(),
+                empresa: document.getElementById('depoimentoEmpresa').value.trim(),
+                texto: document.getElementById('depoimentoTexto').value.trim(),
+                nota: parseInt(document.getElementById('depoimentoNota').value) || 5,
+                ativo: true,
+                data: new Date().toISOString().split('T')[0],
+                iniciais: document.getElementById('depoimentoNome').value.trim().charAt(0)
+            };
+
+            try {
+                if (id) {
+                    await atualizarDepoimento(id, depoimento);
+                    showToast('✅ Depoimento atualizado com sucesso!', 'success');
+                } else {
+                    await criarDepoimento(depoimento);
+                    showToast('✅ Depoimento criado com sucesso!', 'success');
+                }
+
+                fecharModal('modalDepoimento');
+                await carregarDados();
+            } catch (error) {
+                showToast('❌ Erro ao salvar depoimento: ' + error.message, 'error');
+            }
+        });
+
+        async function editarDepoimento(id) {
+            try {
+                const depoimentos = await listarDepoimentos();
+                const depoimento = depoimentos.find(d => d.id == id);
+                if (depoimento) {
+                    abrirModalDepoimento(depoimento);
+                }
+            } catch (error) {
+                showToast('❌ Erro ao carregar depoimento', 'error');
+            }
+        }
+
+        async function excluirDepoimento(id) {
+            if (!confirm('Tem certeza que deseja excluir este depoimento?')) return;
+            try {
+                await deletarDepoimento(id);
+                showToast('✅ Depoimento excluído com sucesso!', 'success');
+                await carregarDados();
+            } catch (error) {
+                showToast('❌ Erro ao excluir depoimento', 'error');
+            }
+        }
+
+        // ============================================
+        // MODAL HELPERS
+        // ============================================
+        function fecharModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // ============================================
+        // TOAST
+        // ============================================
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
         // ============================================
@@ -784,15 +804,8 @@
             window.location.href = '/admin/login.html';
         }
 
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            performLogout();
-        });
-
-        document.getElementById('topLogoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            performLogout();
-        });
+        document.getElementById('logoutBtn').addEventListener('click', performLogout);
+        document.getElementById('topLogoutBtn').addEventListener('click', performLogout);
 
         // ============================================
         // INATIVIDADE
@@ -801,11 +814,7 @@
 
         function resetInactivityTimer() {
             clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(() => {
-                if (localStorage.getItem('connecta_admin')) {
-                    performLogout();
-                }
-            }, 15 * 60 * 1000);
+            inactivityTimer = setTimeout(performLogout, 15 * 60 * 1000);
         }
 
         document.addEventListener('mousemove', resetInactivityTimer);
@@ -840,11 +849,10 @@
         // ============================================
         // PREVENIR DEV TOOLS
         // ============================================
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
-                return false;
             }
         });
 
@@ -852,11 +860,18 @@
         // INICIALIZAR
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Inicializando Dashboard...');
+            console.log('🚀 Inicializando Dashboard com Supabase...');
+
+            // Verificar autenticação
+            const session = localStorage.getItem('connecta_admin');
+            if (!session) {
+                window.location.href = '/admin/login.html';
+                return;
+            }
+
             verificarStatusBanco();
             console.log('✅ Dashboard carregado!');
         });
     </script>
-
 </body>
 </html>
