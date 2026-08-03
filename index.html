@@ -859,12 +859,20 @@
     <!-- ===== BACK TO TOP ===== -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- ===== SCRIPT ===== -->
+    <!-- ============================================
+    SUPABASE INTEGRATION - SCRIPT COMPLETO
+    ============================================ -->
     <script>
         // ============================================
-        // DADOS
+        // SUPABASE CONFIGURATION
         // ============================================
-        const ARTIGOS = [
+        const SUPABASE_URL = 'https://spztajsribpyaittolnr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
+
+        // ============================================
+        // DADOS FALLBACK (LOCALSTORAGE)
+        // ============================================
+        const ARTIGOS_FALLBACK = [
             { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "14 de julho de 2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true },
             { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "12 de julho de 2025", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", carrossel: true },
             { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "10 de julho de 2025", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", carrossel: true },
@@ -873,12 +881,68 @@
             { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "04 de julho de 2025", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", carrossel: false }
         ];
 
-        const DEPOIMENTOS = [
+        const DEPOIMENTOS_FALLBACK = [
             { id: 1, nome: "Raul Ramalho", empresa: "Vigorre • São Gonçalo/RJ", iniciais: "R", texto: '"A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: transparência e segurança. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."', nota: 5, data: "Junho 2025" },
             { id: 2, nome: "Daniele Aparecida", empresa: "Amovin • Rio Paranaíba/MG", iniciais: "D", texto: '"O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá consciência real sobre os números e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."', nota: 5, data: "Maio 2025" },
             { id: 3, nome: "Gabriela Melo", empresa: "Terapia Ocupacional • Rio Paranaíba/MG", iniciais: "G", texto: '"Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço ágil, eficiente e muito profissional. Estou muito satisfeita!"', nota: 5, data: "Abril 2025" },
             { id: 4, nome: "Daniela Boaventura", empresa: "Fonoaudiologia • Rio Paranaíba/MG", iniciais: "D", texto: '"Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com atenção, organização e muita disponibilidade para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."', nota: 5, data: "Março 2025" }
         ];
+
+        // ============================================
+        // FUNÇÕES SUPABASE
+        // ============================================
+        async function buscarArtigosSupabase() {
+            try {
+                const url = new URL(`${SUPABASE_URL}/rest/v1/artigos`);
+                url.searchParams.append('status', 'eq.Publicado');
+                url.searchParams.append('order', 'data.desc');
+                url.searchParams.append('limit', '6');
+
+                const response = await fetch(url, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const dados = await response.json();
+                return dados;
+            } catch (error) {
+                console.warn('⚠️ Erro ao buscar artigos do Supabase:', error.message);
+                return null;
+            }
+        }
+
+        async function buscarDepoimentosSupabase() {
+            try {
+                const url = new URL(`${SUPABASE_URL}/rest/v1/depoimentos`);
+                url.searchParams.append('ativo', 'eq.true');
+                url.searchParams.append('order', 'data.desc');
+
+                const response = await fetch(url, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const dados = await response.json();
+                return dados;
+            } catch (error) {
+                console.warn('⚠️ Erro ao buscar depoimentos do Supabase:', error.message);
+                return null;
+            }
+        }
 
         // ============================================
         // FUNÇÕES AUXILIARES
@@ -887,11 +951,18 @@
             return '★'.repeat(nota) + '☆'.repeat(5 - nota);
         }
 
+        function formatarData(data) {
+            if (!data) return 'Data não disponível';
+            const d = new Date(data);
+            return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+        }
+
         // ============================================
         // BLOG CARROSSEL
         // ============================================
         let blogIndex = 0;
         let totalBlogCards = 0;
+        let artigosAtuais = [];
 
         function getBlogCardsPerView() {
             if (window.innerWidth <= 768) return 1;
@@ -899,28 +970,33 @@
             return 3;
         }
 
-        function renderizarBlog() {
+        function renderizarBlog(artigos) {
             const track = document.getElementById('blogCarouselTrack');
-            const artigos = ARTIGOS.filter(a => a.carrossel === true);
-            totalBlogCards = artigos.length;
+            if (!track) return;
+
+            artigosAtuais = artigos || [];
+            const destaques = artigosAtuais.filter(a => a.destaque === true || a.carrossel === true);
+            const artigosParaMostrar = destaques.length > 0 ? destaques : artigosAtuais.slice(0, 6);
+            totalBlogCards = artigosParaMostrar.length;
 
             if (totalBlogCards === 0) {
                 track.innerHTML = '<div style="min-width:100%;text-align:center;padding:40px;color:var(--text-light);">Nenhum artigo em destaque</div>';
+                atualizarDotsBlog();
                 return;
             }
 
-            track.innerHTML = artigos.map(a => `
+            track.innerHTML = artigosParaMostrar.map(a => `
                 <div class="blog-carousel-card">
-                    <div class="card-image" style="background:linear-gradient(135deg, ${a.cor}, ${a.cor}dd);">
-                        <i class="fas ${a.icone}" style="font-size:3rem;color:rgba(255,255,255,0.15);"></i>
-                        <span class="card-badge gold">${a.categoria}</span>
+                    <div class="card-image" style="background:linear-gradient(135deg, ${a.cor || '#3A2116'}, ${a.cor || '#5A3522'}dd);">
+                        <i class="fas ${a.icone || 'fa-file-alt'}" style="font-size:3rem;color:rgba(255,255,255,0.15);"></i>
+                        <span class="card-badge gold">${a.categoria || 'Geral'}</span>
                     </div>
                     <div class="card-content">
-                        <div class="card-meta"><span class="category">${a.categoria}</span><span class="dot-sep"></span><span>${a.data}</span></div>
+                        <div class="card-meta"><span class="category">${a.categoria || 'Geral'}</span><span class="dot-sep"></span><span>${formatarData(a.data)}</span></div>
                         <h3 class="card-title">${a.titulo}</h3>
-                        <p class="card-excerpt">${a.resumo}</p>
+                        <p class="card-excerpt">${a.resumo || 'Clique para ler o artigo completo.'}</p>
                         <div class="card-footer">
-                            <div class="card-author"><div class="avatar">${a.autor.charAt(0)}</div><span class="name">${a.autor}</span></div>
+                            <div class="card-author"><div class="avatar">${(a.autor || 'E').charAt(0)}</div><span class="name">${a.autor || 'Erilma Silva'}</span></div>
                             <a href="/artigo.html?id=${a.id}" class="card-readmore">Ler <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -933,6 +1009,7 @@
 
         function atualizarDotsBlog() {
             const dotsContainer = document.getElementById('blogCarouselDots');
+            if (!dotsContainer) return;
             const perView = getBlogCardsPerView();
             const totalDots = Math.ceil(totalBlogCards / perView);
             dotsContainer.innerHTML = '';
@@ -948,7 +1025,7 @@
 
         function atualizarCarrosselBlog() {
             const track = document.getElementById('blogCarouselTrack');
-            if (totalBlogCards === 0) return;
+            if (totalBlogCards === 0 || !track) return;
             const perView = getBlogCardsPerView();
             const maxIndex = Math.max(0, totalBlogCards - perView);
             if (blogIndex > maxIndex) blogIndex = maxIndex;
@@ -961,19 +1038,27 @@
         }
 
         // ============================================
-        // DEPOIMENTOS CARROSSEL - CORRIGIDO
+        // DEPOIMENTOS CARROSSEL
         // ============================================
         let depoimentoIndex = 0;
+        let depoimentosAtuais = [];
 
         function getDepoimentosPerView() {
             return window.innerWidth <= 768 ? 1 : 2;
         }
 
-        function renderizarDepoimentos() {
+        function renderizarDepoimentos(depoimentos) {
             const track = document.getElementById('testimonialsCarouselTrack');
             if (!track) return;
 
-            track.innerHTML = DEPOIMENTOS.map(d => `
+            depoimentosAtuais = depoimentos || [];
+
+            if (depoimentosAtuais.length === 0) {
+                track.innerHTML = '<div style="min-width:100%;text-align:center;padding:40px;color:rgba(255,255,255,0.3);">Nenhum depoimento disponível</div>';
+                return;
+            }
+
+            track.innerHTML = depoimentosAtuais.map(d => `
                 <div class="testimonial-card-premium">
                     <div class="testimonial-header">
                         <div class="quote-icon">
@@ -982,15 +1067,15 @@
                                 <path d="M34.2 0C27.6 0 22.2 5.4 22.2 12C22.2 18.6 27.6 24 34.2 24C33 24 31.8 23.4 30.6 22.8C28.2 21 27 18.6 27 15.6C27 11.4 30.6 7.8 34.8 7.8C36 7.8 37.2 8.4 38.4 9L38.4 3.6C36.6 1.2 33.6 0 30.6 0H34.2Z" fill="currentColor" opacity="0.15"/>
                             </svg>
                         </div>
-                        <div class="testimonial-stars">${gerarEstrelas(d.nota)}</div>
+                        <div class="testimonial-stars">${gerarEstrelas(d.nota || 5)}</div>
                     </div>
                     <blockquote class="quote-text">${d.texto}</blockquote>
                     <div class="testimonial-footer">
                         <div class="testimonial-author-info">
-                            <div class="author-avatar"><span>${d.iniciais}</span></div>
+                            <div class="author-avatar"><span>${d.iniciais || d.nome.charAt(0)}</span></div>
                             <div class="author-details">
                                 <strong class="author-name">${d.nome}</strong>
-                                <span class="author-company">${d.empresa}</span>
+                                <span class="author-company">${d.empresa || ''}</span>
                             </div>
                         </div>
                         <div class="author-verified"><i class="fas fa-check-circle"></i><span>Verificado</span></div>
@@ -1008,7 +1093,7 @@
             const dotsContainer = document.getElementById('testimonialsDots');
             if (!dotsContainer) return;
             const perView = getDepoimentosPerView();
-            const totalDots = Math.ceil(DEPOIMENTOS.length / perView);
+            const totalDots = Math.ceil(depoimentosAtuais.length / perView);
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalDots; i++) {
                 const dot = document.createElement('span');
@@ -1022,10 +1107,10 @@
 
         function atualizarCarrosselDepoimentos() {
             const track = document.getElementById('testimonialsCarouselTrack');
-            if (!track) return;
+            if (!track || depoimentosAtuais.length === 0) return;
 
             const perView = getDepoimentosPerView();
-            const maxIndex = Math.max(0, DEPOIMENTOS.length - perView);
+            const maxIndex = Math.max(0, depoimentosAtuais.length - perView);
             if (depoimentoIndex > maxIndex) depoimentoIndex = maxIndex;
             if (depoimentoIndex < 0) depoimentoIndex = 0;
 
@@ -1035,7 +1120,6 @@
                 return;
             }
 
-            // Calcula a largura real do card
             let cardWidth = cards[0].offsetWidth;
             if (cardWidth === 0) {
                 const parentWidth = track.parentElement?.offsetWidth || 0;
@@ -1044,13 +1128,10 @@
 
             const gap = 24;
             const offset = depoimentoIndex * (cardWidth + gap);
-
             track.style.transform = `translateX(-${offset}px)`;
 
             const dots = document.querySelectorAll('#testimonialsDots .dot');
             dots.forEach((dot, i) => dot.classList.toggle('active', i === Math.floor(depoimentoIndex / perView)));
-
-            console.log(`📊 Depoimentos: índice=${depoimentoIndex}, porVez=${perView}, offset=${offset}px, cardWidth=${cardWidth}px`);
         }
 
         // ============================================
@@ -1065,8 +1146,8 @@
 
         document.getElementById('testimonialsNext').addEventListener('click', function() {
             const perView = getDepoimentosPerView();
-            const maxIndex = Math.max(0, DEPOIMENTOS.length - perView);
-            if (depoimentoIndex + perView < DEPOIMENTOS.length) {
+            const maxIndex = Math.max(0, depoimentosAtuais.length - perView);
+            if (depoimentoIndex + perView < depoimentosAtuais.length) {
                 depoimentoIndex += perView;
                 if (depoimentoIndex > maxIndex) depoimentoIndex = maxIndex;
             } else {
@@ -1104,10 +1185,11 @@
 
         function startDepoimentosAutoplay() {
             stopDepoimentosAutoplay();
+            if (depoimentosAtuais.length === 0) return;
             depoimentosAutoplayInterval = setInterval(() => {
                 const perView = getDepoimentosPerView();
-                const maxIndex = Math.max(0, DEPOIMENTOS.length - perView);
-                if (depoimentoIndex + perView < DEPOIMENTOS.length) {
+                const maxIndex = Math.max(0, depoimentosAtuais.length - perView);
+                if (depoimentoIndex + perView < depoimentosAtuais.length) {
                     depoimentoIndex += perView;
                     if (depoimentoIndex > maxIndex) depoimentoIndex = maxIndex;
                 } else {
@@ -1160,10 +1242,10 @@
         // ============================================
         // HOVER PAUSE
         // ============================================
-        document.querySelector('.testimonials-carousel-wrapper').addEventListener('mouseenter', stopDepoimentosAutoplay);
-        document.querySelector('.testimonials-carousel-wrapper').addEventListener('mouseleave', startDepoimentosAutoplay);
-        document.getElementById('blogCarousel').addEventListener('mouseenter', stopBlogAutoplay);
-        document.getElementById('blogCarousel').addEventListener('mouseleave', startBlogAutoplay);
+        document.querySelector('.testimonials-carousel-wrapper')?.addEventListener('mouseenter', stopDepoimentosAutoplay);
+        document.querySelector('.testimonials-carousel-wrapper')?.addEventListener('mouseleave', startDepoimentosAutoplay);
+        document.getElementById('blogCarousel')?.addEventListener('mouseenter', stopBlogAutoplay);
+        document.getElementById('blogCarousel')?.addEventListener('mouseleave', startBlogAutoplay);
 
         // ============================================
         // RESIZE
@@ -1172,12 +1254,53 @@
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                atualizarDotsBlog();
-                atualizarCarrosselBlog();
-                atualizarDotsDepoimentos();
-                atualizarCarrosselDepoimentos();
+                if (totalBlogCards > 0) {
+                    atualizarDotsBlog();
+                    atualizarCarrosselBlog();
+                }
+                if (depoimentosAtuais.length > 0) {
+                    atualizarDotsDepoimentos();
+                    atualizarCarrosselDepoimentos();
+                }
             }, 300);
         });
+
+        // ============================================
+        // CARREGAR DADOS DO SUPABASE
+        // ============================================
+        async function carregarDados() {
+            console.log('🚀 Carregando dados do Supabase...');
+
+            // Buscar artigos
+            let artigos = await buscarArtigosSupabase();
+            if (!artigos || artigos.length === 0) {
+                console.log('📄 Usando artigos fallback (LocalStorage)');
+                artigos = ARTIGOS_FALLBACK;
+            } else {
+                console.log(`✅ ${artigos.length} artigos carregados do Supabase`);
+            }
+
+            // Buscar depoimentos
+            let depoimentos = await buscarDepoimentosSupabase();
+            if (!depoimentos || depoimentos.length === 0) {
+                console.log('💬 Usando depoimentos fallback (LocalStorage)');
+                depoimentos = DEPOIMENTOS_FALLBACK;
+            } else {
+                console.log(`✅ ${depoimentos.length} depoimentos carregados do Supabase`);
+            }
+
+            // Renderizar
+            renderizarBlog(artigos);
+            renderizarDepoimentos(depoimentos);
+
+            // Iniciar autoplay
+            setTimeout(() => {
+                startBlogAutoplay();
+                startDepoimentosAutoplay();
+            }, 500);
+
+            console.log('✅ CONNECTA carregado com sucesso!');
+        }
 
         // ============================================
         // UI
@@ -1274,22 +1397,8 @@
         // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Inicializando CONNECTA...');
-            renderizarBlog();
-            renderizarDepoimentos();
-            setTimeout(() => {
-                startBlogAutoplay();
-                startDepoimentosAutoplay();
-            }, 500);
             setupUI();
-            console.log('✅ CONNECTA carregado!');
-        });
-
-        // Força recálculo após load
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                atualizarDotsDepoimentos();
-                atualizarCarrosselDepoimentos();
-            }, 500);
+            carregarDados();
         });
     </script>
 </body>
