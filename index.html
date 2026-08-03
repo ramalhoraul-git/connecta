@@ -269,7 +269,6 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            /* LARGURA CORRIGIDA - 2 por vez */
             width: calc(50% - 12px);
             max-width: calc(50% - 12px);
             min-width: calc(50% - 12px);
@@ -557,13 +556,81 @@
         .contact-icon.email { background: var(--gold); }
         .contact-item strong { display: block; font-size: 0.9rem; }
         .contact-item span { font-size: 0.8rem; color: var(--text-light); }
-        .contact-form-wrapper { background: var(--white); border: 1px solid rgba(58,33,22,0.06); border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow); }
-        .contact-form h3 { margin-bottom: 24px; font-size: 1.3rem; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; color: var(--text-dark); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid rgba(58,33,22,0.08); border-radius: var(--radius-sm); font-family: var(--font-main); font-size: 0.9rem; color: var(--text-dark); transition: var(--transition); background: #FDF8F0; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(217,177,110,0.12); background: var(--white); }
-        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            border: 1px solid rgba(58,33,22,0.06);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow);
+        }
+        .contact-form h3 {
+            margin-bottom: 24px;
+            font-size: 1.3rem;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(58,33,22,0.08);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+            background: #FDF8F0;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(217,177,110,0.12);
+            background: var(--white);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Status do formulário */
+        #formStatus {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        #formStatus.success {
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.2);
+            color: #10b981;
+        }
+        #formStatus.error {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.2);
+            color: #dc2626;
+        }
+        #formStatus i {
+            margin-right: 8px;
+        }
 
         /* ===== FOOTER ===== */
         .footer { background: #FFFFFF; padding: 50px 0 0; color: var(--text-dark); border-top: 1px solid rgba(58,33,22,0.06); }
@@ -763,7 +830,7 @@
         </div>
     </section>
 
-    <!-- ===== DEPOIMENTOS - CARROSSEL 2 EM 2 ===== -->
+    <!-- ===== DEPOIMENTOS ===== -->
     <section class="testimonials-premium" id="depoimentos">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -815,21 +882,70 @@
     <section class="contact-section" id="contato">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-content" data-aos="fade-right"><span class="section-tag">Vamos conversar?</span><h2>Seu próximo nível começa com uma <span class="gradient-text">conexão.</span></h2><p>Entre em contato agora e descubra como a CONNECTA pode transformar a realidade financeira do seu negócio.</p>
+                <div class="contact-content" data-aos="fade-right">
+                    <span class="section-tag">Vamos conversar?</span>
+                    <h2>Seu próximo nível começa com uma <span class="gradient-text">conexão.</span></h2>
+                    <p>Entre em contato agora e descubra como a CONNECTA pode transformar a realidade financeira do seu negócio.</p>
                     <div class="contact-channels">
-                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank"><div class="contact-icon whatsapp"><i class="fab fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span>(34) 99884-7279</span></div></a>
-                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank"><div class="contact-icon instagram"><i class="fab fa-instagram"></i></div><div><strong>Instagram</strong><span>@erilmasilva.contabilidade</span></div></a>
-                        <a href="mailto:contato@connectacontabilidade.com.br" class="contact-item"><div class="contact-icon email"><i class="fas fa-envelope"></i></div><div><strong>E-mail</strong><span>contato@connectacontabilidade.com.br</span></div></a>
+                        <a href="https://wa.me/5534998847279?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20informações." class="contact-item" target="_blank">
+                            <div class="contact-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+                            <div><strong>WhatsApp</strong><span>(34) 99884-7279</span></div>
+                        </a>
+                        <a href="https://instagram.com/erilmasilva.contabilidade" class="contact-item" target="_blank">
+                            <div class="contact-icon instagram"><i class="fab fa-instagram"></i></div>
+                            <div><strong>Instagram</strong><span>@erilmasilva.contabilidade</span></div>
+                        </a>
+                        <a href="mailto:contato@connectacontabilidade.com.br" class="contact-item">
+                            <div class="contact-icon email"><i class="fas fa-envelope"></i></div>
+                            <div><strong>E-mail</strong><span>contato@connectacontabilidade.com.br</span></div>
+                        </a>
                     </div>
                 </div>
                 <div class="contact-form-wrapper" data-aos="fade-left">
                     <form class="contact-form" id="contactForm">
                         <h3>Solicite seu contato</h3>
-                        <div class="form-group"><label for="name">Seu nome</label><input type="text" id="name" name="name" placeholder="Como podemos te chamar?" required></div>
-                        <div class="form-group"><label for="phone">WhatsApp</label><input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required></div>
-                        <div class="form-group"><label for="service">O que você precisa?</label><select id="service" name="service" required><option value="">Selecione um serviço</option><option value="Simples Nacional">Simples Nacional</option><option value="MEI">Microempreendedor (MEI)</option><option value="Autônomo">Autônomo</option><option value="Produtor Rural">Produtor Rural</option><option value="Imposto de Renda">Imposto de Renda</option><option value="Consultoria Financeira">Consultoria Financeira</option><option value="Reforma Tributária">Reforma Tributária</option><option value="BPO Financeiro">BPO Financeiro</option><option value="Outro">Outro</option></select></div>
-                        <div class="form-group"><label for="message">Mensagem (opcional)</label><textarea id="message" name="message" rows="3" placeholder="Conte um pouco sobre sua necessidade..."></textarea></div>
-                        <button type="submit" class="btn btn-primary btn-full"><i class="fab fa-whatsapp"></i> Falar com Especialista</button>
+                        <div id="formStatus"></div>
+
+                        <div class="form-group">
+                            <label for="name">Seu nome</label>
+                            <input type="text" id="name" name="name" placeholder="Como podemos te chamar?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">O que você precisa?</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="Simples Nacional">Simples Nacional</option>
+                                <option value="MEI">Microempreendedor (MEI)</option>
+                                <option value="Autônomo">Autônomo</option>
+                                <option value="Produtor Rural">Produtor Rural</option>
+                                <option value="Imposto de Renda">Imposto de Renda</option>
+                                <option value="Consultoria Financeira">Consultoria Financeira</option>
+                                <option value="Reforma Tributária">Reforma Tributária</option>
+                                <option value="BPO Financeiro">BPO Financeiro</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Conte um pouco sobre sua necessidade..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> 
+                            <span id="btnText">Enviar mensagem</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -840,8 +956,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><div class="footer-logo"><div class="logo-icon"><img src="/logo-rodape.png" alt="CONNECTA"></div></div><p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p><div class="footer-social"><a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a></div><div style="margin-top:14px;"><a href="/admin/login.html" class="btn btn-small btn-painel"><i class="fas fa-user-shield"></i> Painel Administrativo</a></div></div>
-                <div class="footer-links"><h4>Navegação</h4><ul><li><a href="#inicio">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#depoimentos">Depoimentos</a></li><li><a href="/blog.html" class="blog-link">Blog</a></li><li><a href="#contato">Contato</a></li></ul></div>
+                <div class="footer-brand"><div class="footer-logo"><div class="logo-icon"><img src="/logo-rodape.png" alt="CONNECTA"></div></div><p>Transformando dados em decisões seguras para o crescimento dos nossos clientes.</p><div class="footer-social"><a href="https://instagram.com/erilmasilva.contabilidade" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5534998847279" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="mailto:contato@connectacontabilidade.com.br" aria-label="Email"><i class="fas fa-envelope"></i></a></div></div>
+                <div class="footer-links"><h4>Navegação</h4><ul><li><a href="/">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#depoimentos">Depoimentos</a></li><li><a href="/blog.html" class="blog-link">Blog</a></li><li><a href="#contato">Contato</a></li></ul></div>
                 <div class="footer-links"><h4>Serviços</h4><ul><li><a href="#servicos">Simples Nacional</a></li><li><a href="#servicos">MEI</a></li><li><a href="#servicos">Produtor Rural</a></li><li><a href="#servicos">Imposto de Renda</a></li><li><a href="#servicos">Consultoria</a></li></ul></div>
                 <div class="footer-links"><h4>Contato</h4><ul><li><i class="fab fa-whatsapp"></i> (34) 99884-7279</li><li><i class="fab fa-instagram"></i> @erilmasilva.contabilidade</li></ul></div>
             </div>
@@ -860,32 +976,47 @@
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
 
     <!-- ============================================
-    SUPABASE INTEGRATION - SCRIPT COMPLETO
+    SCRIPTS
     ============================================ -->
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
     <script>
         // ============================================
-        // SUPABASE CONFIGURATION
+        // SUPABASE CONFIG
         // ============================================
         const SUPABASE_URL = 'https://spztajsribpyaittolnr.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwenRhanNyaWJweWFpdHRvbG5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NDI1MDgsImV4cCI6MjEwMTMxODUwOH0.a82tfOuttNg-LXJnPGfbmovqUGMUUfL8yDeMcr1EY8U';
 
         // ============================================
-        // DADOS FALLBACK (LOCALSTORAGE)
+        // EMAILJS CONFIG - SUBSTITUA COM SEUS DADOS
+        // ============================================
+        const EMAILJS_PUBLIC_KEY = 'SUA_PUBLIC_KEY_AQUI';
+        const EMAILJS_SERVICE_ID = 'SEU_SERVICE_ID_AQUI';
+        const EMAILJS_TEMPLATE_ID = 'SEU_TEMPLATE_ID_AQUI';
+
+        // ============================================
+        // ARTIGOS (FALLBACK)
         // ============================================
         const ARTIGOS_FALLBACK = [
-            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "14 de julho de 2025", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true },
-            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "12 de julho de 2025", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", carrossel: true },
-            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "10 de julho de 2025", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", carrossel: true },
-            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais organizarem suas finanças.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "08 de julho de 2025", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", carrossel: false },
-            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "06 de julho de 2025", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", carrossel: true },
-            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "04 de julho de 2025", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", carrossel: false }
+            { id: 1, titulo: "Reforma Tributária: O que muda para sua empresa em 2025", resumo: "Entenda as principais mudanças na reforma tributária e como elas podem impactar seu negócio.", categoria: "Tributário", autor: "Erilma Silva", data: "2025-07-14", tempoLeitura: "5 min", icone: "fa-chart-line", cor: "#3A2116", carrossel: true },
+            { id: 2, titulo: "MEI: Guia completo para não perder seu CNPJ", resumo: "Descubra os erros mais comuns que podem levar ao cancelamento do seu MEI.", categoria: "MEI", autor: "Erilma Silva", data: "2025-07-12", tempoLeitura: "8 min", icone: "fa-id-card", cor: "#5A3522", carrossel: true },
+            { id: 3, titulo: "Simples Nacional x Lucro Presumido: Qual o melhor para você?", resumo: "Análise comparativa entre os regimes tributários.", categoria: "Simples Nacional", autor: "Erilma Silva", data: "2025-07-10", tempoLeitura: "6 min", icone: "fa-store", cor: "#8A5A35", carrossel: true },
+            { id: 4, titulo: "Produtor Rural: Como organizar suas finanças para lucrar mais", resumo: "Estratégias práticas para produtores rurais organizarem suas finanças.", categoria: "Produtor Rural", autor: "Erilma Silva", data: "2025-07-08", tempoLeitura: "7 min", icone: "fa-tractor", cor: "#6B4A30", carrossel: false },
+            { id: 5, titulo: "BPO Financeiro: Terceirize sua contabilidade com segurança", resumo: "Entenda como o BPO Financeiro pode transformar a gestão do seu negócio.", categoria: "Consultoria", autor: "Erilma Silva", data: "2025-07-06", tempoLeitura: "4 min", icone: "fa-handshake", cor: "#4A2C1D", carrossel: true },
+            { id: 6, titulo: "Automação Contábil: O futuro da contabilidade digital", resumo: "Descubra como a automação está revolucionando a contabilidade.", categoria: "Tecnologia", autor: "Erilma Silva", data: "2025-07-04", tempoLeitura: "6 min", icone: "fa-microchip", cor: "#2C1A0E", carrossel: false }
         ];
 
+        // ============================================
+        // DEPOIMENTOS (FALLBACK)
+        // ============================================
         const DEPOIMENTOS_FALLBACK = [
-            { id: 1, nome: "Raul Ramalho", empresa: "Vigorre • São Gonçalo/RJ", iniciais: "R", texto: '"A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: transparência e segurança. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."', nota: 5, data: "Junho 2025" },
-            { id: 2, nome: "Daniele Aparecida", empresa: "Amovin • Rio Paranaíba/MG", iniciais: "D", texto: '"O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá consciência real sobre os números e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."', nota: 5, data: "Maio 2025" },
-            { id: 3, nome: "Gabriela Melo", empresa: "Terapia Ocupacional • Rio Paranaíba/MG", iniciais: "G", texto: '"Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço ágil, eficiente e muito profissional. Estou muito satisfeita!"', nota: 5, data: "Abril 2025" },
-            { id: 4, nome: "Daniela Boaventura", empresa: "Fonoaudiologia • Rio Paranaíba/MG", iniciais: "D", texto: '"Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com atenção, organização e muita disponibilidade para esclarecer dúvidas. É uma profissional comprometida, que transmite confiança e faz toda a diferença no dia a dia. Recomendo seu trabalho a todos que buscam um atendimento sério, responsável e de qualidade."', nota: 5, data: "Março 2025" }
+            { id: 1, nome: "Raul Ramalho", empresa: "Vigorre • São Gonçalo/RJ", iniciais: "R", texto: '"A Erilma e a Connecta entregam exatamente o que todo empreendedor precisa: transparência e segurança. Com a Connecta, a contabilidade deixou de ser uma dor de cabeça para virar um pilar de tranquilidade. A gente sabe onde está pisando e confia de olhos fechados."', nota: 5, data: "2025-06-01" },
+            { id: 2, nome: "Daniele Aparecida", empresa: "Amovin • Rio Paranaíba/MG", iniciais: "D", texto: '"O trabalho da Erilma na Connecta vai muito além de cumprir obrigações. Ela nos dá consciência real sobre os números e a situação da empresa, sempre com uma comunicação direta e sem enrolação. Isso nos traz uma tranquilidade enorme para focar no que realmente importa."', nota: 5, data: "2025-05-01" },
+            { id: 3, nome: "Gabriela Melo", empresa: "Terapia Ocupacional • Rio Paranaíba/MG", iniciais: "G", texto: '"Eu não entendia nada de contabilidade, e ela tem sido essencial para me ajudar a compreender todos os processos. Sempre tira minhas dúvidas com muita clareza, além de prestar um serviço ágil, eficiente e muito profissional. Estou muito satisfeita!"', nota: 5, data: "2025-04-01" },
+            { id: 4, nome: "Daniela Boaventura", empresa: "Fonoaudiologia • Rio Paranaíba/MG", iniciais: "D", texto: '"Há 1 ano tenho a satisfação de contar com a parceria da Erilma. Desde o início, ela me orientou com muita competência para regularizar meu Imposto de Renda, tornando todo o processo muito mais tranquilo e seguro. Hoje, ela também cuida da minha conta PJ, sempre com atenção, organização e muita disponibilidade para esclarecer dúvidas."', nota: 5, data: "2025-03-01" }
         ];
 
         // ============================================
@@ -910,8 +1041,7 @@
                     throw new Error(`HTTP ${response.status}`);
                 }
 
-                const dados = await response.json();
-                return dados;
+                return await response.json();
             } catch (error) {
                 console.warn('⚠️ Erro ao buscar artigos do Supabase:', error.message);
                 return null;
@@ -936,8 +1066,7 @@
                     throw new Error(`HTTP ${response.status}`);
                 }
 
-                const dados = await response.json();
-                return dados;
+                return await response.json();
             } catch (error) {
                 console.warn('⚠️ Erro ao buscar depoimentos do Supabase:', error.message);
                 return null;
@@ -1135,7 +1264,7 @@
         }
 
         // ============================================
-        // NAVEGAÇÃO
+        // NAVEGAÇÃO DOS CARROSSÉIS
         // ============================================
         document.getElementById('testimonialsPrev').addEventListener('click', function() {
             const perView = getDepoimentosPerView();
@@ -1242,10 +1371,10 @@
         // ============================================
         // HOVER PAUSE
         // ============================================
-        document.querySelector('.testimonials-carousel-wrapper')?.addEventListener('mouseenter', stopDepoimentosAutoplay);
-        document.querySelector('.testimonials-carousel-wrapper')?.addEventListener('mouseleave', startDepoimentosAutoplay);
-        document.getElementById('blogCarousel')?.addEventListener('mouseenter', stopBlogAutoplay);
-        document.getElementById('blogCarousel')?.addEventListener('mouseleave', startBlogAutoplay);
+        document.querySelector('.testimonials-carousel-wrapper').addEventListener('mouseenter', stopDepoimentosAutoplay);
+        document.querySelector('.testimonials-carousel-wrapper').addEventListener('mouseleave', startDepoimentosAutoplay);
+        document.getElementById('blogCarousel').addEventListener('mouseenter', stopBlogAutoplay);
+        document.getElementById('blogCarousel').addEventListener('mouseleave', startBlogAutoplay);
 
         // ============================================
         // RESIZE
@@ -1266,60 +1395,87 @@
         });
 
         // ============================================
+        // FORMULÁRIO DE CONTATO
+        // ============================================
+        function mascaraTelefone(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 7) {
+                v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+            } else if (v.length > 2) {
+                v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+            } else if (v.length > 0) {
+                v = '(' + v;
+            }
+            input.value = v;
+        }
+
+        function mostrarStatus(mensagem, tipo = 'success') {
+            const statusDiv = document.getElementById('formStatus');
+            if (!statusDiv) return;
+
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = `
+                <i class="fas ${tipo === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                ${mensagem}
+            `;
+            statusDiv.className = tipo;
+            statusDiv.style.borderRadius = '8px';
+            statusDiv.style.padding = '12px 16px';
+            statusDiv.style.marginBottom = '16px';
+
+            clearTimeout(statusDiv._timeout);
+            statusDiv._timeout = setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 6000);
+        }
+
+        // ============================================
         // CARREGAR DADOS DO SUPABASE
         // ============================================
         async function carregarDados() {
             console.log('🚀 Carregando dados do Supabase...');
 
-            // Buscar artigos
             let artigos = await buscarArtigosSupabase();
             if (!artigos || artigos.length === 0) {
-                console.log('📄 Usando artigos fallback (LocalStorage)');
+                console.log('📄 Usando artigos fallback');
                 artigos = ARTIGOS_FALLBACK;
             } else {
                 console.log(`✅ ${artigos.length} artigos carregados do Supabase`);
             }
 
-            // Buscar depoimentos
             let depoimentos = await buscarDepoimentosSupabase();
             if (!depoimentos || depoimentos.length === 0) {
-                console.log('💬 Usando depoimentos fallback (LocalStorage)');
+                console.log('💬 Usando depoimentos fallback');
                 depoimentos = DEPOIMENTOS_FALLBACK;
             } else {
                 console.log(`✅ ${depoimentos.length} depoimentos carregados do Supabase`);
             }
 
-            // Renderizar
             renderizarBlog(artigos);
             renderizarDepoimentos(depoimentos);
 
-            // Iniciar autoplay
             setTimeout(() => {
                 startBlogAutoplay();
                 startDepoimentosAutoplay();
             }, 500);
-
-            console.log('✅ CONNECTA carregado com sucesso!');
         }
 
         // ============================================
         // UI
         // ============================================
         function setupUI() {
-            // Navbar scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
                 navbar.classList.toggle('scrolled', window.scrollY > 80);
             });
 
-            // Back to top
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
                 backToTop.classList.toggle('visible', window.scrollY > 500);
             });
             backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            // Hamburger
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
             hamburger.addEventListener('click', function() {
@@ -1333,7 +1489,6 @@
                 });
             });
 
-            // FAQ
             document.querySelectorAll('.faq-question').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const item = this.parentElement;
@@ -1343,31 +1498,13 @@
                 });
             });
 
-            // Contact form
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                const service = document.getElementById('service').value;
-                const message = document.getElementById('message').value.trim();
-                let msg = 'Olá Erilma! Vim pelo site da CONNECTA.%0A%0A';
-                msg += '*Nome:* ' + encodeURIComponent(name) + '%0A';
-                msg += '*WhatsApp:* ' + encodeURIComponent(phone) + '%0A';
-                msg += '*Serviço:* ' + encodeURIComponent(service) + '%0A';
-                if (message) msg += '*Mensagem:* ' + encodeURIComponent(message) + '%0A';
-                msg += '%0AEstou aguardando seu retorno! 😊';
-                window.open('https://wa.me/5534998847279?text=' + msg, '_blank');
-            });
-
-            // Phone mask
-            document.getElementById('phone').addEventListener('input', function(e) {
-                let v = e.target.value.replace(/\D/g, '');
-                if (v.length > 11) v = v.slice(0, 11);
-                if (v.length > 7) v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
-                else if (v.length > 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-                else if (v.length > 0) v = '(' + v;
-                e.target.value = v;
-            });
+            // Máscara de telefone
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function() {
+                    mascaraTelefone(this);
+                });
+            }
 
             // AOS
             const observer = new IntersectionObserver(entries => {
@@ -1387,9 +1524,86 @@
                 const p = document.createElement('div');
                 p.classList.add('particle');
                 const size = Math.random() * 8 + 3;
-                p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s`;
+                p.style.cssText =
+                    `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s`;
                 particles.appendChild(p);
             }
+        }
+
+        // ============================================
+        // INICIALIZAÇÃO DO FORMULÁRIO
+        // ============================================
+        function initForm() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            // Inicializar EmailJS
+            if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== 'SUA_PUBLIC_KEY_AQUI') {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                console.log('✅ EmailJS inicializado!');
+            } else {
+                console.warn('⚠️ EmailJS não configurado. Configure as chaves.');
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submitBtn');
+                const btnText = document.getElementById('btnText');
+
+                const dados = {
+                    nome: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    telefone: document.getElementById('phone').value.trim(),
+                    assunto: document.getElementById('service').value,
+                    mensagem: document.getElementById('message').value.trim()
+                };
+
+                if (!dados.nome || !dados.email || !dados.telefone || !dados.mensagem) {
+                    mostrarStatus('⚠️ Por favor, preencha todos os campos obrigatórios.', 'error');
+                    return;
+                }
+
+                btn.disabled = true;
+                btnText.textContent = 'Enviando...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+                try {
+                    if (EMAILJS_PUBLIC_KEY === 'SUA_PUBLIC_KEY_AQUI') {
+                        throw new Error('Configure as chaves do EmailJS');
+                    }
+
+                    const response = await emailjs.send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        {
+                            nome: dados.nome,
+                            email: dados.email,
+                            telefone: dados.telefone,
+                            assunto: dados.assunto,
+                            mensagem: dados.mensagem
+                        }
+                    );
+
+                    console.log('✅ Email enviado!', response);
+                    mostrarStatus('✅ Mensagem enviada com sucesso! Entraremos em contato em até 24h.', 'success');
+                    form.reset();
+
+                    setTimeout(() => {
+                        const msg =
+                            `Olá! Vim pelo site da CONNECTA. Meu nome é ${dados.nome} e gostaria de mais informações sobre ${dados.assunto}.`;
+                        window.open(`https://wa.me/5534998847279?text=${encodeURIComponent(msg)}`, '_blank');
+                    }, 2000);
+
+                } catch (error) {
+                    console.error('❌ Erro ao enviar:', error);
+                    mostrarStatus('❌ Erro ao enviar mensagem. Tente novamente ou ligue no WhatsApp.', 'error');
+                }
+
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> <span id="btnText">Enviar mensagem</span>';
+                if (btnText) btnText.textContent = 'Enviar mensagem';
+            });
         }
 
         // ============================================
@@ -1399,6 +1613,8 @@
             console.log('🚀 Inicializando CONNECTA...');
             setupUI();
             carregarDados();
+            initForm();
+            console.log('✅ CONNECTA carregado!');
         });
     </script>
 </body>
